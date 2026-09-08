@@ -93,3 +93,20 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
 - **Consecuencias:**
   - Positivas: Documentación OpenAPI `/docs` generada automáticamente, validación de esquemas en tiempo de ejecución, compatibilidad directa con el pipeline Python existente.
   - Negativas: Ninguna significativa para el alcance actual.
+
+---
+
+## D-007 — Capa CicloConecta Maestra e Independencia del Mapa Base
+
+- **Fecha:** 2026-09-08
+- **Estado:** Aceptada
+- **Contexto:**
+  El concepto nuclear de CicloConecta es no competir con Google Maps ni recrear mapas base, sino superponer una capa propia de análisis de movilidad ciclista sobre el mapa existente, permitiendo al usuario encenderla o apagarla por completo sin recargar ni recalcular las teselas urbanas base.
+- **Decisión:**
+  Implementar un control maestro de visibilidad de la *Capa CicloConecta* en el componente `LayerControl` y `MapView`:
+  1. Cuando la capa maestra se desactiva, todas las subcapas ciclistas (existentes, faltantes y sugeridas) se ocultan inmediatamente en el pipeline de WebGL (`setLayoutProperty('none')`), dejando solo el mapa base libre.
+  2. Cuando se activa, se respeta el estado individual de cada subcapa.
+- **Consecuencias:**
+  - Positivas: Cumple al 100% con la separación conceptual entre "mapa base (contexto)" y "capa CicloConecta (datos propios)", permitiendo comparaciones instantáneas sin costo de cómputo.
+  - Negativas: Ninguna.
+
