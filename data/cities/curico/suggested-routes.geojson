@@ -1,0 +1,82 @@
+{
+  "type": "FeatureCollection",
+  "name": "Rutas_Sugeridas_Curico_Demo",
+  "metadata": {
+    "city": "curico",
+    "is_demo": true,
+    "status": "DEMO / ESTIMACIÓN CONCEPTUAL",
+    "description": "Rutas sugeridas de bajo estrés de tránsito mientras se completan las ciclovías formales."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "route-curico-01",
+      "properties": {
+        "id": "route-curico-01",
+        "name": "Ruta Barrial Calma: Zapallar - Plaza de Armas",
+        "type": "Ruta recomendada de bajo estrés vehicular",
+        "surface": "Pavimento urbano mixto",
+        "speed_limit_kmh": 30,
+        "length_km": 3.4,
+        "is_demo": true,
+        "status": "DEMO"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.215,
+            -34.981
+          ],
+          [
+            -71.222,
+            -34.983
+          ],
+          [
+            -71.23,
+            -34.9845
+          ],
+          [
+            -71.2394,
+            -34.9854
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "route-curico-02",
+      "properties": {
+        "id": "route-curico-02",
+        "name": "Circuito Estudiante: Campus UTAL - Centro",
+        "type": "Corredor sugerido universitario",
+        "surface": "Asfalto",
+        "speed_limit_kmh": 30,
+        "length_km": 4.1,
+        "is_demo": true,
+        "status": "DEMO"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.225,
+            -34.965
+          ],
+          [
+            -71.231,
+            -34.973
+          ],
+          [
+            -71.235,
+            -34.981
+          ],
+          [
+            -71.2394,
+            -34.9854
+          ]
+        ]
+      }
+    }
+  ]
+}

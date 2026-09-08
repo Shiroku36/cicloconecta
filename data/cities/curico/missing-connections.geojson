@@ -1,0 +1,105 @@
+{
+  "type": "FeatureCollection",
+  "name": "Conexiones_Faltantes_Curico_Demo",
+  "metadata": {
+    "city": "curico",
+    "is_demo": true,
+    "status": "DEMO / ESTIMACIÓN CONCEPTUAL",
+    "description": "Tramos faltantes identificados preliminarmente para conectar ejes ciclistas existentes."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "gap-curico-01",
+      "properties": {
+        "id": "gap-curico-01",
+        "name": "Eje Conexión Rauquén - Estación Curicó",
+        "description": "Falta tramo de ciclovía segura para conectar la zona norte residencial de Rauquén con la Estación de Trenes.",
+        "priority": "Alta",
+        "gap_length_m": 850,
+        "estimated_benefit": "Conecta 15.000 residentes con el eje ferroviario y centro comercial",
+        "is_demo": true,
+        "status": "DEMO"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.2285,
+            -34.972
+          ],
+          [
+            -71.233,
+            -34.9775
+          ],
+          [
+            -71.237,
+            -34.982
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-02",
+      "properties": {
+        "id": "gap-curico-02",
+        "name": "Interconexión Ciclovía O'Higgins con Av. España",
+        "description": "Corte crítico en el enlace este-oeste entre O'Higgins y los ejes hacia Los Niches.",
+        "priority": "Media-Alta",
+        "gap_length_m": 620,
+        "estimated_benefit": "Continuidad sin necesidad de circular por calzada vehicular de alto flujo",
+        "is_demo": true,
+        "status": "DEMO"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.246,
+            -34.992
+          ],
+          [
+            -71.2415,
+            -34.994
+          ],
+          [
+            -71.236,
+            -34.996
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-03",
+      "properties": {
+        "id": "gap-curico-03",
+        "name": "Continuidad Ciclovía Merced al Río Guaiquillo",
+        "description": "Tramo sur para dar acceso a parque ribera y zonas recreativas.",
+        "priority": "Media",
+        "gap_length_m": 430,
+        "estimated_benefit": "Acceso a zona sur y áreas verdes protegidas",
+        "is_demo": true,
+        "status": "DEMO"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.242,
+            -35.001
+          ],
+          [
+            -71.244,
+            -35.004
+          ],
+          [
+            -71.247,
+            -35.007
+          ]
+        ]
+      }
+    }
+  ]
+}

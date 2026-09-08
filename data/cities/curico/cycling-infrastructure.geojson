@@ -1,0 +1,8342 @@
+{
+  "type": "FeatureCollection",
+  "name": "Ciclovias_Curico_OSM",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "city": "curico",
+    "source": "OpenStreetMap",
+    "extracted_at": "2026-09-08T20:16:10.365516+00:00",
+    "total_features": 121,
+    "total_km": 43.2
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "osm-27945214",
+      "properties": {
+        "id": "curico-osm-27945214",
+        "name": "Camino a Licantén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 150.6,
+        "length_km": 0.15,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 27945214,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248571,
+            -34.980568
+          ],
+          [
+            -71.248729,
+            -34.980339
+          ],
+          [
+            -71.248851,
+            -34.980209
+          ],
+          [
+            -71.248998,
+            -34.980064
+          ],
+          [
+            -71.249098,
+            -34.979965
+          ],
+          [
+            -71.249218,
+            -34.979852
+          ],
+          [
+            -71.249656,
+            -34.979564
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-28606189",
+      "properties": {
+        "id": "curico-osm-28606189",
+        "name": "Avenida Ángel Lago",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "residential",
+        "surface": "concrete",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 237.6,
+        "length_km": 0.24,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 28606189,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.211462,
+            -34.991968
+          ],
+          [
+            -71.211518,
+            -34.992078
+          ],
+          [
+            -71.211787,
+            -34.992604
+          ],
+          [
+            -71.211944,
+            -34.992915
+          ],
+          [
+            -71.212208,
+            -34.993497
+          ],
+          [
+            -71.212231,
+            -34.993524
+          ],
+          [
+            -71.212258,
+            -34.993549
+          ],
+          [
+            -71.212289,
+            -34.99357
+          ],
+          [
+            -71.212328,
+            -34.993589
+          ],
+          [
+            -71.21237,
+            -34.993603
+          ],
+          [
+            -71.212415,
+            -34.99361
+          ],
+          [
+            -71.212554,
+            -34.99363
+          ],
+          [
+            -71.212591,
+            -34.993634
+          ],
+          [
+            -71.212626,
+            -34.993642
+          ],
+          [
+            -71.212674,
+            -34.993661
+          ],
+          [
+            -71.212729,
+            -34.9937
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-30291390",
+      "properties": {
+        "id": "curico-osm-30291390",
+        "name": "Merced",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "concrete",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 39.4,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 30291390,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.234031,
+            -34.984345
+          ],
+          [
+            -71.234374,
+            -34.98435
+          ],
+          [
+            -71.234399,
+            -34.98435
+          ],
+          [
+            -71.234463,
+            -34.984351
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-39336739",
+      "properties": {
+        "id": "curico-osm-39336739",
+        "name": "Ciclovía sin nombre",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 141.5,
+        "length_km": 0.14,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 39336739,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.195124,
+            -34.964811
+          ],
+          [
+            -71.195147,
+            -34.964771
+          ],
+          [
+            -71.19516,
+            -34.964741
+          ],
+          [
+            -71.195171,
+            -34.964712
+          ],
+          [
+            -71.19518,
+            -34.964677
+          ],
+          [
+            -71.195183,
+            -34.964647
+          ],
+          [
+            -71.195183,
+            -34.964618
+          ],
+          [
+            -71.195181,
+            -34.964588
+          ],
+          [
+            -71.195175,
+            -34.96456
+          ],
+          [
+            -71.195167,
+            -34.964531
+          ],
+          [
+            -71.195156,
+            -34.964501
+          ],
+          [
+            -71.195144,
+            -34.964478
+          ],
+          [
+            -71.19513,
+            -34.964455
+          ],
+          [
+            -71.195111,
+            -34.96443
+          ],
+          [
+            -71.19509,
+            -34.964407
+          ],
+          [
+            -71.195066,
+            -34.964382
+          ],
+          [
+            -71.195041,
+            -34.964358
+          ],
+          [
+            -71.195018,
+            -34.96434
+          ],
+          [
+            -71.194992,
+            -34.964321
+          ],
+          [
+            -71.194958,
+            -34.9643
+          ],
+          [
+            -71.194925,
+            -34.964283
+          ],
+          [
+            -71.194884,
+            -34.964265
+          ],
+          [
+            -71.194839,
+            -34.964248
+          ],
+          [
+            -71.194795,
+            -34.964235
+          ],
+          [
+            -71.194745,
+            -34.964224
+          ],
+          [
+            -71.194697,
+            -34.964215
+          ],
+          [
+            -71.194651,
+            -34.964211
+          ],
+          [
+            -71.194603,
+            -34.964208
+          ],
+          [
+            -71.19455,
+            -34.964209
+          ],
+          [
+            -71.194498,
+            -34.964212
+          ],
+          [
+            -71.194442,
+            -34.964217
+          ],
+          [
+            -71.19436,
+            -34.964227
+          ],
+          [
+            -71.194142,
+            -34.964256
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-40117209",
+      "properties": {
+        "id": "curico-osm-40117209",
+        "name": "Ruta 5 Sur",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "motorway",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 164.4,
+        "length_km": 0.16,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 40117209,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.236107,
+            -34.998717
+          ],
+          [
+            -71.237119,
+            -34.999941
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-40117210",
+      "properties": {
+        "id": "curico-osm-40117210",
+        "name": "Ciclovía sin nombre",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary_link",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 152.8,
+        "length_km": 0.15,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 40117210,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.234532,
+            -35.000317
+          ],
+          [
+            -71.234676,
+            -35.00029
+          ],
+          [
+            -71.234825,
+            -35.000266
+          ],
+          [
+            -71.235104,
+            -35.00023
+          ],
+          [
+            -71.235602,
+            -35.000177
+          ],
+          [
+            -71.235908,
+            -35.000148
+          ],
+          [
+            -71.236192,
+            -35.000127
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-40117211",
+      "properties": {
+        "id": "curico-osm-40117211",
+        "name": "Paso Nivel Los Niches",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 201.8,
+        "length_km": 0.2,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 40117211,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.237436,
+            -34.999987
+          ],
+          [
+            -71.237497,
+            -34.999986
+          ],
+          [
+            -71.237536,
+            -34.999986
+          ],
+          [
+            -71.237637,
+            -34.999991
+          ],
+          [
+            -71.237742,
+            -35.000002
+          ],
+          [
+            -71.237847,
+            -35.000019
+          ],
+          [
+            -71.237966,
+            -35.000046
+          ],
+          [
+            -71.238083,
+            -35.00008
+          ],
+          [
+            -71.238234,
+            -35.00013
+          ],
+          [
+            -71.238412,
+            -35.000195
+          ],
+          [
+            -71.238587,
+            -35.000266
+          ],
+          [
+            -71.238673,
+            -35.00031
+          ],
+          [
+            -71.238752,
+            -35.000361
+          ],
+          [
+            -71.238806,
+            -35.000403
+          ],
+          [
+            -71.238856,
+            -35.000449
+          ],
+          [
+            -71.238902,
+            -35.000497
+          ],
+          [
+            -71.238943,
+            -35.000553
+          ],
+          [
+            -71.238977,
+            -35.000612
+          ],
+          [
+            -71.238999,
+            -35.000659
+          ],
+          [
+            -71.239015,
+            -35.000708
+          ],
+          [
+            -71.23903,
+            -35.000765
+          ],
+          [
+            -71.23904,
+            -35.000823
+          ],
+          [
+            -71.239044,
+            -35.000884
+          ],
+          [
+            -71.239042,
+            -35.000945
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-40182255",
+      "properties": {
+        "id": "curico-osm-40182255",
+        "name": "Ciclovía sin nombre",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 59.7,
+        "length_km": 0.06,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 40182255,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.194142,
+            -34.964256
+          ],
+          [
+            -71.193495,
+            -34.964343
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-47003412",
+      "properties": {
+        "id": "curico-osm-47003412",
+        "name": "Paso Nivel Los Niches",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 63.8,
+        "length_km": 0.06,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 47003412,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.236741,
+            -35.000061
+          ],
+          [
+            -71.237436,
+            -34.999987
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-97148474",
+      "properties": {
+        "id": "curico-osm-97148474",
+        "name": "Pasaje Ventisqueros",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "living_street",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 30.7,
+        "length_km": 0.03,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 97148474,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.223521,
+            -34.967303
+          ],
+          [
+            -71.223563,
+            -34.967577
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-97148557",
+      "properties": {
+        "id": "curico-osm-97148557",
+        "name": "Pasaje Archipielago",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "residential",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 36.0,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 97148557,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.224539,
+            -34.967513
+          ],
+          [
+            -71.224473,
+            -34.967194
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-101300652",
+      "properties": {
+        "id": "curico-osm-101300652",
+        "name": "Avenida Amsterdam",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 1883.0,
+        "length_km": 1.88,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 101300652,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.201599,
+            -34.962026
+          ],
+          [
+            -71.201663,
+            -34.962015
+          ],
+          [
+            -71.202043,
+            -34.961949
+          ],
+          [
+            -71.202488,
+            -34.961871
+          ],
+          [
+            -71.202541,
+            -34.961862
+          ],
+          [
+            -71.204228,
+            -34.961569
+          ],
+          [
+            -71.204301,
+            -34.961556
+          ],
+          [
+            -71.204612,
+            -34.961502
+          ],
+          [
+            -71.204967,
+            -34.96144
+          ],
+          [
+            -71.205928,
+            -34.961273
+          ],
+          [
+            -71.206008,
+            -34.961259
+          ],
+          [
+            -71.206362,
+            -34.961198
+          ],
+          [
+            -71.206693,
+            -34.96114
+          ],
+          [
+            -71.207045,
+            -34.961079
+          ],
+          [
+            -71.207397,
+            -34.961018
+          ],
+          [
+            -71.207771,
+            -34.960953
+          ],
+          [
+            -71.208165,
+            -34.960884
+          ],
+          [
+            -71.208497,
+            -34.960826
+          ],
+          [
+            -71.208874,
+            -34.960761
+          ],
+          [
+            -71.20922,
+            -34.960701
+          ],
+          [
+            -71.2096,
+            -34.960634
+          ],
+          [
+            -71.209981,
+            -34.960568
+          ],
+          [
+            -71.21034,
+            -34.960506
+          ],
+          [
+            -71.210695,
+            -34.960444
+          ],
+          [
+            -71.211049,
+            -34.960383
+          ],
+          [
+            -71.211438,
+            -34.960315
+          ],
+          [
+            -71.211808,
+            -34.960251
+          ],
+          [
+            -71.212163,
+            -34.960189
+          ],
+          [
+            -71.212422,
+            -34.960144
+          ],
+          [
+            -71.212807,
+            -34.960077
+          ],
+          [
+            -71.212981,
+            -34.960046
+          ],
+          [
+            -71.213269,
+            -34.959996
+          ],
+          [
+            -71.213405,
+            -34.959973
+          ],
+          [
+            -71.213833,
+            -34.959898
+          ],
+          [
+            -71.214272,
+            -34.959822
+          ],
+          [
+            -71.214533,
+            -34.959777
+          ],
+          [
+            -71.21472,
+            -34.959744
+          ],
+          [
+            -71.215148,
+            -34.95967
+          ],
+          [
+            -71.215276,
+            -34.959648
+          ],
+          [
+            -71.215383,
+            -34.959629
+          ],
+          [
+            -71.215574,
+            -34.959596
+          ],
+          [
+            -71.21605,
+            -34.959513
+          ],
+          [
+            -71.216413,
+            -34.95945
+          ],
+          [
+            -71.216765,
+            -34.959389
+          ],
+          [
+            -71.217087,
+            -34.959333
+          ],
+          [
+            -71.217354,
+            -34.959286
+          ],
+          [
+            -71.217427,
+            -34.959273
+          ],
+          [
+            -71.217789,
+            -34.95921
+          ],
+          [
+            -71.218209,
+            -34.959137
+          ],
+          [
+            -71.218655,
+            -34.95906
+          ],
+          [
+            -71.219083,
+            -34.958985
+          ],
+          [
+            -71.219448,
+            -34.958922
+          ],
+          [
+            -71.219515,
+            -34.95891
+          ],
+          [
+            -71.219589,
+            -34.958897
+          ],
+          [
+            -71.220015,
+            -34.958823
+          ],
+          [
+            -71.221804,
+            -34.958483
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-102451549",
+      "properties": {
+        "id": "curico-osm-102451549",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 244.7,
+        "length_km": 0.24,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 102451549,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.235249,
+            -34.995204
+          ],
+          [
+            -71.235187,
+            -34.994481
+          ],
+          [
+            -71.235179,
+            -34.994434
+          ],
+          [
+            -71.235131,
+            -34.993738
+          ],
+          [
+            -71.235065,
+            -34.993009
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-110943239",
+      "properties": {
+        "id": "curico-osm-110943239",
+        "name": "Avenida Bernardo O'Higgins",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 554.9,
+        "length_km": 0.55,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 110943239,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.245196,
+            -34.976605
+          ],
+          [
+            -71.24519,
+            -34.976654
+          ],
+          [
+            -71.244956,
+            -34.978716
+          ],
+          [
+            -71.244895,
+            -34.979253
+          ],
+          [
+            -71.24482,
+            -34.979917
+          ],
+          [
+            -71.244773,
+            -34.98033
+          ],
+          [
+            -71.244694,
+            -34.981027
+          ],
+          [
+            -71.244679,
+            -34.981155
+          ],
+          [
+            -71.244646,
+            -34.98145
+          ],
+          [
+            -71.24464,
+            -34.981505
+          ],
+          [
+            -71.244632,
+            -34.981574
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-141024646",
+      "properties": {
+        "id": "curico-osm-141024646",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 308.0,
+        "length_km": 0.31,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 141024646,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.277684,
+            -34.932956
+          ],
+          [
+            -71.278397,
+            -34.932836
+          ],
+          [
+            -71.279129,
+            -34.932712
+          ],
+          [
+            -71.280993,
+            -34.932397
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-143778217",
+      "properties": {
+        "id": "curico-osm-143778217",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 314.4,
+        "length_km": 0.31,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 143778217,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.233715,
+            -34.980986
+          ],
+          [
+            -71.233589,
+            -34.981009
+          ],
+          [
+            -71.233508,
+            -34.981024
+          ],
+          [
+            -71.233326,
+            -34.980475
+          ],
+          [
+            -71.233182,
+            -34.97999
+          ],
+          [
+            -71.233036,
+            -34.979522
+          ],
+          [
+            -71.232736,
+            -34.978447
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-143778218",
+      "properties": {
+        "id": "curico-osm-143778218",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1250.8,
+        "length_km": 1.25,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 143778218,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.232736,
+            -34.978447
+          ],
+          [
+            -71.2327,
+            -34.978378
+          ],
+          [
+            -71.232547,
+            -34.978115
+          ],
+          [
+            -71.231483,
+            -34.977402
+          ],
+          [
+            -71.230936,
+            -34.977036
+          ],
+          [
+            -71.229411,
+            -34.976002
+          ],
+          [
+            -71.229302,
+            -34.975926
+          ],
+          [
+            -71.229188,
+            -34.975855
+          ],
+          [
+            -71.229069,
+            -34.97579
+          ],
+          [
+            -71.228946,
+            -34.975731
+          ],
+          [
+            -71.228819,
+            -34.975678
+          ],
+          [
+            -71.228666,
+            -34.975624
+          ],
+          [
+            -71.228509,
+            -34.975578
+          ],
+          [
+            -71.228431,
+            -34.975554
+          ],
+          [
+            -71.228352,
+            -34.975534
+          ],
+          [
+            -71.228243,
+            -34.975512
+          ],
+          [
+            -71.228133,
+            -34.975497
+          ],
+          [
+            -71.228022,
+            -34.975488
+          ],
+          [
+            -71.22791,
+            -34.975485
+          ],
+          [
+            -71.227785,
+            -34.975491
+          ],
+          [
+            -71.22766,
+            -34.975504
+          ],
+          [
+            -71.226906,
+            -34.975595
+          ],
+          [
+            -71.225926,
+            -34.97572
+          ],
+          [
+            -71.224975,
+            -34.975848
+          ],
+          [
+            -71.224248,
+            -34.975924
+          ],
+          [
+            -71.22352,
+            -34.976039
+          ],
+          [
+            -71.223219,
+            -34.976102
+          ],
+          [
+            -71.222774,
+            -34.976207
+          ],
+          [
+            -71.222565,
+            -34.976251
+          ],
+          [
+            -71.22224,
+            -34.97633
+          ],
+          [
+            -71.221972,
+            -34.976392
+          ],
+          [
+            -71.221267,
+            -34.976522
+          ],
+          [
+            -71.221159,
+            -34.976536
+          ],
+          [
+            -71.221049,
+            -34.976541
+          ],
+          [
+            -71.220939,
+            -34.976537
+          ],
+          [
+            -71.22083,
+            -34.976524
+          ],
+          [
+            -71.220746,
+            -34.976507
+          ],
+          [
+            -71.220663,
+            -34.976484
+          ],
+          [
+            -71.220583,
+            -34.976456
+          ],
+          [
+            -71.220506,
+            -34.976424
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-143778686",
+      "properties": {
+        "id": "curico-osm-143778686",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 379.4,
+        "length_km": 0.38,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 143778686,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.213475,
+            -34.976507
+          ],
+          [
+            -71.213415,
+            -34.976426
+          ],
+          [
+            -71.213168,
+            -34.976092
+          ],
+          [
+            -71.212952,
+            -34.975776
+          ],
+          [
+            -71.212599,
+            -34.975338
+          ],
+          [
+            -71.212358,
+            -34.975067
+          ],
+          [
+            -71.212281,
+            -34.974991
+          ],
+          [
+            -71.211983,
+            -34.974598
+          ],
+          [
+            -71.211678,
+            -34.97421
+          ],
+          [
+            -71.211201,
+            -34.973652
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-147955753",
+      "properties": {
+        "id": "curico-osm-147955753",
+        "name": "Pasaje Macizo Andino",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "living_street",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 17.9,
+        "length_km": 0.02,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 147955753,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.223789,
+            -34.967107
+          ],
+          [
+            -71.223832,
+            -34.967264
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-147955756",
+      "properties": {
+        "id": "curico-osm-147955756",
+        "name": "Pasaje Ventisqueros",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "living_street",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 16.1,
+        "length_km": 0.02,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 147955756,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.223416,
+            -34.96717
+          ],
+          [
+            -71.223442,
+            -34.967313
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-147955757",
+      "properties": {
+        "id": "curico-osm-147955757",
+        "name": "Pasaje Archipielago",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "living_street",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 15.3,
+        "length_km": 0.02,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 147955757,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.224306,
+            -34.967066
+          ],
+          [
+            -71.224343,
+            -34.9672
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913292",
+      "properties": {
+        "id": "curico-osm-149913292",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 52.1,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913292,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248052,
+            -34.9726
+          ],
+          [
+            -71.24804,
+            -34.972132
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913293",
+      "properties": {
+        "id": "curico-osm-149913293",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 93.6,
+        "length_km": 0.09,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913293,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248187,
+            -34.974829
+          ],
+          [
+            -71.248133,
+            -34.973988
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913294",
+      "properties": {
+        "id": "curico-osm-149913294",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 44.2,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913294,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248064,
+            -34.970208
+          ],
+          [
+            -71.248129,
+            -34.969814
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913295",
+      "properties": {
+        "id": "curico-osm-149913295",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 56.0,
+        "length_km": 0.06,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913295,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.24804,
+            -34.972132
+          ],
+          [
+            -71.24801,
+            -34.971629
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913296",
+      "properties": {
+        "id": "curico-osm-149913296",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 51.0,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913296,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248002,
+            -34.970664
+          ],
+          [
+            -71.248064,
+            -34.970208
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913297",
+      "properties": {
+        "id": "curico-osm-149913297",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 100.5,
+        "length_km": 0.1,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913297,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248133,
+            -34.973988
+          ],
+          [
+            -71.248085,
+            -34.973085
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913301",
+      "properties": {
+        "id": "curico-osm-149913301",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 54.0,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913301,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248085,
+            -34.973085
+          ],
+          [
+            -71.248052,
+            -34.9726
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913302",
+      "properties": {
+        "id": "curico-osm-149913302",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 45.6,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913302,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.24799,
+            -34.971074
+          ],
+          [
+            -71.248002,
+            -34.970664
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913305",
+      "properties": {
+        "id": "curico-osm-149913305",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 175.6,
+        "length_km": 0.18,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913305,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248194,
+            -34.976406
+          ],
+          [
+            -71.248201,
+            -34.97632
+          ],
+          [
+            -71.248221,
+            -34.976218
+          ],
+          [
+            -71.24822,
+            -34.976177
+          ],
+          [
+            -71.248219,
+            -34.976086
+          ],
+          [
+            -71.248187,
+            -34.974829
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-149913306",
+      "properties": {
+        "id": "curico-osm-149913306",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 61.7,
+        "length_km": 0.06,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 149913306,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.24801,
+            -34.971629
+          ],
+          [
+            -71.24799,
+            -34.971074
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857349",
+      "properties": {
+        "id": "curico-osm-176857349",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 284.2,
+        "length_km": 0.28,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857349,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.226074,
+            -34.974493
+          ],
+          [
+            -71.226265,
+            -34.974474
+          ],
+          [
+            -71.226464,
+            -34.974462
+          ],
+          [
+            -71.226613,
+            -34.974475
+          ],
+          [
+            -71.226699,
+            -34.97448
+          ],
+          [
+            -71.226943,
+            -34.974516
+          ],
+          [
+            -71.227145,
+            -34.974564
+          ],
+          [
+            -71.227185,
+            -34.974579
+          ],
+          [
+            -71.227412,
+            -34.974668
+          ],
+          [
+            -71.22764,
+            -34.974781
+          ],
+          [
+            -71.227932,
+            -34.974933
+          ],
+          [
+            -71.22824,
+            -34.975131
+          ],
+          [
+            -71.228343,
+            -34.975195
+          ],
+          [
+            -71.228438,
+            -34.975265
+          ],
+          [
+            -71.228555,
+            -34.975351
+          ],
+          [
+            -71.228521,
+            -34.975425
+          ],
+          [
+            -71.228452,
+            -34.975499
+          ],
+          [
+            -71.228352,
+            -34.975534
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857353",
+      "properties": {
+        "id": "curico-osm-176857353",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1580.4,
+        "length_km": 1.58,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857353,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.222101,
+            -34.975043
+          ],
+          [
+            -71.222865,
+            -34.974918
+          ],
+          [
+            -71.223392,
+            -34.97484
+          ],
+          [
+            -71.22438,
+            -34.974674
+          ],
+          [
+            -71.224898,
+            -34.974588
+          ],
+          [
+            -71.225342,
+            -34.974516
+          ],
+          [
+            -71.22579,
+            -34.974442
+          ],
+          [
+            -71.226223,
+            -34.974373
+          ],
+          [
+            -71.2264,
+            -34.974362
+          ],
+          [
+            -71.226554,
+            -34.974359
+          ],
+          [
+            -71.226688,
+            -34.974367
+          ],
+          [
+            -71.22684,
+            -34.97438
+          ],
+          [
+            -71.226971,
+            -34.974401
+          ],
+          [
+            -71.227099,
+            -34.974428
+          ],
+          [
+            -71.227226,
+            -34.974462
+          ],
+          [
+            -71.22741,
+            -34.974548
+          ],
+          [
+            -71.227718,
+            -34.974713
+          ],
+          [
+            -71.22881,
+            -34.975396
+          ],
+          [
+            -71.230698,
+            -34.976642
+          ],
+          [
+            -71.231144,
+            -34.976934
+          ],
+          [
+            -71.231313,
+            -34.977022
+          ],
+          [
+            -71.231381,
+            -34.977065
+          ],
+          [
+            -71.231507,
+            -34.977077
+          ],
+          [
+            -71.231796,
+            -34.977084
+          ],
+          [
+            -71.232125,
+            -34.977055
+          ],
+          [
+            -71.232205,
+            -34.977054
+          ],
+          [
+            -71.232268,
+            -34.977069
+          ],
+          [
+            -71.232295,
+            -34.977129
+          ],
+          [
+            -71.232316,
+            -34.977176
+          ],
+          [
+            -71.232357,
+            -34.977298
+          ],
+          [
+            -71.232372,
+            -34.977357
+          ],
+          [
+            -71.232439,
+            -34.977371
+          ],
+          [
+            -71.232457,
+            -34.977437
+          ],
+          [
+            -71.232452,
+            -34.97755
+          ],
+          [
+            -71.23245,
+            -34.977613
+          ],
+          [
+            -71.232491,
+            -34.977651
+          ],
+          [
+            -71.232622,
+            -34.977732
+          ],
+          [
+            -71.232635,
+            -34.977826
+          ],
+          [
+            -71.232668,
+            -34.977845
+          ],
+          [
+            -71.23277,
+            -34.977905
+          ],
+          [
+            -71.232936,
+            -34.978374
+          ],
+          [
+            -71.233011,
+            -34.978631
+          ],
+          [
+            -71.23312,
+            -34.979041
+          ],
+          [
+            -71.233293,
+            -34.979624
+          ],
+          [
+            -71.233376,
+            -34.979895
+          ],
+          [
+            -71.23338,
+            -34.979907
+          ],
+          [
+            -71.233457,
+            -34.980158
+          ],
+          [
+            -71.233508,
+            -34.980338
+          ],
+          [
+            -71.233587,
+            -34.980478
+          ],
+          [
+            -71.233651,
+            -34.980571
+          ],
+          [
+            -71.233765,
+            -34.980658
+          ],
+          [
+            -71.233944,
+            -34.980719
+          ],
+          [
+            -71.234776,
+            -34.980789
+          ],
+          [
+            -71.234762,
+            -34.980867
+          ],
+          [
+            -71.234748,
+            -34.980945
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857354",
+      "properties": {
+        "id": "curico-osm-176857354",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 45.3,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857354,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.221611,
+            -34.975113
+          ],
+          [
+            -71.221705,
+            -34.975098
+          ],
+          [
+            -71.221769,
+            -34.975088
+          ],
+          [
+            -71.221915,
+            -34.975069
+          ],
+          [
+            -71.222101,
+            -34.975043
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857357",
+      "properties": {
+        "id": "curico-osm-176857357",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 232.3,
+        "length_km": 0.23,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857357,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.219414,
+            -34.9756
+          ],
+          [
+            -71.219434,
+            -34.975597
+          ],
+          [
+            -71.219636,
+            -34.975563
+          ],
+          [
+            -71.219987,
+            -34.975504
+          ],
+          [
+            -71.220191,
+            -34.975473
+          ],
+          [
+            -71.22029,
+            -34.97545
+          ],
+          [
+            -71.220506,
+            -34.975416
+          ],
+          [
+            -71.221155,
+            -34.975308
+          ],
+          [
+            -71.221833,
+            -34.97519
+          ],
+          [
+            -71.22191,
+            -34.975175
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857361",
+      "properties": {
+        "id": "curico-osm-176857361",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 842.0,
+        "length_km": 0.84,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857361,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.218577,
+            -34.975825
+          ],
+          [
+            -71.218419,
+            -34.975844
+          ],
+          [
+            -71.217025,
+            -34.976085
+          ],
+          [
+            -71.216813,
+            -34.976127
+          ],
+          [
+            -71.216583,
+            -34.976166
+          ],
+          [
+            -71.216294,
+            -34.976214
+          ],
+          [
+            -71.216097,
+            -34.976246
+          ],
+          [
+            -71.214401,
+            -34.97652
+          ],
+          [
+            -71.214269,
+            -34.976579
+          ],
+          [
+            -71.213957,
+            -34.976622
+          ],
+          [
+            -71.213744,
+            -34.976639
+          ],
+          [
+            -71.213605,
+            -34.976664
+          ],
+          [
+            -71.211897,
+            -34.977026
+          ],
+          [
+            -71.21007,
+            -34.977326
+          ],
+          [
+            -71.209646,
+            -34.977396
+          ],
+          [
+            -71.209559,
+            -34.97743
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857364",
+      "properties": {
+        "id": "curico-osm-176857364",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 290.3,
+        "length_km": 0.29,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857364,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.218492,
+            -34.975644
+          ],
+          [
+            -71.219402,
+            -34.975489
+          ],
+          [
+            -71.219543,
+            -34.975461
+          ],
+          [
+            -71.220407,
+            -34.975315
+          ],
+          [
+            -71.220908,
+            -34.975231
+          ],
+          [
+            -71.221611,
+            -34.975113
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857368",
+      "properties": {
+        "id": "curico-osm-176857368",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1034.5,
+        "length_km": 1.03,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857368,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.20739,
+            -34.977515
+          ],
+          [
+            -71.207434,
+            -34.977495
+          ],
+          [
+            -71.207479,
+            -34.977465
+          ],
+          [
+            -71.207691,
+            -34.977467
+          ],
+          [
+            -71.208186,
+            -34.977396
+          ],
+          [
+            -71.208583,
+            -34.977327
+          ],
+          [
+            -71.209497,
+            -34.977191
+          ],
+          [
+            -71.210757,
+            -34.976957
+          ],
+          [
+            -71.212982,
+            -34.976597
+          ],
+          [
+            -71.213475,
+            -34.976507
+          ],
+          [
+            -71.213533,
+            -34.976518
+          ],
+          [
+            -71.215621,
+            -34.976155
+          ],
+          [
+            -71.216465,
+            -34.976005
+          ],
+          [
+            -71.217359,
+            -34.975846
+          ],
+          [
+            -71.218492,
+            -34.975644
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-176857375",
+      "properties": {
+        "id": "curico-osm-176857375",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 191.2,
+        "length_km": 0.19,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 176857375,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.220506,
+            -34.976424
+          ],
+          [
+            -71.220299,
+            -34.976362
+          ],
+          [
+            -71.220098,
+            -34.976272
+          ],
+          [
+            -71.21932,
+            -34.975942
+          ],
+          [
+            -71.219177,
+            -34.975881
+          ],
+          [
+            -71.21902,
+            -34.975836
+          ],
+          [
+            -71.21889,
+            -34.975817
+          ],
+          [
+            -71.218796,
+            -34.975815
+          ],
+          [
+            -71.218697,
+            -34.975816
+          ],
+          [
+            -71.218577,
+            -34.975825
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-194530328",
+      "properties": {
+        "id": "curico-osm-194530328",
+        "name": "Lago Calafquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "residential",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 222.8,
+        "length_km": 0.22,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 194530328,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.267326,
+            -34.971872
+          ],
+          [
+            -71.267732,
+            -34.972087
+          ],
+          [
+            -71.267911,
+            -34.972205
+          ],
+          [
+            -71.268033,
+            -34.972334
+          ],
+          [
+            -71.268104,
+            -34.97244
+          ],
+          [
+            -71.268135,
+            -34.972508
+          ],
+          [
+            -71.268159,
+            -34.972577
+          ],
+          [
+            -71.268176,
+            -34.972649
+          ],
+          [
+            -71.268185,
+            -34.97271
+          ],
+          [
+            -71.268188,
+            -34.972771
+          ],
+          [
+            -71.268186,
+            -34.972832
+          ],
+          [
+            -71.268173,
+            -34.972969
+          ],
+          [
+            -71.268125,
+            -34.973493
+          ],
+          [
+            -71.268121,
+            -34.973535
+          ],
+          [
+            -71.268122,
+            -34.973564
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-243658846",
+      "properties": {
+        "id": "curico-osm-243658846",
+        "name": "Avenida Circunvalación Doctor Osorio",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 327.5,
+        "length_km": 0.33,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 243658846,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.242516,
+            -34.994968
+          ],
+          [
+            -71.24237,
+            -34.995012
+          ],
+          [
+            -71.242277,
+            -34.995036
+          ],
+          [
+            -71.242183,
+            -34.995056
+          ],
+          [
+            -71.24207,
+            -34.995073
+          ],
+          [
+            -71.241934,
+            -34.995084
+          ],
+          [
+            -71.240335,
+            -34.995167
+          ],
+          [
+            -71.238946,
+            -34.995234
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-243658847",
+      "properties": {
+        "id": "curico-osm-243658847",
+        "name": "Avenida Circunvalación Doctor Osorio",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 215.9,
+        "length_km": 0.22,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 243658847,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.244743,
+            -34.994304
+          ],
+          [
+            -71.244219,
+            -34.994459
+          ],
+          [
+            -71.243636,
+            -34.994645
+          ],
+          [
+            -71.243461,
+            -34.994692
+          ],
+          [
+            -71.242516,
+            -34.994968
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-297788684",
+      "properties": {
+        "id": "curico-osm-297788684",
+        "name": "Camino a Licantén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 819.7,
+        "length_km": 0.82,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 297788684,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.249656,
+            -34.979564
+          ],
+          [
+            -71.25057,
+            -34.979117
+          ],
+          [
+            -71.250685,
+            -34.979058
+          ],
+          [
+            -71.250919,
+            -34.978934
+          ],
+          [
+            -71.251263,
+            -34.978761
+          ],
+          [
+            -71.251631,
+            -34.978589
+          ],
+          [
+            -71.251912,
+            -34.978457
+          ],
+          [
+            -71.252018,
+            -34.978409
+          ],
+          [
+            -71.252157,
+            -34.978342
+          ],
+          [
+            -71.252478,
+            -34.978188
+          ],
+          [
+            -71.252869,
+            -34.978
+          ],
+          [
+            -71.252954,
+            -34.977962
+          ],
+          [
+            -71.252981,
+            -34.977951
+          ],
+          [
+            -71.253847,
+            -34.977539
+          ],
+          [
+            -71.255197,
+            -34.976895
+          ],
+          [
+            -71.255459,
+            -34.976772
+          ],
+          [
+            -71.25564,
+            -34.976692
+          ],
+          [
+            -71.255742,
+            -34.976643
+          ],
+          [
+            -71.256933,
+            -34.976109
+          ],
+          [
+            -71.257446,
+            -34.975879
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-488142038",
+      "properties": {
+        "id": "curico-osm-488142038",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1321.9,
+        "length_km": 1.32,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 488142038,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.23365,
+            -34.991564
+          ],
+          [
+            -71.233608,
+            -34.991559
+          ],
+          [
+            -71.233554,
+            -34.991552
+          ],
+          [
+            -71.233511,
+            -34.991526
+          ],
+          [
+            -71.23349,
+            -34.991477
+          ],
+          [
+            -71.233586,
+            -34.990555
+          ],
+          [
+            -71.233618,
+            -34.990475
+          ],
+          [
+            -71.233677,
+            -34.990431
+          ],
+          [
+            -71.233715,
+            -34.990387
+          ],
+          [
+            -71.233731,
+            -34.990335
+          ],
+          [
+            -71.233737,
+            -34.990284
+          ],
+          [
+            -71.233863,
+            -34.989183
+          ],
+          [
+            -71.233821,
+            -34.989139
+          ],
+          [
+            -71.233786,
+            -34.989103
+          ],
+          [
+            -71.233773,
+            -34.989068
+          ],
+          [
+            -71.233781,
+            -34.989014
+          ],
+          [
+            -71.233789,
+            -34.988933
+          ],
+          [
+            -71.233917,
+            -34.987711
+          ],
+          [
+            -71.234023,
+            -34.986698
+          ],
+          [
+            -71.234038,
+            -34.986594
+          ],
+          [
+            -71.234135,
+            -34.985671
+          ],
+          [
+            -71.234136,
+            -34.985635
+          ],
+          [
+            -71.234138,
+            -34.9856
+          ],
+          [
+            -71.234141,
+            -34.985554
+          ],
+          [
+            -71.234142,
+            -34.985532
+          ],
+          [
+            -71.234156,
+            -34.985495
+          ],
+          [
+            -71.234157,
+            -34.985463
+          ],
+          [
+            -71.234157,
+            -34.985429
+          ],
+          [
+            -71.234162,
+            -34.985385
+          ],
+          [
+            -71.234161,
+            -34.985357
+          ],
+          [
+            -71.234168,
+            -34.985325
+          ],
+          [
+            -71.234176,
+            -34.985296
+          ],
+          [
+            -71.234184,
+            -34.985268
+          ],
+          [
+            -71.234196,
+            -34.985256
+          ],
+          [
+            -71.234223,
+            -34.98525
+          ],
+          [
+            -71.234236,
+            -34.985236
+          ],
+          [
+            -71.234246,
+            -34.985206
+          ],
+          [
+            -71.234246,
+            -34.985177
+          ],
+          [
+            -71.234238,
+            -34.985162
+          ],
+          [
+            -71.234216,
+            -34.985149
+          ],
+          [
+            -71.234206,
+            -34.985136
+          ],
+          [
+            -71.234204,
+            -34.98511
+          ],
+          [
+            -71.234241,
+            -34.984769
+          ],
+          [
+            -71.23423,
+            -34.984745
+          ],
+          [
+            -71.234202,
+            -34.984727
+          ],
+          [
+            -71.234142,
+            -34.98471
+          ],
+          [
+            -71.23413,
+            -34.98469
+          ],
+          [
+            -71.234122,
+            -34.984658
+          ],
+          [
+            -71.234126,
+            -34.98458
+          ],
+          [
+            -71.234126,
+            -34.984559
+          ],
+          [
+            -71.234114,
+            -34.984533
+          ],
+          [
+            -71.234037,
+            -34.984448
+          ],
+          [
+            -71.234029,
+            -34.984423
+          ],
+          [
+            -71.234027,
+            -34.9844
+          ],
+          [
+            -71.234031,
+            -34.984345
+          ],
+          [
+            -71.234036,
+            -34.984308
+          ],
+          [
+            -71.234123,
+            -34.983545
+          ],
+          [
+            -71.234158,
+            -34.983207
+          ],
+          [
+            -71.234169,
+            -34.983092
+          ],
+          [
+            -71.23418,
+            -34.982934
+          ],
+          [
+            -71.234188,
+            -34.982803
+          ],
+          [
+            -71.234179,
+            -34.982671
+          ],
+          [
+            -71.234151,
+            -34.982488
+          ],
+          [
+            -71.234066,
+            -34.982195
+          ],
+          [
+            -71.233909,
+            -34.981643
+          ],
+          [
+            -71.233715,
+            -34.980986
+          ],
+          [
+            -71.233738,
+            -34.980848
+          ],
+          [
+            -71.234748,
+            -34.980945
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-491990741",
+      "properties": {
+        "id": "curico-osm-491990741",
+        "name": "Avenida Amsterdam",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 365.5,
+        "length_km": 0.37,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 491990741,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.221804,
+            -34.958483
+          ],
+          [
+            -71.221884,
+            -34.958468
+          ],
+          [
+            -71.222278,
+            -34.958399
+          ],
+          [
+            -71.222736,
+            -34.958319
+          ],
+          [
+            -71.223141,
+            -34.958248
+          ],
+          [
+            -71.22321,
+            -34.958236
+          ],
+          [
+            -71.223283,
+            -34.958223
+          ],
+          [
+            -71.223664,
+            -34.958156
+          ],
+          [
+            -71.224005,
+            -34.958097
+          ],
+          [
+            -71.224355,
+            -34.958035
+          ],
+          [
+            -71.224658,
+            -34.957982
+          ],
+          [
+            -71.224725,
+            -34.95797
+          ],
+          [
+            -71.224785,
+            -34.95796
+          ],
+          [
+            -71.225671,
+            -34.957805
+          ],
+          [
+            -71.225726,
+            -34.957795
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-514421847",
+      "properties": {
+        "id": "curico-osm-514421847",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1901.6,
+        "length_km": 1.9,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 514421847,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.193669,
+            -34.963515
+          ],
+          [
+            -71.193606,
+            -34.963546
+          ],
+          [
+            -71.193757,
+            -34.963785
+          ],
+          [
+            -71.193802,
+            -34.963855
+          ],
+          [
+            -71.193826,
+            -34.963887
+          ],
+          [
+            -71.19385,
+            -34.963915
+          ],
+          [
+            -71.193877,
+            -34.963944
+          ],
+          [
+            -71.193904,
+            -34.963969
+          ],
+          [
+            -71.193929,
+            -34.963988
+          ],
+          [
+            -71.193957,
+            -34.964006
+          ],
+          [
+            -71.193995,
+            -34.964025
+          ],
+          [
+            -71.194029,
+            -34.964038
+          ],
+          [
+            -71.194062,
+            -34.964049
+          ],
+          [
+            -71.194101,
+            -34.964057
+          ],
+          [
+            -71.194143,
+            -34.964063
+          ],
+          [
+            -71.194186,
+            -34.964064
+          ],
+          [
+            -71.194254,
+            -34.964062
+          ],
+          [
+            -71.194479,
+            -34.964048
+          ],
+          [
+            -71.194536,
+            -34.964046
+          ],
+          [
+            -71.194592,
+            -34.964045
+          ],
+          [
+            -71.194657,
+            -34.964049
+          ],
+          [
+            -71.194727,
+            -34.964056
+          ],
+          [
+            -71.194787,
+            -34.964067
+          ],
+          [
+            -71.194842,
+            -34.96408
+          ],
+          [
+            -71.194895,
+            -34.964098
+          ],
+          [
+            -71.194952,
+            -34.964122
+          ],
+          [
+            -71.195016,
+            -34.964154
+          ],
+          [
+            -71.19507,
+            -34.964185
+          ],
+          [
+            -71.195105,
+            -34.964214
+          ],
+          [
+            -71.195135,
+            -34.964244
+          ],
+          [
+            -71.195174,
+            -34.964288
+          ],
+          [
+            -71.195192,
+            -34.964312
+          ],
+          [
+            -71.19521,
+            -34.964338
+          ],
+          [
+            -71.19523,
+            -34.96437
+          ],
+          [
+            -71.195245,
+            -34.964398
+          ],
+          [
+            -71.195261,
+            -34.964435
+          ],
+          [
+            -71.19527,
+            -34.964463
+          ],
+          [
+            -71.19528,
+            -34.964502
+          ],
+          [
+            -71.195285,
+            -34.964532
+          ],
+          [
+            -71.195288,
+            -34.964562
+          ],
+          [
+            -71.195288,
+            -34.964597
+          ],
+          [
+            -71.195286,
+            -34.964629
+          ],
+          [
+            -71.195283,
+            -34.964652
+          ],
+          [
+            -71.195277,
+            -34.964684
+          ],
+          [
+            -71.195269,
+            -34.964714
+          ],
+          [
+            -71.195258,
+            -34.964749
+          ],
+          [
+            -71.195246,
+            -34.964783
+          ],
+          [
+            -71.195231,
+            -34.964812
+          ],
+          [
+            -71.195215,
+            -34.964842
+          ],
+          [
+            -71.195194,
+            -34.96488
+          ],
+          [
+            -71.195174,
+            -34.96491
+          ],
+          [
+            -71.195094,
+            -34.965015
+          ],
+          [
+            -71.195058,
+            -34.965064
+          ],
+          [
+            -71.195032,
+            -34.965102
+          ],
+          [
+            -71.195014,
+            -34.965133
+          ],
+          [
+            -71.194994,
+            -34.965167
+          ],
+          [
+            -71.194975,
+            -34.965202
+          ],
+          [
+            -71.194965,
+            -34.965225
+          ],
+          [
+            -71.194954,
+            -34.965253
+          ],
+          [
+            -71.194946,
+            -34.965282
+          ],
+          [
+            -71.194936,
+            -34.965323
+          ],
+          [
+            -71.194931,
+            -34.965355
+          ],
+          [
+            -71.194928,
+            -34.965381
+          ],
+          [
+            -71.194928,
+            -34.965414
+          ],
+          [
+            -71.194928,
+            -34.965451
+          ],
+          [
+            -71.194932,
+            -34.965492
+          ],
+          [
+            -71.194939,
+            -34.965521
+          ],
+          [
+            -71.194949,
+            -34.965559
+          ],
+          [
+            -71.194964,
+            -34.9656
+          ],
+          [
+            -71.19499,
+            -34.965658
+          ],
+          [
+            -71.195009,
+            -34.965697
+          ],
+          [
+            -71.195041,
+            -34.965749
+          ],
+          [
+            -71.195213,
+            -34.966017
+          ],
+          [
+            -71.195845,
+            -34.966936
+          ],
+          [
+            -71.195899,
+            -34.967019
+          ],
+          [
+            -71.195993,
+            -34.967205
+          ],
+          [
+            -71.196365,
+            -34.967817
+          ],
+          [
+            -71.197142,
+            -34.969026
+          ],
+          [
+            -71.197229,
+            -34.969177
+          ],
+          [
+            -71.197315,
+            -34.969329
+          ],
+          [
+            -71.197386,
+            -34.969345
+          ],
+          [
+            -71.197388,
+            -34.96945
+          ],
+          [
+            -71.197443,
+            -34.969533
+          ],
+          [
+            -71.197717,
+            -34.969958
+          ],
+          [
+            -71.198078,
+            -34.970518
+          ],
+          [
+            -71.198526,
+            -34.971221
+          ],
+          [
+            -71.198613,
+            -34.971355
+          ],
+          [
+            -71.198684,
+            -34.971463
+          ],
+          [
+            -71.198747,
+            -34.971549
+          ],
+          [
+            -71.198822,
+            -34.971647
+          ],
+          [
+            -71.198896,
+            -34.971739
+          ],
+          [
+            -71.198983,
+            -34.971843
+          ],
+          [
+            -71.199046,
+            -34.971915
+          ],
+          [
+            -71.199113,
+            -34.971988
+          ],
+          [
+            -71.199198,
+            -34.972076
+          ],
+          [
+            -71.199309,
+            -34.972183
+          ],
+          [
+            -71.199418,
+            -34.972283
+          ],
+          [
+            -71.199459,
+            -34.972318
+          ],
+          [
+            -71.199543,
+            -34.972391
+          ],
+          [
+            -71.199646,
+            -34.972473
+          ],
+          [
+            -71.199778,
+            -34.972572
+          ],
+          [
+            -71.199905,
+            -34.972664
+          ],
+          [
+            -71.200211,
+            -34.972871
+          ],
+          [
+            -71.20074,
+            -34.973224
+          ],
+          [
+            -71.201182,
+            -34.973522
+          ],
+          [
+            -71.201639,
+            -34.973832
+          ],
+          [
+            -71.202171,
+            -34.974188
+          ],
+          [
+            -71.202822,
+            -34.974623
+          ],
+          [
+            -71.203615,
+            -34.975154
+          ],
+          [
+            -71.203884,
+            -34.975333
+          ],
+          [
+            -71.204033,
+            -34.975433
+          ],
+          [
+            -71.204122,
+            -34.975497
+          ],
+          [
+            -71.20421,
+            -34.975564
+          ],
+          [
+            -71.20429,
+            -34.975629
+          ],
+          [
+            -71.204375,
+            -34.975698
+          ],
+          [
+            -71.20441,
+            -34.975723
+          ],
+          [
+            -71.204431,
+            -34.975738
+          ],
+          [
+            -71.204475,
+            -34.975762
+          ],
+          [
+            -71.204562,
+            -34.975812
+          ],
+          [
+            -71.204606,
+            -34.975839
+          ],
+          [
+            -71.204669,
+            -34.975883
+          ],
+          [
+            -71.205126,
+            -34.976185
+          ],
+          [
+            -71.205304,
+            -34.976302
+          ],
+          [
+            -71.205381,
+            -34.976305
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-514421850",
+      "properties": {
+        "id": "curico-osm-514421850",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 875.6,
+        "length_km": 0.88,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 514421850,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.209665,
+            -34.978625
+          ],
+          [
+            -71.209679,
+            -34.978686
+          ],
+          [
+            -71.209684,
+            -34.978776
+          ],
+          [
+            -71.209376,
+            -34.978842
+          ],
+          [
+            -71.209366,
+            -34.978846
+          ],
+          [
+            -71.209357,
+            -34.978853
+          ],
+          [
+            -71.209353,
+            -34.978862
+          ],
+          [
+            -71.209354,
+            -34.97887
+          ],
+          [
+            -71.209359,
+            -34.978877
+          ],
+          [
+            -71.209378,
+            -34.978894
+          ],
+          [
+            -71.209549,
+            -34.979036
+          ],
+          [
+            -71.209604,
+            -34.979075
+          ],
+          [
+            -71.209671,
+            -34.979123
+          ],
+          [
+            -71.209689,
+            -34.979136
+          ],
+          [
+            -71.209705,
+            -34.979152
+          ],
+          [
+            -71.209725,
+            -34.979173
+          ],
+          [
+            -71.20975,
+            -34.979204
+          ],
+          [
+            -71.209769,
+            -34.979224
+          ],
+          [
+            -71.20979,
+            -34.979243
+          ],
+          [
+            -71.209816,
+            -34.979264
+          ],
+          [
+            -71.209849,
+            -34.979287
+          ],
+          [
+            -71.210211,
+            -34.979527
+          ],
+          [
+            -71.210705,
+            -34.979854
+          ],
+          [
+            -71.210766,
+            -34.979925
+          ],
+          [
+            -71.210805,
+            -34.979957
+          ],
+          [
+            -71.210874,
+            -34.980018
+          ],
+          [
+            -71.210935,
+            -34.980076
+          ],
+          [
+            -71.210996,
+            -34.980124
+          ],
+          [
+            -71.211046,
+            -34.980163
+          ],
+          [
+            -71.211098,
+            -34.980195
+          ],
+          [
+            -71.21121,
+            -34.980266
+          ],
+          [
+            -71.211287,
+            -34.980311
+          ],
+          [
+            -71.211364,
+            -34.980354
+          ],
+          [
+            -71.211418,
+            -34.980388
+          ],
+          [
+            -71.211477,
+            -34.980428
+          ],
+          [
+            -71.211738,
+            -34.980599
+          ],
+          [
+            -71.21244,
+            -34.981057
+          ],
+          [
+            -71.213277,
+            -34.981616
+          ],
+          [
+            -71.213354,
+            -34.981669
+          ],
+          [
+            -71.213429,
+            -34.981723
+          ],
+          [
+            -71.21348,
+            -34.981752
+          ],
+          [
+            -71.213624,
+            -34.981833
+          ],
+          [
+            -71.213856,
+            -34.98196
+          ],
+          [
+            -71.21394,
+            -34.982011
+          ],
+          [
+            -71.214038,
+            -34.982075
+          ],
+          [
+            -71.214318,
+            -34.982261
+          ],
+          [
+            -71.214433,
+            -34.982331
+          ],
+          [
+            -71.21455,
+            -34.982399
+          ],
+          [
+            -71.214656,
+            -34.98245
+          ],
+          [
+            -71.214784,
+            -34.982507
+          ],
+          [
+            -71.214961,
+            -34.982592
+          ],
+          [
+            -71.215023,
+            -34.982627
+          ],
+          [
+            -71.215171,
+            -34.982721
+          ],
+          [
+            -71.215383,
+            -34.982855
+          ],
+          [
+            -71.215745,
+            -34.983089
+          ],
+          [
+            -71.215846,
+            -34.983149
+          ],
+          [
+            -71.215902,
+            -34.983179
+          ],
+          [
+            -71.215951,
+            -34.9832
+          ],
+          [
+            -71.216001,
+            -34.983218
+          ],
+          [
+            -71.216046,
+            -34.983229
+          ],
+          [
+            -71.216103,
+            -34.983239
+          ],
+          [
+            -71.216365,
+            -34.983276
+          ],
+          [
+            -71.216454,
+            -34.983382
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-514421854",
+      "properties": {
+        "id": "curico-osm-514421854",
+        "name": "Paso Nivel Los Niches",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 50.5,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 514421854,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.236741,
+            -35.000061
+          ],
+          [
+            -71.236192,
+            -35.000127
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-561010468",
+      "properties": {
+        "id": "curico-osm-561010468",
+        "name": "Avenida Balmaceda",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 506.4,
+        "length_km": 0.51,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 561010468,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248634,
+            -34.98987
+          ],
+          [
+            -71.248588,
+            -34.990224
+          ],
+          [
+            -71.248583,
+            -34.990269
+          ],
+          [
+            -71.248541,
+            -34.990685
+          ],
+          [
+            -71.248528,
+            -34.990803
+          ],
+          [
+            -71.248485,
+            -34.991204
+          ],
+          [
+            -71.248479,
+            -34.991253
+          ],
+          [
+            -71.248426,
+            -34.991715
+          ],
+          [
+            -71.248422,
+            -34.99175
+          ],
+          [
+            -71.248382,
+            -34.992116
+          ],
+          [
+            -71.248356,
+            -34.992324
+          ],
+          [
+            -71.248337,
+            -34.992524
+          ],
+          [
+            -71.248265,
+            -34.99319
+          ],
+          [
+            -71.248233,
+            -34.993475
+          ],
+          [
+            -71.248209,
+            -34.993692
+          ],
+          [
+            -71.248181,
+            -34.993932
+          ],
+          [
+            -71.248124,
+            -34.994405
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-562929561",
+      "properties": {
+        "id": "curico-osm-562929561",
+        "name": "Mataquito",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 268.0,
+        "length_km": 0.27,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 562929561,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.245825,
+            -34.999848
+          ],
+          [
+            -71.246494,
+            -34.999651
+          ],
+          [
+            -71.246687,
+            -34.999585
+          ],
+          [
+            -71.247707,
+            -34.999292
+          ],
+          [
+            -71.248446,
+            -34.999064
+          ],
+          [
+            -71.248589,
+            -34.999024
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-660035621",
+      "properties": {
+        "id": "curico-osm-660035621",
+        "name": "Pescara",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "residential",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 250.3,
+        "length_km": 0.25,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 660035621,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.21189,
+            -34.966785
+          ],
+          [
+            -71.211618,
+            -34.966144
+          ],
+          [
+            -71.211544,
+            -34.965972
+          ],
+          [
+            -71.21146,
+            -34.965765
+          ],
+          [
+            -71.211277,
+            -34.965342
+          ],
+          [
+            -71.211256,
+            -34.965297
+          ],
+          [
+            -71.211242,
+            -34.965251
+          ],
+          [
+            -71.211236,
+            -34.965204
+          ],
+          [
+            -71.211237,
+            -34.965156
+          ],
+          [
+            -71.211245,
+            -34.965113
+          ],
+          [
+            -71.21126,
+            -34.965071
+          ],
+          [
+            -71.21128,
+            -34.965031
+          ],
+          [
+            -71.21134,
+            -34.964953
+          ],
+          [
+            -71.211394,
+            -34.964872
+          ],
+          [
+            -71.211449,
+            -34.964773
+          ],
+          [
+            -71.211495,
+            -34.964671
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-770423735",
+      "properties": {
+        "id": "curico-osm-770423735",
+        "name": "Avenida Circunvalación Doctor Osorio",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 198.7,
+        "length_km": 0.2,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 770423735,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.238946,
+            -34.995234
+          ],
+          [
+            -71.238051,
+            -34.995279
+          ],
+          [
+            -71.237485,
+            -34.995307
+          ],
+          [
+            -71.236907,
+            -34.995336
+          ],
+          [
+            -71.236769,
+            -34.995343
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-944675737",
+      "properties": {
+        "id": "curico-osm-944675737",
+        "name": "Nehuén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "living_street",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 144.7,
+        "length_km": 0.14,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 944675737,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.21316,
+            -34.965832
+          ],
+          [
+            -71.21209,
+            -34.966049
+          ],
+          [
+            -71.211618,
+            -34.966144
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1023372963",
+      "properties": {
+        "id": "curico-osm-1023372963",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 386.9,
+        "length_km": 0.39,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1023372963,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.22191,
+            -34.975175
+          ],
+          [
+            -71.222057,
+            -34.975148
+          ],
+          [
+            -71.222246,
+            -34.975121
+          ],
+          [
+            -71.223267,
+            -34.974953
+          ],
+          [
+            -71.223867,
+            -34.974857
+          ],
+          [
+            -71.224418,
+            -34.974769
+          ],
+          [
+            -71.224904,
+            -34.974691
+          ],
+          [
+            -71.225555,
+            -34.974587
+          ],
+          [
+            -71.225933,
+            -34.974522
+          ],
+          [
+            -71.226074,
+            -34.974493
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1028092610",
+      "properties": {
+        "id": "curico-osm-1028092610",
+        "name": "Ruta J-55",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 81.1,
+        "length_km": 0.08,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1028092610,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.193495,
+            -34.964343
+          ],
+          [
+            -71.192853,
+            -34.964439
+          ],
+          [
+            -71.192619,
+            -34.964472
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1071441297",
+      "properties": {
+        "id": "curico-osm-1071441297",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 207.0,
+        "length_km": 0.21,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1071441297,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.283777,
+            -35.048906
+          ],
+          [
+            -71.2831,
+            -35.049286
+          ],
+          [
+            -71.282947,
+            -35.049363
+          ],
+          [
+            -71.282788,
+            -35.049434
+          ],
+          [
+            -71.28269,
+            -35.049473
+          ],
+          [
+            -71.282589,
+            -35.049509
+          ],
+          [
+            -71.282419,
+            -35.049562
+          ],
+          [
+            -71.282422,
+            -35.049602
+          ],
+          [
+            -71.282423,
+            -35.049625
+          ],
+          [
+            -71.281921,
+            -35.049915
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1071441298",
+      "properties": {
+        "id": "curico-osm-1071441298",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 70.6,
+        "length_km": 0.07,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1071441298,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.281921,
+            -35.049915
+          ],
+          [
+            -71.28128,
+            -35.050273
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1071441299",
+      "properties": {
+        "id": "curico-osm-1071441299",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1391.7,
+        "length_km": 1.39,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1071441299,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.21198,
+            -34.961668
+          ],
+          [
+            -71.212114,
+            -34.961643
+          ],
+          [
+            -71.212911,
+            -34.961494
+          ],
+          [
+            -71.213063,
+            -34.961439
+          ],
+          [
+            -71.21335,
+            -34.96132
+          ],
+          [
+            -71.213586,
+            -34.961258
+          ],
+          [
+            -71.213707,
+            -34.961227
+          ],
+          [
+            -71.213785,
+            -34.961207
+          ],
+          [
+            -71.214461,
+            -34.961065
+          ],
+          [
+            -71.21559,
+            -34.96085
+          ],
+          [
+            -71.2157,
+            -34.960829
+          ],
+          [
+            -71.215891,
+            -34.960792
+          ],
+          [
+            -71.216245,
+            -34.960769
+          ],
+          [
+            -71.216627,
+            -34.960745
+          ],
+          [
+            -71.218117,
+            -34.960465
+          ],
+          [
+            -71.218571,
+            -34.96038
+          ],
+          [
+            -71.225674,
+            -34.959046
+          ],
+          [
+            -71.22683,
+            -34.958825
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1071441300",
+      "properties": {
+        "id": "curico-osm-1071441300",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 622.2,
+        "length_km": 0.62,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1071441300,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.224052,
+            -34.956435
+          ],
+          [
+            -71.224153,
+            -34.956525
+          ],
+          [
+            -71.225475,
+            -34.95763
+          ],
+          [
+            -71.225637,
+            -34.95777
+          ],
+          [
+            -71.225671,
+            -34.957805
+          ],
+          [
+            -71.22576,
+            -34.957881
+          ],
+          [
+            -71.22676,
+            -34.958738
+          ],
+          [
+            -71.22683,
+            -34.958825
+          ],
+          [
+            -71.22687,
+            -34.958874
+          ],
+          [
+            -71.226939,
+            -34.958958
+          ],
+          [
+            -71.227022,
+            -34.95906
+          ],
+          [
+            -71.227085,
+            -34.959162
+          ],
+          [
+            -71.227188,
+            -34.959217
+          ],
+          [
+            -71.227292,
+            -34.959276
+          ],
+          [
+            -71.227363,
+            -34.959309
+          ],
+          [
+            -71.227424,
+            -34.959346
+          ],
+          [
+            -71.227458,
+            -34.959402
+          ],
+          [
+            -71.227588,
+            -34.95987
+          ],
+          [
+            -71.227709,
+            -34.960234
+          ],
+          [
+            -71.227743,
+            -34.96033
+          ],
+          [
+            -71.227861,
+            -34.960427
+          ],
+          [
+            -71.227928,
+            -34.96054
+          ],
+          [
+            -71.227996,
+            -34.960673
+          ],
+          [
+            -71.228106,
+            -34.960774
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1071441304",
+      "properties": {
+        "id": "curico-osm-1071441304",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 586.0,
+        "length_km": 0.59,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1071441304,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248191,
+            -34.969179
+          ],
+          [
+            -71.248048,
+            -34.969196
+          ],
+          [
+            -71.247915,
+            -34.969212
+          ],
+          [
+            -71.247783,
+            -34.969231
+          ],
+          [
+            -71.24758,
+            -34.969259
+          ],
+          [
+            -71.247366,
+            -34.969297
+          ],
+          [
+            -71.247252,
+            -34.969324
+          ],
+          [
+            -71.247148,
+            -34.969329
+          ],
+          [
+            -71.247063,
+            -34.969336
+          ],
+          [
+            -71.246647,
+            -34.969371
+          ],
+          [
+            -71.246377,
+            -34.969394
+          ],
+          [
+            -71.245842,
+            -34.969439
+          ],
+          [
+            -71.245547,
+            -34.969464
+          ],
+          [
+            -71.24532,
+            -34.969482
+          ],
+          [
+            -71.244772,
+            -34.969524
+          ],
+          [
+            -71.244504,
+            -34.969545
+          ],
+          [
+            -71.244115,
+            -34.969576
+          ],
+          [
+            -71.243375,
+            -34.969635
+          ],
+          [
+            -71.242829,
+            -34.969679
+          ],
+          [
+            -71.242753,
+            -34.969684
+          ],
+          [
+            -71.242137,
+            -34.969732
+          ],
+          [
+            -71.2419,
+            -34.96975
+          ],
+          [
+            -71.241803,
+            -34.969744
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1071441305",
+      "properties": {
+        "id": "curico-osm-1071441305",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1131.9,
+        "length_km": 1.13,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1071441305,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.230749,
+            -34.970448
+          ],
+          [
+            -71.230521,
+            -34.97048
+          ],
+          [
+            -71.230421,
+            -34.970487
+          ],
+          [
+            -71.230318,
+            -34.97049
+          ],
+          [
+            -71.230219,
+            -34.970498
+          ],
+          [
+            -71.230141,
+            -34.970504
+          ],
+          [
+            -71.229708,
+            -34.970538
+          ],
+          [
+            -71.229619,
+            -34.970551
+          ],
+          [
+            -71.229547,
+            -34.97056
+          ],
+          [
+            -71.229315,
+            -34.970586
+          ],
+          [
+            -71.22912,
+            -34.970626
+          ],
+          [
+            -71.228825,
+            -34.97067
+          ],
+          [
+            -71.228686,
+            -34.970684
+          ],
+          [
+            -71.228331,
+            -34.970716
+          ],
+          [
+            -71.228169,
+            -34.970732
+          ],
+          [
+            -71.227676,
+            -34.9708
+          ],
+          [
+            -71.227202,
+            -34.970848
+          ],
+          [
+            -71.22692,
+            -34.970874
+          ],
+          [
+            -71.226319,
+            -34.97094
+          ],
+          [
+            -71.226171,
+            -34.97095
+          ],
+          [
+            -71.225897,
+            -34.970985
+          ],
+          [
+            -71.225499,
+            -34.971029
+          ],
+          [
+            -71.225242,
+            -34.971055
+          ],
+          [
+            -71.224729,
+            -34.971105
+          ],
+          [
+            -71.224513,
+            -34.971131
+          ],
+          [
+            -71.224059,
+            -34.971176
+          ],
+          [
+            -71.223437,
+            -34.971247
+          ],
+          [
+            -71.223275,
+            -34.971246
+          ],
+          [
+            -71.223248,
+            -34.971252
+          ],
+          [
+            -71.223129,
+            -34.971248
+          ],
+          [
+            -71.222992,
+            -34.971258
+          ],
+          [
+            -71.222795,
+            -34.971283
+          ],
+          [
+            -71.222507,
+            -34.971313
+          ],
+          [
+            -71.221964,
+            -34.97137
+          ],
+          [
+            -71.221719,
+            -34.971396
+          ],
+          [
+            -71.221423,
+            -34.971429
+          ],
+          [
+            -71.221168,
+            -34.971458
+          ],
+          [
+            -71.220888,
+            -34.971484
+          ],
+          [
+            -71.220351,
+            -34.971535
+          ],
+          [
+            -71.220272,
+            -34.971543
+          ],
+          [
+            -71.219764,
+            -34.971593
+          ],
+          [
+            -71.219517,
+            -34.9716
+          ],
+          [
+            -71.219423,
+            -34.971597
+          ],
+          [
+            -71.219285,
+            -34.971594
+          ],
+          [
+            -71.218741,
+            -34.971538
+          ],
+          [
+            -71.218648,
+            -34.971522
+          ],
+          [
+            -71.218434,
+            -34.971485
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612321",
+      "properties": {
+        "id": "curico-osm-1087612321",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 579.0,
+        "length_km": 0.58,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612321,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.262156,
+            -34.97902
+          ],
+          [
+            -71.262057,
+            -34.979388
+          ],
+          [
+            -71.261906,
+            -34.979848
+          ],
+          [
+            -71.26174,
+            -34.98035
+          ],
+          [
+            -71.261724,
+            -34.980457
+          ],
+          [
+            -71.261724,
+            -34.980528
+          ],
+          [
+            -71.261783,
+            -34.98088
+          ],
+          [
+            -71.261879,
+            -34.981414
+          ],
+          [
+            -71.261922,
+            -34.98168
+          ],
+          [
+            -71.261932,
+            -34.981731
+          ],
+          [
+            -71.262074,
+            -34.982548
+          ],
+          [
+            -71.262129,
+            -34.982826
+          ],
+          [
+            -71.262138,
+            -34.982872
+          ],
+          [
+            -71.262336,
+            -34.983911
+          ],
+          [
+            -71.262364,
+            -34.984103
+          ],
+          [
+            -71.262314,
+            -34.984108
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612322",
+      "properties": {
+        "id": "curico-osm-1087612322",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1446.9,
+        "length_km": 1.45,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612322,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.193606,
+            -34.963546
+          ],
+          [
+            -71.193292,
+            -34.963039
+          ],
+          [
+            -71.192945,
+            -34.962481
+          ],
+          [
+            -71.191923,
+            -34.960913
+          ],
+          [
+            -71.191257,
+            -34.959876
+          ],
+          [
+            -71.18984,
+            -34.957669
+          ],
+          [
+            -71.189334,
+            -34.95688
+          ],
+          [
+            -71.188658,
+            -34.955823
+          ],
+          [
+            -71.188136,
+            -34.955003
+          ],
+          [
+            -71.187678,
+            -34.954287
+          ],
+          [
+            -71.186403,
+            -34.952319
+          ],
+          [
+            -71.186191,
+            -34.952041
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612323",
+      "properties": {
+        "id": "curico-osm-1087612323",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 335.1,
+        "length_km": 0.34,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612323,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.209559,
+            -34.97743
+          ],
+          [
+            -71.209434,
+            -34.977427
+          ],
+          [
+            -71.209307,
+            -34.977456
+          ],
+          [
+            -71.20918,
+            -34.9775
+          ],
+          [
+            -71.209052,
+            -34.977517
+          ],
+          [
+            -71.208999,
+            -34.977508
+          ],
+          [
+            -71.208786,
+            -34.977539
+          ],
+          [
+            -71.208666,
+            -34.977537
+          ],
+          [
+            -71.208419,
+            -34.977581
+          ],
+          [
+            -71.208411,
+            -34.97761
+          ],
+          [
+            -71.208354,
+            -34.977628
+          ],
+          [
+            -71.208213,
+            -34.977642
+          ],
+          [
+            -71.208164,
+            -34.977627
+          ],
+          [
+            -71.207951,
+            -34.977668
+          ],
+          [
+            -71.207888,
+            -34.977706
+          ],
+          [
+            -71.207835,
+            -34.977772
+          ],
+          [
+            -71.207842,
+            -34.977836
+          ],
+          [
+            -71.20793,
+            -34.977909
+          ],
+          [
+            -71.20799,
+            -34.977944
+          ],
+          [
+            -71.208405,
+            -34.978187
+          ],
+          [
+            -71.208649,
+            -34.978303
+          ],
+          [
+            -71.208942,
+            -34.97848
+          ],
+          [
+            -71.209235,
+            -34.978693
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612324",
+      "properties": {
+        "id": "curico-osm-1087612324",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 441.9,
+        "length_km": 0.44,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612324,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.209235,
+            -34.978693
+          ],
+          [
+            -71.209284,
+            -34.978702
+          ],
+          [
+            -71.209318,
+            -34.978705
+          ],
+          [
+            -71.209665,
+            -34.978625
+          ],
+          [
+            -71.209857,
+            -34.97858
+          ],
+          [
+            -71.212167,
+            -34.978086
+          ],
+          [
+            -71.213928,
+            -34.977716
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612325",
+      "properties": {
+        "id": "curico-osm-1087612325",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 232.4,
+        "length_km": 0.23,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612325,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.205381,
+            -34.976305
+          ],
+          [
+            -71.205491,
+            -34.97632
+          ],
+          [
+            -71.205615,
+            -34.976393
+          ],
+          [
+            -71.207222,
+            -34.977384
+          ],
+          [
+            -71.207479,
+            -34.977465
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612326",
+      "properties": {
+        "id": "curico-osm-1087612326",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 52.2,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612326,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.207434,
+            -34.977495
+          ],
+          [
+            -71.207466,
+            -34.977525
+          ],
+          [
+            -71.207498,
+            -34.977579
+          ],
+          [
+            -71.207576,
+            -34.977627
+          ],
+          [
+            -71.207657,
+            -34.977695
+          ],
+          [
+            -71.207714,
+            -34.977715
+          ],
+          [
+            -71.207805,
+            -34.977719
+          ],
+          [
+            -71.207888,
+            -34.977706
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612327",
+      "properties": {
+        "id": "curico-osm-1087612327",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1829.5,
+        "length_km": 1.83,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612327,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.216454,
+            -34.983382
+          ],
+          [
+            -71.216494,
+            -34.983407
+          ],
+          [
+            -71.216516,
+            -34.98346
+          ],
+          [
+            -71.216487,
+            -34.983503
+          ],
+          [
+            -71.216505,
+            -34.983568
+          ],
+          [
+            -71.216547,
+            -34.983614
+          ],
+          [
+            -71.217353,
+            -34.984157
+          ],
+          [
+            -71.217486,
+            -34.984268
+          ],
+          [
+            -71.217626,
+            -34.984381
+          ],
+          [
+            -71.217839,
+            -34.984564
+          ],
+          [
+            -71.218103,
+            -34.984764
+          ],
+          [
+            -71.218748,
+            -34.985194
+          ],
+          [
+            -71.218929,
+            -34.985317
+          ],
+          [
+            -71.21901,
+            -34.985381
+          ],
+          [
+            -71.219079,
+            -34.985456
+          ],
+          [
+            -71.219152,
+            -34.98552
+          ],
+          [
+            -71.220457,
+            -34.986375
+          ],
+          [
+            -71.224673,
+            -34.989141
+          ],
+          [
+            -71.228249,
+            -34.991542
+          ],
+          [
+            -71.228378,
+            -34.991634
+          ],
+          [
+            -71.229027,
+            -34.992058
+          ],
+          [
+            -71.22993,
+            -34.992649
+          ],
+          [
+            -71.230413,
+            -34.992955
+          ],
+          [
+            -71.230684,
+            -34.993122
+          ],
+          [
+            -71.231078,
+            -34.993351
+          ],
+          [
+            -71.231529,
+            -34.993605
+          ],
+          [
+            -71.23166,
+            -34.993645
+          ],
+          [
+            -71.231769,
+            -34.993651
+          ],
+          [
+            -71.231938,
+            -34.993624
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612328",
+      "properties": {
+        "id": "curico-osm-1087612328",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 921.4,
+        "length_km": 0.92,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612328,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.216516,
+            -34.98346
+          ],
+          [
+            -71.216408,
+            -34.983517
+          ],
+          [
+            -71.21629,
+            -34.983509
+          ],
+          [
+            -71.216229,
+            -34.983541
+          ],
+          [
+            -71.216127,
+            -34.983624
+          ],
+          [
+            -71.215981,
+            -34.983786
+          ],
+          [
+            -71.215589,
+            -34.984218
+          ],
+          [
+            -71.214368,
+            -34.98557
+          ],
+          [
+            -71.213909,
+            -34.98606
+          ],
+          [
+            -71.213729,
+            -34.98625
+          ],
+          [
+            -71.213378,
+            -34.986621
+          ],
+          [
+            -71.213207,
+            -34.986801
+          ],
+          [
+            -71.213108,
+            -34.986916
+          ],
+          [
+            -71.212928,
+            -34.987104
+          ],
+          [
+            -71.212542,
+            -34.9875
+          ],
+          [
+            -71.212189,
+            -34.987876
+          ],
+          [
+            -71.211752,
+            -34.98834
+          ],
+          [
+            -71.211216,
+            -34.988905
+          ],
+          [
+            -71.210313,
+            -34.989844
+          ],
+          [
+            -71.210228,
+            -34.989825
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612330",
+      "properties": {
+        "id": "curico-osm-1087612330",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 959.6,
+        "length_km": 0.96,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612330,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.193166,
+            -34.96398
+          ],
+          [
+            -71.193104,
+            -34.964002
+          ],
+          [
+            -71.192946,
+            -34.964165
+          ],
+          [
+            -71.192767,
+            -34.964258
+          ],
+          [
+            -71.19234,
+            -34.964378
+          ],
+          [
+            -71.191905,
+            -34.964438
+          ],
+          [
+            -71.191568,
+            -34.964458
+          ],
+          [
+            -71.191429,
+            -34.964458
+          ],
+          [
+            -71.190084,
+            -34.964441
+          ],
+          [
+            -71.1896,
+            -34.964415
+          ],
+          [
+            -71.188218,
+            -34.964318
+          ],
+          [
+            -71.186746,
+            -34.964188
+          ],
+          [
+            -71.186433,
+            -34.964162
+          ],
+          [
+            -71.186013,
+            -34.964125
+          ],
+          [
+            -71.185262,
+            -34.964068
+          ],
+          [
+            -71.184539,
+            -34.964012
+          ],
+          [
+            -71.183429,
+            -34.963925
+          ],
+          [
+            -71.182835,
+            -34.963872
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1087612331",
+      "properties": {
+        "id": "curico-osm-1087612331",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 639.7,
+        "length_km": 0.64,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1087612331,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.211201,
+            -34.973652
+          ],
+          [
+            -71.210475,
+            -34.972769
+          ],
+          [
+            -71.210139,
+            -34.972367
+          ],
+          [
+            -71.209933,
+            -34.972119
+          ],
+          [
+            -71.209616,
+            -34.97173
+          ],
+          [
+            -71.209169,
+            -34.971185
+          ],
+          [
+            -71.20909,
+            -34.971088
+          ],
+          [
+            -71.209083,
+            -34.971055
+          ],
+          [
+            -71.209157,
+            -34.97106
+          ],
+          [
+            -71.209219,
+            -34.971062
+          ],
+          [
+            -71.210376,
+            -34.971094
+          ],
+          [
+            -71.211326,
+            -34.971143
+          ],
+          [
+            -71.211962,
+            -34.971179
+          ],
+          [
+            -71.212283,
+            -34.971198
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1093021779",
+      "properties": {
+        "id": "curico-osm-1093021779",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 67.5,
+        "length_km": 0.07,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1093021779,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.276467,
+            -34.933123
+          ],
+          [
+            -71.276772,
+            -34.933081
+          ],
+          [
+            -71.276947,
+            -34.93306
+          ],
+          [
+            -71.277199,
+            -34.933031
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1099476758",
+      "properties": {
+        "id": "curico-osm-1099476758",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "compacted",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 1139.6,
+        "length_km": 1.14,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1099476758,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.254113,
+            -34.955333
+          ],
+          [
+            -71.254508,
+            -34.954677
+          ],
+          [
+            -71.255051,
+            -34.953814
+          ],
+          [
+            -71.255803,
+            -34.952561
+          ],
+          [
+            -71.256429,
+            -34.951468
+          ],
+          [
+            -71.257354,
+            -34.949973
+          ],
+          [
+            -71.25817,
+            -34.94861
+          ],
+          [
+            -71.258989,
+            -34.947233
+          ],
+          [
+            -71.259288,
+            -34.946688
+          ],
+          [
+            -71.259607,
+            -34.946128
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1099476763",
+      "properties": {
+        "id": "curico-osm-1099476763",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 761.7,
+        "length_km": 0.76,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1099476763,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.293699,
+            -34.930208
+          ],
+          [
+            -71.295961,
+            -34.929816
+          ],
+          [
+            -71.299788,
+            -34.929153
+          ],
+          [
+            -71.301871,
+            -34.928781
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287734",
+      "properties": {
+        "id": "curico-osm-1101287734",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 33.5,
+        "length_km": 0.03,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287734,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.293339,
+            -34.93027
+          ],
+          [
+            -71.293699,
+            -34.930208
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287735",
+      "properties": {
+        "id": "curico-osm-1101287735",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 33.3,
+        "length_km": 0.03,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287735,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.292982,
+            -34.930332
+          ],
+          [
+            -71.293339,
+            -34.93027
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287736",
+      "properties": {
+        "id": "curico-osm-1101287736",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 73.4,
+        "length_km": 0.07,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287736,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.292194,
+            -34.930469
+          ],
+          [
+            -71.292982,
+            -34.930332
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287738",
+      "properties": {
+        "id": "curico-osm-1101287738",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 355.9,
+        "length_km": 0.36,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287738,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.288374,
+            -34.931131
+          ],
+          [
+            -71.288815,
+            -34.931055
+          ],
+          [
+            -71.292194,
+            -34.930469
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287739",
+      "properties": {
+        "id": "curico-osm-1101287739",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 40.4,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287739,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.28794,
+            -34.931206
+          ],
+          [
+            -71.288374,
+            -34.931131
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287740",
+      "properties": {
+        "id": "curico-osm-1101287740",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 36.0,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287740,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.280993,
+            -34.932397
+          ],
+          [
+            -71.281124,
+            -34.932375
+          ],
+          [
+            -71.28138,
+            -34.932333
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1101287741",
+      "properties": {
+        "id": "curico-osm-1101287741",
+        "name": "Ruta J-60",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "primary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 611.0,
+        "length_km": 0.61,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1101287741,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.28138,
+            -34.932333
+          ],
+          [
+            -71.282489,
+            -34.932152
+          ],
+          [
+            -71.28794,
+            -34.931206
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1121873998",
+      "properties": {
+        "id": "curico-osm-1121873998",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 499.5,
+        "length_km": 0.5,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1121873998,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.206249,
+            -34.967782
+          ],
+          [
+            -71.206323,
+            -34.967739
+          ],
+          [
+            -71.206769,
+            -34.96748
+          ],
+          [
+            -71.206964,
+            -34.967422
+          ],
+          [
+            -71.207194,
+            -34.96741
+          ],
+          [
+            -71.208192,
+            -34.967489
+          ],
+          [
+            -71.208345,
+            -34.967513
+          ],
+          [
+            -71.20869,
+            -34.967558
+          ],
+          [
+            -71.208845,
+            -34.967565
+          ],
+          [
+            -71.208964,
+            -34.967572
+          ],
+          [
+            -71.20909,
+            -34.967565
+          ],
+          [
+            -71.209239,
+            -34.967555
+          ],
+          [
+            -71.209394,
+            -34.967535
+          ],
+          [
+            -71.210205,
+            -34.967289
+          ],
+          [
+            -71.210491,
+            -34.967206
+          ],
+          [
+            -71.210528,
+            -34.967195
+          ],
+          [
+            -71.211452,
+            -34.966919
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1121874012",
+      "properties": {
+        "id": "curico-osm-1121874012",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 424.2,
+        "length_km": 0.42,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1121874012,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.23855,
+            -34.96339
+          ],
+          [
+            -71.239914,
+            -34.963288
+          ],
+          [
+            -71.239961,
+            -34.963284
+          ],
+          [
+            -71.240037,
+            -34.96328
+          ],
+          [
+            -71.240121,
+            -34.963273
+          ],
+          [
+            -71.241059,
+            -34.963203
+          ],
+          [
+            -71.241669,
+            -34.963137
+          ],
+          [
+            -71.242174,
+            -34.963059
+          ],
+          [
+            -71.24242,
+            -34.963012
+          ],
+          [
+            -71.242579,
+            -34.962959
+          ],
+          [
+            -71.242837,
+            -34.962862
+          ],
+          [
+            -71.242937,
+            -34.962829
+          ],
+          [
+            -71.243021,
+            -34.962804
+          ],
+          [
+            -71.243121,
+            -34.962789
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1121874013",
+      "properties": {
+        "id": "curico-osm-1121874013",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 60.5,
+        "length_km": 0.06,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1121874013,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.240027,
+            -34.963825
+          ],
+          [
+            -71.239961,
+            -34.963284
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1121874021",
+      "properties": {
+        "id": "curico-osm-1121874021",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 90.1,
+        "length_km": 0.09,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1121874021,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.265844,
+            -34.972046
+          ],
+          [
+            -71.266054,
+            -34.972838
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1121874022",
+      "properties": {
+        "id": "curico-osm-1121874022",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 574.6,
+        "length_km": 0.57,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1121874022,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.263412,
+            -34.975158
+          ],
+          [
+            -71.263276,
+            -34.975103
+          ],
+          [
+            -71.263187,
+            -34.975015
+          ],
+          [
+            -71.262669,
+            -34.974361
+          ],
+          [
+            -71.261713,
+            -34.973155
+          ],
+          [
+            -71.260713,
+            -34.971893
+          ],
+          [
+            -71.259911,
+            -34.970881
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1172840700",
+      "properties": {
+        "id": "curico-osm-1172840700",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 721.9,
+        "length_km": 0.72,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1172840700,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.260699,
+            -34.983034
+          ],
+          [
+            -71.260711,
+            -34.982968
+          ],
+          [
+            -71.261948,
+            -34.982846
+          ],
+          [
+            -71.262083,
+            -34.982831
+          ],
+          [
+            -71.262129,
+            -34.982826
+          ],
+          [
+            -71.263961,
+            -34.982616
+          ],
+          [
+            -71.26442,
+            -34.982563
+          ],
+          [
+            -71.26514,
+            -34.982484
+          ],
+          [
+            -71.265396,
+            -34.982451
+          ],
+          [
+            -71.265406,
+            -34.982498
+          ],
+          [
+            -71.265412,
+            -34.982567
+          ],
+          [
+            -71.26567,
+            -34.982536
+          ],
+          [
+            -71.265911,
+            -34.982475
+          ],
+          [
+            -71.266854,
+            -34.982159
+          ],
+          [
+            -71.267985,
+            -34.98178
+          ],
+          [
+            -71.268191,
+            -34.981721
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1172840741",
+      "properties": {
+        "id": "curico-osm-1172840741",
+        "name": "Avenida Rauquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 81.5,
+        "length_km": 0.08,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1172840741,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.189574,
+            -34.94567
+          ],
+          [
+            -71.189333,
+            -34.945717
+          ],
+          [
+            -71.189282,
+            -34.945726
+          ],
+          [
+            -71.189239,
+            -34.94574
+          ],
+          [
+            -71.1892,
+            -34.94576
+          ],
+          [
+            -71.189167,
+            -34.945786
+          ],
+          [
+            -71.18914,
+            -34.945817
+          ],
+          [
+            -71.189122,
+            -34.945851
+          ],
+          [
+            -71.189112,
+            -34.945888
+          ],
+          [
+            -71.189111,
+            -34.945926
+          ],
+          [
+            -71.18912,
+            -34.945963
+          ],
+          [
+            -71.189132,
+            -34.945991
+          ],
+          [
+            -71.18915,
+            -34.946017
+          ],
+          [
+            -71.189226,
+            -34.946126
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1176088705",
+      "properties": {
+        "id": "curico-osm-1176088705",
+        "name": "Mataquito",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 31.4,
+        "length_km": 0.03,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1176088705,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248589,
+            -34.999024
+          ],
+          [
+            -71.248906,
+            -34.998913
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1177406233",
+      "properties": {
+        "id": "curico-osm-1177406233",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 168.1,
+        "length_km": 0.17,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1177406233,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.235179,
+            -34.994434
+          ],
+          [
+            -71.2351,
+            -34.994441
+          ],
+          [
+            -71.235068,
+            -34.994447
+          ],
+          [
+            -71.234513,
+            -34.994451
+          ],
+          [
+            -71.234475,
+            -34.994447
+          ],
+          [
+            -71.233937,
+            -34.994378
+          ],
+          [
+            -71.233903,
+            -34.994376
+          ],
+          [
+            -71.233345,
+            -34.99433
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1177406234",
+      "properties": {
+        "id": "curico-osm-1177406234",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 301.0,
+        "length_km": 0.3,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1177406234,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.245829,
+            -34.999899
+          ],
+          [
+            -71.246513,
+            -34.999691
+          ],
+          [
+            -71.247722,
+            -34.999323
+          ],
+          [
+            -71.248462,
+            -34.999097
+          ],
+          [
+            -71.248641,
+            -34.999043
+          ],
+          [
+            -71.248924,
+            -34.998951
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201539774",
+      "properties": {
+        "id": "curico-osm-1201539774",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 399.1,
+        "length_km": 0.4,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201539774,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.216052,
+            -34.991352
+          ],
+          [
+            -71.216003,
+            -34.991399
+          ],
+          [
+            -71.215872,
+            -34.991407
+          ],
+          [
+            -71.215471,
+            -34.991458
+          ],
+          [
+            -71.215319,
+            -34.991481
+          ],
+          [
+            -71.214438,
+            -34.991499
+          ],
+          [
+            -71.213259,
+            -34.991514
+          ],
+          [
+            -71.212568,
+            -34.991518
+          ],
+          [
+            -71.212241,
+            -34.991518
+          ],
+          [
+            -71.212115,
+            -34.991535
+          ],
+          [
+            -71.212001,
+            -34.991585
+          ],
+          [
+            -71.211917,
+            -34.991648
+          ],
+          [
+            -71.211841,
+            -34.991768
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201539775",
+      "properties": {
+        "id": "curico-osm-1201539775",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 535.0,
+        "length_km": 0.53,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201539775,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.222641,
+            -34.992151
+          ],
+          [
+            -71.222222,
+            -34.991752
+          ],
+          [
+            -71.222129,
+            -34.991664
+          ],
+          [
+            -71.221782,
+            -34.991334
+          ],
+          [
+            -71.221665,
+            -34.991266
+          ],
+          [
+            -71.221541,
+            -34.991205
+          ],
+          [
+            -71.221412,
+            -34.991151
+          ],
+          [
+            -71.22129,
+            -34.99111
+          ],
+          [
+            -71.221164,
+            -34.991075
+          ],
+          [
+            -71.221035,
+            -34.991048
+          ],
+          [
+            -71.220905,
+            -34.991029
+          ],
+          [
+            -71.220114,
+            -34.990915
+          ],
+          [
+            -71.219982,
+            -34.990934
+          ],
+          [
+            -71.219839,
+            -34.990938
+          ],
+          [
+            -71.219339,
+            -34.990971
+          ],
+          [
+            -71.219213,
+            -34.991004
+          ],
+          [
+            -71.218965,
+            -34.991114
+          ],
+          [
+            -71.218815,
+            -34.991228
+          ],
+          [
+            -71.218148,
+            -34.991817
+          ],
+          [
+            -71.217965,
+            -34.992007
+          ],
+          [
+            -71.2179,
+            -34.992086
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827031",
+      "properties": {
+        "id": "curico-osm-1201827031",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 14.7,
+        "length_km": 0.01,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827031,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.233781,
+            -34.989014
+          ],
+          [
+            -71.233881,
+            -34.989025
+          ],
+          [
+            -71.233941,
+            -34.989031
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827032",
+      "properties": {
+        "id": "curico-osm-1201827032",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 17.6,
+        "length_km": 0.02,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827032,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.233863,
+            -34.989183
+          ],
+          [
+            -71.233881,
+            -34.989025
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827033",
+      "properties": {
+        "id": "curico-osm-1201827033",
+        "name": "Merced",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "concrete",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 395.5,
+        "length_km": 0.4,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827033,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.234463,
+            -34.984351
+          ],
+          [
+            -71.23452,
+            -34.984356
+          ],
+          [
+            -71.234628,
+            -34.984366
+          ],
+          [
+            -71.235046,
+            -34.984404
+          ],
+          [
+            -71.235955,
+            -34.984487
+          ],
+          [
+            -71.235994,
+            -34.98449
+          ],
+          [
+            -71.236046,
+            -34.984495
+          ],
+          [
+            -71.236133,
+            -34.984503
+          ],
+          [
+            -71.23731,
+            -34.98461
+          ],
+          [
+            -71.237357,
+            -34.984614
+          ],
+          [
+            -71.237398,
+            -34.984618
+          ],
+          [
+            -71.237455,
+            -34.984623
+          ],
+          [
+            -71.237799,
+            -34.984654
+          ],
+          [
+            -71.238646,
+            -34.984731
+          ],
+          [
+            -71.23869,
+            -34.984735
+          ],
+          [
+            -71.238778,
+            -34.984743
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827035",
+      "properties": {
+        "id": "curico-osm-1201827035",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 504.6,
+        "length_km": 0.5,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827035,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.232439,
+            -34.977371
+          ],
+          [
+            -71.232481,
+            -34.97737
+          ],
+          [
+            -71.232576,
+            -34.977367
+          ],
+          [
+            -71.232663,
+            -34.977361
+          ],
+          [
+            -71.233417,
+            -34.977316
+          ],
+          [
+            -71.234021,
+            -34.977286
+          ],
+          [
+            -71.235184,
+            -34.977231
+          ],
+          [
+            -71.235351,
+            -34.977214
+          ],
+          [
+            -71.235472,
+            -34.977202
+          ],
+          [
+            -71.235628,
+            -34.977186
+          ],
+          [
+            -71.236435,
+            -34.977103
+          ],
+          [
+            -71.237452,
+            -34.976994
+          ],
+          [
+            -71.237949,
+            -34.976942
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827036",
+      "properties": {
+        "id": "curico-osm-1201827036",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 81.2,
+        "length_km": 0.08,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827036,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.232372,
+            -34.977357
+          ],
+          [
+            -71.231779,
+            -34.977394
+          ],
+          [
+            -71.231659,
+            -34.977401
+          ],
+          [
+            -71.231599,
+            -34.977404
+          ],
+          [
+            -71.231538,
+            -34.977407
+          ],
+          [
+            -71.231483,
+            -34.977402
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827037",
+      "properties": {
+        "id": "curico-osm-1201827037",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 319.4,
+        "length_km": 0.32,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827037,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.24519,
+            -34.976654
+          ],
+          [
+            -71.244454,
+            -34.976712
+          ],
+          [
+            -71.243611,
+            -34.976786
+          ],
+          [
+            -71.243567,
+            -34.97679
+          ],
+          [
+            -71.242443,
+            -34.976902
+          ],
+          [
+            -71.241705,
+            -34.976962
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827038",
+      "properties": {
+        "id": "curico-osm-1201827038",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 409.5,
+        "length_km": 0.41,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827038,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248893,
+            -34.987915
+          ],
+          [
+            -71.248805,
+            -34.98792
+          ],
+          [
+            -71.247112,
+            -34.988013
+          ],
+          [
+            -71.246967,
+            -34.988021
+          ],
+          [
+            -71.246316,
+            -34.988065
+          ],
+          [
+            -71.245993,
+            -34.988096
+          ],
+          [
+            -71.245891,
+            -34.988134
+          ],
+          [
+            -71.245736,
+            -34.988183
+          ],
+          [
+            -71.245166,
+            -34.988354
+          ],
+          [
+            -71.244665,
+            -34.988491
+          ],
+          [
+            -71.244609,
+            -34.988504
+          ],
+          [
+            -71.244587,
+            -34.988412
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827039",
+      "properties": {
+        "id": "curico-osm-1201827039",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 890.8,
+        "length_km": 0.89,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827039,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.249015,
+            -34.981972
+          ],
+          [
+            -71.249069,
+            -34.981964
+          ],
+          [
+            -71.249093,
+            -34.981977
+          ],
+          [
+            -71.24929,
+            -34.982694
+          ],
+          [
+            -71.249326,
+            -34.982832
+          ],
+          [
+            -71.24935,
+            -34.982971
+          ],
+          [
+            -71.249363,
+            -34.983111
+          ],
+          [
+            -71.249364,
+            -34.983252
+          ],
+          [
+            -71.249354,
+            -34.983389
+          ],
+          [
+            -71.249333,
+            -34.983525
+          ],
+          [
+            -71.24922,
+            -34.984656
+          ],
+          [
+            -71.249017,
+            -34.986808
+          ],
+          [
+            -71.248909,
+            -34.987764
+          ],
+          [
+            -71.248901,
+            -34.987842
+          ],
+          [
+            -71.248893,
+            -34.987915
+          ],
+          [
+            -71.248875,
+            -34.988076
+          ],
+          [
+            -71.248798,
+            -34.988844
+          ],
+          [
+            -71.248737,
+            -34.989455
+          ],
+          [
+            -71.248722,
+            -34.989594
+          ],
+          [
+            -71.248696,
+            -34.989874
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827041",
+      "properties": {
+        "id": "curico-osm-1201827041",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 80.7,
+        "length_km": 0.08,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827041,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.245866,
+            -34.994199
+          ],
+          [
+            -71.245629,
+            -34.994175
+          ],
+          [
+            -71.245407,
+            -34.994152
+          ],
+          [
+            -71.245251,
+            -34.994137
+          ],
+          [
+            -71.245144,
+            -34.994137
+          ],
+          [
+            -71.245064,
+            -34.994148
+          ],
+          [
+            -71.244991,
+            -34.994172
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1201827042",
+      "properties": {
+        "id": "curico-osm-1201827042",
+        "name": "Avenida Circunvalación Doctor Osorio",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 12.8,
+        "length_km": 0.01,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1201827042,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.244875,
+            -34.994264
+          ],
+          [
+            -71.244743,
+            -34.994304
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1202656680",
+      "properties": {
+        "id": "curico-osm-1202656680",
+        "name": "Avenida Rauquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 43.1,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1202656680,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.20057,
+            -34.961936
+          ],
+          [
+            -71.200824,
+            -34.962263
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1202656699",
+      "properties": {
+        "id": "curico-osm-1202656699",
+        "name": "Avenida Amsterdam",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 75.7,
+        "length_km": 0.08,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1202656699,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.200824,
+            -34.962263
+          ],
+          [
+            -71.200903,
+            -34.962234
+          ],
+          [
+            -71.201016,
+            -34.962189
+          ],
+          [
+            -71.201159,
+            -34.962132
+          ],
+          [
+            -71.201323,
+            -34.96208
+          ],
+          [
+            -71.201414,
+            -34.962059
+          ],
+          [
+            -71.201599,
+            -34.962026
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1209944211",
+      "properties": {
+        "id": "curico-osm-1209944211",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 71.9,
+        "length_km": 0.07,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1209944211,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.236944,
+            -34.959131
+          ],
+          [
+            -71.236972,
+            -34.95909
+          ],
+          [
+            -71.237702,
+            -34.959134
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1272284650",
+      "properties": {
+        "id": "curico-osm-1272284650",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 244.2,
+        "length_km": 0.24,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1272284650,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.210491,
+            -34.967206
+          ],
+          [
+            -71.210473,
+            -34.967163
+          ],
+          [
+            -71.209762,
+            -34.965501
+          ],
+          [
+            -71.209671,
+            -34.965286
+          ],
+          [
+            -71.209627,
+            -34.965182
+          ],
+          [
+            -71.209686,
+            -34.965164
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1272877865",
+      "properties": {
+        "id": "curico-osm-1272877865",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 317.6,
+        "length_km": 0.32,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1272877865,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.238188,
+            -34.969934
+          ],
+          [
+            -71.237987,
+            -34.969968
+          ],
+          [
+            -71.237807,
+            -34.969984
+          ],
+          [
+            -71.237383,
+            -34.970022
+          ],
+          [
+            -71.237044,
+            -34.970053
+          ],
+          [
+            -71.236959,
+            -34.970062
+          ],
+          [
+            -71.236476,
+            -34.97011
+          ],
+          [
+            -71.236434,
+            -34.970114
+          ],
+          [
+            -71.235341,
+            -34.970202
+          ],
+          [
+            -71.235299,
+            -34.970203
+          ],
+          [
+            -71.235258,
+            -34.970201
+          ],
+          [
+            -71.235187,
+            -34.970193
+          ],
+          [
+            -71.235118,
+            -34.970177
+          ],
+          [
+            -71.234741,
+            -34.970088
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1272877866",
+      "properties": {
+        "id": "curico-osm-1272877866",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 331.3,
+        "length_km": 0.33,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1272877866,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.241803,
+            -34.969744
+          ],
+          [
+            -71.241689,
+            -34.969737
+          ],
+          [
+            -71.241477,
+            -34.96971
+          ],
+          [
+            -71.240989,
+            -34.9697
+          ],
+          [
+            -71.24075,
+            -34.969707
+          ],
+          [
+            -71.239144,
+            -34.96981
+          ],
+          [
+            -71.238611,
+            -34.969864
+          ],
+          [
+            -71.238387,
+            -34.9699
+          ],
+          [
+            -71.238249,
+            -34.969924
+          ],
+          [
+            -71.238188,
+            -34.969934
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1290353746",
+      "properties": {
+        "id": "curico-osm-1290353746",
+        "name": "Camino a Tutuquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "tertiary",
+        "surface": "paved",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 174.1,
+        "length_km": 0.17,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1290353746,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.265592,
+            -34.974541
+          ],
+          [
+            -71.265668,
+            -34.974512
+          ],
+          [
+            -71.265982,
+            -34.974385
+          ],
+          [
+            -71.266113,
+            -34.974338
+          ],
+          [
+            -71.266288,
+            -34.974269
+          ],
+          [
+            -71.266428,
+            -34.974214
+          ],
+          [
+            -71.266856,
+            -34.974047
+          ],
+          [
+            -71.267316,
+            -34.973867
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1314491427",
+      "properties": {
+        "id": "curico-osm-1314491427",
+        "name": "Ciclovía sin nombre",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary_link",
+        "surface": "asphalt",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 61.6,
+        "length_km": 0.06,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1314491427,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.189742,
+            -34.946864
+          ],
+          [
+            -71.190046,
+            -34.947277
+          ],
+          [
+            -71.190092,
+            -34.947338
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1328995660",
+      "properties": {
+        "id": "curico-osm-1328995660",
+        "name": "Pescara",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "residential",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 25.3,
+        "length_km": 0.03,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1328995660,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.211987,
+            -34.966998
+          ],
+          [
+            -71.21189,
+            -34.966785
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1328995667",
+      "properties": {
+        "id": "curico-osm-1328995667",
+        "name": "Arrayán",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "living_street",
+        "surface": "concrete",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 145.0,
+        "length_km": 0.14,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1328995667,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.214585,
+            -34.965123
+          ],
+          [
+            -71.213041,
+            -34.965438
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1364468757",
+      "properties": {
+        "id": "curico-osm-1364468757",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "compacted",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 50.1,
+        "length_km": 0.05,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1364468757,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.25387,
+            -34.955737
+          ],
+          [
+            -71.254113,
+            -34.955333
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1420636189",
+      "properties": {
+        "id": "curico-osm-1420636189",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asphalt",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 454.1,
+        "length_km": 0.45,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1420636189,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.209219,
+            -34.971062
+          ],
+          [
+            -71.20917,
+            -34.970997
+          ],
+          [
+            -71.209115,
+            -34.970922
+          ],
+          [
+            -71.208425,
+            -34.970138
+          ],
+          [
+            -71.207804,
+            -34.969429
+          ],
+          [
+            -71.207771,
+            -34.969392
+          ],
+          [
+            -71.206323,
+            -34.967739
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1428094519",
+      "properties": {
+        "id": "curico-osm-1428094519",
+        "name": "Ciclovía sin nombre",
+        "type": "Pista exclusiva segregada",
+        "highway": "cycleway",
+        "surface": "asfalto / pavimento",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 40.0,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1428094519,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.21932,
+            -34.975942
+          ],
+          [
+            -71.219357,
+            -34.975878
+          ],
+          [
+            -71.219358,
+            -34.975694
+          ],
+          [
+            -71.219414,
+            -34.9756
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1428094550",
+      "properties": {
+        "id": "curico-osm-1428094550",
+        "name": "Lago Calafquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "residential",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 169.3,
+        "length_km": 0.17,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1428094550,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.265795,
+            -34.971009
+          ],
+          [
+            -71.266944,
+            -34.971657
+          ],
+          [
+            -71.267277,
+            -34.971844
+          ],
+          [
+            -71.267326,
+            -34.971872
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1430325570",
+      "properties": {
+        "id": "curico-osm-1430325570",
+        "name": "Avenida Rauquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 40.7,
+        "length_km": 0.04,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1430325570,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.191949,
+            -34.945388
+          ],
+          [
+            -71.192048,
+            -34.945377
+          ],
+          [
+            -71.192391,
+            -34.945336
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1430325574",
+      "properties": {
+        "id": "curico-osm-1430325574",
+        "name": "Avenida Rauquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 96.6,
+        "length_km": 0.1,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1430325574,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.189574,
+            -34.94567
+          ],
+          [
+            -71.190623,
+            -34.945546
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1430325576",
+      "properties": {
+        "id": "curico-osm-1430325576",
+        "name": "Avenida Rauquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "no",
+        "segregated": "yes",
+        "length_m": 122.1,
+        "length_km": 0.12,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1430325576,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.190623,
+            -34.945546
+          ],
+          [
+            -71.191058,
+            -34.945494
+          ],
+          [
+            -71.191134,
+            -34.945485
+          ],
+          [
+            -71.191949,
+            -34.945388
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-1430325597",
+      "properties": {
+        "id": "curico-osm-1430325597",
+        "name": "Avenida Rauquén",
+        "type": "Ciclocalle / Ciclobanda demarcada",
+        "highway": "secondary",
+        "surface": "paved",
+        "oneway": "yes",
+        "segregated": "yes",
+        "length_m": 94.6,
+        "length_km": 0.09,
+        "source": "OpenStreetMap Contributors",
+        "source_id": 1430325597,
+        "is_demo": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.189226,
+            -34.946126
+          ],
+          [
+            -71.189383,
+            -34.94635
+          ],
+          [
+            -71.189742,
+            -34.946864
+          ]
+        ]
+      }
+    }
+  ]
+}
