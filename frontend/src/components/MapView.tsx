@@ -13,6 +13,7 @@ import type { FeatureCollection } from 'geojson'
 
 interface Props {
   city: City
+  isCicloConectaVisible: boolean
   layers: LayerConfig[]
   layersData: Record<LayerId, FeatureCollection | null>
   mapInstanceRef?: React.MutableRefObject<MapLibreMap | null>
@@ -20,6 +21,7 @@ interface Props {
 
 export const MapView: React.FC<Props> = ({
   city,
+  isCicloConectaVisible,
   layers,
   layersData,
   mapInstanceRef,
@@ -89,6 +91,8 @@ export const MapView: React.FC<Props> = ({
             data: initialData,
           })
 
+          const effectiveVisibility = isCicloConectaVisible && layer.visible ? 'visible' : 'none'
+
           // Glow / Casing Layer (for high contrast over roads)
           map.addLayer({
             id: `casing-${layer.id}`,
@@ -97,7 +101,7 @@ export const MapView: React.FC<Props> = ({
             layout: {
               'line-cap': 'round',
               'line-join': 'round',
-              visibility: layer.visible ? 'visible' : 'none',
+              visibility: effectiveVisibility,
             },
             paint: {
               'line-color': layer.color,
@@ -116,7 +120,7 @@ export const MapView: React.FC<Props> = ({
           const lineLayout: Record<string, unknown> = {
             'line-cap': 'round',
             'line-join': 'round',
-            visibility: layer.visible ? 'visible' : 'none',
+            visibility: effectiveVisibility,
           }
 
           if (layer.lineDash && layer.lineDash.length > 0) {
@@ -232,15 +236,20 @@ export const MapView: React.FC<Props> = ({
     })
   }, [layersData, layers])
 
-  // Update layer visibility reactively
+  // Update layer visibility reactively (combining master toggle & sublayer visibility)
   useEffect(() => {
     const map = mapRef.current
     if (!map || !map.isStyleLoaded()) return
 
+    // If master toggle is OFF, hide popups too
+    if (!isCicloConectaVisible && popupRef.current) {
+      popupRef.current.remove()
+    }
+
     layers.forEach((layer) => {
       const casingLayerId = `casing-${layer.id}`
       const lineLayerId = `line-${layer.id}`
-      const visibility = layer.visible ? 'visible' : 'none'
+      const visibility = isCicloConectaVisible && layer.visible ? 'visible' : 'none'
 
       if (map.getLayer(casingLayerId)) {
         map.setLayoutProperty(casingLayerId, 'visibility', visibility)
@@ -249,7 +258,7 @@ export const MapView: React.FC<Props> = ({
         map.setLayoutProperty(lineLayerId, 'visibility', visibility)
       }
     })
-  }, [layers])
+  }, [layers, isCicloConectaVisible])
 
   return (
     <div

@@ -74,6 +74,10 @@ export function App() {
     },
   })
 
+  // Master CicloConecta Layer Toggle
+  const [isCicloConectaVisible, setIsCicloConectaVisible] = useState(true)
+
+  // Sublayer configurations
   const [layers, setLayers] = useState<LayerConfig[]>(DEFAULT_LAYERS)
   const [layersData, setLayersData] = useState<Record<LayerId, FeatureCollection | null>>({
     'cycling-infrastructure': null,
@@ -139,6 +143,10 @@ export function App() {
     }
   }, [])
 
+  const handleToggleMaster = () => {
+    setIsCicloConectaVisible((prev) => !prev)
+  }
+
   const handleToggleLayer = (layerId: LayerId) => {
     setLayers((prev) =>
       prev.map((layer) =>
@@ -164,6 +172,8 @@ export function App() {
       <CityHeader city={city} onOpenInfo={() => setIsInfoOpen(true)} />
 
       <LayerControl
+        isCicloConectaVisible={isCicloConectaVisible}
+        onToggleMaster={handleToggleMaster}
         layers={layers}
         onToggleLayer={handleToggleLayer}
         onResetView={handleResetView}
@@ -171,6 +181,7 @@ export function App() {
 
       <MapView
         city={city}
+        isCicloConectaVisible={isCicloConectaVisible}
         layers={layers}
         layersData={layersData}
         mapInstanceRef={mapInstanceRef}
