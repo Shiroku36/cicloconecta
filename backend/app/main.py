@@ -4,12 +4,15 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import settings
+from .routing.engine import get_city_routing_engine
 from .schemas import (
     CityDetail,
     CitySummary,
     GeoJSONResponse,
     HealthResponse,
     LayerInfo,
+    RouteRequest,
+    RouteResponse,
 )
 
 app = FastAPI(
@@ -44,10 +47,10 @@ LAYER_DEFINITIONS = {
     },
     "suggested-routes": {
         "name": "Rutas sugeridas",
-        "description": "Corredores de bajo estrés vehicular recomendados para desplazamiento urbano.",
+        "description": "Corredores calculados algorítmicamente priorizando ciclovías y vías de bajo estrés vehicular.",
         "color": "#3b82f6",  # Blue
-        "is_demo": True,
-        "source": "Diseño conceptual de red (DEMO)",
+        "is_demo": False,
+        "source": "Algoritmo de routing A* sobre red vial OpenStreetMap",
     },
 }
 
@@ -176,3 +179,19 @@ def get_city_layer_geojson(city_id: str, layer_id: str):
         )
     with open(layer_file, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+@app.post(
+    "/api/cities/{city_id}/route",
+    response_model=RouteResponse,
+    tags=["Routing"],
+    summary="Calcula ruta ciclista algorítmica y la compara con la ruta más corta",
+)
+def calculate_city_route(city_id: str, request: RouteRequest):
+    engine = get_city_routing_engine(city_id)
+    return engine.route(
+        origin=request.origin,
+        destination=request.destination,
+        max_snap_dist_m=request.max_snap_dist_m,
+    )
+
