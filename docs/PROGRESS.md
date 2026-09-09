@@ -4,6 +4,43 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-09] — Iteración 1.2: Diagnóstico Causa Raíz de Renderizado y Resolución de API / API Key
+
+### 1. ¿Qué se diagnosticó y resolvió en ejecución?
+- **Diagnóstico Causa Raíz 1 (Bloqueo en Web Worker de MapLibre en Vite):**
+  - Al ejecutar la aplicación con Chrome headless e inspeccionar vía Chrome DevTools Protocol (CDP), se descubrió que las fuentes GeoJSON tenían `loaded: false`, `_isUpdatingWorker: true` y `_pendingWorkerUpdate: true` de forma permanente.
+  - Causa real: MapLibre GL JS v6 intenta cargar su Web Worker desde `./maplibre-gl-worker.mjs` relativo a `import.meta.url`, lo que en Vite resolvía a `http://localhost:5173/node_modules/.vite/deps/maplibre-gl-worker.mjs` arrojando un error **HTTP 404 (Not Found)**. Sin el worker activo, MapLibre no podía procesar ni teselar los datos GeoJSON para la GPU.
+  - Solución: Se importó el worker explícitamente vía Vite URL query (`import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'`) y se registró globalmente con `setWorkerUrl(maplibreWorkerUrl)`. Vite ahora sirve el worker con HTTP 200 en desarrollo y lo empaqueta en `dist/assets/` en producción.
+- **Diagnóstico Causa Raíz 2 (Bloqueo por `isStyleLoaded()` en `MapView.tsx`):**
+  - `syncMapLayers` contenía la guarda `if (!map || !map.isStyleLoaded()) return;`.
+  - En MapLibre GL JS, `map.isStyleLoaded()` verifica si *todas* las fuentes y teselas raster del estilo han completado su carga (`this.style.loaded()`). Dado que las teselas del mapa base se descargan asíncronamente en segundo plano, `isStyleLoaded()` retornaba `false` tanto al momento de disparar `load` como cuando el estado de `layersData` terminaba de llegar.
+  - Solución: Se reemplazó la guarda por un ref de inicialización `isLayersInitializedRef`. En cuanto las fuentes y capas existen en el mapa, `source.setData(data)` y `map.setLayoutProperty()` se ejecutan inmediatamente sin depender del estado de carga de las teselas raster.
+- **Diagnóstico Causa Raíz 3 (Destrucción y recreación del mapa por referencia de array):**
+  - El hook `useEffect` de inicialización del mapa dependía de `[city.center, city.initial_zoom]`. Debido a que `city.center` es un array (`[-71.2394, -34.9854]`), cada actualización del estado `setCity(curico)` generaba una nueva referencia de array en JavaScript, destruyendo (`map.remove()`) y recreando el mapa innecesariamente.
+  - Solución: Se cambió la dependencia a `[city.id]`, asegurando que el mapa se monte una sola vez y solo se recree si cambia la ciudad seleccionada.
+- **Diagnóstico y Resolución del Aviso "API / API Key":**
+  - Causa real descubierta visualmente en la inspección: Las teselas raster de CARTO Voyager (`basemaps.cartocdn.com`) comenzaron a requerir autenticación obligatoria en su servicio gratuito, imprimiendo una marca de agua diagonal repetida en cada tesela con el texto **"API KEY REQUIRED carto.com/basemapsapikey"**.
+  - Solución: Se migró el mapa base a las teselas oficiales de **OpenStreetMap** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`). Son 100% de código abierto, comunitarias, de alta fidelidad, no requieren claves de API ni tokens, y eliminan por completo cualquier marca de agua invasiva.
+
+### 2. ¿Qué se comprobó visualmente en ejecución (Pruebas Reales)?
+- Se ejecutó un script CDP interactivo con Chrome (`scratch/verify_rendering.js`) sobre la aplicación en vivo (`http://localhost:5173`):
+  - **82 tramos de ciclovías existentes (REAL)** renderizados en **verde esmeralda** sobre el centro y periferia de Curicó.
+  - **5 tramos de conexiones faltantes (DEMO)** renderizados en **ámbar discontinuo**.
+  - **4 corredores de rutas sugeridas (DEMO)** renderizados en **azul**.
+  - **Popups interactivos**: Al simular clic en el tramo "Lago Calafquén", se despliega exitosamente el popup seguro con badge `DATOS OPENSTREETMAP`, tipología `Infraestructura ciclista sobre calle (segregada / track)`, superficie `paved` y extensión `0.17 km (169.3 m)`.
+  - **Control Maestro**: Al apagar la "Capa CicloConecta", todas las líneas ciclistas desaparecen instantáneamente (`visibility: none`) y la UI entra en modo inactivo. Al reactivarla, las líneas reaparecen sin recargar el mapa.
+  - **Cero errores de consola** y **cero marcas de agua** de claves de API.
+
+### 3. Evidencias y Pruebas
+- Captura de pantalla verificada: `scratch/map_rendered_verified.png`
+- Captura de pantalla de popup activo: `scratch/map_with_popup.png`
+- Captura de pantalla con toggle apagado: `scratch/toggle_master_off.png`
+- Tests automatizados: **13/13 pasados** (`pytest`).
+- Linter frontend: **0 errores, 0 advertencias** (`oxlint`).
+- Compilación de producción: **Exitosa** (`vite build`).
+
+---
+
 ## [2026-09-09] — Iteración 1.1: Endurecimiento, Corrección de Renderizado y CI Verde
 
 ### 1. ¿Qué se hizo?

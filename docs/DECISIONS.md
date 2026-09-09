@@ -124,4 +124,22 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Se preserva la portabilidad para despliegues estáticos sin servidor mientras se elimina el riesgo de divergencia entre backend y frontend.
   - Negativas: Requiere que cualquier regeneración de datos ejecute la sincronización (ya automatizada en el script).
 
+---
+
+## D-009 — Registro Explícito de MapLibre Web Worker y Mapa Base OpenStreetMap Sin API Key
+
+- **Fecha:** 2026-09-09
+- **Estado:** Aceptada
+- **Contexto:**
+  1. MapLibre GL JS v6 en entornos Vite intenta resolver por defecto su script de Web Worker (`maplibre-gl-worker.mjs`) relativo a `import.meta.url`, resolviendo a `.vite/deps/maplibre-gl-worker.mjs` que devuelve HTTP 404. Sin el Web Worker activo, el parsing y teselado de las capas GeoJSON quedaba bloqueado en `_isUpdatingWorker: true`, impidiendo el renderizado visual de las líneas sobre el lienzo WebGL.
+  2. Las teselas raster de CARTO Voyager (`basemaps.cartocdn.com`) comenzaron a exigir autenticación obligatoria para acceso no registrado, estampando una marca de agua visual invasiva con el texto "API KEY REQUIRED carto.com/basemapsapikey" en cada tesela del mapa.
+- **Decisión:**
+  1. Registrar explícitamente el worker de MapLibre mediante `setWorkerUrl(maplibreWorkerUrl)` importando `maplibre-gl/dist/maplibre-gl-worker.mjs?url`. Esto instruye a Vite a servir el worker como recurso estático con código HTTP 200 en desarrollo y a empaquetarlo en `dist/assets/` en producción.
+  2. Migrar el mapa base a las teselas estándar de **OpenStreetMap** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`), las cuales son 100% abiertas, comunitarias, gratuitas, sin marcas de agua y sin requerir claves de API ni tokens de ningún proveedor privativo.
+  3. Eliminar la verificación bloqueante `map.isStyleLoaded()` en la sincronización de capas GeoJSON de `MapView.tsx`, reemplazándola por una verificación de inicialización de capas (`isLayersInitializedRef`), permitiendo que `source.setData()` actualice la GPU independientemente del estado de carga de las teselas raster de fondo.
+- **Consecuencias:**
+  - Positivas: Renderizado inmediato y fluido de los 121 tramos de ciclovías reales (verde esmeralda), tramos DEMO (ámbar discontinuo) y rutas sugeridas (azul); eliminación total del aviso/marca de agua "API KEY REQUIRED"; independencia de terceros comerciales.
+  - Negativas: Ninguna.
+
+
 
