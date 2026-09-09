@@ -160,6 +160,28 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Zero dependencias C++ complejas; portabilidad universal (Linux, Windows, macOS, Docker); cálculo instantáneo; validación y comparación automática con la ruta más corta física (+% ciclovía vs +% desvío).
   - Negativas: Requiere un paso previo de extracción y construcción del grafo al incorporar nuevas ciudades (automatizado en el pipeline).
 
+---
+
+## D-011 — Detector Algorítmico de Brechas de Red Ciclista y Puntuación Multicriterio
+
+- **Fecha:** 2026-09-09
+- **Estado:** Aceptada
+- **Contexto:**
+  La capa `missing-connections.geojson` se encontraba catalogada como DEMO con 3 líneas conceptuales dibujadas manualmente. Se requería reemplazarla íntegramente por un detector algorítmico determinista que descubra oportunidades reales donde una conexión corta mejore significativamente la conectividad de la red ciclista existente en Curicó.
+- **Decisión:**
+  1. Extraer el subgrafo de ciclovías dedicadas $G_{\text{cycling}}$ a partir del grafo navegable $G_{\text{nav}}$ y descomponerlo en componentes conexas independientes (31 en Curicó, componente principal de 19,12 km y secundaria de 4,38 km).
+  2. Detectar extremos abruptos (nodos de grado 1 en ciclovías $\ge 200\text{ m}$) y buscar caminos conectores sobre la red vial real ($G_{\text{nav}}$), respetando sentidos de circulación y topología real (puentes, cruces peatonales y sin atravesar obstáculos sin vía).
+  3. Formular un índice de prioridad multicriterio transparente y acotado (0 a 100 pts) compuesto por:
+     - Impacto territorial de red (0–50 pts): proporcional a la raíz cuadrada de la componente menor y al logaritmo de la red unificada.
+     - Eficiencia y compacidad de la brecha (0–35 pts): penalización lineal decreciente por longitud de brecha hasta 1.200 m.
+     - Confort y seguridad vial (0–15 pts): preferencia por vías locales/residenciales de bajo estrés vehicular.
+  4. Deduplicar propuestas por par de componentes y filtrar solapamiento espacial (> 60%) para entregar un ranking claro de las mejores 10 oportunidades.
+  5. Incorporar el panel `OpportunitiesList` en el frontend, permitiendo enfocar interactivamente cada oportunidad con resaltado y métricas transparentes.
+  6. Utilizar terminología comunitaria prudente ("Conexión potencial", "Oportunidad detectada", "Candidato analítico") con aclaraciones explícitas de que no constituyen proyectos de ingeniería vial aprobados.
+- **Consecuencias:**
+  - Positivas: Eliminación definitiva de datos sintéticos DEMO; identificación de oportunidades reales de alto impacto (ej. brecha de 75 m en Manuel Antonio Caro que une 19,62 km, y brecha de 834 m en Enrique Lafourcade que unifica 24,33 km continuos); experiencia interactiva y visual atractiva.
+  - Negativas: Requiere calibrar umbrales de búsqueda de distancia máxima (establecido en 1.200 m) para ciudades con morfología muy dispersa.
+
 
 
 

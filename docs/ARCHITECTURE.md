@@ -64,15 +64,20 @@ El principio fundamental del sistema es la **separación estricta entre cómputo
 
 ### 2.1. Pipeline Geoespacial (`pipeline/`)
 - **Propósito:** Extraer datos viales crudos, filtrar elementos ciclistas, normalizar nombres y atributos, y estructurar geometrías GeoJSON estándar.
-- **Filosofía Algorítmica:** Algoritmos matemáticos y de teoría de grafos deterministas para calcular distancias, conectividad de componentes y rutas más cortas. No se utilizan modelos de lenguaje para cálculos espaciales.
+- **Filosofía Algorítmica:** Algoritmos matemáticos y de teoría de grafos deterministas para calcular distancias, conectividad de componentes, rutas más cortas y detección de brechas (gaps) estructurales. No se utilizan modelos de lenguaje para cálculos espaciales ni topológicos.
+- **Módulos Principales:**
+  - `osm_extractor.py`: Extracción y normalización de infraestructura ciclista existente desde OSM.
+  - `network_extractor.py` & `graph_builder.py`: Descarga y construcción del grafo navegable multimodal ($G_{\text{nav}}$).
+  - `router.py`: Motor de búsqueda de rutas ciclistas óptimas con A* heurístico.
+  - `gap_detector.py`: Extracción del subgrafo ciclista segregado ($G_{\text{cycling}}$), identificación de componentes conexas, búsqueda de caminos de enlace en la red secundaria y función de puntuación multicriterio (`priority_score`).
 - **Salida:** Archivos en `data/cities/{city_id}/` que cumplen la especificación GeoJSON (RFC 7946).
 
 ### 2.2. Repositorio de Datos de Ciudades (`data/cities/`)
 Cada ciudad es una unidad autocontenida:
-- `city.json`: Metadatos espaciales (centroide, bounding box, zoom inicial), descripción y métricas agregadas (km totales, fecha de actualización).
+- `city.json`: Metadatos espaciales (centroide, bounding box, zoom inicial), métricas de red y componentes conexas (km totales, número de componentes, componente principal).
 - `cycling-infrastructure.geojson`: Red de ciclovías existentes (reales).
-- `missing-connections.geojson`: Tramos discontinuos o desconexiones críticas entre ejes.
-- `suggested-routes.geojson`: Rutas amigables para bicicletas por vías de bajo tránsito.
+- `missing-connections.geojson`: Oportunidades de conexión y brechas estructurales prioritarias calculadas algorítmicamente (`is_demo: false`).
+- `suggested-routes.geojson`: Rutas amigables para bicicletas calculadas algorítmicamente por vías de bajo tránsito (`is_demo: false`).
 
 ### 2.3. Backend (`backend/`)
 - **Framework:** FastAPI en Python 3.12+.
@@ -89,10 +94,11 @@ Cada ciudad es una unidad autocontenida:
 ### 2.4. Frontend (`frontend/`)
 - **Stack:** React + TypeScript + Vite + MapLibre GL JS.
 - **Componentes Clave:**
-  - `MapView`: Renderizado WebGL de capas cartográficas, pines interactivos A y B, y trazado dinámico de ruta activa y ruta más corta alternativa.
+  - `MapView`: Renderizado WebGL de capas cartográficas, halos de resalto ámbar para brechas seleccionadas, pines interactivos A y B, y trazado dinámico de rutas y popups enriquecidos.
   - `RoutePlanner`: Tarjeta flotante interactiva para fijar puntos de origen/destino, seleccionar presets urbanos, ejecutar el cálculo y contrastar métricas comparativas.
+  - `OpportunitiesList`: Panel lateral interactivo con el ranking de oportunidades de conexión calculadas algorítmicamente, métricas de brecha (`gap_length_m`, `gain_ratio`, `priority_score`), enfoque interactivo (`fitBounds`) y minimización colapsable.
   - `LayerControl`: Toggles individuales y control maestro de la capa CicloConecta.
-- **Estilo:** Interfaz moderna centrada en el mapa, controles flotantes semitransparentes (glassmorphism), tipografía legible y paleta de colores con alto contraste para accesibilidad.
+- **Estilo:** Interfaz moderna centrada en el mapa, barra lateral derecha flexible (`.right-sidebar`) que previene solapamientos visuales, controles semitransparentes (glassmorphism), tipografía legible y paleta de colores con alto contraste para accesibilidad.
 - **Rendimiento:** Las fuentes de datos se agregan al mapa como `GeoJSONSource` con `LineLayer` optimizadas por hardware (WebGL).
 
 ---
@@ -102,7 +108,7 @@ Cada ciudad es una unidad autocontenida:
 | Capa | Identificador | Color | Estilo | Origen de Datos |
 | :--- | :--- | :--- | :--- | :--- |
 | **Ciclovías Existentes** | `cycling-infrastructure` | `#10b981` (Verde Esmeralda) | Línea continua sólida (3.5px) | OpenStreetMap (Reales) |
-| **Conexiones Faltantes** | `missing-connections` | `#f59e0b` (Ámbar) | Línea discontinua `[3, 2]` (3px) | Algoritmo de Gaps / DEMO |
+| **Conexiones Potenciales** | `missing-connections` | `#f59e0b` (Ámbar) | Línea discontinua `[3, 2]` (3.5px) | Algoritmo de Gaps determinista sobre red vial real (Reales) |
 | **Rutas Sugeridas** | `suggested-routes` | `#3b82f6` (Azul Ciclista) | Línea continua con halo (3px) | Routing A* sobre red vial OSM (Reales) |
 
 ---

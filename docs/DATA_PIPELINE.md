@@ -76,15 +76,35 @@ Cada segmento vial extraído es enriquecido y normalizado en un esquema estánda
    \]
    donde \(C_{\text{estrés}}\) pondera la seguridad de la vía (menor estrés para ciclovía física, mayor para calzadas sin segregar).
 
-### Fase 5: Análisis de Conectividad y Gaps (Brechas)
-1. **Componentes Conexas:** Se identifican los subgrafos desconectados de la red ciclista:
-   \[
-   G_c = \{C_1, C_2, \dots, C_k\}
-   \]
-2. **Identificación de Puntas Abiertas (Dead-ends):** Nodos con grado \(d(v) = 1\) dentro de la red ciclista que se ubican a menos de \(D_{\text{umbral}}\) (ej. 300 - 800 metros) de otra ciclovía pero obligan al ciclista a descender o circular por autopistas peligrosas.
-3. **Cálculo de Conexiones Prioritarias:** Se ejecuta una búsqueda de camino más corto en la red vial secundaria para unir \(C_i\) con \(C_j\), generando la capa de `missing-connections.geojson`.
+### Fase 5: Análisis de Conectividad y Detección Algorítmica de Gaps (Fase 3)
+1. **Extracción del Subgrafo Ciclista ($G_{\text{cycling}}$):**
+   - Se filtran del grafo navegable únicamente aristas con infraestructura ciclista formal (`is_cycleway: true`: ciclovías segregadas, ciclobandas, pistas exclusivas).
+   - Se descartan calles ordinarias pedaleables para aislar la red formal protegida.
+2. **Descomposición en Componentes Conexas:**
+   - Se calculan las componentes débilmente conexas:
+     \[
+     G_{\text{cycling}} = \{C_1, C_2, \dots, C_k\}
+     \]
+   - En Curicó se detectaron **31 componentes conexas** que suman 42.22 km. La componente mayor ($C_1$) abarca 19.12 km, seguida por $C_2$ con 4.38 km.
+3. **Búsqueda Determinista de Enlaces sobre la Red Vial Real ($G_{\text{nav}}$):**
+   - Para cada par de componentes $(C_i, C_j)$, se examinan los nodos terminales y de frontera ($d(u) \le 2$ o nodos de borde).
+   - Si la distancia geodésica preliminar es menor a 1,200 m, se calcula la ruta más corta sobre la red vial transitable real $G_{\text{nav}}$ mediante Dijkstra/A*.
+   - **Regla estricta:** No se trazan líneas rectas; cada brecha sigue físicamente las calles navegables de la ciudad (evitando cruces imposibles de vías férreas o ríos sin puente).
+4. **Función de Priorización Multicriterio (`priority_score`):**
+   - Cada oportunidad candidata es evaluada objetivamente en una escala 0–100:
+     \[
+     S = 0.35 \cdot S_{\text{length}} + 0.30 \cdot S_{\text{network}} + 0.20 \cdot S_{\text{gain}} + 0.15 \cdot S_{\text{stress}}
+     \]
+     donde:
+     * $S_{\text{length}} = \max(0, 100 - (\text{longitud\_m} / 1000) \times 70)$: Premia brechas cortas y de rápida intervención.
+     * $S_{\text{network}} = \min(100, (\text{red\_unida\_km} / 25) \times 100)$: Premia conectar componentes grandes o la columna vertebral.
+     * $S_{\text{gain}} = \min(100, (\text{gain\_ratio} / 20) \times 100)$: Premia la eficiencia kilométrica unida por metro de intervención.
+     * $S_{\text{stress}} \in [0, 100]$: Premia calles secundarias/residenciales tranquilas frente a avenidas de alto tránsito.
+5. **Deduplicación y Poda:**
+   - Se deduplican conexiones redundantes entre el mismo par de componentes que compartan >60% de alineación espacial, seleccionando la de mayor puntuación.
+   - Salida: `missing-connections.geojson` con `is_demo: false` y metadatos exhaustivos por candidato.
 
-### Fase 6: Rutas Sugeridas (Algoritmo A* Determinista — Implementado en Fase 2)
+### Fase 6: Rutas Sugeridas (Algoritmo A* Determinista — Fase 2)
 - Reemplazo completo de rutas DEMO por rutas algorítmicas calculadas sobre la red vial real de OpenStreetMap.
 - Costo ponderado por infraestructura ciclista ($\text{costo} = \text{distancia} \times \text{penalización}$).
 - Heurística admisible $h(u, v) = \text{haversine}(u, v) \times 0.70$.
@@ -114,4 +134,13 @@ Salida generada:
 - `data/cities/curico/nav_graph.json` (Grafo conectado: 16,252 nodos, 33,545 aristas)
 - `data/cities/curico/suggested-routes.geojson` (5 rutas representativas reales calculadas algorítmicamente)
 - Sincronización automática de `suggested-routes.geojson` a `frontend/public/data/cities/curico/`
+
+### 4.3. Detección Algorítmica de Conexiones Faltantes (Fase 3)
+```bash
+python pipeline/build_curico_gaps.py
+```
+Salida generada:
+- `data/cities/curico/missing-connections.geojson` (10 conexiones prioritarias algorítmicas reales, `is_demo: false`)
+- `frontend/public/data/cities/curico/missing-connections.geojson` (sincronización estática para visualizador)
+- Actualización de métricas de red y componentes conexas en `data/cities/curico/city.json` y `frontend/public/data/cities/curico/city.json`
 

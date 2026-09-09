@@ -4,6 +4,55 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-09] — Fase 3: Detector Algorítmico de Conexiones Faltantes para Curicó
+
+### 1. ¿Qué se implementó?
+- **Pipeline de Detección Algorítmica de Gaps (`pipeline/gap_detector.py`):**
+  - Extracción estricta del subgrafo ciclista formal ($G_{\text{cycling}}$): ciclovías segregadas, ciclobandas y vías exclusivas, excluyendo calles comunes pedaleables.
+  - Descomposición en componentes conexas: Se identificaron **31 componentes conexas** en Curicó (total: 42.22 km; componente mayor #1: 19.12 km, #2: 4.38 km).
+  - Búsqueda determinista de brechas sobre la red vial transitable real ($G_{\text{nav}}$): Algoritmo de camino más corto que une componentes desconectadas a lo largo de calles existentes reales, descartando trazos rectos e inviabilidades topológicas.
+  - Función de priorización multicriterio objetiva (`priority_score`, escala 0–100):
+    * 35% Longitud de la brecha ($S_{\text{length}}$: menor distancia = mayor viabilidad inmediata).
+    * 30% Magnitud de red unida ($S_{\text{network}}$: premia conectar con la componente principal).
+    * 20% Eficiencia de ganancia ($S_{\text{gain}}$: ratio $\text{red\_unida} / \text{longitud\_brecha}$).
+    * 15% Nivel de calma vial ($S_{\text{stress}}$: facilidad de implementación en calles de baja velocidad).
+  - Deduplicación espacial de candidatos redundantes (>60% solapamiento).
+  - Terminología prudente y rigurosa: *"Conexión potencial"*, *"Oportunidad detectada"*, *"Candidato algorítmico"*.
+- **Reemplazo 100% Real de `missing-connections.geojson`:**
+  - Se eliminaron por completo las geometrías conceptuales DEMO de Curicó.
+  - Generación de los Top 10 candidatos algorítmicos reales (`is_demo: false`, `status: "ALGORITHMIC_CANDIDATE"`):
+    1. **Manuel Antonio Caro (Score 75.9):** Brecha de 75 m por calle residencial tranquila que integra un ramal aislado de 420 m a la red principal de 19.12 km (ratio de ganancia 258.3x).
+    2. **Enrique Lafourcade (Score 75.4):** Brecha de 834 m que une las dos mayores redes de Curicó (#1 de 19.12 km y #2 de 4.38 km), consolidando una red continua de 24.33 km.
+    3. **Avenida Rauquén (Score 72.8):** 539 m uniendo 20.30 km de red.
+    4. **Calle Membrillar (Score 72.0):** 460 m uniendo 20.14 km de red.
+    5. **Avenida España (Score 71.0):** 517 m uniendo 20.00 km de red.
+    6. **Avenida Circunvalación (Score 68.6):** 419 m uniendo 19.82 km de red.
+    7. **Calle Carmen (Score 67.5):** 765 m uniendo 20.39 km de red.
+    8. **Calle Prat (Score 65.5):** 609 m uniendo 19.80 km de red.
+    9. **Calle Chacabuco (Score 64.9):** 593 m uniendo 19.78 km de red.
+    10. **Avenida Camilo Henríquez (Score 64.6):** 456 m uniendo 19.64 km de red.
+  - Sincronización en `data/cities/curico/missing-connections.geojson` y `frontend/public/data/cities/curico/missing-connections.geojson`.
+- **Backend (`backend/app/` y `backend/tests/`):**
+  - Actualización de metadatos de capa en `LAYER_DEFINITIONS["missing-connections"]`: nombre *"Conexiones potenciales"*, `is_demo: False`.
+  - Suite de tests unitarios completa (`backend/tests/test_gap_detection.py`): Validación de fórmula de score, componentes sintéticas, propiedades de GeoJSON y consistencia de datos de Curicó.
+  - Pytest: **26 tests pasando en 4.24s**.
+- **Frontend Interactivo (React + MapLibre):**
+  - Componente `OpportunitiesList.tsx`: Panel interactivo que lista el Top 10 de oportunidades ordenado por prioridad, mostrando badge de puntaje, distancia de brecha, red unida, ganancia y descripción vial. Permite enfocar la cámara (`fitBounds`) y activar el resalto de la brecha.
+  - Resalto y Selección en `MapView.tsx`: Capa de resalto visual ámbar (`casing-selected-gap` y `line-selected-gap`) y popups enriquecidos con badge `OPORTUNIDAD ALGORÍTMICA`, desglose de métricas y disclaimer de prudencia técnica.
+  - Contenedor elástico `.right-sidebar`: Agrupa `LayerControl` y `OpportunitiesList` en un flujo vertical sin solapamientos en ninguna resolución de pantalla, con botón de colapso/expansión.
+  - Corrección de condición de carrera en inicialización de estado de capas en `App.tsx`.
+  - Linter: **0 errores, 0 advertencias** (`oxlint`).
+  - Build: **Exitoso** (`vite build`).
+
+### 2. ¿Qué se comprobó visualmente en ejecución?
+- Se ejecutó verificación visual automatizada vía Chrome CDP headless (`scratch/verify_phase3_gaps.js`):
+  - **Captura 1 (`phase3_01_gaps_map.png`):** Mapa general con 121 ciclovías (verde) y 10 conexiones potenciales algorítmicas (ámbar discontinuo) junto al panel lateral de oportunidades.
+  - **Captura 2 (`phase3_02_gap_selected_popup.png`):** Selección del candidato #01 (Manuel Antonio Caro, 75 m), halo de resalto ámbar y popup con métricas completas (Score 75.9/100, Red unida: 19.54 km, Ratio: 258.3x).
+  - **Captura 3 (`phase3_03_gap2_selected_popup.png`):** Selección del candidato #02 (Enrique Lafourcade, 834 m), uniendo los dos ejes ciclistas más grandes de Curicó en una red de 24.33 km.
+  - **Captura 4 (`phase3_04_minimized_panel.png`):** Panel de oportunidades minimizado sin colisionar con el control de capas.
+
+---
+
 ## [2026-09-09] — Fase 2: Motor de Routing Ciclista Determinista para Curicó
 
 ### 1. ¿Qué se implementó?
