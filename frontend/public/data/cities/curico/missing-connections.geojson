@@ -1,11 +1,13 @@
 {
   "type": "FeatureCollection",
-  "name": "Conexiones_Faltantes_Curico_Demo",
+  "name": "Conexiones_Potenciales_Curico_Algoritmicas",
   "metadata": {
     "city": "curico",
-    "is_demo": true,
-    "status": "DEMO / ESTIMACIÓN CONCEPTUAL",
-    "description": "Tramos faltantes identificados preliminarmente para conectar ejes ciclistas existentes."
+    "is_demo": false,
+    "status": "ALGORITHMIC_ANALYSIS",
+    "analysis_type": "Multi-criteria Network Component Continuity",
+    "total_opportunities": 10,
+    "description": "Oportunidades de continuidad detectadas algorítmicamente sobre la red vial real de OpenStreetMap."
   },
   "features": [
     {
@@ -13,28 +15,66 @@
       "id": "gap-curico-01",
       "properties": {
         "id": "gap-curico-01",
-        "name": "Eje Conexión Rauquén - Estación Curicó",
-        "description": "Falta tramo de ciclovía segura para conectar la zona norte residencial de Rauquén con la Estación de Trenes.",
-        "priority": "Alta",
-        "gap_length_m": 850,
-        "estimated_benefit": "Conecta 15.000 residentes con el eje ferroviario y centro comercial",
-        "is_demo": true,
-        "status": "DEMO"
+        "name": "Oportunidad #01: Manuel Antonio Caro",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 1,
+        "priority_score": 75.9,
+        "gap_length_m": 75,
+        "component_a_km": 19.12,
+        "component_b_km": 0.42,
+        "connected_network_km": 19.62,
+        "network_gain_km": 19.54,
+        "gain_ratio": 258.3,
+        "streets": [
+          "Manuel Antonio Caro",
+          "Pehuén",
+          "Pescara"
+        ],
+        "streets_display": "Manuel Antonio Caro, Pehuén, Pescara",
+        "highway_types": [
+          "residential"
+        ],
+        "description": "Una conexión potencial de aproximadamente 75 m en este tramo uniría 19.62 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -71.2285,
-            -34.972
+            -71.211452,
+            -34.966919
           ],
           [
-            -71.233,
-            -34.9775
+            -71.211429,
+            -34.966865
           ],
           [
-            -71.237,
-            -34.982
+            -71.211562,
+            -34.966813
+          ],
+          [
+            -71.211688,
+            -34.966779
+          ],
+          [
+            -71.211767,
+            -34.966774
+          ],
+          [
+            -71.211829,
+            -34.966778
+          ],
+          [
+            -71.21189,
+            -34.966785
+          ],
+          [
+            -71.211987,
+            -34.966998
           ]
         ]
       }
@@ -44,28 +84,191 @@
       "id": "gap-curico-02",
       "properties": {
         "id": "gap-curico-02",
-        "name": "Interconexión Ciclovía O'Higgins con Av. España",
-        "description": "Corte crítico en el enlace este-oeste entre O'Higgins y los ejes hacia Los Niches.",
-        "priority": "Media-Alta",
-        "gap_length_m": 620,
-        "estimated_benefit": "Continuidad sin necesidad de circular por calzada vehicular de alto flujo",
-        "is_demo": true,
-        "status": "DEMO"
+        "name": "Oportunidad #02: Enrique Lafourcade",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 2,
+        "priority_score": 75.4,
+        "gap_length_m": 834,
+        "component_a_km": 19.12,
+        "component_b_km": 4.38,
+        "connected_network_km": 24.33,
+        "network_gain_km": 23.5,
+        "gain_ratio": 28.2,
+        "streets": [
+          "Enrique Lafourcade",
+          "Calle sin nombre",
+          "Ñirre",
+          "Pescara",
+          "Avenida Curicó",
+          "Nazran",
+          "Calle sin nombre"
+        ],
+        "streets_display": "Enrique Lafourcade, Calle sin nombre, Ñirre",
+        "highway_types": [
+          "residential",
+          "cycleway"
+        ],
+        "description": "Una conexión potencial de aproximadamente 834 m en este tramo uniría 24.33 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -71.246,
-            -34.992
+            -71.209686,
+            -34.965164
           ],
           [
-            -71.2415,
-            -34.994
+            -71.20973,
+            -34.965271
           ],
           [
-            -71.236,
-            -34.996
+            -71.209886,
+            -34.96523
+          ],
+          [
+            -71.210655,
+            -34.965036
+          ],
+          [
+            -71.210963,
+            -34.964961
+          ],
+          [
+            -71.211336,
+            -34.964882
+          ],
+          [
+            -71.211394,
+            -34.964872
+          ],
+          [
+            -71.211449,
+            -34.964773
+          ],
+          [
+            -71.211495,
+            -34.964671
+          ],
+          [
+            -71.211508,
+            -34.964625
+          ],
+          [
+            -71.211543,
+            -34.964443
+          ],
+          [
+            -71.211559,
+            -34.964369
+          ],
+          [
+            -71.211608,
+            -34.964146
+          ],
+          [
+            -71.211627,
+            -34.96406
+          ],
+          [
+            -71.211648,
+            -34.963968
+          ],
+          [
+            -71.211691,
+            -34.963771
+          ],
+          [
+            -71.21172,
+            -34.96364
+          ],
+          [
+            -71.211811,
+            -34.963186
+          ],
+          [
+            -71.211893,
+            -34.962824
+          ],
+          [
+            -71.21191,
+            -34.962747
+          ],
+          [
+            -71.211928,
+            -34.962666
+          ],
+          [
+            -71.211988,
+            -34.962404
+          ],
+          [
+            -71.212002,
+            -34.962341
+          ],
+          [
+            -71.212022,
+            -34.962247
+          ],
+          [
+            -71.212107,
+            -34.961855
+          ],
+          [
+            -71.212122,
+            -34.961785
+          ],
+          [
+            -71.212093,
+            -34.961688
+          ],
+          [
+            -71.212146,
+            -34.961673
+          ],
+          [
+            -71.212879,
+            -34.961542
+          ],
+          [
+            -71.213009,
+            -34.961511
+          ],
+          [
+            -71.213326,
+            -34.961366
+          ],
+          [
+            -71.213594,
+            -34.96129
+          ],
+          [
+            -71.213586,
+            -34.961258
+          ],
+          [
+            -71.21335,
+            -34.96132
+          ],
+          [
+            -71.213063,
+            -34.961439
+          ],
+          [
+            -71.212911,
+            -34.961494
+          ],
+          [
+            -71.212114,
+            -34.961643
+          ],
+          [
+            -71.21198,
+            -34.961668
           ]
         ]
       }
@@ -75,28 +278,799 @@
       "id": "gap-curico-03",
       "properties": {
         "id": "gap-curico-03",
-        "name": "Continuidad Ciclovía Merced al Río Guaiquillo",
-        "description": "Tramo sur para dar acceso a parque ribera y zonas recreativas.",
-        "priority": "Media",
-        "gap_length_m": 430,
-        "estimated_benefit": "Acceso a zona sur y áreas verdes protegidas",
-        "is_demo": true,
-        "status": "DEMO"
+        "name": "Oportunidad #03: Camino Zapallar",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 3,
+        "priority_score": 65.9,
+        "gap_length_m": 369,
+        "component_a_km": 19.12,
+        "component_b_km": 0.4,
+        "connected_network_km": 19.89,
+        "network_gain_km": 19.52,
+        "gain_ratio": 52.8,
+        "streets": [
+          "Camino Zapallar",
+          "Avenida Ángel Lago",
+          "Calle sin nombre",
+          "Ángel Lagos"
+        ],
+        "streets_display": "Camino Zapallar, Avenida Ángel Lago, Calle sin nombre",
+        "highway_types": [
+          "tertiary",
+          "residential",
+          "unclassified"
+        ],
+        "description": "Una conexión potencial de aproximadamente 369 m en este tramo uniría 19.89 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -71.242,
-            -35.001
+            -71.210228,
+            -34.989825
           ],
           [
-            -71.244,
-            -35.004
+            -71.20978,
+            -34.99031
           ],
           [
-            -71.247,
-            -35.007
+            -71.209696,
+            -34.990404
+          ],
+          [
+            -71.209869,
+            -34.990513
+          ],
+          [
+            -71.210217,
+            -34.99081
+          ],
+          [
+            -71.210481,
+            -34.99103
+          ],
+          [
+            -71.210954,
+            -34.991227
+          ],
+          [
+            -71.211023,
+            -34.991257
+          ],
+          [
+            -71.211087,
+            -34.991294
+          ],
+          [
+            -71.211143,
+            -34.991338
+          ],
+          [
+            -71.211187,
+            -34.991383
+          ],
+          [
+            -71.211225,
+            -34.991431
+          ],
+          [
+            -71.211254,
+            -34.991483
+          ],
+          [
+            -71.211462,
+            -34.991968
+          ],
+          [
+            -71.211564,
+            -34.991925
+          ],
+          [
+            -71.211633,
+            -34.991891
+          ],
+          [
+            -71.211697,
+            -34.991851
+          ],
+          [
+            -71.211753,
+            -34.991806
+          ],
+          [
+            -71.211802,
+            -34.991756
+          ],
+          [
+            -71.211841,
+            -34.991768
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-04",
+      "properties": {
+        "id": "gap-curico-04",
+        "name": "Oportunidad #04: Calle sin nombre",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 4,
+        "priority_score": 61.8,
+        "gap_length_m": 139,
+        "component_a_km": 1.23,
+        "component_b_km": 0.73,
+        "connected_network_km": 2.1,
+        "network_gain_km": 1.96,
+        "gain_ratio": 14.1,
+        "streets": [
+          "Calle sin nombre",
+          "Avenida Circunvalación Paul Harris",
+          "Avenida Balmaceda",
+          "Pasaje Isla Lennox"
+        ],
+        "streets_display": "Calle sin nombre, Avenida Circunvalación Paul Harris, Avenida Balmaceda",
+        "highway_types": [
+          "cycleway",
+          "service",
+          "secondary",
+          "primary",
+          "living_street"
+        ],
+        "description": "Una conexión potencial de aproximadamente 139 m en este tramo uniría 2.1 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248191,
+            -34.969179
+          ],
+          [
+            -71.248048,
+            -34.969196
+          ],
+          [
+            -71.24806,
+            -34.969233
+          ],
+          [
+            -71.248112,
+            -34.969228
+          ],
+          [
+            -71.248185,
+            -34.969221
+          ],
+          [
+            -71.248221,
+            -34.969218
+          ],
+          [
+            -71.248329,
+            -34.969224
+          ],
+          [
+            -71.248325,
+            -34.969286
+          ],
+          [
+            -71.248305,
+            -34.969433
+          ],
+          [
+            -71.24828,
+            -34.969621
+          ],
+          [
+            -71.248187,
+            -34.969926
+          ],
+          [
+            -71.24818,
+            -34.969809
+          ],
+          [
+            -71.248129,
+            -34.969814
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-05",
+      "properties": {
+        "id": "gap-curico-05",
+        "name": "Oportunidad #05: Piero Della Francesca",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 5,
+        "priority_score": 60.0,
+        "gap_length_m": 187,
+        "component_a_km": 0.53,
+        "component_b_km": 0.4,
+        "connected_network_km": 1.12,
+        "network_gain_km": 0.93,
+        "gain_ratio": 5.0,
+        "streets": [
+          "Piero Della Francesca",
+          "Costanera Santa Teresita"
+        ],
+        "streets_display": "Piero Della Francesca, Costanera Santa Teresita",
+        "highway_types": [
+          "residential"
+        ],
+        "description": "Una conexión potencial de aproximadamente 187 m en este tramo uniría 1.12 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.2179,
+            -34.992086
+          ],
+          [
+            -71.217829,
+            -34.99206
+          ],
+          [
+            -71.217588,
+            -34.991988
+          ],
+          [
+            -71.21741,
+            -34.991916
+          ],
+          [
+            -71.216932,
+            -34.991735
+          ],
+          [
+            -71.216821,
+            -34.991696
+          ],
+          [
+            -71.216052,
+            -34.991352
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-06",
+      "properties": {
+        "id": "gap-curico-06",
+        "name": "Oportunidad #06: Calle sin nombre",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 6,
+        "priority_score": 59.5,
+        "gap_length_m": 770,
+        "component_a_km": 19.12,
+        "component_b_km": 1.13,
+        "connected_network_km": 21.02,
+        "network_gain_km": 20.25,
+        "gain_ratio": 26.3,
+        "streets": [
+          "Calle sin nombre",
+          "Calle 3",
+          "Avenida Circunvalación Paul Harris",
+          "Piloto Marcelo Oxilia"
+        ],
+        "streets_display": "Calle sin nombre, Calle 3, Avenida Circunvalación Paul Harris",
+        "highway_types": [
+          "cycleway",
+          "residential",
+          "secondary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 770 m en este tramo uniría 21.02 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.212283,
+            -34.971198
+          ],
+          [
+            -71.211962,
+            -34.971179
+          ],
+          [
+            -71.211326,
+            -34.971143
+          ],
+          [
+            -71.21128,
+            -34.971091
+          ],
+          [
+            -71.211249,
+            -34.971018
+          ],
+          [
+            -71.211801,
+            -34.971043
+          ],
+          [
+            -71.212265,
+            -34.971063
+          ],
+          [
+            -71.21313,
+            -34.971102
+          ],
+          [
+            -71.213268,
+            -34.971112
+          ],
+          [
+            -71.213587,
+            -34.971125
+          ],
+          [
+            -71.214177,
+            -34.971165
+          ],
+          [
+            -71.21566,
+            -34.971273
+          ],
+          [
+            -71.216645,
+            -34.971359
+          ],
+          [
+            -71.217239,
+            -34.971416
+          ],
+          [
+            -71.217564,
+            -34.971446
+          ],
+          [
+            -71.217777,
+            -34.971466
+          ],
+          [
+            -71.218,
+            -34.971489
+          ],
+          [
+            -71.218181,
+            -34.971511
+          ],
+          [
+            -71.218285,
+            -34.971523
+          ],
+          [
+            -71.21835,
+            -34.971534
+          ],
+          [
+            -71.218453,
+            -34.971554
+          ],
+          [
+            -71.218439,
+            -34.971501
+          ],
+          [
+            -71.218434,
+            -34.971485
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-07",
+      "properties": {
+        "id": "gap-curico-07",
+        "name": "Oportunidad #07: San Ricardo",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 7,
+        "priority_score": 59.3,
+        "gap_length_m": 234,
+        "component_a_km": 0.65,
+        "component_b_km": 0.57,
+        "connected_network_km": 1.45,
+        "network_gain_km": 1.22,
+        "gain_ratio": 5.2,
+        "streets": [
+          "San Ricardo",
+          "Camino a Tutuquén",
+          "Avenida Las Torres"
+        ],
+        "streets_display": "San Ricardo, Camino a Tutuquén, Avenida Las Torres",
+        "highway_types": [
+          "residential",
+          "tertiary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 234 m en este tramo uniría 1.45 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.265592,
+            -34.974541
+          ],
+          [
+            -71.265605,
+            -34.974624
+          ],
+          [
+            -71.265224,
+            -34.974762
+          ],
+          [
+            -71.265159,
+            -34.974785
+          ],
+          [
+            -71.264888,
+            -34.974857
+          ],
+          [
+            -71.264215,
+            -34.975091
+          ],
+          [
+            -71.263546,
+            -34.975325
+          ],
+          [
+            -71.263412,
+            -34.975158
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-08",
+      "properties": {
+        "id": "gap-curico-08",
+        "name": "Oportunidad #08: Avenida Manso de Velasco",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 8,
+        "priority_score": 58.8,
+        "gap_length_m": 308,
+        "component_a_km": 19.12,
+        "component_b_km": 0.41,
+        "connected_network_km": 19.84,
+        "network_gain_km": 19.53,
+        "gain_ratio": 63.2,
+        "streets": [
+          "Avenida Manso de Velasco"
+        ],
+        "streets_display": "Avenida Manso de Velasco",
+        "highway_types": [
+          "primary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 308 m en este tramo uniría 19.84 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.23365,
+            -34.991564
+          ],
+          [
+            -71.233643,
+            -34.991643
+          ],
+          [
+            -71.233552,
+            -34.992382
+          ],
+          [
+            -71.233479,
+            -34.993116
+          ],
+          [
+            -71.233434,
+            -34.993524
+          ],
+          [
+            -71.233354,
+            -34.994243
+          ],
+          [
+            -71.233345,
+            -34.99433
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-09",
+      "properties": {
+        "id": "gap-curico-09",
+        "name": "Oportunidad #09: Membrillar",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 9,
+        "priority_score": 56.1,
+        "gap_length_m": 223,
+        "component_a_km": 0.75,
+        "component_b_km": 0.41,
+        "connected_network_km": 1.38,
+        "network_gain_km": 1.16,
+        "gain_ratio": 5.2,
+        "streets": [
+          "Membrillar",
+          "Avenida Circunvalación Doctor Osorio",
+          "Chacabuco",
+          "Avenida Circunvalación Doctor Osorio"
+        ],
+        "streets_display": "Membrillar, Avenida Circunvalación Doctor Osorio, Chacabuco",
+        "highway_types": [
+          "secondary",
+          "residential"
+        ],
+        "description": "Una conexión potencial de aproximadamente 223 m en este tramo uniría 1.38 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.236769,
+            -34.995343
+          ],
+          [
+            -71.236788,
+            -34.995565
+          ],
+          [
+            -71.236234,
+            -34.995594
+          ],
+          [
+            -71.235784,
+            -34.995617
+          ],
+          [
+            -71.235216,
+            -34.995646
+          ],
+          [
+            -71.235174,
+            -34.995209
+          ],
+          [
+            -71.235249,
+            -34.995204
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-curico-10",
+      "properties": {
+        "id": "gap-curico-10",
+        "name": "Oportunidad #10: Calle sin nombre",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 10,
+        "priority_score": 55.1,
+        "gap_length_m": 591,
+        "component_a_km": 1.13,
+        "component_b_km": 1.23,
+        "connected_network_km": 2.95,
+        "network_gain_km": 2.36,
+        "gain_ratio": 4.0,
+        "streets": [
+          "Calle sin nombre",
+          "Avenida Circunvalación Paul Harris",
+          "Calle 4"
+        ],
+        "streets_display": "Calle sin nombre, Avenida Circunvalación Paul Harris, Calle 4",
+        "highway_types": [
+          "cycleway",
+          "service",
+          "secondary",
+          "tertiary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 591 m en este tramo uniría 2.95 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.230749,
+            -34.970448
+          ],
+          [
+            -71.230521,
+            -34.97048
+          ],
+          [
+            -71.230421,
+            -34.970487
+          ],
+          [
+            -71.230318,
+            -34.97049
+          ],
+          [
+            -71.230219,
+            -34.970498
+          ],
+          [
+            -71.230188,
+            -34.970529
+          ],
+          [
+            -71.230293,
+            -34.97052
+          ],
+          [
+            -71.230441,
+            -34.970512
+          ],
+          [
+            -71.230531,
+            -34.970505
+          ],
+          [
+            -71.230685,
+            -34.970486
+          ],
+          [
+            -71.230754,
+            -34.970479
+          ],
+          [
+            -71.230837,
+            -34.970473
+          ],
+          [
+            -71.231307,
+            -34.970433
+          ],
+          [
+            -71.231396,
+            -34.970431
+          ],
+          [
+            -71.231626,
+            -34.970451
+          ],
+          [
+            -71.231796,
+            -34.970433
+          ],
+          [
+            -71.232298,
+            -34.97038
+          ],
+          [
+            -71.232717,
+            -34.970336
+          ],
+          [
+            -71.2328,
+            -34.970327
+          ],
+          [
+            -71.232879,
+            -34.970319
+          ],
+          [
+            -71.233313,
+            -34.970273
+          ],
+          [
+            -71.233802,
+            -34.970222
+          ],
+          [
+            -71.234303,
+            -34.970169
+          ],
+          [
+            -71.23437,
+            -34.970141
+          ],
+          [
+            -71.234448,
+            -34.970121
+          ],
+          [
+            -71.234508,
+            -34.970111
+          ],
+          [
+            -71.234586,
+            -34.970105
+          ],
+          [
+            -71.23465,
+            -34.970107
+          ],
+          [
+            -71.234617,
+            -34.969861
+          ],
+          [
+            -71.234612,
+            -34.969782
+          ],
+          [
+            -71.234609,
+            -34.969702
+          ],
+          [
+            -71.23461,
+            -34.969616
+          ],
+          [
+            -71.234615,
+            -34.969529
+          ],
+          [
+            -71.234652,
+            -34.969662
+          ],
+          [
+            -71.23468,
+            -34.969757
+          ],
+          [
+            -71.234703,
+            -34.96987
+          ],
+          [
+            -71.234738,
+            -34.97007
+          ],
+          [
+            -71.234741,
+            -34.970088
           ]
         ]
       }

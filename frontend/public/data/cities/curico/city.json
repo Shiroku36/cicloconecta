@@ -29,5 +29,15 @@
       "suggested-routes"
     ],
     "last_updated": "2026-09-09T11:33:17.200229+00:00"
+  },
+  "connectivity": {
+    "total_cycling_km": 42.22,
+    "total_components": 31,
+    "main_component_km": 19.12,
+    "isolated_components_count": 5,
+    "relevant_endpoints_count": 74,
+    "candidates_analyzed": 88,
+    "selected_opportunities_count": 10,
+    "last_analyzed": "2026-09-09T17:48:52.188530+00:00"
   }
 }
