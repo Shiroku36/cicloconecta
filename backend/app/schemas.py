@@ -21,11 +21,14 @@ class CitySummary(BaseModel):
     province: Optional[str] = None
     region: str
     country: str = "Chile"
+    enabled: bool = True
     center: list[float] = Field(..., description="[longitude, latitude]")
     initial_zoom: float = 13.5
     bounds: Optional[list[list[float]]] = None
     description: Optional[str] = None
+    presets: list[dict[str, Any]] = []
     stats: Optional[CityStats] = None
+    connectivity: Optional[dict[str, Any]] = None
 
 
 class LayerInfo(BaseModel):
@@ -54,6 +57,7 @@ class RouteRequest(BaseModel):
     origin: list[float] = Field(..., min_length=2, max_length=2, description="[lon, lat]")
     destination: list[float] = Field(..., min_length=2, max_length=2, description="[lon, lat]")
     max_snap_dist_m: float = Field(500.0, description="Distancia máxima de ajuste al grafo en metros")
+    profile: str = Field("balanced", description="Perfil de enrutamiento ciclista: direct, balanced, max_cycleway")
 
 
 class SnappedPoint(BaseModel):

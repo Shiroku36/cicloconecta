@@ -47,10 +47,11 @@ class CityRoutingEngine:
         origin: list[float],
         destination: list[float],
         max_snap_dist_m: float = 500.0,
+        profile: str = "balanced",
     ) -> RouteResponse:
         """Calculates cycling and shortest routes with caching."""
         cached_result = self.cache.get(origin, destination)
-        if cached_result:
+        if cached_result and profile == "balanced":
             return RouteResponse(**{**cached_result, "cached": True})
 
         try:
