@@ -137,10 +137,43 @@ Salida generada:
 
 ### 4.3. Detección Algorítmica de Conexiones Faltantes (Fase 3)
 ```bash
-python pipeline/build_curico_gaps.py
+python -m pipeline.gap_detector --city curico
 ```
 Salida generada:
 - `data/cities/curico/missing-connections.geojson` (10 conexiones prioritarias algorítmicas reales, `is_demo: false`)
 - `frontend/public/data/cities/curico/missing-connections.geojson` (sincronización estática para visualizador)
 - Actualización de métricas de red y componentes conexas en `data/cities/curico/city.json` y `frontend/public/data/cities/curico/city.json`
+
+---
+
+## 5. Pipeline Unificado Multi-Ciudad (`pipeline.build_city` — Fase 4)
+
+A partir de la **Fase 4**, todas las etapas del pipeline están centralizadas en un orquestador CLI único y genérico:
+
+```bash
+# Construir una ciudad específica desde registry.json
+python -m pipeline.build_city --city talca
+
+# Forzar recarga completa desde Overpass OSM
+python -m pipeline.build_city --city talca --refresh
+
+# Procesar todas las ciudades activas
+python -m pipeline.build_city --all-enabled
+```
+
+### Resultados de Construcción Comparados
+
+| Métrica | Curicó | Talca |
+| :--- | :--- | :--- |
+| **Población / Tipo** | ~150.000 hab. (Intermedia) | ~230.000 hab. (Capital Regional) |
+| **Tramos de Ciclovía Mapeados (OSM)** | 121 tramos | 214 tramos |
+| **Longitud Total Red Ciclista** | 43.20 km | 73.33 km |
+| **Grafo Navegable ($G_{\text{nav}}$)** | 16.252 nodos / 33.545 aristas | 31.529 nodos / 65.278 aristas |
+| **Componentes Conexas Ciclistas** | 31 componentes | 30 componentes |
+| **Componente Principal Dorsal** | 19.12 km (44.3%) | 28.60 km (39.0%) |
+| **Segunda Componente Mayor** | 4.38 km (10.1%) | 6.36 km (8.7%) |
+| **Brecha #01 más Prioritaria** | Manuel Antonio Caro (75 m, 90.3 pts) | 9 Norte (128 m, 89.9 pts) |
+| **Ganancia de Red Brecha #01** | Une 19.62 km (259.9x) | Une 35.09 km (272.2x) |
+| **Tiempo de Ejecución Pipeline** | ~0.8 s (con caché) / ~25 s (red) | ~2.5 s (con caché) / ~34 s (red) |
+
 

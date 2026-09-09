@@ -1,40 +1,50 @@
 # CicloConecta 🚲🇨🇱
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![City: Curicó](https://img.shields.io/badge/Piloto-Curicó%2C%20Chile-0284c7.svg)](#primera-ciudad-curicó)
+[![Ciudades: Curicó & Talca](https://img.shields.io/badge/Ciudades-Curicó%20%7C%20Talca-0284c7.svg)](#ciudades-activas)
 [![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg)](backend/)
 [![Frontend: React+MapLibre](https://img.shields.io/badge/Frontend-React%20%7C%20MapLibre-blue.svg)](frontend/)
 
 **CicloConecta** es una plataforma comunitaria y de código abierto para **visualizar, analizar y proyectar la movilidad ciclista en ciudades de Chile**.
 
-No busca competir con aplicaciones comerciales de navegación satelital vehicular (como Google Maps o Waze), sino proporcionar una **capa especializada de inteligencia ciclista** montada sobre mapas libres y abiertos, permitiendo a la ciudadanía, activistas y planificadores urbanos entender dónde se pedalea de forma segura y dónde la red está fracturada.
+No busca competir con navegadores vehiculares comerciales, sino proporcionar una **capa especializada de inteligencia ciclista territorial** montada sobre mapas abiertos, permitiendo a la ciudadanía, activistas y planificadores urbanos entender dónde se pedalea de forma segura, dónde la red está fracturada y cómo priorizar intervenciones de alto impacto.
 
 ---
 
-## 🗺️ Primera Ciudad: Curicó, Chile
+## 🗺️ Ciudades Activas
 
-La primera fase del proyecto se enfoca en la ciudad de **Curicó, Región del Maule**, caracterizada por una topografía predominantemente plana con gran potencial para la bicicleta, pero con desafíos de continuidad e interconexión entre sectores residenciales y el centro cívico.
+CicloConecta opera con una **arquitectura multi-ciudad genérica y declarativa** gobernada por [`data/cities/registry.json`](data/cities/registry.json). El sistema incluye actualmente:
 
-### Capas Disponibles en esta Versión
-
-1. **Ciclovías Existentes (DATOS REALES):**
-   - Más de 120 tramos de vías ciclistas activas extraídos directamente desde **OpenStreetMap (OSM)** mediante la API Overpass (Avenida Bernardo O'Higgins, Rauquén, Calafquén, Merced, Tutuquén, Paso Nivel Los Niches, etc.), sumando más de **43 kilómetros** de infraestructura mapeada.
-2. **Conexiones Faltantes (DEMO / ESTIMACIÓN CONCEPTUAL):**
-   - Tramos y cortes críticos identificados preliminarmente para unir sectores desconectados (ej. enlace Rauquén con la Estación Curicó).
-3. **Rutas Sugeridas (DEMO / ESTIMACIÓN CONCEPTUAL):**
-   - Corredores alternativos de bajo estrés vehicular por calles residenciales (zona 30 km/h) para sortear vías saturadas.
+| Ciudad | Región | Ciclovías Mapeadas | Tramos OSM | Componentes Conexas | Brechas Top 10 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Curicó** | Región del Maule | 43.20 km | 121 tramos | 31 componentes | #01: Manuel Antonio Caro (75 m) |
+| **Talca** | Región del Maule | 73.33 km | 214 tramos | 30 componentes | #01: 9 Norte (128 m, une 35 km) |
 
 > [!NOTE]
-> Para garantizar total transparencia comunitaria, las capas no verificadas en terreno están marcadas con un badge explícito **`DEMO`** en la interfaz y en los atributos del GeoJSON. Nunca presentamos estimaciones preliminares como infraestructura real.
+> Nuevas comunas (Rancagua, Chillán, Gran Concepción) están registradas como placeholders y listas para construirse con un único comando CLI. Ver [`docs/MULTI_CITY.md`](docs/MULTI_CITY.md).
+
+---
+
+## 🚲 Capas y Metodología Rigurosa
+
+Para garantizar total transparencia comunitaria, distinguimos estrictamente la infraestructura física existente de los análisis predictivos:
+
+1. **Ciclovías Existentes (Badge `OSM`):**
+   - Vías ciclistas activas extraídas directamente de **OpenStreetMap** (segregadas, ciclobandas y vías exclusivas).
+2. **Conexiones Potenciales (Badge `ALGORÍTMICO`):**
+   - Brechas prioritarias de continuidad calculadas algorítmicamente mediante descomposición de componentes conexas y caminos mínimos sobre la red vial real ($G_{\text{nav}}$).
+3. **Rutas Sugeridas (Badge `ALGORÍTMICO`):**
+   - Rutas calculadas con algoritmo A* determinista minimizando el estrés vehicular y priorizando ciclovías con respecto a la ruta vehicular directa.
 
 ---
 
 ## 🏛️ Principio de Arquitectura: Desacoplamiento
 
-El sistema separa estrictamente dos mundos:
+El sistema separa estrictamente el cómputo geoespacial del consumo web:
 
-- **Preprocesamiento Determinista (Offline/Batch en Python):** El análisis topológico vial, cálculo de distancias y detección de discontinuidades de red se procesan una sola vez mediante algoritmos de grafos deterministas, generando capas GeoJSON estandarizadas. **No se utiliza IA para cálculos geométricos o de conectividad**.
-- **Visualizador Liviano (Cliente en React + MapLibre GL JS):** El navegador únicamente descarga las capas GeoJSON procesadas y las renderiza aceleradas por GPU sobre un mapa base libre (Carto / OpenStreetMap), garantizando una experiencia fluida (60 FPS) tanto en escritorio como en dispositivos móviles.
+- **Pipeline Determinista Unificado (`pipeline/build_city.py`):** Descarga datos de OpenStreetMap con redundancia de servidores Overpass, construye el grafo navegable en NetworkX, analiza componentes conexas, computa brechas y precalcula rutas representativas. **No se utiliza IA generativa para cálculos geométricos o de conectividad**.
+- **Motor de Routing FastAPI (`backend/`):** Aislamiento estricto de instancias de routing por ciudad en memoria para responder consultas interactivas en $< 15\text{ ms}$.
+- **Visualizador React + MapLibre GL JS (`frontend/`):** Interfaz fluida acelerada por hardware (60 FPS), selector de ciudades con sincronización de URLs (`?city=talca`), tarjeta de estado de red (`NetworkStatusCard`), planificador con presets urbanos y popups detallados con resalto de brechas.
 
 ---
 
@@ -44,39 +54,43 @@ El sistema separa estrictamente dos mundos:
 cicloconecta/
 ├── data/
 │   └── cities/
-│       └── curico/
-│           ├── city.json                        # Metadatos espaciales, centroide y estadísticas
-│           ├── cycling-infrastructure.geojson   # Datos REALES extraídos de OpenStreetMap
-│           ├── missing-connections.geojson      # Datos DEMO claramente identificados
-│           └── suggested-routes.geojson         # Datos DEMO claramente identificados
+│       ├── registry.json                        # Registro central declarativo de ciudades
+│       ├── curico/                              # Artefactos procesados de Curicó
+│       │   ├── city.json                        # Metadatos, centroide, métricas y conectividad
+│       │   ├── cycling-infrastructure.geojson   # Ciclovías existentes (OSM)
+│       │   ├── missing-connections.geojson      # Brechas prioritarias algorítmicas (Top 10)
+│       │   ├── suggested-routes.geojson         # Rutas sugeridas representativas
+│       │   └── nav_graph.json                   # Grafo vial navegable (16.252 nodos)
+│       └── talca/                               # Artefactos procesados de Talca
+│           ├── city.json                        # Metadatos, centroide, métricas y conectividad
+│           ├── cycling-infrastructure.geojson   # Ciclovías existentes (214 tramos, 73.3 km)
+│           ├── missing-connections.geojson      # Brechas prioritarias algorítmicas (Top 10)
+│           ├── suggested-routes.geojson         # Rutas sugeridas representativas
+│           └── nav_graph.json                   # Grafo vial navegable (31.529 nodos)
 ├── pipeline/
-│   ├── osm_extractor.py                         # Extractor determinista desde OSM Overpass
-│   └── requirements.txt
+│   ├── build_city.py                            # CLI unificado para construir cualquier ciudad
+│   ├── osm_extractor.py                         # Extractor de ciclovías desde Overpass
+│   ├── network_extractor.py                     # Extractor de red vial navegable
+│   ├── gap_detector.py                          # Detector multicriterio de brechas de red
+│   └── router.py                                # Motor de routing determinista A*
 ├── backend/
 │   ├── app/
-│   │   ├── main.py                              # FastAPI REST API (/api/cities, /api/layers)
-│   │   ├── config.py                            # Configuración de entornos y CORS
-│   │   └── schemas.py                           # Validación de esquemas con Pydantic
-│   ├── tests/
-│   │   └── test_api.py                          # Tests automatizados de endpoints
-│   ├── requirements.txt
-│   └── .env.example
+│   │   ├── main.py                              # FastAPI REST API (/api/cities, /api/cities/{id}/route)
+│   │   ├── routing/                             # RoutingEngine y CityRoutingManager
+│   │   └── schemas.py                           # Validación de esquemas Pydantic
+│   └── tests/                                   # 31 tests unitarios automatizados (pytest)
 ├── frontend/
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── MapView.tsx                      # Renderizador WebGL con MapLibre GL JS
-│   │   │   ├── LayerControl.tsx                 # Panel flotante reactivo de capas
-│   │   │   ├── CityHeader.tsx                   # Cabecera con estadísticas e identidad
-│   │   │   └── InfoModal.tsx                    # Modal de transparencia y metodología
-│   │   ├── services/api.ts                      # Consumo de API con fallback estático
-│   │   └── styles/index.css                     # Diseño moderno con glassmorphism
-│   ├── package.json
-│   └── vite.config.ts
+│   │   ├── components/                          # MapView, CityHeader, RoutePlanner, OpportunitiesList, NetworkStatusCard
+│   │   ├── services/api.ts                      # Consumo de API REST y fallback estático
+│   │   └── styles/index.css                     # Estilos modernos con glassmorphism
+│   └── public/data/cities/                      # Réplica estática para despliegue sin backend
 ├── docs/
+│   ├── MULTI_CITY.md                            # Guía paso a paso para sumar nuevas ciudades
 │   ├── ARCHITECTURE.md                          # Arquitectura detallada del sistema
-│   ├── ROADMAP.md                               # Fases de expansión a otras ciudades de Chile
-│   ├── DATA_PIPELINE.md                         # Especificación del pipeline determinista
-│   └── DECISIONS.md                             # Registro de decisiones de arquitectura (ADRs)
+│   ├── DATA_PIPELINE.md                         # Especificación matemática del pipeline
+│   ├── DECISIONS.md                             # Registro de decisiones de arquitectura (ADRs)
+│   └── PROGRESS.md                              # Bitácora histórica de avances por fase
 └── LICENSE                                      # Licencia MIT
 ```
 
@@ -90,74 +104,62 @@ cicloconecta/
 
 ---
 
-### Opción 1: Ejecutar Frontend (Con datos locales o API)
-
-El frontend está diseñado con fallback estático inteligente: funciona inmediatamente por sí solo consumiendo los GeoJSON locales, o conectándose al backend si está activo.
+### Opción 1: Ejecutar Frontend (Con fallback estático o API)
 
 ```bash
-# 1. Entrar a la carpeta frontend
-cd frontend
+# 1. Instalar dependencias
+npm --prefix frontend install
 
-# 2. Instalar dependencias
-npm install
-
-# 3. Iniciar servidor de desarrollo Vite
-npm run dev
+# 2. Iniciar servidor Vite
+npm --prefix frontend run dev
 ```
 
-Abre en tu navegador: **`http://localhost:5173`**.
+Abre en tu navegador: **`http://localhost:5173`** (o directamente **`http://localhost:5173/?city=talca`**).
 
 ---
 
 ### Opción 2: Ejecutar Backend API (FastAPI)
 
 ```bash
-# 1. Instalar dependencias de Python
+# 1. Instalar dependencias
 pip install -r backend/requirements.txt
 
-# 2. Iniciar el servidor FastAPI con Uvicorn
+# 2. Iniciar servidor FastAPI
 uvicorn backend.app.main:app --reload --port 8000
 ```
 
-- API disponible en: **`http://localhost:8000`**
-- Documentación interactiva Swagger en: **`http://localhost:8000/docs`**
+- API: **`http://localhost:8000`**
+- Swagger UI: **`http://localhost:8000/docs`**
 
 ---
 
 ### Ejecutar Tests Automatizados
 
 ```bash
-# Tests del backend
+# Backend (31 tests unitarios)
 pytest backend/tests/
 
-# Verificación de compilación y linter frontend
+# Frontend (linter y compilación estricta de tipos)
 npm --prefix frontend run lint
 npm --prefix frontend run build
 ```
 
 ---
 
-### Re-ejecutar el Pipeline de Datos de Curicó
-
-Para volver a consultar OpenStreetMap y actualizar el GeoJSON de infraestructura ciclista existente:
+### Construir o Actualizar una Ciudad
 
 ```bash
-python pipeline/osm_extractor.py
+# Construir Talca completa desde OpenStreetMap
+python -m pipeline.build_city --city talca
+
+# Re-procesar todas las ciudades activas
+python -m pipeline.build_city --all-enabled
 ```
-
----
-
-## 📈 Próximos Pasos (Hoja de Ruta)
-
-- [ ] **Fase 2:** Implementar el algoritmo determinista de detección automática de *gaps* viales con NetworkX / Shapely.
-- [ ] **Fase 3:** Escalar a nuevas ciudades de la Región del Maule (Talca, Linares) y otras regiones de Chile (Concepción, Valparaíso, Santiago).
-- [ ] **Fase 4:** Mecanismos de retroalimentación ciudadana para reportar baches, falta de señalización u obstáculos en ciclovías.
-
-Para mayor detalle técnico, consulta [`docs/ROADMAP.md`](docs/ROADMAP.md) y [`docs/DECISIONS.md`](docs/DECISIONS.md).
 
 ---
 
 ## 🤝 Licencia y Comunidad
 
 Proyecto distribuido bajo la licencia libre **MIT**. Consulta el archivo [`LICENSE`](LICENSE) para más detalles.
-Las contribuciones comunitarias son bienvenidas.
+Las contribuciones comunitarias y aportes a OpenStreetMap son bienvenidos.
+

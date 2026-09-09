@@ -105,18 +105,27 @@ Cada ciudad es una unidad autocontenida:
 
 ## 3. Modelo de Capas y Simbología
 
-| Capa | Identificador | Color | Estilo | Origen de Datos |
-| :--- | :--- | :--- | :--- | :--- |
-| **Ciclovías Existentes** | `cycling-infrastructure` | `#10b981` (Verde Esmeralda) | Línea continua sólida (3.5px) | OpenStreetMap (Reales) |
-| **Conexiones Potenciales** | `missing-connections` | `#f59e0b` (Ámbar) | Línea discontinua `[3, 2]` (3.5px) | Algoritmo de Gaps determinista sobre red vial real (Reales) |
-| **Rutas Sugeridas** | `suggested-routes` | `#3b82f6` (Azul Ciclista) | Línea continua con halo (3px) | Routing A* sobre red vial OSM (Reales) |
+| Capa | Identificador | Badge UI | Color | Estilo | Origen y Naturaleza |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Ciclovías Existentes** | `cycling-infrastructure` | `OSM` | `#10b981` (Verde Esmeralda) | Línea continua sólida (3.5px) | Infraestructura física mapeada en OpenStreetMap |
+| **Conexiones Potenciales** | `missing-connections` | `ALGORÍTMICO` | `#f59e0b` (Ámbar) | Línea discontinua `[4, 2]` (3.5px) | Brechas prioritarias calculadas algorítmicamente sobre red vial OSM |
+| **Rutas Sugeridas** | `suggested-routes` | `ALGORÍTMICO` | `#3b82f6` (Azul Ciclista) | Línea continua con halo (3px) | Rutas calculadas algorítmicamente (A*) sobre red vial OSM |
 
 ---
 
-## 4. Estrategia Multi-Ciudad
+## 4. Estrategia Multi-Ciudad Declarativa
 
-El sistema fue diseñado desde el inicio para evitar que agregar una ciudad (`talca`, `santiago`, etc.) requiera cambios en el código del visor:
-1. Se crea la carpeta `data/cities/{nombre_slug}/`.
-2. Se ejecuta el pipeline especificando el bounding box y centroide de la comuna.
-3. El backend expone la nueva ciudad en `/api/cities`.
-4. El frontend carga la lista de ciudades disponibles en el selector y vuela la cámara (`map.flyTo`) a las nuevas coordenadas.
+Desde la **Fase 4**, CicloConecta opera con un modelo completamente desacoplado y guiado por datos:
+
+1. **Registro Declarativo Central (`data/cities/registry.json`)**:
+   - Define metadatos territoriales, bounding boxes, presets urbanos y rutas representativas.
+2. **Pipeline Unificado (`pipeline/build_city.py`)**:
+   - Ejecuta la extracción, construcción de grafos navegables, precomputación de rutas y detección de brechas para cualquier ciudad vía CLI:
+     ```bash
+     python -m pipeline.build_city --city talca
+     ```
+3. **Gestión Aislada de Motores (`CityRoutingManager`)**:
+   - El backend gestiona un motor independiente por ciudad (`get_city_routing_engine(city_id)`), cargando bajo demanda su grafo $G_{\text{nav}}$ sin bloquear otras ciudades.
+4. **Frontend React Adaptativo**:
+   - El selector de ciudades en el encabezado consulta `/api/cities` o `registry.json`, sincroniza la URL (`?city=talca`), ajusta los límites del mapa y actualiza la tarjeta de estado (`NetworkStatusCard`) y los accesos rápidos del planificador.
+   - Ver guía completa en [`docs/MULTI_CITY.md`](file:///c:/Users/Danich/Documents/Shiroku/ciclovia/docs/MULTI_CITY.md).

@@ -182,6 +182,36 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Eliminación definitiva de datos sintéticos DEMO; identificación de oportunidades reales de alto impacto (ej. brecha de 75 m en Manuel Antonio Caro que une 19,62 km, y brecha de 834 m en Enrique Lafourcade que unifica 24,33 km continuos); experiencia interactiva y visual atractiva.
   - Negativas: Requiere calibrar umbrales de búsqueda de distancia máxima (establecido en 1.200 m) para ciudades con morfología muy dispersa.
 
+---
+
+## D-012 — Arquitectura Multi-Ciudad Genérica, Registro Declarativo y Segunda Ciudad Real (Talca)
+
+- **Fecha:** 2026-09-09
+- **Estado:** Aceptada
+- **Contexto:**
+  Hasta la Fase 3, el pipeline de extracción, scripts de precomputación y componentes frontend se encontraban estrechamente acoplados al identificador `curico`. Para expandir CicloConecta por Chile (comenzando con Talca como segunda ciudad real) se requería desacoplar toda la lógica sin duplicar código ni crear scripts ad-hoc por ciudad.
+  Asimismo, se identificó la necesidad de corregir imprecisiones semánticas: las conexiones potenciales calculadas no debían catalogarse con la insignia `REAL` ni afirmarse como infraestructura existente, sino claramente identificarse como `ALGORÍTMICO` / `ANÁLISIS` sobre datos de OpenStreetMap.
+- **Decisión:**
+  1. **Correcciones Semánticas de Capas:**
+     - `cycling-infrastructure`: badge `OSM`, descripción `"Infraestructura y vías ciclistas mapeadas en OpenStreetMap"`.
+     - `missing-connections`: badge `ALGORÍTMICO`, descripción `"Brechas de continuidad prioritarias detectadas algorítmicamente en la red vial"`.
+     - `suggested-routes`: badge `ALGORÍTMICO`, descripción `"Rutas calculadas algorítmicamente priorizando ciclovías y vías de bajo estrés"`.
+  2. **Registro Declarativo Central (`registry.json`):**
+     - Centralizar la configuración de ciudades admitidas en `data/cities/registry.json` (y réplica en `frontend/public/data/cities/registry.json`), definiendo límites cartográficos, bounding boxes, presets urbanos y pares de rutas representativas.
+  3. **Pipeline Unificado de Construcción (`pipeline/build_city.py`):**
+     - Crear un CLI unificado `python -m pipeline.build_city --city {city_id} [--refresh] [--all-enabled]` que orquesta secuencialmente: extracción de ciclovías, construcción de grafo navegable, cálculo de rutas de muestra, detección de brechas Top 10 y sincronización hacia `frontend/public/`.
+     - Incorporar rotación de servidores Overpass (`overpass-api.de`, `kumi.systems`, `private.coffee`) con reintentos y timeouts ampliados para asegurar robustez frente a sobrecargas públicas.
+  4. **Segunda Ciudad Real (Talca):**
+     - Procesar y validar completamente la red ciclista de Talca: 214 tramos mapeados (73,33 km), grafo navegable de 31.529 nodos y 65.278 aristas, 30 componentes inconexas (red dorsal de 28,6 km, 39%) y Top 10 brechas detectadas (destacando #01: 9 Norte de 128 m con ganancia de conectividad de 272,2x).
+  5. **Gestión de Artefactos e Ignorados en Git:**
+     - Excluir del control de versiones las descargas crudas volátiles (`data/cities/*/raw_*.json`, `routes_cache.json`) para prevenir sobrecrecimiento del repositorio, preservando únicamente las capas procesadas GeoJSON, `city.json` y `nav_graph.json` requeridas para ejecución instantánea en CI y servidor web.
+  6. **Frontend Multi-Ciudad Interactivo:**
+     - Incorporar selector de ciudad en el encabezado con sincronización bidireccional de parámetros URL (`?city=talca`), centrado de cámara, reinicio seguro de estado (sin geometrías fantasmas) y tarjeta informativa `NetworkStatusCard` con métricas de conectividad urbana.
+- **Consecuencias:**
+  - Positivas: Escalabilidad inmediata a cualquier ciudad chilena sin tocar código frontend ni backend; experiencia de usuario rica, fluida y transparente en el origen de datos; cobertura simultánea de Curicó y Talca con 100% de tests unitarios y de integración pasando.
+  - Negativas: Requiere mantener sincronizado `registry.json` entre la carpeta `data/` y `frontend/public/` (manejado automáticamente por el pipeline `build_city`).
+
+
 
 
 

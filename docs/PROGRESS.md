@@ -4,6 +4,56 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-09] — Fase 4: Arquitectura Multi-Ciudad y Segunda Ciudad Real (Talca)
+
+### 1. ¿Qué se implementó?
+- **Correcciones Semánticas de Capas:**
+  - Se eliminó la ambigüedad de rotular conexiones potenciales como `REAL`.
+  - Badges estandarizados:
+    * `OSM`: Ciclovías existentes mapeadas en OpenStreetMap.
+    * `ALGORÍTMICO`: Rutas sugeridas calculadas algorítmicamente y conexiones potenciales detectadas sobre la red vial.
+  - Actualización de descripciones en backend y frontend: *"Infraestructura y vías ciclistas mapeadas en OpenStreetMap"*, distinguiendo con absoluta claridad los datos físicos de los análisis predictivos.
+- **Registro Central Declarativo (`registry.json`):**
+  - Archivo maestro en `data/cities/registry.json` (y réplica estática en `frontend/public/data/cities/registry.json`).
+  - Configuración completa para Curicó y Talca, más placeholders deshabilitados (`enabled: false`) para Rancagua, Chillán y Concepción.
+- **Pipeline Unificado de Construcción (`pipeline/build_city.py`):**
+  - CLI genérico parametrizado: `python -m pipeline.build_city --city {city_id} [--refresh] [--skip-gaps] [--all-enabled]`.
+  - Resiliencia de red Overpass con rotación de 3 servidores (`overpass-api.de`, `kumi.systems`, `private.coffee`), timeouts de 90s/120s y reintentos exponenciales.
+  - Orquestación automatizada de 6 pasos: ingesta OSM, construcción de grafo navegable, precomputación de rutas, detección de brechas Top 10, consolidación de métricas de red y sincronización estática hacia `frontend/public/`.
+- **Segunda Ciudad Real: Talca (Región del Maule):**
+  - **214 tramos de ciclovía mapeados** en OSM, totalizando **73.33 km** de infraestructura.
+  - **Grafo navegable multimodal ($G_{\text{nav}}$)**: 31.529 nodos y 65.278 aristas (19.3 MB).
+  - **30 componentes conexas**: Red dorsal principal de 28.60 km (39.0% del total) a lo largo del eje ferroviario y norte-sur.
+  - **Top 10 brechas algorítmicas detectadas**:
+    * #01 9 Norte (128 m, score 89.9): une la red dorsal (28.6 km) con la red nororiente (6.36 km), consolidando una red continua de 35.09 km (ganancia 272.2x).
+    * #02 20 Norte A (599 m, score 82.5): une 35.09 km de red.
+  - **5 rutas representativas urbanas calculadas y comparadas**: UTalca Campus Lircay a Plaza de Armas (4.86 km, 52.8% ciclovía), Mall Plaza Maule a Plaza de Armas, Río Claro a Plaza de Armas, La Florida a Plaza de Armas, Estación a UTalca.
+- **Backend Multi-Ciudad (`backend/app/`):**
+  - `CityRoutingManager`: Aislamiento estricto de instancias de routing por ciudad bajo demanda con bloqueo seguro de concurrencia.
+  - Nuevos endpoints multi-ciudad y actualización de esquemas Pydantic (`CitySummary`, `CityDetail`).
+  - Suite de tests unitarios completa (`backend/tests/test_multicity.py`): **31 de 31 tests pasando en 1.48s**.
+- **Frontend Multi-Ciudad React + MapLibre:**
+  - Selector de ciudad interactivo en encabezado (`CityHeader.tsx`).
+  - Sincronización transparente de URLs (`?city=curico`, `?city=talca`) con soporte de navegación en historial (`popstate`).
+  - Tarjeta de métricas urbanas `NetworkStatusCard.tsx` en la barra lateral derecha.
+  - Presets dinámicos en el planificador de rutas según la ciudad activa.
+  - Reinicio automático y seguro de estado entre transiciones de ciudad (cero geometrías fantasmas).
+  - Scroll vertical fluido en `.right-sidebar` para acomodar capas, estado de red y lista de brechas en cualquier resolución.
+  - Linter: **0 advertencias, 0 errores** (`oxlint`). Build de producción: **Exitoso** (`vite build`).
+- **Control de Artefactos Pesados:**
+  - `.gitignore` configurado para excluir descargas crudas volátiles (`raw_network.json`, `raw_cycleways.json`, `routes_cache.json`), manteniendo solo las capas GeoJSON y grafos de navegación requeridos para CI y tiempo de ejecución.
+
+### 2. ¿Qué se comprobó visualmente en ejecución?
+- Verificación automatizada exhaustiva mediante Chrome DevTools Protocol headless:
+  - **`phase4_01_curico.png`:** Carga inicial en Curicó con badges `OSM` y `ALGORÍTMICO`, métricas (43.2 km, 121 tramos), selector de ciudad y tarjeta de estado.
+  - **`phase4_02_talca.png`:** Transición interactiva a Talca: vuelo suave de cámara, 214 tramos en verde, Top 10 brechas en ámbar, 5 rutas sugeridas en azul, presets de Talca.
+  - **`phase4_03_talca_gap_popup.png`:** Enfoque e inspección de la brecha #01 de Talca (9 Norte, 128 m) con popup de métricas de red y disclaimer.
+  - **`phase4_04_talca_route.png`:** Cálculo interactivo en Talca (Plaza de Armas a Campus Lircay UTalca) mostrando 4.86 km, 52.8% en ciclovía, desglose de calles y comparación con ruta vehicular.
+  - **`phase4_05_curico_back.png`:** Retorno dinámico a Curicó: reseteo limpio de rutas/brechas, cámara en Curicó, 121 tramos, cero capas residuales.
+  - **`phase4_06_direct_talca.png`:** Acceso directo por URL en frío (`/?city=talca`): inicialización correcta en Talca.
+
+---
+
 ## [2026-09-09] — Fase 3: Detector Algorítmico de Conexiones Faltantes para Curicó
 
 ### 1. ¿Qué se implementó?
