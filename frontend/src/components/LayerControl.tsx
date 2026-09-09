@@ -8,6 +8,7 @@ interface Props {
   layers: LayerConfig[]
   onToggleLayer: (id: LayerId) => void
   onResetView: () => void
+  cityName?: string
 }
 
 export const LayerControl: React.FC<Props> = ({
@@ -16,6 +17,7 @@ export const LayerControl: React.FC<Props> = ({
   layers,
   onToggleLayer,
   onResetView,
+  cityName = 'la ciudad',
 }) => {
   return (
     <aside className="layer-control glass-panel" aria-label="Control de capas">
@@ -28,7 +30,7 @@ export const LayerControl: React.FC<Props> = ({
           className="action-btn"
           style={{ flex: 'none', padding: '4px 8px', fontSize: '0.72rem' }}
           onClick={onResetView}
-          title="Centrar mapa en Curicó"
+          title={`Centrar mapa en ${cityName}`}
         >
           <RotateCcw size={12} /> Centrar
         </button>
@@ -128,11 +130,25 @@ export const LayerControl: React.FC<Props> = ({
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span
-                    className={`layer-badge ${layer.isDemo ? 'demo' : 'real'}`}
-                  >
-                    {layer.isDemo ? 'DEMO' : 'REAL'}
-                  </span>
+                  {(() => {
+                    let badgeLabel = 'ALGORÍTMICO'
+                    let badgeClass = 'algo'
+                    if (layer.isDemo) {
+                      badgeLabel = 'DEMO'
+                      badgeClass = 'demo'
+                    } else if (layer.id === 'cycling-infrastructure') {
+                      badgeLabel = 'OSM'
+                      badgeClass = 'osm'
+                    } else if (layer.id === 'missing-connections' || layer.id === 'suggested-routes') {
+                      badgeLabel = 'ALGORÍTMICO'
+                      badgeClass = 'algo'
+                    }
+                    return (
+                      <span className={`layer-badge ${badgeClass}`}>
+                        {badgeLabel}
+                      </span>
+                    )
+                  })()}
                   {layer.visible && isCicloConectaVisible ? (
                     <CheckSquare size={16} color={layer.color} />
                   ) : (

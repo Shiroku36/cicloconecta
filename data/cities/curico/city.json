@@ -8,7 +8,7 @@
     -71.2394,
     -34.9854
   ],
-  "initial_zoom": 13.5,
+  "initial_zoom": 14.0,
   "bounds": [
     [
       -71.3,
@@ -19,7 +19,71 @@
       -34.93
     ]
   ],
-  "description": "Ciudad intermedia en la Región del Maule, con topografía plana favorable para el ciclismo urbano y desafíos de conectividad.",
+  "bbox": [
+    -35.05,
+    -71.3,
+    -34.93,
+    -71.18
+  ],
+  "description": "Red ciclista y análisis de conectividad urbana para Curicó, Región del Maule.",
+  "presets": [
+    {
+      "id": "curico-01",
+      "name": "Plaza de Armas",
+      "coord": [
+        -71.2394,
+        -34.9854
+      ]
+    },
+    {
+      "id": "curico-02",
+      "name": "Rauquén (Norte)",
+      "coord": [
+        -71.2185,
+        -34.962
+      ]
+    },
+    {
+      "id": "curico-03",
+      "name": "Zapallar / El Boldo (Oriente)",
+      "coord": [
+        -71.212,
+        -34.9815
+      ]
+    },
+    {
+      "id": "curico-04",
+      "name": "Santa Fe (Poniente)",
+      "coord": [
+        -71.258,
+        -34.988
+      ]
+    },
+    {
+      "id": "curico-05",
+      "name": "Campus UTalca (Los Niches)",
+      "coord": [
+        -71.229,
+        -35.003
+      ]
+    },
+    {
+      "id": "curico-06",
+      "name": "Guaiquillo (Sur)",
+      "coord": [
+        -71.246,
+        -34.998
+      ]
+    },
+    {
+      "id": "curico-07",
+      "name": "Estación de Trenes",
+      "coord": [
+        -71.234,
+        -34.9785
+      ]
+    }
+  ],
   "stats": {
     "cycleways_count": 121,
     "total_km": 43.2,
@@ -28,16 +92,17 @@
       "missing-connections",
       "suggested-routes"
     ],
-    "last_updated": "2026-09-09T11:33:17.200229+00:00"
+    "last_updated": "2026-09-09T20:35:22.438611+00:00"
   },
   "connectivity": {
-    "total_cycling_km": 42.22,
+    "total_cycling_km": 43.2,
     "total_components": 31,
     "main_component_km": 19.12,
-    "isolated_components_count": 5,
-    "relevant_endpoints_count": 74,
-    "candidates_analyzed": 88,
+    "main_component_pct": 44.3,
+    "isolated_components_count": 23,
     "selected_opportunities_count": 10,
-    "last_analyzed": "2026-09-09T17:48:52.188530+00:00"
+    "median_gap_m": 308,
+    "max_score": 75.9,
+    "last_analyzed": "2026-09-09T20:35:22.438611+00:00"
   }
 }

@@ -33,7 +33,7 @@ app.add_middleware(
 LAYER_DEFINITIONS = {
     "cycling-infrastructure": {
         "name": "Ciclovías existentes",
-        "description": "Infraestructura ciclista formal mapeada en OpenStreetMap.",
+        "description": "Infraestructura y vías ciclistas mapeadas en OpenStreetMap.",
         "color": "#10b981",  # Emerald Green
         "is_demo": False,
         "source": "OpenStreetMap",
@@ -89,6 +89,31 @@ def list_cities():
     cities = []
     if not settings.data_dir.exists():
         return cities
+
+    registry_path = settings.data_dir / "registry.json"
+    if registry_path.exists():
+        try:
+            with open(registry_path, "r", encoding="utf-8") as f:
+                registry_data = json.load(f)
+            for city_def in registry_data.get("cities", []):
+                city_id = city_def["id"]
+                city_file = settings.data_dir / city_id / "city.json"
+                data = dict(city_def)
+                if city_file.exists():
+                    try:
+                        with open(city_file, "r", encoding="utf-8") as cf:
+                            detail = json.load(cf)
+                        data.update({
+                            "stats": detail.get("stats"),
+                            "connectivity": detail.get("connectivity"),
+                            "description": detail.get("description") or data.get("description"),
+                        })
+                    except Exception:
+                        pass
+                cities.append(CitySummary(**data))
+            return cities
+        except Exception:
+            pass
 
     for city_folder in sorted(settings.data_dir.iterdir()):
         if city_folder.is_dir():
@@ -193,5 +218,6 @@ def calculate_city_route(city_id: str, request: RouteRequest):
         origin=request.origin,
         destination=request.destination,
         max_snap_dist_m=request.max_snap_dist_m,
+        profile=request.profile,
     )
 
