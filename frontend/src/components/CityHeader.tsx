@@ -46,7 +46,7 @@ export const CityHeader: React.FC<Props> = ({ city, onOpenInfo }) => {
           </div>
           <div className="metric-item">
             <span>•</span>
-            <span style={{ color: '#059669', fontWeight: 600 }}>OSM Verificado</span>
+            <span style={{ color: '#059669', fontWeight: 600 }}>Datos OpenStreetMap</span>
           </div>
         </div>
       )}

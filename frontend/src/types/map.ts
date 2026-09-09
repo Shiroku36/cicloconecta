@@ -37,9 +37,12 @@ export interface LayerConfig {
 export interface FeatureProperties {
   id?: string
   name?: string
+  has_custom_name?: boolean
   type?: string
-  surface?: string
-  highway?: string
+  category?: string
+  surface?: string | null
+  surface_display?: string
+  highway?: string | null
   length_km?: number
   length_m?: number
   is_demo?: boolean
@@ -50,7 +53,9 @@ export interface FeatureProperties {
   speed_limit_kmh?: number
   source?: string
   source_id?: number | string
-  segregated?: string
-  oneway?: string
+  segregated?: string | null
+  segregated_display?: string
+  oneway?: string | null
+  raw_osm_tags?: Record<string, string>
   [key: string]: unknown
 }

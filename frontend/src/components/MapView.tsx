@@ -19,6 +19,106 @@ interface Props {
   mapInstanceRef?: React.MutableRefObject<MapLibreMap | null>
 }
 
+const EMPTY_FEATURE_COLLECTION: FeatureCollection = {
+  type: 'FeatureCollection',
+  features: [],
+}
+
+/**
+ * Creates safe DOM content for MapLibre popups without HTML string interpolation.
+ * Prevents XSS and safely renders attributes from OSM or demo layers.
+ */
+function createSafePopupContent(
+  props: FeatureProperties,
+  isDemoLayer: boolean
+): HTMLElement {
+  const container = document.createElement('div')
+  container.className = 'cicloconecta-popup-content'
+
+  const isDemo =
+    Boolean(props.is_demo) || props.status === 'DEMO' || isDemoLayer
+
+  // Title
+  const titleEl = document.createElement('div')
+  titleEl.className = 'popup-title'
+  titleEl.textContent = props.name || 'Vía ciclista'
+  container.appendChild(titleEl)
+
+  // Badge
+  const badgeEl = document.createElement('span')
+  badgeEl.className = `popup-badge ${isDemo ? 'demo' : 'real'}`
+  badgeEl.textContent = isDemo ? 'ESTIMACIÓN DEMO' : 'DATOS OPENSTREETMAP'
+  container.appendChild(badgeEl)
+
+  const addRow = (label: string, value: string) => {
+    const row = document.createElement('div')
+    row.className = 'popup-row'
+
+    const labelSpan = document.createElement('span')
+    labelSpan.className = 'popup-label'
+    labelSpan.textContent = label
+
+    const valSpan = document.createElement('span')
+    valSpan.className = 'popup-value'
+    valSpan.textContent = value
+
+    row.appendChild(labelSpan)
+    row.appendChild(valSpan)
+    container.appendChild(row)
+  }
+
+  // Tipología
+  const typeStr = props.type || 'Infraestructura ciclista'
+  addRow('Tipología:', typeStr)
+
+  // Superficie (transparent: shows Sin información if not tagged in OSM)
+  const surfaceStr = props.surface_display || props.surface || 'Sin información'
+  addRow('Superficie:', surfaceStr)
+
+  // Segregación (if present in tags)
+  if (props.segregated_display && props.segregated_display !== 'Sin información') {
+    addRow('Segregación:', props.segregated_display)
+  }
+
+  // Extensión
+  const lengthDisplay = props.length_km
+    ? `${props.length_km} km (${props.length_m || Math.round(Number(props.length_km) * 1000)} m)`
+    : props.gap_length_m
+    ? `${props.gap_length_m} m`
+    : 'Longitud en cálculo'
+  addRow('Extensión:', lengthDisplay)
+
+  // Fuente
+  const sourceText = props.source || 'OpenStreetMap Contributors'
+  addRow('Fuente:', sourceText)
+
+  // Descripción opcional
+  if (props.description) {
+    const descEl = document.createElement('div')
+    descEl.className = 'popup-desc'
+    descEl.textContent = props.description
+    container.appendChild(descEl)
+  }
+
+  // Beneficio estimado opcional
+  if (props.estimated_benefit) {
+    const benefitEl = document.createElement('div')
+    benefitEl.className = 'popup-desc'
+    benefitEl.style.marginTop = '4px'
+
+    const strong = document.createElement('strong')
+    strong.textContent = 'Impacto estimado: '
+    benefitEl.appendChild(strong)
+
+    const benefitText = document.createTextNode(props.estimated_benefit)
+    benefitEl.appendChild(benefitText)
+
+    container.appendChild(benefitEl)
+  }
+
+  return container
+}
+
 export const MapView: React.FC<Props> = ({
   city,
   isCicloConectaVisible,
@@ -29,6 +129,50 @@ export const MapView: React.FC<Props> = ({
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
   const popupRef = useRef<Popup | null>(null)
+
+  // Keep references always up-to-date to eliminate race conditions between data fetching and map loading
+  const layersDataRef = useRef(layersData)
+  layersDataRef.current = layersData
+
+  const layersRef = useRef(layers)
+  layersRef.current = layers
+
+  const isCicloConectaVisibleRef = useRef(isCicloConectaVisible)
+  isCicloConectaVisibleRef.current = isCicloConectaVisible
+
+  // Synchronizes GeoJSON data and layer visibility into the map safely
+  const syncMapLayers = (map: MapLibreMap) => {
+    if (!map || !map.isStyleLoaded()) return
+
+    const currentData = layersDataRef.current
+    const currentLayers = layersRef.current
+    const masterVisible = isCicloConectaVisibleRef.current
+
+    if (!masterVisible && popupRef.current) {
+      popupRef.current.remove()
+    }
+
+    currentLayers.forEach((layer) => {
+      const sourceId = `source-${layer.id}`
+      const source = map.getSource(sourceId) as GeoJSONSource | undefined
+      const data = currentData[layer.id]
+
+      if (source && data) {
+        source.setData(data)
+      }
+
+      const casingLayerId = `casing-${layer.id}`
+      const lineLayerId = `line-${layer.id}`
+      const visibility = masterVisible && layer.visible ? 'visible' : 'none'
+
+      if (map.getLayer(casingLayerId)) {
+        map.setLayoutProperty(casingLayerId, 'visibility', visibility)
+      }
+      if (map.getLayer(lineLayerId)) {
+        map.setLayoutProperty(lineLayerId, 'visibility', visibility)
+      }
+    })
+  }
 
   useEffect(() => {
     if (!mapContainerRef.current) return
@@ -77,13 +221,11 @@ export const MapView: React.FC<Props> = ({
         mapInstanceRef.current = map
       }
 
-      // Initialize GeoJSON sources for each layer
-      layers.forEach((layer) => {
+      // Initialize GeoJSON sources for each layer using the freshest data from ref
+      layersRef.current.forEach((layer) => {
         const sourceId = `source-${layer.id}`
-        const initialData: FeatureCollection = layersData[layer.id] || {
-          type: 'FeatureCollection',
-          features: [],
-        }
+        const initialData =
+          layersDataRef.current[layer.id] || EMPTY_FEATURE_COLLECTION
 
         if (!map.getSource(sourceId)) {
           map.addSource(sourceId, {
@@ -91,7 +233,10 @@ export const MapView: React.FC<Props> = ({
             data: initialData,
           })
 
-          const effectiveVisibility = isCicloConectaVisible && layer.visible ? 'visible' : 'none'
+          const effectiveVisibility =
+            isCicloConectaVisibleRef.current && layer.visible
+              ? 'visible'
+              : 'none'
 
           // Glow / Casing Layer (for high contrast over roads)
           map.addLayer({
@@ -155,60 +300,19 @@ export const MapView: React.FC<Props> = ({
               popupRef.current.remove()
             }
 
-            const isDemo =
-              Boolean(props.is_demo) ||
-              props.status === 'DEMO' ||
-              layer.isDemo
-
-            const title = props.name || 'Tramo ciclista'
-            const typeStr = props.type || 'Ciclovía'
-            const lengthDisplay = props.length_km
-              ? `${props.length_km} km (${props.length_m || Math.round(Number(props.length_km) * 1000)} m)`
-              : props.gap_length_m
-              ? `${props.gap_length_m} m`
-              : 'Longitud en cálculo'
-            const surface = props.surface || 'Asfalto / Pavimento'
-            const sourceText = props.source || 'OpenStreetMap'
-
-            let extraHtml = ''
-            if (props.description) {
-              extraHtml += `<div class="popup-desc">${props.description}</div>`
-            }
-            if (props.estimated_benefit) {
-              extraHtml += `<div class="popup-desc" style="margin-top:4px;"><strong>Impacto estimado:</strong> ${props.estimated_benefit}</div>`
-            }
-
-            const htmlContent = `
-              <div class="popup-title">${title}</div>
-              <span class="popup-badge ${isDemo ? 'demo' : 'real'}">
-                ${isDemo ? 'ESTIMACIÓN DEMO' : 'DATO REAL OSM'}
-              </span>
-              <div class="popup-row">
-                <span class="popup-label">Tipología:</span>
-                <span class="popup-value">${typeStr}</span>
-              </div>
-              <div class="popup-row">
-                <span class="popup-label">Superficie:</span>
-                <span class="popup-value">${surface}</span>
-              </div>
-              <div class="popup-row">
-                <span class="popup-label">Extensión:</span>
-                <span class="popup-value">${lengthDisplay}</span>
-              </div>
-              <div class="popup-row">
-                <span class="popup-label">Fuente:</span>
-                <span class="popup-value" style="font-size:0.75rem;">${sourceText}</span>
-              </div>
-              ${extraHtml}
-            `
+            // Secure popup generation using DOM nodes and textContent
+            const popupContent = createSafePopupContent(props, layer.isDemo)
 
             popupRef.current = new Popup({ offset: 12 })
               .setLngLat(e.lngLat)
-              .setHTML(htmlContent)
+              .setDOMContent(popupContent)
               .addTo(map)
           })
         }
       })
+
+      // Immediate sync to ensure any data loaded before or during style load is set
+      syncMapLayers(map)
     })
 
     return () => {
@@ -221,44 +325,13 @@ export const MapView: React.FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city.center, city.initial_zoom])
 
-  // Update GeoJSON data dynamically
+  // Reactively sync data or layer visibility changes whenever layersData, layers or master toggle changes
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !map.isStyleLoaded()) return
-
-    layers.forEach((layer) => {
-      const sourceId = `source-${layer.id}`
-      const source = map.getSource(sourceId) as GeoJSONSource | undefined
-      const data = layersData[layer.id]
-      if (source && data) {
-        source.setData(data)
-      }
-    })
-  }, [layersData, layers])
-
-  // Update layer visibility reactively (combining master toggle & sublayer visibility)
-  useEffect(() => {
-    const map = mapRef.current
-    if (!map || !map.isStyleLoaded()) return
-
-    // If master toggle is OFF, hide popups too
-    if (!isCicloConectaVisible && popupRef.current) {
-      popupRef.current.remove()
+    if (map && map.isStyleLoaded()) {
+      syncMapLayers(map)
     }
-
-    layers.forEach((layer) => {
-      const casingLayerId = `casing-${layer.id}`
-      const lineLayerId = `line-${layer.id}`
-      const visibility = isCicloConectaVisible && layer.visible ? 'visible' : 'none'
-
-      if (map.getLayer(casingLayerId)) {
-        map.setLayoutProperty(casingLayerId, 'visibility', visibility)
-      }
-      if (map.getLayer(lineLayerId)) {
-        map.setLayoutProperty(lineLayerId, 'visibility', visibility)
-      }
-    })
-  }, [layers, isCicloConectaVisible])
+  }, [layersData, layers, isCicloConectaVisible])
 
   return (
     <div

@@ -38,12 +38,12 @@ export const InfoModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
           <div className="modal-callout">
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700, marginBottom: '4px' }}>
-              <CheckCircle size={16} /> Capa Real: Ciclovías Existentes
+              <CheckCircle size={16} /> Infraestructura Mapeada: OpenStreetMap
             </div>
             <p>
               Los datos provienen directamente de <strong>OpenStreetMap (OSM)</strong>,
-              extraídos mediante consultas espaciales a la API Overpass. Contiene 120+ tramos
-              reales con información de superficie, sentido y tipología vial.
+              extraídos mediante consultas espaciales a la API Overpass según el etiquetado
+              colaborativo de la comunidad. No constituyen un catastro municipal verificado físicamente en terreno.
             </p>
           </div>
 
