@@ -31,10 +31,14 @@ def fetch_osm_road_network(
             return json.load(f)
 
     s, w, n, e = bbox
-    overpass_url = "https://overpass-api.de/api/interpreter"
+    overpass_endpoints = [
+        "https://overpass-api.de/api/interpreter",
+        "https://overpass.kumi.systems/api/interpreter",
+        "https://overpass.private.coffee/api/interpreter",
+    ]
 
     # Query all road types that allow bicycles or connect urban sectors
-    query = f"""[out:json][timeout:60];
+    query = f"""[out:json][timeout:90];
 (
   way["highway"~"^(cycleway|path|living_street|residential|unclassified|tertiary|tertiary_link|secondary|secondary_link|primary|primary_link|trunk|trunk_link|service|pedestrian|track)"]({s},{w},{n},{e});
 );
@@ -43,30 +47,35 @@ out body;
 out skel qt;
 """
     data = urllib.parse.urlencode({"data": query}).encode("utf-8")
-    req = urllib.request.Request(
-        overpass_url,
-        data=data,
-        headers={"User-Agent": "CicloConecta-NetworkExtractor/1.0 (https://github.com/shiroku36/cicloconecta)"},
-    )
 
     print(f"Descargando red vial desde Overpass API para bbox {bbox}...")
-    max_retries = 3
-    for attempt in range(1, max_retries + 1):
-        try:
-            with urllib.request.urlopen(req, timeout=90) as resp:
-                content = json.loads(resp.read().decode("utf-8"))
-                if cache_path:
-                    cache_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(cache_path, "w", encoding="utf-8") as f:
-                        json.dump(content, f, ensure_ascii=False)
-                    print(f"Red vial guardada en caché: {cache_path}")
-                return content
-        except Exception as err:
-            print(f"Intento {attempt}/{max_retries} falló: {err}")
-            if attempt < max_retries:
-                time.sleep(3 * attempt)
-            else:
-                raise RuntimeError(f"No se pudo descargar la red vial desde Overpass: {err}")
+    last_err = None
+
+    for endpoint in overpass_endpoints:
+        req = urllib.request.Request(
+            endpoint,
+            data=data,
+            headers={"User-Agent": "CicloConecta-NetworkExtractor/1.0 (https://github.com/shiroku36/cicloconecta)"},
+        )
+        for attempt in range(1, 3):
+            try:
+                print(f"Intentando servidor Overpass: {endpoint} (intento {attempt}/2)...")
+                with urllib.request.urlopen(req, timeout=120) as resp:
+                    content = json.loads(resp.read().decode("utf-8"))
+                    if cache_path:
+                        cache_path.parent.mkdir(parents=True, exist_ok=True)
+                        tmp_path = cache_path.with_suffix(".tmp")
+                        with open(tmp_path, "w", encoding="utf-8") as f:
+                            json.dump(content, f, ensure_ascii=False)
+                        tmp_path.replace(cache_path)
+                        print(f"Red vial guardada en caché: {cache_path}")
+                    return content
+            except Exception as err:
+                print(f"Endpoint {endpoint} intento {attempt} falló: {err}")
+                last_err = err
+                time.sleep(2 * attempt)
+
+    raise RuntimeError(f"No se pudo descargar la red vial desde ningún servidor Overpass: {last_err}")
 
 
 def extract_network_elements(osm_raw: dict[str, Any]) -> tuple[dict[int, list[float]], list[dict[str, Any]]]:

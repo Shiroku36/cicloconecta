@@ -10,6 +10,7 @@ import math
 import os
 import shutil
 import sys
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -87,14 +88,27 @@ def classify_osm_cycling_way(tags: dict) -> tuple[str, str]:
     return "compatible", "Infraestructura ciclista compatible"
 
 
-def fetch_osm_cycleways(bbox: tuple[float, float, float, float]) -> dict:
+def fetch_osm_cycleways(
+    bbox: tuple[float, float, float, float],
+    cache_path: Path | None = None,
+    force_refresh: bool = False,
+) -> dict:
     """
-    Fetch cycling ways and their nodes from Overpass API.
+    Fetch cycling ways and their nodes from Overpass API or local cache.
     bbox order: (south, west, north, east)
     """
+    if cache_path and cache_path.exists() and not force_refresh:
+        print(f"Cargando vías ciclistas desde caché local: {cache_path}")
+        with open(cache_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+
     s, w, n, e = bbox
-    overpass_url = "https://overpass-api.de/api/interpreter"
-    query = f"""[out:json][timeout:45];
+    overpass_endpoints = [
+        "https://overpass-api.de/api/interpreter",
+        "https://overpass.kumi.systems/api/interpreter",
+        "https://overpass.private.coffee/api/interpreter",
+    ]
+    query = f"""[out:json][timeout:90];
 (
   way["highway"="cycleway"]({s},{w},{n},{e});
   way["cycleway"]({s},{w},{n},{e});
@@ -108,20 +122,39 @@ out body;
 out skel qt;
 """
     data = urllib.parse.urlencode({"data": query}).encode("utf-8")
-    req = urllib.request.Request(
-        overpass_url,
-        data=data,
-        headers={"User-Agent": "CicloConecta-Extractor/1.0 (https://github.com/shiroku36/cicloconecta)"},
-    )
-
     print(f"Consultando Overpass API para bbox {bbox}...")
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    last_err = None
+
+    for endpoint in overpass_endpoints:
+        req = urllib.request.Request(
+            endpoint,
+            data=data,
+            headers={"User-Agent": "CicloConecta-Extractor/1.0 (https://github.com/shiroku36/cicloconecta)"},
+        )
+        for attempt in range(1, 3):
+            try:
+                print(f"Intentando servidor Overpass: {endpoint} (intento {attempt}/2)...")
+                with urllib.request.urlopen(req, timeout=120) as resp:
+                    content = json.loads(resp.read().decode("utf-8"))
+                    if cache_path:
+                        cache_path.parent.mkdir(parents=True, exist_ok=True)
+                        tmp_path = cache_path.with_suffix(".tmp")
+                        with open(tmp_path, "w", encoding="utf-8") as f:
+                            json.dump(content, f, ensure_ascii=False)
+                        tmp_path.replace(cache_path)
+                        print(f"Vías ciclistas guardadas en caché: {cache_path}")
+                    return content
+            except Exception as err:
+                print(f"Endpoint {endpoint} intento {attempt} falló: {err}")
+                last_err = err
+                time.sleep(2 * attempt)
+
+    raise RuntimeError(f"No se pudieron descargar vías ciclistas desde ningún servidor Overpass: {last_err}")
 
 
-def process_osm_to_geojson(osm_data: dict) -> tuple[dict, float, int]:
+def process_osm_to_geojson(osm_data: dict, city_id: str = "curico") -> tuple[dict, float, int]:
     """
-    Transforms OSM JSON elements into a standard GeoJSON FeatureCollection.
+    Transforms OSM JSON elements into a standard GeoJSON FeatureCollection for a city.
     Does NOT invent missing data (surface, segregated).
     Returns (geojson_dict, total_length_meters, count_features).
     """
@@ -161,7 +194,7 @@ def process_osm_to_geojson(osm_data: dict) -> tuple[dict, float, int]:
             "type": "Feature",
             "id": f"osm-{way['id']}",
             "properties": {
-                "id": f"curico-osm-{way['id']}",
+                "id": f"{city_id}-osm-{way['id']}",
                 "name": name if name else "Vía ciclista sin nombre",
                 "has_custom_name": bool(name),
                 "type": infra_label,
@@ -194,13 +227,13 @@ def process_osm_to_geojson(osm_data: dict) -> tuple[dict, float, int]:
 
     geojson = {
         "type": "FeatureCollection",
-        "name": "Ciclovias_Curico_OSM",
+        "name": f"Ciclovias_{city_id.capitalize()}_OSM",
         "crs": {
             "type": "name",
             "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"},
         },
         "metadata": {
-            "city": "curico",
+            "city": city_id,
             "source": "OpenStreetMap Contributors",
             "source_type": "open_data",
             "verified_in_situ": False,

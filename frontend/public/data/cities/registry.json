@@ -1,0 +1,197 @@
+{
+  "version": "1.0",
+  "cities": [
+    {
+      "id": "curico",
+      "name": "Curicó",
+      "province": "Curicó",
+      "region": "Región del Maule",
+      "country": "Chile",
+      "enabled": true,
+      "center": [-71.2394, -34.9854],
+      "bounds": [
+        [-71.30, -35.05],
+        [-71.18, -34.93]
+      ],
+      "bbox": [-35.05, -71.30, -34.93, -71.18],
+      "initial_zoom": 14.0,
+      "presets": [
+        { "id": "curico-01", "name": "Plaza de Armas", "coord": [-71.2394, -34.9854] },
+        { "id": "curico-02", "name": "Rauquén (Norte)", "coord": [-71.2185, -34.9620] },
+        { "id": "curico-03", "name": "Zapallar / El Boldo (Oriente)", "coord": [-71.2120, -34.9815] },
+        { "id": "curico-04", "name": "Santa Fe (Poniente)", "coord": [-71.2580, -34.9880] },
+        { "id": "curico-05", "name": "Campus UTalca (Los Niches)", "coord": [-71.2290, -35.0030] },
+        { "id": "curico-06", "name": "Guaiquillo (Sur)", "coord": [-71.2460, -34.9980] },
+        { "id": "curico-07", "name": "Estación de Trenes", "coord": [-71.2340, -34.9785] }
+      ],
+      "representative_routes": [
+        {
+          "id": "route-curico-01",
+          "name": "Ruta Norte: Rauquén - Plaza de Armas",
+          "description": "Conexión desde el sector habitacional Rauquén / Bombero Garrido hacia el centro cívico.",
+          "origin_name": "Sector Rauquén (Av. Rauquén)",
+          "origin_coord": [-71.2185, -34.9620],
+          "dest_name": "Plaza de Armas Curicó",
+          "dest_coord": [-71.2394, -34.9854]
+        },
+        {
+          "id": "route-curico-02",
+          "name": "Ruta Oriente: Zapallar / El Boldo - Plaza de Armas",
+          "description": "Corredor oriente conectando barrios residenciales de Zapallar y El Boldo hacia el centro.",
+          "origin_name": "El Boldo / Zapallar",
+          "origin_coord": [-71.2120, -34.9815],
+          "dest_name": "Plaza de Armas Curicó",
+          "dest_coord": [-71.2394, -34.9854]
+        },
+        {
+          "id": "route-curico-03",
+          "name": "Ruta Poniente: Santa Fe / Alessandri - Plaza de Armas",
+          "description": "Eje poniente conectando Población Santa Fe y Av. Alessandri con el centro de la ciudad.",
+          "origin_name": "Santa Fe / Av. Alessandri",
+          "origin_coord": [-71.2580, -34.9880],
+          "dest_name": "Plaza de Armas Curicó",
+          "dest_coord": [-71.2394, -34.9854]
+        },
+        {
+          "id": "route-curico-04",
+          "name": "Circuito Universitario: Los Niches - Plaza de Armas",
+          "description": "Conexión sur-oriente desde el sector Los Niches y Campus UTalca hacia el núcleo central.",
+          "origin_name": "Sector Los Niches / Av. España",
+          "origin_coord": [-71.2290, -35.0030],
+          "dest_name": "Plaza de Armas Curicó",
+          "dest_coord": [-71.2394, -34.9854]
+        },
+        {
+          "id": "route-curico-05",
+          "name": "Eje Intermodal: Guaiquillo - Estación de Ferrocarriles",
+          "description": "Conexión intermodal sur-centro desde Población Guaiquillo hacia la Estación de Trenes.",
+          "origin_name": "Sector Guaiquillo Sur",
+          "origin_coord": [-71.2460, -34.9980],
+          "dest_name": "Estación de Trenes Curicó (EFE)",
+          "dest_coord": [-71.2340, -34.9785]
+        }
+      ]
+    },
+    {
+      "id": "talca",
+      "name": "Talca",
+      "province": "Talca",
+      "region": "Región del Maule",
+      "country": "Chile",
+      "enabled": true,
+      "center": [-71.6554, -35.4264],
+      "bounds": [
+        [-71.695, -35.465],
+        [-71.605, -35.395]
+      ],
+      "bbox": [-35.465, -71.695, -35.395, -71.605],
+      "initial_zoom": 13.5,
+      "presets": [
+        { "id": "talca-01", "name": "Plaza de Armas (Centro)", "coord": [-71.6663, -35.4261] },
+        { "id": "talca-02", "name": "Campus Lircay UTalca (Norte)", "coord": [-71.6360, -35.4045] },
+        { "id": "talca-03", "name": "Mall Plaza Maule / Las Rastras (Oriente)", "coord": [-71.6180, -35.4330] },
+        { "id": "talca-04", "name": "Balneario Río Claro / Alameda (Poniente)", "coord": [-71.6820, -35.4260] },
+        { "id": "talca-05", "name": "Sector La Florida / Colín (Sur)", "coord": [-71.6600, -35.4500] },
+        { "id": "talca-06", "name": "Estación de Ferrocarriles (11 Ote / 1 Sur)", "coord": [-71.6520, -35.4275] }
+      ],
+      "representative_routes": [
+        {
+          "id": "route-talca-01",
+          "name": "Ruta Norte: Campus Lircay UTalca - Plaza de Armas",
+          "description": "Conexión desde el principal campus universitario regional hacia el centro cívico.",
+          "origin_name": "Campus Lircay (UTalca)",
+          "origin_coord": [-71.6360, -35.4045],
+          "dest_name": "Plaza de Armas Talca",
+          "dest_coord": [-71.6663, -35.4261]
+        },
+        {
+          "id": "route-talca-02",
+          "name": "Ruta Oriente: Mall Plaza Maule / Las Rastras - Plaza de Armas",
+          "description": "Corredor oriente comercial y residencial hacia el centro cívico por eje 2 Norte / 1 Norte.",
+          "origin_name": "Mall Plaza Maule / Las Rastras",
+          "origin_coord": [-71.6180, -35.4330],
+          "dest_name": "Plaza de Armas Talca",
+          "dest_coord": [-71.6663, -35.4261]
+        },
+        {
+          "id": "route-talca-03",
+          "name": "Ruta Poniente: Balneario Río Claro / Alameda - Plaza de Armas",
+          "description": "Eje recreativo y patrimonial que cruza la Alameda histórica hacia el centro.",
+          "origin_name": "Balneario Río Claro / Alameda",
+          "origin_coord": [-71.6820, -35.4260],
+          "dest_name": "Plaza de Armas Talca",
+          "dest_coord": [-71.6663, -35.4261]
+        },
+        {
+          "id": "route-talca-04",
+          "name": "Ruta Sur: Sector La Florida / Colín - Plaza de Armas",
+          "description": "Conexión habitacional sur conectando barrios de La Florida y Colín con el centro.",
+          "origin_name": "Sector La Florida / Av. Colín",
+          "origin_coord": [-71.6600, -35.4500],
+          "dest_name": "Plaza de Armas Talca",
+          "dest_coord": [-71.6663, -35.4261]
+        },
+        {
+          "id": "route-talca-05",
+          "name": "Eje Intermodal: Estación de Ferrocarriles - Campus Lircay UTalca",
+          "description": "Corredor intermodal que une la Estación de Trenes (EFE) con el Campus UTalca.",
+          "origin_name": "Estación de Ferrocarriles (11 Ote / 1 Sur)",
+          "origin_coord": [-71.6520, -35.4275],
+          "dest_name": "Campus Lircay (UTalca)",
+          "dest_coord": [-71.6360, -35.4045]
+        }
+      ]
+    },
+    {
+      "id": "rancagua",
+      "name": "Rancagua",
+      "province": "Cachapoal",
+      "region": "Región de O'Higgins",
+      "country": "Chile",
+      "enabled": false,
+      "center": [-70.7400, -34.1700],
+      "bounds": [
+        [-70.790, -34.210],
+        [-70.690, -34.130]
+      ],
+      "bbox": [-34.210, -70.790, -34.130, -70.690],
+      "initial_zoom": 13.5,
+      "presets": [],
+      "representative_routes": []
+    },
+    {
+      "id": "chillan",
+      "name": "Chillán",
+      "province": "Diguillín",
+      "region": "Región de Ñuble",
+      "country": "Chile",
+      "enabled": false,
+      "center": [-72.1000, -36.6067],
+      "bounds": [
+        [-72.150, -36.640],
+        [-72.050, -36.570]
+      ],
+      "bbox": [-36.640, -72.150, -36.570, -72.050],
+      "initial_zoom": 13.5,
+      "presets": [],
+      "representative_routes": []
+    },
+    {
+      "id": "concepcion",
+      "name": "Gran Concepción",
+      "province": "Concepción",
+      "region": "Región del Biobío",
+      "country": "Chile",
+      "enabled": false,
+      "center": [-73.0500, -36.8270],
+      "bounds": [
+        [-73.120, -36.880],
+        [-72.980, -36.780]
+      ],
+      "bbox": [-36.880, -73.120, -36.780, -72.980],
+      "initial_zoom": 13.0,
+      "presets": [],
+      "representative_routes": []
+    }
+  ]
+}

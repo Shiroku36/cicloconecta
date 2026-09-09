@@ -71,3 +71,7 @@ scratch/
 
 # Runtime route caches
 *routes_cache.json
+
+# Raw OSM data downloads (regenerable caches)
+data/cities/*/raw_network.json
+data/cities/*/raw_cycleways.json
