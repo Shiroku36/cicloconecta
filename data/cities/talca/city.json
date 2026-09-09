@@ -1,0 +1,100 @@
+{
+  "id": "talca",
+  "name": "Talca",
+  "province": "Talca",
+  "region": "Región del Maule",
+  "country": "Chile",
+  "center": [
+    -71.6554,
+    -35.4264
+  ],
+  "initial_zoom": 13.5,
+  "bounds": [
+    [
+      -71.695,
+      -35.465
+    ],
+    [
+      -71.605,
+      -35.395
+    ]
+  ],
+  "bbox": [
+    -35.465,
+    -71.695,
+    -35.395,
+    -71.605
+  ],
+  "description": "Red ciclista y análisis de conectividad urbana para Talca, Región del Maule.",
+  "presets": [
+    {
+      "id": "talca-01",
+      "name": "Plaza de Armas (Centro)",
+      "coord": [
+        -71.6663,
+        -35.4261
+      ]
+    },
+    {
+      "id": "talca-02",
+      "name": "Campus Lircay UTalca (Norte)",
+      "coord": [
+        -71.636,
+        -35.4045
+      ]
+    },
+    {
+      "id": "talca-03",
+      "name": "Mall Plaza Maule / Las Rastras (Oriente)",
+      "coord": [
+        -71.618,
+        -35.433
+      ]
+    },
+    {
+      "id": "talca-04",
+      "name": "Balneario Río Claro / Alameda (Poniente)",
+      "coord": [
+        -71.682,
+        -35.426
+      ]
+    },
+    {
+      "id": "talca-05",
+      "name": "Sector La Florida / Colín (Sur)",
+      "coord": [
+        -71.66,
+        -35.45
+      ]
+    },
+    {
+      "id": "talca-06",
+      "name": "Estación de Ferrocarriles (11 Ote / 1 Sur)",
+      "coord": [
+        -71.652,
+        -35.4275
+      ]
+    }
+  ],
+  "stats": {
+    "cycleways_count": 214,
+    "total_km": 73.33,
+    "layers_available": [
+      "cycling-infrastructure",
+      "missing-connections",
+      "suggested-routes"
+    ],
+    "last_updated": "2026-09-09T20:02:24.025483+00:00"
+  },
+  "connectivity": {
+    "total_cycling_km": 73.33,
+    "total_components": 30,
+    "main_component_km": 28.6,
+    "main_component_pct": 39.0,
+    "isolated_components_count": 21,
+    "selected_opportunities_count": 10,
+    "median_gap_m": 508,
+    "max_score": 89.9,
+    "last_analyzed": "2026-09-09T20:02:24.025483+00:00"
+  }
+}

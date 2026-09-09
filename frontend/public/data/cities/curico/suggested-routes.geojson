@@ -1,12 +1,12 @@
 {
   "type": "FeatureCollection",
-  "name": "Rutas_Recomendadas_Curico_Algoritmicas",
+  "name": "Rutas_Sugeridas_Curico_Algoritmicas",
   "metadata": {
     "city": "curico",
     "is_demo": false,
-    "routing_engine": "NetworkX A* with cycling-weighted cost function",
-    "description": "Rutas calculadas algorítmicamente sobre la red vial real de OpenStreetMap, priorizando infraestructura ciclista.",
-    "route_count": 5
+    "status": "ALGORITHMIC_RECOMMENDED",
+    "total_routes": 5,
+    "generated_at": "2026-09-09T20:35:22.366240+00:00"
   },
   "features": [
     {
@@ -19,8 +19,10 @@
         "origin_name": "Sector Rauquén (Av. Rauquén)",
         "dest_name": "Plaza de Armas Curicó",
         "is_demo": false,
-        "status": "Ruta algorítmica calculada con red vial real",
+        "status": "ALGORITHMIC_RECOMMENDED",
+        "category": "Corredor ciclista recomendado",
         "distance_km": 4.39,
+        "distance_m": 4385.0,
         "cycling_infra_km": 2.32,
         "cycling_infra_pct": 52.9,
         "cost_score": 4236.5,
@@ -39,7 +41,8 @@
           "El Lingue",
           "El Temu",
           "María Subiabre Luco"
-        ]
+        ],
+        "source": "Motor de routing A* determinista CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
@@ -669,8 +672,10 @@
         "origin_name": "El Boldo / Zapallar",
         "dest_name": "Plaza de Armas Curicó",
         "is_demo": false,
-        "status": "Ruta algorítmica calculada con red vial real",
+        "status": "ALGORITHMIC_RECOMMENDED",
+        "category": "Corredor ciclista recomendado",
         "distance_km": 4.23,
+        "distance_m": 4229.5,
         "cycling_infra_km": 3.0,
         "cycling_infra_pct": 70.8,
         "cost_score": 4083.5,
@@ -689,7 +694,8 @@
           "Las Heras",
           "Cardenal Caro",
           "Buen Pastor"
-        ]
+        ],
+        "source": "Motor de routing A* determinista CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
@@ -1259,8 +1265,10 @@
         "origin_name": "Santa Fe / Av. Alessandri",
         "dest_name": "Plaza de Armas Curicó",
         "is_demo": false,
-        "status": "Ruta algorítmica calculada con red vial real",
+        "status": "ALGORITHMIC_RECOMMENDED",
+        "category": "Corredor ciclista recomendado",
         "distance_km": 2.58,
+        "distance_m": 2581.9,
         "cycling_infra_km": 0.42,
         "cycling_infra_pct": 16.2,
         "cost_score": 3093.7,
@@ -1279,7 +1287,8 @@
           "Calle sin nombre",
           "Avenida Lautaro",
           "Villota"
-        ]
+        ],
+        "source": "Motor de routing A* determinista CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
@@ -1653,8 +1662,10 @@
         "origin_name": "Sector Los Niches / Av. España",
         "dest_name": "Plaza de Armas Curicó",
         "is_demo": false,
-        "status": "Ruta algorítmica calculada con red vial real",
+        "status": "ALGORITHMIC_RECOMMENDED",
+        "category": "Corredor ciclista recomendado",
         "distance_km": 2.39,
+        "distance_m": 2385.7,
         "cycling_infra_km": 1.11,
         "cycling_infra_pct": 46.7,
         "cost_score": 3485.5,
@@ -1673,7 +1684,8 @@
           "Calle sin nombre",
           "Yungay",
           "Calle sin nombre"
-        ]
+        ],
+        "source": "Motor de routing A* determinista CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",
@@ -2131,8 +2143,10 @@
         "origin_name": "Sector Guaiquillo Sur",
         "dest_name": "Estación de Trenes Curicó (EFE)",
         "is_demo": false,
-        "status": "Ruta algorítmica calculada con red vial real",
+        "status": "ALGORITHMIC_RECOMMENDED",
+        "category": "Corredor ciclista recomendado",
         "distance_km": 4.08,
+        "distance_m": 4081.2,
         "cycling_infra_km": 1.73,
         "cycling_infra_pct": 42.3,
         "cost_score": 3694.7,
@@ -2151,7 +2165,8 @@
           "Las Orquídeas",
           "Los Narcisos",
           "Las Orquídeas"
-        ]
+        ],
+        "source": "Motor de routing A* determinista CicloConecta sobre OpenStreetMap"
       },
       "geometry": {
         "type": "LineString",

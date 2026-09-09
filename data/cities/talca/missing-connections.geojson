@@ -1,0 +1,1196 @@
+{
+  "type": "FeatureCollection",
+  "name": "Conexiones_Potenciales_Talca_Algoritmicas",
+  "metadata": {
+    "city": "talca",
+    "is_demo": false,
+    "status": "ALGORITHMIC_ANALYSIS",
+    "analysis_type": "Multi-criteria Network Component Continuity",
+    "total_opportunities": 10,
+    "description": "Oportunidades de continuidad detectadas algorítmicamente sobre la red vial real de OpenStreetMap."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "gap-talca-01",
+      "properties": {
+        "id": "gap-talca-01",
+        "name": "Oportunidad #01: 9 Norte",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 1,
+        "priority_score": 89.9,
+        "gap_length_m": 128,
+        "component_a_km": 28.6,
+        "component_b_km": 6.36,
+        "connected_network_km": 35.09,
+        "network_gain_km": 34.96,
+        "gain_ratio": 272.2,
+        "streets": [
+          "9 Norte"
+        ],
+        "streets_display": "9 Norte",
+        "highway_types": [
+          "secondary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 128 m en este tramo uniría 35.09 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.657469,
+            -35.41578
+          ],
+          [
+            -71.657545,
+            -35.415778
+          ],
+          [
+            -71.657584,
+            -35.415777
+          ],
+          [
+            -71.658617,
+            -35.415753
+          ],
+          [
+            -71.658744,
+            -35.415754
+          ],
+          [
+            -71.65881,
+            -35.41576
+          ],
+          [
+            -71.658849,
+            -35.415765
+          ],
+          [
+            -71.658884,
+            -35.415771
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-02",
+      "properties": {
+        "id": "gap-talca-02",
+        "name": "Oportunidad #02: 20 Norte A",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 2,
+        "priority_score": 82.5,
+        "gap_length_m": 599,
+        "component_a_km": 17.33,
+        "component_b_km": 6.36,
+        "connected_network_km": 24.29,
+        "network_gain_km": 23.69,
+        "gain_ratio": 39.5,
+        "streets": [
+          "20 Norte A",
+          "Avenida 5 Oriente",
+          "4 Oriente"
+        ],
+        "streets_display": "20 Norte A, Avenida 5 Oriente, 4 Oriente",
+        "highway_types": [
+          "living_street",
+          "tertiary",
+          "residential"
+        ],
+        "description": "Una conexión potencial de aproximadamente 599 m en este tramo uniría 24.29 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.652247,
+            -35.400052
+          ],
+          [
+            -71.652186,
+            -35.400065
+          ],
+          [
+            -71.652191,
+            -35.400262
+          ],
+          [
+            -71.6522,
+            -35.400345
+          ],
+          [
+            -71.652223,
+            -35.400461
+          ],
+          [
+            -71.652251,
+            -35.400573
+          ],
+          [
+            -71.652323,
+            -35.400841
+          ],
+          [
+            -71.652375,
+            -35.40102
+          ],
+          [
+            -71.652505,
+            -35.401435
+          ],
+          [
+            -71.652607,
+            -35.401774
+          ],
+          [
+            -71.652711,
+            -35.402134
+          ],
+          [
+            -71.652814,
+            -35.402485
+          ],
+          [
+            -71.652907,
+            -35.402803
+          ],
+          [
+            -71.653005,
+            -35.403141
+          ],
+          [
+            -71.653184,
+            -35.403706
+          ],
+          [
+            -71.65325,
+            -35.403915
+          ],
+          [
+            -71.653303,
+            -35.404091
+          ],
+          [
+            -71.653309,
+            -35.404111
+          ],
+          [
+            -71.653352,
+            -35.404251
+          ],
+          [
+            -71.65338,
+            -35.404338
+          ],
+          [
+            -71.65356,
+            -35.40492
+          ],
+          [
+            -71.653606,
+            -35.405061
+          ],
+          [
+            -71.653639,
+            -35.405148
+          ],
+          [
+            -71.653664,
+            -35.405212
+          ],
+          [
+            -71.653718,
+            -35.405216
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-03",
+      "properties": {
+        "id": "gap-talca-03",
+        "name": "Oportunidad #03: Calle sin nombre",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 3,
+        "priority_score": 82.2,
+        "gap_length_m": 206,
+        "component_a_km": 28.6,
+        "component_b_km": 1.36,
+        "connected_network_km": 30.17,
+        "network_gain_km": 29.96,
+        "gain_ratio": 144.8,
+        "streets": [
+          "Calle sin nombre",
+          "Avenida Salvador Allende",
+          "Calle sin nombre"
+        ],
+        "streets_display": "Calle sin nombre, Avenida Salvador Allende, Calle sin nombre",
+        "highway_types": [
+          "unclassified",
+          "primary_link",
+          "cycleway",
+          "primary",
+          "secondary",
+          "service"
+        ],
+        "description": "Una conexión potencial de aproximadamente 206 m en este tramo uniría 30.17 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.649988,
+            -35.42274
+          ],
+          [
+            -71.649999,
+            -35.42277
+          ],
+          [
+            -71.65009,
+            -35.422762
+          ],
+          [
+            -71.650093,
+            -35.422788
+          ],
+          [
+            -71.650047,
+            -35.422843
+          ],
+          [
+            -71.649901,
+            -35.422999
+          ],
+          [
+            -71.649884,
+            -35.423028
+          ],
+          [
+            -71.649878,
+            -35.423057
+          ],
+          [
+            -71.649792,
+            -35.423066
+          ],
+          [
+            -71.649662,
+            -35.423073
+          ],
+          [
+            -71.649631,
+            -35.422768
+          ],
+          [
+            -71.649606,
+            -35.422551
+          ],
+          [
+            -71.649591,
+            -35.422205
+          ],
+          [
+            -71.649615,
+            -35.422114
+          ],
+          [
+            -71.649597,
+            -35.421914
+          ],
+          [
+            -71.64952,
+            -35.421921
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-04",
+      "properties": {
+        "id": "gap-talca-04",
+        "name": "Oportunidad #04: Ciclovia Piduco",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 4,
+        "priority_score": 80.0,
+        "gap_length_m": 660,
+        "component_a_km": 28.6,
+        "component_b_km": 4.31,
+        "connected_network_km": 33.57,
+        "network_gain_km": 32.91,
+        "gain_ratio": 49.8,
+        "streets": [
+          "Ciclovia Piduco",
+          "Calle 6 Oriente"
+        ],
+        "streets_display": "Ciclovia Piduco, Calle 6 Oriente",
+        "highway_types": [
+          "cycleway",
+          "secondary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 660 m en este tramo uniría 33.57 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.656018,
+            -35.440185
+          ],
+          [
+            -71.656106,
+            -35.440077
+          ],
+          [
+            -71.656198,
+            -35.43994
+          ],
+          [
+            -71.656276,
+            -35.439851
+          ],
+          [
+            -71.656377,
+            -35.439779
+          ],
+          [
+            -71.656412,
+            -35.439751
+          ],
+          [
+            -71.656785,
+            -35.439499
+          ],
+          [
+            -71.657745,
+            -35.438859
+          ],
+          [
+            -71.658255,
+            -35.438527
+          ],
+          [
+            -71.658315,
+            -35.43849
+          ],
+          [
+            -71.658647,
+            -35.438271
+          ],
+          [
+            -71.659134,
+            -35.43795
+          ],
+          [
+            -71.659165,
+            -35.437928
+          ],
+          [
+            -71.6593,
+            -35.43784
+          ],
+          [
+            -71.65934,
+            -35.437811
+          ],
+          [
+            -71.659451,
+            -35.437739
+          ],
+          [
+            -71.659818,
+            -35.437495
+          ],
+          [
+            -71.659871,
+            -35.437462
+          ],
+          [
+            -71.659907,
+            -35.437505
+          ],
+          [
+            -71.660189,
+            -35.43793
+          ],
+          [
+            -71.660263,
+            -35.43804
+          ],
+          [
+            -71.660386,
+            -35.438226
+          ],
+          [
+            -71.660892,
+            -35.438986
+          ],
+          [
+            -71.660905,
+            -35.439014
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-05",
+      "properties": {
+        "id": "gap-talca-05",
+        "name": "Oportunidad #05: Avenida 12 Norte",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 5,
+        "priority_score": 76.1,
+        "gap_length_m": 326,
+        "component_a_km": 6.36,
+        "component_b_km": 2.09,
+        "connected_network_km": 8.78,
+        "network_gain_km": 8.45,
+        "gain_ratio": 25.9,
+        "streets": [
+          "Avenida 12 Norte",
+          "Calle sin nombre",
+          "Avenida Lircay",
+          "Calle sin nombre"
+        ],
+        "streets_display": "Avenida 12 Norte, Calle sin nombre, Avenida Lircay",
+        "highway_types": [
+          "secondary",
+          "service",
+          "primary",
+          "residential"
+        ],
+        "description": "Una conexión potencial de aproximadamente 326 m en este tramo uniría 8.78 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.653032,
+            -35.412958
+          ],
+          [
+            -71.653099,
+            -35.41291
+          ],
+          [
+            -71.653127,
+            -35.412885
+          ],
+          [
+            -71.653021,
+            -35.412798
+          ],
+          [
+            -71.652835,
+            -35.412776
+          ],
+          [
+            -71.652648,
+            -35.412742
+          ],
+          [
+            -71.652563,
+            -35.412709
+          ],
+          [
+            -71.652482,
+            -35.412663
+          ],
+          [
+            -71.65201,
+            -35.412246
+          ],
+          [
+            -71.651972,
+            -35.412237
+          ],
+          [
+            -71.651933,
+            -35.412236
+          ],
+          [
+            -71.651754,
+            -35.412344
+          ],
+          [
+            -71.651635,
+            -35.412239
+          ],
+          [
+            -71.651192,
+            -35.41184
+          ],
+          [
+            -71.650868,
+            -35.411547
+          ],
+          [
+            -71.650794,
+            -35.411481
+          ],
+          [
+            -71.650647,
+            -35.411348
+          ],
+          [
+            -71.650573,
+            -35.411408
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-06",
+      "properties": {
+        "id": "gap-talca-06",
+        "name": "Oportunidad #06: Calle de Servicio Ruta 5",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 6,
+        "priority_score": 68.0,
+        "gap_length_m": 110,
+        "component_a_km": 1.72,
+        "component_b_km": 0.88,
+        "connected_network_km": 2.71,
+        "network_gain_km": 2.6,
+        "gain_ratio": 23.6,
+        "streets": [
+          "Calle de Servicio Ruta 5"
+        ],
+        "streets_display": "Calle de Servicio Ruta 5",
+        "highway_types": [
+          "tertiary"
+        ],
+        "description": "Una conexión potencial de aproximadamente 110 m en este tramo uniría 2.71 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.628729,
+            -35.413972
+          ],
+          [
+            -71.628777,
+            -35.414059
+          ],
+          [
+            -71.628839,
+            -35.414169
+          ],
+          [
+            -71.628923,
+            -35.41432
+          ],
+          [
+            -71.628951,
+            -35.414366
+          ],
+          [
+            -71.628986,
+            -35.414409
+          ],
+          [
+            -71.62901,
+            -35.414434
+          ],
+          [
+            -71.62904,
+            -35.414455
+          ],
+          [
+            -71.629074,
+            -35.414471
+          ],
+          [
+            -71.629111,
+            -35.41448
+          ],
+          [
+            -71.629149,
+            -35.414484
+          ],
+          [
+            -71.629187,
+            -35.414483
+          ],
+          [
+            -71.629227,
+            -35.414476
+          ],
+          [
+            -71.629494,
+            -35.414419
+          ],
+          [
+            -71.629563,
+            -35.414408
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-07",
+      "properties": {
+        "id": "gap-talca-07",
+        "name": "Oportunidad #07: Calle 33 Sur",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 7,
+        "priority_score": 67.5,
+        "gap_length_m": 242,
+        "component_a_km": 17.33,
+        "component_b_km": 0.23,
+        "connected_network_km": 17.8,
+        "network_gain_km": 17.56,
+        "gain_ratio": 72.4,
+        "streets": [
+          "Calle 33 Sur",
+          "Calle sin nombre"
+        ],
+        "streets_display": "Calle 33 Sur, Calle sin nombre",
+        "highway_types": [
+          "residential",
+          "cycleway"
+        ],
+        "description": "Una conexión potencial de aproximadamente 242 m en este tramo uniría 17.8 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.672788,
+            -35.453006
+          ],
+          [
+            -71.672822,
+            -35.452999
+          ],
+          [
+            -71.672895,
+            -35.452986
+          ],
+          [
+            -71.673347,
+            -35.455045
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-08",
+      "properties": {
+        "id": "gap-talca-08",
+        "name": "Oportunidad #08: Avenida San Miguel",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 8,
+        "priority_score": 64.9,
+        "gap_length_m": 508,
+        "component_a_km": 28.6,
+        "component_b_km": 0.83,
+        "connected_network_km": 29.94,
+        "network_gain_km": 29.43,
+        "gain_ratio": 57.9,
+        "streets": [
+          "Avenida San Miguel",
+          "Avenida Circunvalación 30 Oriente",
+          "Calle sin nombre"
+        ],
+        "streets_display": "Avenida San Miguel, Avenida Circunvalación 30 Oriente, Calle sin nombre",
+        "highway_types": [
+          "trunk",
+          "secondary",
+          "tertiary",
+          "tertiary_link",
+          "cycleway"
+        ],
+        "description": "Una conexión potencial de aproximadamente 508 m en este tramo uniría 29.94 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.629521,
+            -35.434406
+          ],
+          [
+            -71.629394,
+            -35.434442
+          ],
+          [
+            -71.62932,
+            -35.434352
+          ],
+          [
+            -71.62928,
+            -35.434303
+          ],
+          [
+            -71.629227,
+            -35.434222
+          ],
+          [
+            -71.629072,
+            -35.433927
+          ],
+          [
+            -71.628974,
+            -35.433752
+          ],
+          [
+            -71.628931,
+            -35.433675
+          ],
+          [
+            -71.628815,
+            -35.433465
+          ],
+          [
+            -71.628722,
+            -35.433284
+          ],
+          [
+            -71.628621,
+            -35.433076
+          ],
+          [
+            -71.628446,
+            -35.432707
+          ],
+          [
+            -71.628422,
+            -35.432657
+          ],
+          [
+            -71.628277,
+            -35.432349
+          ],
+          [
+            -71.628232,
+            -35.432255
+          ],
+          [
+            -71.628054,
+            -35.43187
+          ],
+          [
+            -71.627994,
+            -35.431742
+          ],
+          [
+            -71.627915,
+            -35.431576
+          ],
+          [
+            -71.627885,
+            -35.43151
+          ],
+          [
+            -71.627858,
+            -35.431453
+          ],
+          [
+            -71.627826,
+            -35.431388
+          ],
+          [
+            -71.627575,
+            -35.430884
+          ],
+          [
+            -71.627632,
+            -35.430864
+          ],
+          [
+            -71.627851,
+            -35.431309
+          ],
+          [
+            -71.62793,
+            -35.431349
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-09",
+      "properties": {
+        "id": "gap-talca-09",
+        "name": "Oportunidad #09: 20 Norte A",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 9,
+        "priority_score": 63.2,
+        "gap_length_m": 530,
+        "component_a_km": 17.33,
+        "component_b_km": 0.54,
+        "connected_network_km": 18.4,
+        "network_gain_km": 17.87,
+        "gain_ratio": 33.7,
+        "streets": [
+          "20 Norte A",
+          "Avenida 5 Oriente",
+          "20 Norte",
+          "Calle 6 Oriente"
+        ],
+        "streets_display": "20 Norte A, Avenida 5 Oriente, 20 Norte",
+        "highway_types": [
+          "living_street",
+          "tertiary",
+          "residential"
+        ],
+        "description": "Una conexión potencial de aproximadamente 530 m en este tramo uniría 18.4 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.652247,
+            -35.400052
+          ],
+          [
+            -71.652186,
+            -35.400065
+          ],
+          [
+            -71.652191,
+            -35.400262
+          ],
+          [
+            -71.6522,
+            -35.400345
+          ],
+          [
+            -71.652223,
+            -35.400461
+          ],
+          [
+            -71.652251,
+            -35.400573
+          ],
+          [
+            -71.652188,
+            -35.400588
+          ],
+          [
+            -71.651973,
+            -35.400579
+          ],
+          [
+            -71.651625,
+            -35.400563
+          ],
+          [
+            -71.651396,
+            -35.400562
+          ],
+          [
+            -71.650638,
+            -35.400582
+          ],
+          [
+            -71.65041,
+            -35.400578
+          ],
+          [
+            -71.650283,
+            -35.400585
+          ],
+          [
+            -71.650197,
+            -35.400595
+          ],
+          [
+            -71.650073,
+            -35.400616
+          ],
+          [
+            -71.649994,
+            -35.400634
+          ],
+          [
+            -71.6496,
+            -35.400763
+          ],
+          [
+            -71.649548,
+            -35.400783
+          ],
+          [
+            -71.649128,
+            -35.400941
+          ],
+          [
+            -71.64897,
+            -35.401
+          ],
+          [
+            -71.648634,
+            -35.401121
+          ],
+          [
+            -71.648295,
+            -35.401254
+          ],
+          [
+            -71.647961,
+            -35.40138
+          ],
+          [
+            -71.647931,
+            -35.401391
+          ],
+          [
+            -71.647391,
+            -35.401586
+          ],
+          [
+            -71.64736,
+            -35.401609
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gap-talca-10",
+      "properties": {
+        "id": "gap-talca-10",
+        "name": "Oportunidad #10: Avenida Alameda Bernardo O'Higgins",
+        "status": "ALGORITHMIC_CANDIDATE",
+        "category": "Conexión potencial de continuidad",
+        "is_demo": false,
+        "rank": 10,
+        "priority_score": 63.1,
+        "gap_length_m": 1139,
+        "component_a_km": 28.6,
+        "component_b_km": 17.33,
+        "connected_network_km": 47.07,
+        "network_gain_km": 45.93,
+        "gain_ratio": 40.3,
+        "streets": [
+          "Avenida Alameda Bernardo O'Higgins",
+          "Calle sin nombre",
+          "Ciclovia RIo Claro"
+        ],
+        "streets_display": "Avenida Alameda Bernardo O'Higgins, Calle sin nombre, Ciclovia RIo Claro",
+        "highway_types": [
+          "primary",
+          "unclassified",
+          "cycleway"
+        ],
+        "description": "Una conexión potencial de aproximadamente 1139 m en este tramo uniría 47.07 km de infraestructura ciclista actualmente separada.",
+        "reason": "Conecta dos componentes actualmente separados de la red ciclista",
+        "disclaimer": "Candidato analítico preliminar. No representa estudio de ingeniería ni proyecto aprobado.",
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.671234,
+            -35.421247
+          ],
+          [
+            -71.671764,
+            -35.421205
+          ],
+          [
+            -71.672393,
+            -35.421157
+          ],
+          [
+            -71.673064,
+            -35.421107
+          ],
+          [
+            -71.675027,
+            -35.420956
+          ],
+          [
+            -71.675309,
+            -35.420934
+          ],
+          [
+            -71.675424,
+            -35.420925
+          ],
+          [
+            -71.6755,
+            -35.420919
+          ],
+          [
+            -71.675654,
+            -35.420907
+          ],
+          [
+            -71.675763,
+            -35.420899
+          ],
+          [
+            -71.676941,
+            -35.420803
+          ],
+          [
+            -71.677531,
+            -35.420755
+          ],
+          [
+            -71.678578,
+            -35.420668
+          ],
+          [
+            -71.678761,
+            -35.420651
+          ],
+          [
+            -71.678945,
+            -35.420636
+          ],
+          [
+            -71.679052,
+            -35.420598
+          ],
+          [
+            -71.679175,
+            -35.420575
+          ],
+          [
+            -71.679301,
+            -35.420562
+          ],
+          [
+            -71.680337,
+            -35.420493
+          ],
+          [
+            -71.680503,
+            -35.420458
+          ],
+          [
+            -71.680587,
+            -35.420424
+          ],
+          [
+            -71.680667,
+            -35.420353
+          ],
+          [
+            -71.680745,
+            -35.420254
+          ],
+          [
+            -71.680815,
+            -35.420164
+          ],
+          [
+            -71.680865,
+            -35.420101
+          ],
+          [
+            -71.680257,
+            -35.419964
+          ],
+          [
+            -71.680157,
+            -35.419943
+          ],
+          [
+            -71.680091,
+            -35.419938
+          ],
+          [
+            -71.680005,
+            -35.419938
+          ],
+          [
+            -71.679919,
+            -35.419947
+          ],
+          [
+            -71.679027,
+            -35.420109
+          ],
+          [
+            -71.678903,
+            -35.420138
+          ],
+          [
+            -71.678831,
+            -35.420164
+          ],
+          [
+            -71.678774,
+            -35.420208
+          ],
+          [
+            -71.678744,
+            -35.420265
+          ],
+          [
+            -71.678742,
+            -35.420335
+          ],
+          [
+            -71.678793,
+            -35.420555
+          ],
+          [
+            -71.678733,
+            -35.420563
+          ]
+        ]
+      }
+    }
+  ]
+}
