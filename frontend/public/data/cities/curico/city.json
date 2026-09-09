@@ -19,7 +19,7 @@
       -34.93
     ]
   ],
-  "description": "Ciudad intermedia en la Región del Maule, con topografía plana favorable para el ciclismo urbano y creciente demanda de conectividad.",
+  "description": "Ciudad intermedia en la Región del Maule, con topografía plana favorable para el ciclismo urbano y desafíos de conectividad.",
   "stats": {
     "cycleways_count": 121,
     "total_km": 43.2,
@@ -28,6 +28,6 @@
       "missing-connections",
       "suggested-routes"
     ],
-    "last_updated": "2026-09-08T20:16:10.378103+00:00"
+    "last_updated": "2026-09-09T11:33:17.200229+00:00"
   }
 }

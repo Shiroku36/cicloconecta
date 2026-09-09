@@ -9,8 +9,10 @@
   },
   "metadata": {
     "city": "curico",
-    "source": "OpenStreetMap",
-    "extracted_at": "2026-09-08T20:16:10.365516+00:00",
+    "source": "OpenStreetMap Contributors",
+    "source_type": "open_data",
+    "verified_in_situ": false,
+    "extracted_at": "2026-09-09T11:33:17.189166+00:00",
     "total_features": 121,
     "total_km": 43.2
   },
@@ -21,16 +23,30 @@
       "properties": {
         "id": "curico-osm-27945214",
         "name": "Camino a Licantén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 150.6,
         "length_km": 0.15,
         "source": "OpenStreetMap Contributors",
         "source_id": 27945214,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Camino a Licantén",
+          "oneway": "no",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -72,16 +88,33 @@
       "properties": {
         "id": "curico-osm-28606189",
         "name": "Avenida Ángel Lago",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "residential",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 237.6,
         "length_km": 0.24,
         "source": "OpenStreetMap Contributors",
         "source_id": 28606189,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "highway": "residential",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Avenida Ángel Lago",
+          "noref": "yes",
+          "old_ref": "J-617",
+          "oneway": "yes",
+          "sidewalk": "right",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -159,16 +192,31 @@
       "properties": {
         "id": "curico-osm-30291390",
         "name": "Merced",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 39.4,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 30291390,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "lane",
+          "highway": "tertiary",
+          "lanes": "4",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Merced",
+          "oneway": "yes",
+          "surface": "concrete",
+          "turn:lanes": "left|through|through|through"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -197,17 +245,30 @@
       "id": "osm-39336739",
       "properties": {
         "id": "curico-osm-39336739",
-        "name": "Ciclovía sin nombre",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 141.5,
         "length_km": 0.14,
         "source": "OpenStreetMap Contributors",
         "source_id": 39336739,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "oneway": "no",
+          "source:maxspeed": "CL:urban",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -353,16 +414,43 @@
       "properties": {
         "id": "curico-osm-40117209",
         "name": "Ruta 5 Sur",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "motorway",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 164.4,
         "length_km": 0.16,
         "source": "OpenStreetMap Contributors",
         "source_id": 40117209,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "alt_name": "Autopista del Maipo",
+          "bicycle": "designated",
+          "bridge": "yes",
+          "cycleway": "track",
+          "foot": "yes",
+          "highway": "motorway",
+          "int_name": "Carretera Panamericana",
+          "lanes": "2",
+          "layer": "1",
+          "maxspeed": "120",
+          "maxspeed:coach": "100",
+          "maxspeed:hgv:conditional": "90 @ (weight>=3.86)",
+          "maxspeed:psv:conditional": "90 @ (weight>=3.86)",
+          "name": "Ruta 5 Sur",
+          "official_name": "Longitudinal Sur, Sector: Peor Es Nada - Perquilauquén",
+          "oneway": "yes",
+          "operator": "Ruta del Maipo Sociedad Concesionaria S.A.",
+          "ref": "5",
+          "sidewalk": "right",
+          "source:ref": "Vialidad",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -383,17 +471,32 @@
       "id": "osm-40117210",
       "properties": {
         "id": "curico-osm-40117210",
-        "name": "Ciclovía sin nombre",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary_link",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 152.8,
         "length_km": 0.15,
         "source": "OpenStreetMap Contributors",
         "source_id": 40117210,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "designated",
+          "cycleway": "track",
+          "destination:ref:to": "5",
+          "highway": "secondary_link",
+          "lanes": "1",
+          "maxspeed": "50",
+          "oneway": "yes",
+          "surface": "asphalt",
+          "turn:lanes": "through"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -435,16 +538,31 @@
       "properties": {
         "id": "curico-osm-40117211",
         "name": "Paso Nivel Los Niches",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 201.8,
         "length_km": 0.2,
         "source": "OpenStreetMap Contributors",
         "source_id": 40117211,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "designated",
+          "cycleway": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "layer": "2",
+          "maxspeed": "50",
+          "name": "Paso Nivel Los Niches",
+          "oneway": "no",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -553,17 +671,34 @@
       "id": "osm-40182255",
       "properties": {
         "id": "curico-osm-40182255",
-        "name": "Ciclovía sin nombre",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 59.7,
         "length_km": 0.06,
         "source": "OpenStreetMap Contributors",
         "source_id": 40182255,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bridge": "yes",
+          "bridge:name": "Paso Superior Romeral",
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "layer": "1",
+          "maxspeed": "50",
+          "oneway": "no",
+          "sidewalk": "left",
+          "source:maxspeed": "CL:urban",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -585,16 +720,32 @@
       "properties": {
         "id": "curico-osm-47003412",
         "name": "Paso Nivel Los Niches",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 63.8,
         "length_km": 0.06,
         "source": "OpenStreetMap Contributors",
         "source_id": 47003412,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "designated",
+          "bridge": "yes",
+          "cycleway": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "layer": "2",
+          "maxspeed": "50",
+          "name": "Paso Nivel Los Niches",
+          "oneway": "no",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -616,16 +767,34 @@
       "properties": {
         "id": "curico-osm-97148474",
         "name": "Pasaje Ventisqueros",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle",
+        "category": "on_street",
         "highway": "living_street",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 30.7,
         "length_km": 0.03,
         "source": "OpenStreetMap Contributors",
         "source_id": 97148474,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "yes",
+          "cycleway": "no",
+          "foot": "yes",
+          "highway": "living_street",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Pasaje Ventisqueros",
+          "oneway": "no",
+          "sidewalk": "both",
+          "surface": "paved",
+          "width": "2"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -647,16 +816,33 @@
       "properties": {
         "id": "curico-osm-97148557",
         "name": "Pasaje Archipielago",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle",
+        "category": "on_street",
         "highway": "residential",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 36.0,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 97148557,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "yes",
+          "cycleway": "no",
+          "foot": "yes",
+          "highway": "residential",
+          "lanes": "2",
+          "lit": "yes",
+          "name": "Pasaje Archipielago",
+          "oneway": "no",
+          "sidewalk": "both",
+          "surface": "paved",
+          "width": "2"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -678,16 +864,34 @@
       "properties": {
         "id": "curico-osm-101300652",
         "name": "Avenida Amsterdam",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 1883.0,
         "length_km": 1.88,
         "source": "OpenStreetMap Contributors",
         "source_id": 101300652,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:oneway": "no",
+          "cycleway:right:separation:left": "kerb",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Amsterdam",
+          "oneway": "yes",
+          "sidewalk": "right",
+          "source:maxspeed": "CL:urban",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -924,17 +1128,24 @@
       "id": "osm-102451549",
       "properties": {
         "id": "curico-osm-102451549",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 244.7,
         "length_km": 0.24,
         "source": "OpenStreetMap Contributors",
         "source_id": 102451549,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -968,16 +1179,30 @@
       "properties": {
         "id": "curico-osm-110943239",
         "name": "Avenida Bernardo O'Higgins",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 554.9,
         "length_km": 0.55,
         "source": "OpenStreetMap Contributors",
         "source_id": 110943239,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Bernardo O'Higgins",
+          "oneway": "yes",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1035,16 +1260,31 @@
       "properties": {
         "id": "curico-osm-141024646",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 308.0,
         "length_km": 0.31,
         "source": "OpenStreetMap Contributors",
         "source_id": 141024646,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "70",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1073,17 +1313,24 @@
       "id": "osm-143778217",
       "properties": {
         "id": "curico-osm-143778217",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 314.4,
         "length_km": 0.31,
         "source": "OpenStreetMap Contributors",
         "source_id": 143778217,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1124,17 +1371,26 @@
       "id": "osm-143778218",
       "properties": {
         "id": "curico-osm-143778218",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 1250.8,
         "length_km": 1.25,
         "source": "OpenStreetMap Contributors",
         "source_id": 143778218,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1307,17 +1563,24 @@
       "id": "osm-143778686",
       "properties": {
         "id": "curico-osm-143778686",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 379.4,
         "length_km": 0.38,
         "source": "OpenStreetMap Contributors",
         "source_id": 143778686,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1371,16 +1634,32 @@
       "properties": {
         "id": "curico-osm-147955753",
         "name": "Pasaje Macizo Andino",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle",
+        "category": "on_street",
         "highway": "living_street",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 17.9,
         "length_km": 0.02,
         "source": "OpenStreetMap Contributors",
         "source_id": 147955753,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "yes",
+          "cycleway": "no",
+          "highway": "living_street",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Pasaje Macizo Andino",
+          "oneway": "no",
+          "sidewalk": "both",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1402,16 +1681,33 @@
       "properties": {
         "id": "curico-osm-147955756",
         "name": "Pasaje Ventisqueros",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle",
+        "category": "on_street",
         "highway": "living_street",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 16.1,
         "length_km": 0.02,
         "source": "OpenStreetMap Contributors",
         "source_id": 147955756,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "yes",
+          "cycleway": "no",
+          "foot": "yes",
+          "highway": "living_street",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Pasaje Ventisqueros",
+          "oneway": "no",
+          "sidewalk": "right",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1433,16 +1729,33 @@
       "properties": {
         "id": "curico-osm-147955757",
         "name": "Pasaje Archipielago",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle",
+        "category": "on_street",
         "highway": "living_street",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 15.3,
         "length_km": 0.02,
         "source": "OpenStreetMap Contributors",
         "source_id": 147955757,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "yes",
+          "cycleway": "no",
+          "foot": "yes",
+          "highway": "living_street",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Pasaje Archipielago",
+          "oneway": "no",
+          "sidewalk": "both",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1463,17 +1776,26 @@
       "id": "osm-149913292",
       "properties": {
         "id": "curico-osm-149913292",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 52.1,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913292,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1494,17 +1816,27 @@
       "id": "osm-149913293",
       "properties": {
         "id": "curico-osm-149913293",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 93.6,
         "length_km": 0.09,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913293,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "lit": "yes",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1525,17 +1857,26 @@
       "id": "osm-149913294",
       "properties": {
         "id": "curico-osm-149913294",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 44.2,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913294,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1556,17 +1897,26 @@
       "id": "osm-149913295",
       "properties": {
         "id": "curico-osm-149913295",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 56.0,
         "length_km": 0.06,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913295,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1587,17 +1937,26 @@
       "id": "osm-149913296",
       "properties": {
         "id": "curico-osm-149913296",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 51.0,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913296,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1618,17 +1977,26 @@
       "id": "osm-149913297",
       "properties": {
         "id": "curico-osm-149913297",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 100.5,
         "length_km": 0.1,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913297,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1649,17 +2017,26 @@
       "id": "osm-149913301",
       "properties": {
         "id": "curico-osm-149913301",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 54.0,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913301,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1680,17 +2057,26 @@
       "id": "osm-149913302",
       "properties": {
         "id": "curico-osm-149913302",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 45.6,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913302,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1711,17 +2097,27 @@
       "id": "osm-149913305",
       "properties": {
         "id": "curico-osm-149913305",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 175.6,
         "length_km": 0.18,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913305,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "lit": "yes",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1758,17 +2154,26 @@
       "id": "osm-149913306",
       "properties": {
         "id": "curico-osm-149913306",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 61.7,
         "length_km": 0.06,
         "source": "OpenStreetMap Contributors",
         "source_id": 149913306,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1789,17 +2194,26 @@
       "id": "osm-176857349",
       "properties": {
         "id": "curico-osm-176857349",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 284.2,
         "length_km": 0.28,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857349,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -1884,17 +2298,26 @@
       "id": "osm-176857353",
       "properties": {
         "id": "curico-osm-176857353",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 1580.4,
         "length_km": 1.58,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857353,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2127,17 +2550,26 @@
       "id": "osm-176857354",
       "properties": {
         "id": "curico-osm-176857354",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 45.3,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857354,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2170,17 +2602,26 @@
       "id": "osm-176857357",
       "properties": {
         "id": "curico-osm-176857357",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 232.3,
         "length_km": 0.23,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857357,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2233,17 +2674,26 @@
       "id": "osm-176857361",
       "properties": {
         "id": "curico-osm-176857361",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 842.0,
         "length_km": 0.84,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857361,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2320,17 +2770,26 @@
       "id": "osm-176857364",
       "properties": {
         "id": "curico-osm-176857364",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 290.3,
         "length_km": 0.29,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857364,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2367,17 +2826,26 @@
       "id": "osm-176857368",
       "properties": {
         "id": "curico-osm-176857368",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 1034.5,
         "length_km": 1.03,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857368,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2450,17 +2918,26 @@
       "id": "osm-176857375",
       "properties": {
         "id": "curico-osm-176857375",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 191.2,
         "length_km": 0.19,
         "source": "OpenStreetMap Contributors",
         "source_id": 176857375,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2514,16 +2991,31 @@
       "properties": {
         "id": "curico-osm-194530328",
         "name": "Lago Calafquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "residential",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 222.8,
         "length_km": 0.22,
         "source": "OpenStreetMap Contributors",
         "source_id": 194530328,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:buffer": "yes",
+          "cycleway:right:oneway": "no",
+          "highway": "residential",
+          "lanes": "2",
+          "lit": "yes",
+          "name": "Lago Calafquén",
+          "oneway": "no",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2597,16 +3089,28 @@
       "properties": {
         "id": "curico-osm-243658846",
         "name": "Avenida Circunvalación Doctor Osorio",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 327.5,
         "length_km": 0.33,
         "source": "OpenStreetMap Contributors",
         "source_id": 243658846,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Avenida Circunvalación Doctor Osorio",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2652,16 +3156,28 @@
       "properties": {
         "id": "curico-osm-243658847",
         "name": "Avenida Circunvalación Doctor Osorio",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 215.9,
         "length_km": 0.22,
         "source": "OpenStreetMap Contributors",
         "source_id": 243658847,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Circunvalación Doctor Osorio",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2695,16 +3211,31 @@
       "properties": {
         "id": "curico-osm-297788684",
         "name": "Camino a Licantén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 819.7,
         "length_km": 0.82,
         "source": "OpenStreetMap Contributors",
         "source_id": 297788684,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Camino a Licantén",
+          "oneway": "no",
+          "source:maxspeed": "CL:urban",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -2797,17 +3328,25 @@
       "id": "osm-488142038",
       "properties": {
         "id": "curico-osm-488142038",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1321.9,
         "length_km": 1.32,
         "source": "OpenStreetMap Contributors",
         "source_id": 488142038,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -3093,16 +3632,34 @@
       "properties": {
         "id": "curico-osm-491990741",
         "name": "Avenida Amsterdam",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 365.5,
         "length_km": 0.37,
         "source": "OpenStreetMap Contributors",
         "source_id": 491990741,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:oneway": "no",
+          "cycleway:right:separation:left": "kerb",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Amsterdam",
+          "oneway": "yes",
+          "sidewalk": "right",
+          "source:maxspeed": "CL:urban",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -3175,17 +3732,24 @@
       "id": "osm-514421847",
       "properties": {
         "id": "curico-osm-514421847",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1901.6,
         "length_km": 1.9,
         "source": "OpenStreetMap Contributors",
         "source_id": 514421847,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -3694,17 +4258,26 @@
       "id": "osm-514421850",
       "properties": {
         "id": "curico-osm-514421850",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 875.6,
         "length_km": 0.88,
         "source": "OpenStreetMap Contributors",
         "source_id": 514421850,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -3970,16 +4543,30 @@
       "properties": {
         "id": "curico-osm-514421854",
         "name": "Paso Nivel Los Niches",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 50.5,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 514421854,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bicycle": "designated",
+          "cycleway": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Paso Nivel Los Niches",
+          "oneway": "no",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4001,16 +4588,30 @@
       "properties": {
         "id": "curico-osm-561010468",
         "name": "Avenida Balmaceda",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 506.4,
         "length_km": 0.51,
         "source": "OpenStreetMap Contributors",
         "source_id": 561010468,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Balmaceda",
+          "oneway": "no",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4092,16 +4693,30 @@
       "properties": {
         "id": "curico-osm-562929561",
         "name": "Mataquito",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 268.0,
         "length_km": 0.27,
         "source": "OpenStreetMap Contributors",
         "source_id": 562929561,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "lane",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Mataquito",
+          "oneway": "no",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4139,16 +4754,32 @@
       "properties": {
         "id": "curico-osm-660035621",
         "name": "Pescara",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "residential",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 250.3,
         "length_km": 0.25,
         "source": "OpenStreetMap Contributors",
         "source_id": 660035621,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "lane",
+          "cycleway:right:oneway": "no",
+          "highway": "residential",
+          "lanes": "1",
+          "lit": "yes",
+          "name": "Pescara",
+          "oneway": "yes",
+          "oneway:bicycle": "no",
+          "sidewalk": "both",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4226,16 +4857,28 @@
       "properties": {
         "id": "curico-osm-770423735",
         "name": "Avenida Circunvalación Doctor Osorio",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 198.7,
         "length_km": 0.2,
         "source": "OpenStreetMap Contributors",
         "source_id": 770423735,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Avenida Circunvalación Doctor Osorio",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4269,16 +4912,29 @@
       "properties": {
         "id": "curico-osm-944675737",
         "name": "Nehuén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "living_street",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 144.7,
         "length_km": 0.14,
         "source": "OpenStreetMap Contributors",
         "source_id": 944675737,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "lane",
+          "highway": "living_street",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Nehuén",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4303,17 +4959,26 @@
       "id": "osm-1023372963",
       "properties": {
         "id": "curico-osm-1023372963",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 386.9,
         "length_km": 0.39,
         "source": "OpenStreetMap Contributors",
         "source_id": 1023372963,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4367,16 +5032,34 @@
       "properties": {
         "id": "curico-osm-1028092610",
         "name": "Ruta J-55",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 81.1,
         "length_km": 0.08,
         "source": "OpenStreetMap Contributors",
         "source_id": 1028092610,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Ruta J-55",
+          "official_name": "Cruce Ruta 5 - Romeral - Portezuelo Vergara",
+          "oneway": "no",
+          "ref": "J-55",
+          "sidewalk": "left",
+          "source:maxspeed": "CL:urban",
+          "source:ref": "Vialidad",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4401,17 +5084,24 @@
       "id": "osm-1071441297",
       "properties": {
         "id": "curico-osm-1071441297",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 207.0,
         "length_km": 0.21,
         "source": "OpenStreetMap Contributors",
         "source_id": 1071441297,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4464,17 +5154,26 @@
       "id": "osm-1071441298",
       "properties": {
         "id": "curico-osm-1071441298",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 70.6,
         "length_km": 0.07,
         "source": "OpenStreetMap Contributors",
         "source_id": 1071441298,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bridge": "yes",
+          "highway": "cycleway",
+          "layer": "1"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4495,17 +5194,24 @@
       "id": "osm-1071441299",
       "properties": {
         "id": "curico-osm-1071441299",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1391.7,
         "length_km": 1.39,
         "source": "OpenStreetMap Contributors",
         "source_id": 1071441299,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4590,17 +5296,24 @@
       "id": "osm-1071441300",
       "properties": {
         "id": "curico-osm-1071441300",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 622.2,
         "length_km": 0.62,
         "source": "OpenStreetMap Contributors",
         "source_id": 1071441300,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4709,17 +5422,24 @@
       "id": "osm-1071441304",
       "properties": {
         "id": "curico-osm-1071441304",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 586.0,
         "length_km": 0.59,
         "source": "OpenStreetMap Contributors",
         "source_id": 1071441304,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -4824,17 +5544,24 @@
       "id": "osm-1071441305",
       "properties": {
         "id": "curico-osm-1071441305",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1131.9,
         "length_km": 1.13,
         "source": "OpenStreetMap Contributors",
         "source_id": 1071441305,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5035,17 +5762,26 @@
       "id": "osm-1087612321",
       "properties": {
         "id": "curico-osm-1087612321",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 579.0,
         "length_km": 0.58,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612321,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5122,17 +5858,24 @@
       "id": "osm-1087612322",
       "properties": {
         "id": "curico-osm-1087612322",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1446.9,
         "length_km": 1.45,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612322,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5193,17 +5936,26 @@
       "id": "osm-1087612323",
       "properties": {
         "id": "curico-osm-1087612323",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 335.1,
         "length_km": 0.34,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612323,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5308,17 +6060,24 @@
       "id": "osm-1087612324",
       "properties": {
         "id": "curico-osm-1087612324",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 441.9,
         "length_km": 0.44,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612324,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5359,17 +6118,25 @@
       "id": "osm-1087612325",
       "properties": {
         "id": "curico-osm-1087612325",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 232.4,
         "length_km": 0.23,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612325,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5402,17 +6169,26 @@
       "id": "osm-1087612326",
       "properties": {
         "id": "curico-osm-1087612326",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 52.2,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612326,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5457,17 +6233,25 @@
       "id": "osm-1087612327",
       "properties": {
         "id": "curico-osm-1087612327",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1829.5,
         "length_km": 1.83,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612327,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5596,17 +6380,24 @@
       "id": "osm-1087612328",
       "properties": {
         "id": "curico-osm-1087612328",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 921.4,
         "length_km": 0.92,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612328,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5699,17 +6490,24 @@
       "id": "osm-1087612330",
       "properties": {
         "id": "curico-osm-1087612330",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 959.6,
         "length_km": 0.96,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612330,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5794,17 +6592,24 @@
       "id": "osm-1087612331",
       "properties": {
         "id": "curico-osm-1087612331",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 639.7,
         "length_km": 0.64,
         "source": "OpenStreetMap Contributors",
         "source_id": 1087612331,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5874,16 +6679,31 @@
       "properties": {
         "id": "curico-osm-1093021779",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 67.5,
         "length_km": 0.07,
         "source": "OpenStreetMap Contributors",
         "source_id": 1093021779,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "70",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5912,17 +6732,27 @@
       "id": "osm-1099476758",
       "properties": {
         "id": "curico-osm-1099476758",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "compacted",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "compacted",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 1139.6,
         "length_km": 1.14,
         "source": "OpenStreetMap Contributors",
         "source_id": 1099476758,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "horse": "yes",
+          "surface": "compacted"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -5976,16 +6806,32 @@
       "properties": {
         "id": "curico-osm-1099476763",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 761.7,
         "length_km": 0.76,
         "source": "OpenStreetMap Contributors",
         "source_id": 1099476763,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:maxspeed": "sign",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6015,16 +6861,35 @@
       "properties": {
         "id": "curico-osm-1101287734",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 33.5,
         "length_km": 0.03,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287734,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "3",
+          "lanes:backward": "2",
+          "lanes:forward": "1",
+          "maxspeed": "50",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:maxspeed": "sign",
+          "source:ref": "Vialidad",
+          "surface": "concrete",
+          "turn:lanes:backward": "|right"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6046,16 +6911,36 @@
       "properties": {
         "id": "curico-osm-1101287735",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 33.3,
         "length_km": 0.03,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287735,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "4",
+          "lanes:backward": "2",
+          "lanes:forward": "2",
+          "maxspeed": "50",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:maxspeed": "sign",
+          "source:ref": "Vialidad",
+          "surface": "concrete",
+          "turn:lanes:backward": "|merge_to_left",
+          "turn:lanes:forward": "|left"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6077,16 +6962,35 @@
       "properties": {
         "id": "curico-osm-1101287736",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 73.4,
         "length_km": 0.07,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287736,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "3",
+          "lanes:backward": "1",
+          "lanes:forward": "2",
+          "maxspeed": "50",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:maxspeed": "sign",
+          "source:ref": "Vialidad",
+          "surface": "concrete",
+          "turn:lanes:forward": "|left"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6108,16 +7012,31 @@
       "properties": {
         "id": "curico-osm-1101287738",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 355.9,
         "length_km": 0.36,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287738,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "70",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6143,16 +7062,32 @@
       "properties": {
         "id": "curico-osm-1101287739",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 40.4,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287739,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bus_bay": "right",
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "70",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6174,16 +7109,32 @@
       "properties": {
         "id": "curico-osm-1101287740",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 36.0,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287740,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bus_bay": "right",
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "70",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6209,16 +7160,31 @@
       "properties": {
         "id": "curico-osm-1101287741",
         "name": "Ruta J-60",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "primary",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 611.0,
         "length_km": 0.61,
         "source": "OpenStreetMap Contributors",
         "source_id": 1101287741,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway": "track",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "70",
+          "name": "Ruta J-60",
+          "official_name": "Cruce J-620 (Curicó) - Hualañé - Iloca - Infiernillo",
+          "ref": "J-60",
+          "source:ref": "Vialidad",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6243,17 +7209,25 @@
       "id": "osm-1121873998",
       "properties": {
         "id": "curico-osm-1121873998",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 499.5,
         "length_km": 0.5,
         "source": "OpenStreetMap Contributors",
         "source_id": 1121873998,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6334,17 +7308,24 @@
       "id": "osm-1121874012",
       "properties": {
         "id": "curico-osm-1121874012",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 424.2,
         "length_km": 0.42,
         "source": "OpenStreetMap Contributors",
         "source_id": 1121874012,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6413,17 +7394,24 @@
       "id": "osm-1121874013",
       "properties": {
         "id": "curico-osm-1121874013",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 60.5,
         "length_km": 0.06,
         "source": "OpenStreetMap Contributors",
         "source_id": 1121874013,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6444,17 +7432,24 @@
       "id": "osm-1121874021",
       "properties": {
         "id": "curico-osm-1121874021",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 90.1,
         "length_km": 0.09,
         "source": "OpenStreetMap Contributors",
         "source_id": 1121874021,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6475,17 +7470,24 @@
       "id": "osm-1121874022",
       "properties": {
         "id": "curico-osm-1121874022",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 574.6,
         "length_km": 0.57,
         "source": "OpenStreetMap Contributors",
         "source_id": 1121874022,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6526,17 +7528,25 @@
       "id": "osm-1172840700",
       "properties": {
         "id": "curico-osm-1172840700",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 721.9,
         "length_km": 0.72,
         "source": "OpenStreetMap Contributors",
         "source_id": 1172840700,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6614,16 +7624,39 @@
       "properties": {
         "id": "curico-osm-1172840741",
         "name": "Avenida Rauquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 81.5,
         "length_km": 0.08,
         "source": "OpenStreetMap Contributors",
         "source_id": 1172840741,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:buffer": "yes",
+          "cycleway:right:oneway": "no",
+          "highway": "secondary",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Rauquén",
+          "official_name": "Curicó (Avenida Alessandri) - Sarmiento - Viñas París",
+          "oneway": "yes",
+          "placement": "left_of:1",
+          "ref": "J-514",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "source:maxspeed": "CL:urban",
+          "source:ref": "Vialidad",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6693,16 +7726,30 @@
       "properties": {
         "id": "curico-osm-1176088705",
         "name": "Mataquito",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 31.4,
         "length_km": 0.03,
         "source": "OpenStreetMap Contributors",
         "source_id": 1176088705,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "lane",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Mataquito",
+          "oneway": "no",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6723,17 +7770,24 @@
       "id": "osm-1177406233",
       "properties": {
         "id": "curico-osm-1177406233",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 168.1,
         "length_km": 0.17,
         "source": "OpenStreetMap Contributors",
         "source_id": 1177406233,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6778,17 +7832,24 @@
       "id": "osm-1177406234",
       "properties": {
         "id": "curico-osm-1177406234",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 301.0,
         "length_km": 0.3,
         "source": "OpenStreetMap Contributors",
         "source_id": 1177406234,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6825,17 +7886,25 @@
       "id": "osm-1201539774",
       "properties": {
         "id": "curico-osm-1201539774",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 399.1,
         "length_km": 0.4,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201539774,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -6900,17 +7969,25 @@
       "id": "osm-1201539775",
       "properties": {
         "id": "curico-osm-1201539775",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 535.0,
         "length_km": 0.53,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201539775,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7007,17 +8084,25 @@
       "id": "osm-1201827031",
       "properties": {
         "id": "curico-osm-1201827031",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 14.7,
         "length_km": 0.01,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827031,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7042,17 +8127,25 @@
       "id": "osm-1201827032",
       "properties": {
         "id": "curico-osm-1201827032",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 17.6,
         "length_km": 0.02,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827032,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7074,16 +8167,31 @@
       "properties": {
         "id": "curico-osm-1201827033",
         "name": "Merced",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "concrete",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 395.5,
         "length_km": 0.4,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827033,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "lane",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Merced",
+          "oneway": "yes",
+          "sidewalk": "both",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7160,17 +8268,27 @@
       "id": "osm-1201827035",
       "properties": {
         "id": "curico-osm-1201827035",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
+        "surface_display": "paved",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 504.6,
         "length_km": 0.5,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827035,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7235,17 +8353,27 @@
       "id": "osm-1201827036",
       "properties": {
         "id": "curico-osm-1201827036",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
+        "surface_display": "paved",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 81.2,
         "length_km": 0.08,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827036,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7282,17 +8410,28 @@
       "id": "osm-1201827037",
       "properties": {
         "id": "curico-osm-1201827037",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
+        "surface_display": "paved",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 319.4,
         "length_km": 0.32,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827037,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "lit": "yes",
+          "segregated": "yes",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7329,17 +8468,27 @@
       "id": "osm-1201827038",
       "properties": {
         "id": "curico-osm-1201827038",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
+        "surface_display": "paved",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 409.5,
         "length_km": 0.41,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827038,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7400,17 +8549,27 @@
       "id": "osm-1201827039",
       "properties": {
         "id": "curico-osm-1201827039",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
+        "surface_display": "paved",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 890.8,
         "length_km": 0.89,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827039,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7503,17 +8662,25 @@
       "id": "osm-1201827041",
       "properties": {
         "id": "curico-osm-1201827041",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 80.7,
         "length_km": 0.08,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827041,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7555,16 +8722,28 @@
       "properties": {
         "id": "curico-osm-1201827042",
         "name": "Avenida Circunvalación Doctor Osorio",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 12.8,
         "length_km": 0.01,
         "source": "OpenStreetMap Contributors",
         "source_id": 1201827042,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "highway": "secondary",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Circunvalación Doctor Osorio",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7586,16 +8765,38 @@
       "properties": {
         "id": "curico-osm-1202656680",
         "name": "Avenida Rauquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 43.1,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 1202656680,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:oneway": "no",
+          "cycleway:right:separation:left": "kerb",
+          "highway": "secondary",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Rauquén",
+          "official_name": "Curicó (Avenida Alessandri) - Sarmiento - Viñas París",
+          "oneway": "yes",
+          "placement": "left_of:1",
+          "ref": "J-514",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "source:ref": "Vialidad",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7617,16 +8818,34 @@
       "properties": {
         "id": "curico-osm-1202656699",
         "name": "Avenida Amsterdam",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 75.7,
         "length_km": 0.08,
         "source": "OpenStreetMap Contributors",
         "source_id": 1202656699,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:oneway": "no",
+          "cycleway:right:separation:left": "kerb",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Amsterdam",
+          "oneway": "yes",
+          "sidewalk": "right",
+          "source:maxspeed": "CL:urban",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7667,17 +8886,25 @@
       "id": "osm-1209944211",
       "properties": {
         "id": "curico-osm-1209944211",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 71.9,
         "length_km": 0.07,
         "source": "OpenStreetMap Contributors",
         "source_id": 1209944211,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7702,17 +8929,25 @@
       "id": "osm-1272284650",
       "properties": {
         "id": "curico-osm-1272284650",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 244.2,
         "length_km": 0.24,
         "source": "OpenStreetMap Contributors",
         "source_id": 1272284650,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7749,17 +8984,24 @@
       "id": "osm-1272877865",
       "properties": {
         "id": "curico-osm-1272877865",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 317.6,
         "length_km": 0.32,
         "source": "OpenStreetMap Contributors",
         "source_id": 1272877865,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7828,17 +9070,25 @@
       "id": "osm-1272877866",
       "properties": {
         "id": "curico-osm-1272877866",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface": null,
+        "surface_display": "Sin información",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 331.3,
         "length_km": 0.33,
         "source": "OpenStreetMap Contributors",
         "source_id": 1272877866,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7892,16 +9142,34 @@
       "properties": {
         "id": "curico-osm-1290353746",
         "name": "Camino a Tutuquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "tertiary",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 174.1,
         "length_km": 0.17,
         "source": "OpenStreetMap Contributors",
         "source_id": 1290353746,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:buffer": "yes",
+          "cycleway:right:oneway": "no",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Camino a Tutuquén",
+          "official_name": "Cruce J-60 (Curicó) - Tutuquén",
+          "oneway": "yes",
+          "ref": "J-620",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7946,17 +9214,34 @@
       "id": "osm-1314491427",
       "properties": {
         "id": "curico-osm-1314491427",
-        "name": "Ciclovía sin nombre",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary_link",
         "surface": "asphalt",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 61.6,
         "length_km": 0.06,
         "source": "OpenStreetMap Contributors",
         "source_id": 1314491427,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:buffer": "yes",
+          "cycleway:right:oneway": "no",
+          "highway": "secondary_link",
+          "lanes": "1",
+          "lit": "yes",
+          "oneway": "yes",
+          "placement": "left_of:1",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -7982,16 +9267,31 @@
       "properties": {
         "id": "curico-osm-1328995660",
         "name": "Pescara",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "residential",
         "surface": "asphalt",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 25.3,
         "length_km": 0.03,
         "source": "OpenStreetMap Contributors",
         "source_id": 1328995660,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "lane",
+          "cycleway:right:oneway": "no",
+          "highway": "residential",
+          "lanes": "1",
+          "lit": "yes",
+          "name": "Pescara",
+          "oneway:bicycle": "no",
+          "sidewalk": "both",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8013,16 +9313,29 @@
       "properties": {
         "id": "curico-osm-1328995667",
         "name": "Arrayán",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (ciclobanda / lane)",
+        "category": "on_street",
         "highway": "living_street",
         "surface": "concrete",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "concrete",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 145.0,
         "length_km": 0.14,
         "source": "OpenStreetMap Contributors",
         "source_id": 1328995667,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "lane",
+          "highway": "living_street",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Arrayán",
+          "surface": "concrete"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8043,17 +9356,29 @@
       "id": "osm-1364468757",
       "properties": {
         "id": "curico-osm-1364468757",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "compacted",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "compacted",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 50.1,
         "length_km": 0.05,
         "source": "OpenStreetMap Contributors",
         "source_id": 1364468757,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "bridge": "yes",
+          "foot": "yes",
+          "highway": "cycleway",
+          "horse": "yes",
+          "layer": "1",
+          "surface": "compacted"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8074,17 +9399,25 @@
       "id": "osm-1420636189",
       "properties": {
         "id": "curico-osm-1420636189",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada",
+        "category": "dedicated",
         "highway": "cycleway",
         "surface": "asphalt",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "asphalt",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 454.1,
         "length_km": 0.45,
         "source": "OpenStreetMap Contributors",
         "source_id": 1420636189,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "highway": "cycleway",
+          "surface": "asphalt"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8125,17 +9458,26 @@
       "id": "osm-1428094519",
       "properties": {
         "id": "curico-osm-1428094519",
-        "name": "Ciclovía sin nombre",
-        "type": "Pista exclusiva segregada",
+        "name": "Vía ciclista sin nombre",
+        "has_custom_name": false,
+        "type": "Vía ciclista dedicada (segregada)",
+        "category": "dedicated",
         "highway": "cycleway",
-        "surface": "asfalto / pavimento",
-        "oneway": "no",
+        "surface": null,
+        "surface_display": "Sin información",
         "segregated": "yes",
+        "segregated_display": "Segregada físicamente",
+        "oneway": null,
         "length_m": 40.0,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 1428094519,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "foot": "yes",
+          "highway": "cycleway",
+          "segregated": "yes"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8165,16 +9507,31 @@
       "properties": {
         "id": "curico-osm-1428094550",
         "name": "Lago Calafquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "residential",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "no",
-        "segregated": "yes",
         "length_m": 169.3,
         "length_km": 0.17,
         "source": "OpenStreetMap Contributors",
         "source_id": 1428094550,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:buffer": "yes",
+          "cycleway:right:oneway": "no",
+          "highway": "residential",
+          "lanes": "2",
+          "lit": "yes",
+          "name": "Lago Calafquén",
+          "oneway": "no",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8204,16 +9561,37 @@
       "properties": {
         "id": "curico-osm-1430325570",
         "name": "Avenida Rauquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 40.7,
         "length_km": 0.04,
         "source": "OpenStreetMap Contributors",
         "source_id": 1430325570,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "cycleway:left:buffer": "yes",
+          "cycleway:left:oneway": "no",
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Rauquén",
+          "official_name": "Curicó (Avenida Alessandri) - Sarmiento - Viñas París",
+          "ref": "J-514",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "source:maxspeed": "CL:urban",
+          "source:ref": "Vialidad",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8239,16 +9617,37 @@
       "properties": {
         "id": "curico-osm-1430325574",
         "name": "Avenida Rauquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 96.6,
         "length_km": 0.1,
         "source": "OpenStreetMap Contributors",
         "source_id": 1430325574,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "cycleway:left:buffer": "yes",
+          "cycleway:left:oneway": "no",
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Rauquén",
+          "official_name": "Curicó (Avenida Alessandri) - Sarmiento - Viñas París",
+          "ref": "J-514",
+          "sidewalk": "right",
+          "sidewalk:left": "separate",
+          "source:maxspeed": "CL:urban",
+          "source:ref": "Vialidad",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8270,16 +9669,36 @@
       "properties": {
         "id": "curico-osm-1430325576",
         "name": "Avenida Rauquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
-        "oneway": "no",
-        "segregated": "yes",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
+        "oneway": null,
         "length_m": 122.1,
         "length_km": 0.12,
         "source": "OpenStreetMap Contributors",
         "source_id": 1430325576,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:left": "track",
+          "cycleway:left:buffer": "yes",
+          "cycleway:left:oneway": "no",
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Rauquén",
+          "official_name": "Curicó (Avenida Alessandri) - Sarmiento - Viñas París",
+          "ref": "J-514",
+          "sidewalk": "separate",
+          "source:maxspeed": "CL:urban",
+          "source:ref": "Vialidad",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",
@@ -8309,16 +9728,38 @@
       "properties": {
         "id": "curico-osm-1430325597",
         "name": "Avenida Rauquén",
-        "type": "Ciclocalle / Ciclobanda demarcada",
+        "has_custom_name": true,
+        "type": "Infraestructura ciclista sobre calle (segregada / track)",
+        "category": "on_street",
         "highway": "secondary",
         "surface": "paved",
+        "surface_display": "paved",
+        "segregated": null,
+        "segregated_display": "Sin información",
         "oneway": "yes",
-        "segregated": "yes",
         "length_m": 94.6,
         "length_km": 0.09,
         "source": "OpenStreetMap Contributors",
         "source_id": 1430325597,
-        "is_demo": false
+        "is_demo": false,
+        "raw_osm_tags": {
+          "cycleway:right": "track",
+          "cycleway:right:buffer": "yes",
+          "cycleway:right:oneway": "no",
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Avenida Rauquén",
+          "official_name": "Curicó (Avenida Alessandri) - Sarmiento - Viñas París",
+          "oneway": "yes",
+          "ref": "J-514",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "source:maxspeed": "CL:urban",
+          "source:ref": "Vialidad",
+          "surface": "paved"
+        }
       },
       "geometry": {
         "type": "LineString",

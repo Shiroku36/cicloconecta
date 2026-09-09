@@ -1,12 +1,14 @@
 """
 CicloConecta — OpenStreetMap Data Extractor for Cycling Infrastructure.
 Extracts real cycleway ways from OSM via Overpass API for a given city bounding box,
-normalizes attributes, computes segment distances, and outputs standard GeoJSON and city metadata.
+normalizes attributes transparently, computes geodesic distances, and outputs standard GeoJSON
+and city metadata.
 """
 
 import json
 import math
 import os
+import shutil
 import sys
 import urllib.parse
 import urllib.request
@@ -37,6 +39,52 @@ def compute_linestring_length(coords: list[list[float]]) -> float:
             coords[i][0], coords[i][1], coords[i + 1][0], coords[i + 1][1]
         )
     return total
+
+
+def classify_osm_cycling_way(tags: dict) -> tuple[str, str]:
+    """
+    Transparently classify an OSM way based on real tags.
+    Returns (category_code, human_label).
+
+    Categories:
+    - dedicated: Vía ciclista dedicada (highway=cycleway)
+    - on_street: Infraestructura ciclista sobre calle (cycleway=track|lane|etc.)
+    - designated: Vía designada / preferente para bicicleta (bicycle=designated)
+    - compatible: Infraestructura ciclista compatible
+    """
+    highway = tags.get("highway", "")
+    has_cycleway_tag = any(k.startswith("cycleway") for k in tags)
+
+    if highway == "cycleway":
+        segregated = tags.get("segregated")
+        if segregated == "yes":
+            return "dedicated", "Vía ciclista dedicada (segregada)"
+        return "dedicated", "Vía ciclista dedicada"
+
+    if has_cycleway_tag:
+        cycleway_val = tags.get("cycleway", "")
+        is_track = (
+            cycleway_val == "track"
+            or tags.get("cycleway:left") == "track"
+            or tags.get("cycleway:right") == "track"
+            or tags.get("cycleway:both") == "track"
+        )
+        is_lane = (
+            cycleway_val in ("lane", "share_busway")
+            or tags.get("cycleway:left") == "lane"
+            or tags.get("cycleway:right") == "lane"
+            or tags.get("cycleway:both") == "lane"
+        )
+        if is_track:
+            return "on_street", "Infraestructura ciclista sobre calle (segregada / track)"
+        if is_lane:
+            return "on_street", "Infraestructura ciclista sobre calle (ciclobanda / lane)"
+        return "on_street", "Infraestructura ciclista sobre calle"
+
+    if tags.get("bicycle") == "designated":
+        return "designated", "Vía designada / preferente para bicicleta"
+
+    return "compatible", "Infraestructura ciclista compatible"
 
 
 def fetch_osm_cycleways(bbox: tuple[float, float, float, float]) -> dict:
@@ -74,6 +122,7 @@ out skel qt;
 def process_osm_to_geojson(osm_data: dict) -> tuple[dict, float, int]:
     """
     Transforms OSM JSON elements into a standard GeoJSON FeatureCollection.
+    Does NOT invent missing data (surface, segregated).
     Returns (geojson_dict, total_length_meters, count_features).
     """
     elements = osm_data.get("elements", [])
@@ -100,36 +149,41 @@ def process_osm_to_geojson(osm_data: dict) -> tuple[dict, float, int]:
         total_length_m += length_m
 
         tags = way.get("tags", {})
-        highway = tags.get("highway", "")
-        name = tags.get("name", "Ciclovía sin nombre")
-        surface = tags.get("surface", "asfalto / pavimento")
+        highway = tags.get("highway")
+        name = tags.get("name")
+        surface = tags.get("surface")  # None if not present, never invent "asfalto"
+        segregated = tags.get("segregated")  # None if not present, never invent "yes"
+        oneway = tags.get("oneway")
 
-        # Determine infrastructure type label
-        if highway == "cycleway":
-            infra_type = "Pista exclusiva segregada"
-        elif any(k.startswith("cycleway") for k in tags):
-            infra_type = "Ciclocalle / Ciclobanda demarcada"
-        elif tags.get("bicycle") == "designated":
-            infra_type = "Vía de uso ciclista preferente"
-        else:
-            infra_type = "Infraestructura ciclista"
+        category_code, infra_label = classify_osm_cycling_way(tags)
 
         feature = {
             "type": "Feature",
             "id": f"osm-{way['id']}",
             "properties": {
                 "id": f"curico-osm-{way['id']}",
-                "name": name,
-                "type": infra_type,
+                "name": name if name else "Vía ciclista sin nombre",
+                "has_custom_name": bool(name),
+                "type": infra_label,
+                "category": category_code,
                 "highway": highway,
-                "surface": surface,
-                "oneway": tags.get("oneway", "no"),
-                "segregated": tags.get("segregated", "yes"),
+                "surface": surface,  # None if unknown, preserved exactly from OSM
+                "surface_display": surface if surface else "Sin información",
+                "segregated": segregated,  # None if unknown
+                "segregated_display": (
+                    "Segregada físicamente"
+                    if segregated == "yes"
+                    else "No segregada"
+                    if segregated == "no"
+                    else "Sin información"
+                ),
+                "oneway": oneway,
                 "length_m": round(length_m, 1),
                 "length_km": round(length_m / 1000.0, 2),
                 "source": "OpenStreetMap Contributors",
                 "source_id": way["id"],
                 "is_demo": False,
+                "raw_osm_tags": tags,
             },
             "geometry": {
                 "type": "LineString",
@@ -147,7 +201,9 @@ def process_osm_to_geojson(osm_data: dict) -> tuple[dict, float, int]:
         },
         "metadata": {
             "city": "curico",
-            "source": "OpenStreetMap",
+            "source": "OpenStreetMap Contributors",
+            "source_type": "open_data",
+            "verified_in_situ": False,
             "extracted_at": datetime.now(timezone.utc).isoformat(),
             "total_features": len(features),
             "total_km": round(total_length_m / 1000.0, 2),
@@ -310,6 +366,20 @@ def generate_curico_demo_layers(data_dir: Path):
     print("Capas DEMO (conexiones faltantes y rutas sugeridas) creadas con etiquetas explícitas.")
 
 
+def sync_data_to_frontend(city_data_dir: Path, base_dir: Path, city_id: str):
+    """
+    Synchronizes city data to frontend/public/data/cities/{city_id} automatically
+    to maintain data/ as the single source of truth.
+    """
+    target_dir = base_dir / "frontend" / "public" / "data" / "cities" / city_id
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    for item in city_data_dir.glob("*.*"):
+        shutil.copy2(item, target_dir / item.name)
+
+    print(f"Sincronizados datasets de {city_id} hacia {target_dir}")
+
+
 def main():
     curico_bbox = (-35.05, -71.30, -34.93, -71.18)
     curico_center = [-71.2394, -34.9854]  # [lon, lat]
@@ -324,7 +394,7 @@ def main():
         out_file = data_dir / "cycling-infrastructure.geojson"
         with open(out_file, "w", encoding="utf-8") as f:
             json.dump(geojson, f, ensure_ascii=False, indent=2)
-        print(f"Éxito: {count} ciclovías reales extraídas ({round(total_m/1000, 2)} km) guardadas en {out_file}")
+        print(f"Éxito: {count} vías ciclistas extraídas ({round(total_m/1000, 2)} km) guardadas en {out_file}")
     except Exception as e:
         print(f"Advertencia: no se pudo consultar Overpass en este momento ({e}).")
         sys.exit(1)
@@ -339,7 +409,7 @@ def main():
         "center": curico_center,
         "initial_zoom": 13.5,
         "bounds": [[-71.30, -35.05], [-71.18, -34.93]],
-        "description": "Ciudad intermedia en la Región del Maule, con topografía plana favorable para el ciclismo urbano y creciente demanda de conectividad.",
+        "description": "Ciudad intermedia en la Región del Maule, con topografía plana favorable para el ciclismo urbano y desafíos de conectividad.",
         "stats": {
             "cycleways_count": count,
             "total_km": round(total_m / 1000.0, 2),
@@ -357,6 +427,9 @@ def main():
     print(f"Metadatos de ciudad guardados en {data_dir / 'city.json'}")
 
     generate_curico_demo_layers(data_dir)
+
+    # Automatically synchronize to frontend/public to keep single source of truth
+    sync_data_to_frontend(data_dir, base_dir, "curico")
 
 
 if __name__ == "__main__":
