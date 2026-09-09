@@ -39,11 +39,11 @@ LAYER_DEFINITIONS = {
         "source": "OpenStreetMap",
     },
     "missing-connections": {
-        "name": "Conexiones faltantes",
-        "description": "Gaps y tramos desconectados prioritarios para conectar la red.",
+        "name": "Conexiones potenciales",
+        "description": "Brechas de conectividad prioritarias detectadas algorítmicamente en la red vial real.",
         "color": "#f59e0b",  # Amber
-        "is_demo": True,
-        "source": "Estimación algorítmica preliminar (DEMO)",
+        "is_demo": False,
+        "source": "Detector algorítmico de brechas CicloConecta sobre OpenStreetMap",
     },
     "suggested-routes": {
         "name": "Rutas sugeridas",

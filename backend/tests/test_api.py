@@ -65,8 +65,12 @@ def test_get_missing_connections_layer():
     assert geojson["type"] == "FeatureCollection"
     assert len(geojson["features"]) >= 1
     first_feat = geojson["features"][0]
-    assert first_feat["properties"]["is_demo"] is True
-    assert first_feat["properties"]["status"] == "DEMO"
+    assert first_feat["properties"]["is_demo"] is False
+    assert first_feat["properties"]["status"] == "ALGORITHMIC_CANDIDATE"
+    assert "priority_score" in first_feat["properties"]
+    assert "gap_length_m" in first_feat["properties"]
+    assert "connected_network_km" in first_feat["properties"]
+    assert "gain_ratio" in first_feat["properties"]
 
 
 def test_nonexistent_city_returns_404():
