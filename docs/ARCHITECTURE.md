@@ -76,12 +76,22 @@ Cada ciudad es una unidad autocontenida:
 
 ### 2.3. Backend (`backend/`)
 - **Framework:** FastAPI en Python 3.12+.
-- **Responsabilidad:** Servir metadatos de ciudades, verificar la existencia de capas y proveer endpoints REST tipados bajo Pydantic.
-- **Escalabilidad:** Al no requerir estado ni base de datos pesada en esta fase, tiene un consumo de memoria mínimo (<50MB) y tiempos de respuesta sub-milisegundo.
-- **Preparación PostGIS:** La arquitectura está lista para que `data_dir` pueda ser reemplazado por un conector PostGIS cuando la concurrencia o consultas dinámicas por radio/área lo ameriten.
+- **Responsabilidad:** Servir metadatos de ciudades, verificar la existencia de capas, proveer endpoints REST tipados bajo Pydantic y ejecutar el **motor de routing determinista (`/api/cities/{city_id}/route`)**.
+- **Motor de Routing (`app.routing`):**
+  - Carga en memoria el grafo navegable precomputado (`nav_graph.json`).
+  - Indexación espacial para snapping de coordenadas ($< 500\text{ m}$).
+  - Búsqueda de caminos óptimos mediante algoritmo A* con heurística admisible ($h = \text{haversine} \times 0.70$).
+  - Cálculo simultáneo y diferencial contra la ruta físicamente más corta.
+  - Caché en memoria y disco (`routes_cache.json`) para respuesta instantánea ($< 10\text{ ms}$).
+- **Escalabilidad:** Consumo de memoria controlado (<80MB), sin bases de datos externas requeridas para cómputo de routing.
+- **Preparación PostGIS:** La arquitectura está lista para que `data_dir` pueda ser complementado con un conector PostGIS cuando la concurrencia o consultas dinámicas por radio/área lo ameriten.
 
 ### 2.4. Frontend (`frontend/`)
 - **Stack:** React + TypeScript + Vite + MapLibre GL JS.
+- **Componentes Clave:**
+  - `MapView`: Renderizado WebGL de capas cartográficas, pines interactivos A y B, y trazado dinámico de ruta activa y ruta más corta alternativa.
+  - `RoutePlanner`: Tarjeta flotante interactiva para fijar puntos de origen/destino, seleccionar presets urbanos, ejecutar el cálculo y contrastar métricas comparativas.
+  - `LayerControl`: Toggles individuales y control maestro de la capa CicloConecta.
 - **Estilo:** Interfaz moderna centrada en el mapa, controles flotantes semitransparentes (glassmorphism), tipografía legible y paleta de colores con alto contraste para accesibilidad.
 - **Rendimiento:** Las fuentes de datos se agregan al mapa como `GeoJSONSource` con `LineLayer` optimizadas por hardware (WebGL).
 
@@ -92,8 +102,8 @@ Cada ciudad es una unidad autocontenida:
 | Capa | Identificador | Color | Estilo | Origen de Datos |
 | :--- | :--- | :--- | :--- | :--- |
 | **Ciclovías Existentes** | `cycling-infrastructure` | `#10b981` (Verde Esmeralda) | Línea continua sólida (3.5px) | OpenStreetMap (Reales) |
-| **Conexiones Faltantes** | `missing-connections` | `#f59e0b` (Ámbar) | Línea discontinua `[3, 2]` (3px) | Algoritmo / DEMO |
-| **Rutas Sugeridas** | `suggested-routes` | `#3b82f6` (Azul Ciclista) | Línea continua con halo (2.5px) | Planificación urbana / DEMO |
+| **Conexiones Faltantes** | `missing-connections` | `#f59e0b` (Ámbar) | Línea discontinua `[3, 2]` (3px) | Algoritmo de Gaps / DEMO |
+| **Rutas Sugeridas** | `suggested-routes` | `#3b82f6` (Azul Ciclista) | Línea continua con halo (3px) | Routing A* sobre red vial OSM (Reales) |
 
 ---
 

@@ -141,5 +141,25 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Renderizado inmediato y fluido de los 121 tramos de ciclovías reales (verde esmeralda), tramos DEMO (ámbar discontinuo) y rutas sugeridas (azul); eliminación total del aviso/marca de agua "API KEY REQUIRED"; independencia de terceros comerciales.
   - Negativas: Ninguna.
 
+---
+
+## D-010 — Motor de Routing Ciclista Determinista en Python con NetworkX y Heurística Admisible A*
+
+- **Fecha:** 2026-09-09
+- **Estado:** Aceptada
+- **Contexto:**
+  Para la Fase 2, se requería construir un motor de routing ciclista real para Curicó que priorice infraestructura ciclista y vías calmadas sobre la ruta más corta física, reemplazando las geometrías conceptuales DEMO por rutas algorítmicas que sigan fielmente la red vial real de OpenStreetMap.
+  Existía la alternativa de emplear librerías pesadas como `osmnx`, la cual arrastra dependencias binarias nativas en C/C++ (`gdal`, `geopandas`, `fiona`, `pyproj`, `rtree`) que generan fricciones severas en entornos Windows y pipelines CI de GitHub Actions, además de ralentizar los tiempos de arranque.
+- **Decisión:**
+  1. Construir un motor propio y desacoplado utilizando **Python estándar + NetworkX (`nx.DiGraph`)**, sin dependencias nativas de GDAL.
+  2. Implementar una función de costo determinista $\text{costo} = \text{distancia\_m} \times \text{penalización}$, con factores calibrados entre 0.70 (ciclovías segregadas) y 2.60 (arterias rápidas sin infraestructura), bloqueando autopistas y vías no transitables para bicicletas.
+  3. Emplear el algoritmo **A*** con heurística geodésica $h(u, v) = \text{haversine}(u, v) \times 0.70$. Dado que $0.70$ es el factor de costo mínimo posible, la heurística es estrictamente admisible y monotónica, encontrando el camino óptimo en $< 15\text{ ms}$.
+  4. Precomputar y serializar `nav_graph.json` para carga inmediata en memoria en FastAPI, permitiendo tiempos de respuesta de consulta interactiva $< 10\text{ ms}$.
+  5. Dotar al backend de una caché de rutas bidireccional en memoria y disco (`routes_cache.json`) indexada por coordenadas geográficas redondeadas a 5 decimales.
+- **Consecuencias:**
+  - Positivas: Zero dependencias C++ complejas; portabilidad universal (Linux, Windows, macOS, Docker); cálculo instantáneo; validación y comparación automática con la ruta más corta física (+% ciclovía vs +% desvío).
+  - Negativas: Requiere un paso previo de extracción y construcción del grafo al incorporar nuevas ciudades (automatizado en el pipeline).
+
+
 
 

@@ -4,6 +4,56 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-09] — Fase 2: Motor de Routing Ciclista Determinista para Curicó
+
+### 1. ¿Qué se implementó?
+- **Motor de Routing Determinista en Python (`pipeline/`):**
+  - Función de costo ciclista calibrada (`pipeline/cost_function.py`):
+    * $\text{costo} = \text{distancia} \times \text{penalización}$.
+    * Ciclovías segregadas protegidas (0.70), ciclovías dedicadas (0.78), ciclobandas (0.88), calles calmas 30 km/h (0.95), calles residenciales (1.05), arterias secundarias (1.90), arterias primarias rápidas (2.60).
+    * Autopistas vehiculares y vías con `access=no` / `bicycle=no` bloqueadas ($\infty$).
+    * Reglas de sentido único y excepciones ciclistas (`oneway:bicycle=no`, contraflujo).
+  - Extractor y constructor de grafo (`pipeline/network_extractor.py`, `pipeline/graph_builder.py`):
+    * Descarga y caché local de la red vial completa de Curicó (`raw_network.json`).
+    * Conversión a `networkx.DiGraph` dirigido (16,252 nodos y 33,545 aristas en componente conexa principal).
+    * Serialización optimizada a `data/cities/curico/nav_graph.json`.
+  - Enrutador A* con Heurística Admisible (`pipeline/router.py`):
+    * Ajuste espacial (`SpatialNodeIndex`) con umbral estricto de 500 metros.
+    * Búsqueda de camino con A* usando $h(u, v) = \text{haversine}(u, v) \times 0.70$ (estrictamente admisible y monotónica).
+    * Cálculo simultáneo de la ruta ciclista y la ruta físicamente más corta para comparación de métricas (+% distancia vs +% ciclovía ganada).
+- **Reemplazo 100% Real de Rutas Sugeridas:**
+  - Se eliminaron las geometrías conceptuales DEMO de `suggested-routes.geojson`.
+  - Se calcularon 5 rutas representativas reales en Curicó siguiendo la red vial de OSM:
+    1. **Ruta Norte (Rauquén $\rightarrow$ Plaza de Armas):** 4.39 km | **52.9% ciclovías** vs 4.20 km (20% ciclovías) en ruta corta (+32.9% de ciclovía segura con solo +190 m de desvío).
+    2. **Ruta Oriente (Zapallar $\rightarrow$ Plaza de Armas):** 4.23 km | **70.8% ciclovías** vs 2.97 km (14.7% ciclovías).
+    3. **Ruta Poniente (Santa Fe $\rightarrow$ Plaza de Armas):** 2.58 km | **16.2% ciclovías** vs 2.42 km (0% ciclovías).
+    4. **Circuito Universitario (Los Niches $\rightarrow$ Plaza de Armas):** 2.39 km | **46.7% ciclovías** vs 2.30 km (0% ciclovías).
+    5. **Eje Intermodal (Guaiquillo $\rightarrow$ Estación de Trenes):** 4.08 km | **42.3% ciclovías** vs 3.63 km (4.7% ciclovías).
+- **Backend API REST (`backend/app/`):**
+  - Endpoint `POST /api/cities/{city_id}/route` con validación Pydantic (`RouteRequest`, `RouteResponse`).
+  - Motor de routing `CityRoutingEngine` cargado en memoria para respuestas $< 10\text{ ms}$.
+  - Sistema de caché bidireccional en memoria y disco (`routes_cache.json`).
+  - 22 tests unitarios pasando en 0.81s (`pytest`).
+- **Interfaz Interactiva de Usuario (React + MapLibre):**
+  - Componente `RoutePlanner.tsx`:
+    * Selección interactiva de Origen y Destino mediante clics sobre el mapa o presets urbanos.
+    * Pines A (verde) y B (rojo) en el mapa.
+    * Trazado de ruta activa en azul eléctrico (`#2563eb`) con casing realzado.
+    * Opción para mostrar trazado vehicular alternativo más corto en naranja discontinuo.
+    * Panel con comparador de métricas: distancia, % de ciclovía, ganancia ciclista y calles recorridas.
+  - Actualización de Popups:
+    * Badge `RUTA RECOMENDADA ALGORÍTMICA` (reemplaza DEMO).
+    * Desglose completo de métricas de infraestructura y trayecto.
+
+### 2. ¿Qué se comprobó visualmente en ejecución?
+- Se ejecutó verificación visual automatizada vía Chrome CDP headless (`scratch/verify_phase2_routing.js`):
+  - **Captura 1 (`phase2_01_initial_map.png`):** Mapa inicial cargando los 121 tramos de ciclovías y las 5 rutas algorítmicas siguiendo las calles reales de Curicó.
+  - **Captura 2 (`phase2_02_route_calculated.png`):** Ruta activa calculada entre Rauquén y Plaza de Armas (4.39 km, 52.9% ciclovía) con pines A y B sobre el mapa.
+  - **Captura 3 (`phase2_03_route_comparison.png`):** Comparación visual y panel de métricas desplegado.
+  - **Captura 4 (`phase2_04_route_popup.png`):** Popup interactivo sobre ruta recomendada mostrando badge azul `RUTA RECOMENDADA ALGORÍTMICA`, trayecto y desglose de ganancia ciclista (+32.9%).
+
+---
+
 ## [2026-09-09] — Iteración 1.2: Diagnóstico Causa Raíz de Renderizado y Resolución de API / API Key
 
 ### 1. ¿Qué se diagnosticó y resolvió en ejecución?

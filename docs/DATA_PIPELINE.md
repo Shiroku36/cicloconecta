@@ -84,22 +84,34 @@ Cada segmento vial extraído es enriquecido y normalizado en un esquema estánda
 2. **Identificación de Puntas Abiertas (Dead-ends):** Nodos con grado \(d(v) = 1\) dentro de la red ciclista que se ubican a menos de \(D_{\text{umbral}}\) (ej. 300 - 800 metros) de otra ciclovía pero obligan al ciclista a descender o circular por autopistas peligrosas.
 3. **Cálculo de Conexiones Prioritarias:** Se ejecuta una búsqueda de camino más corto en la red vial secundaria para unir \(C_i\) con \(C_j\), generando la capa de `missing-connections.geojson`.
 
-### Fase 6: Rutas Sugeridas (Low-Stress Routing)
-- Identificación de calles residenciales paralelas a ejes congestionados con límite de 30 km/h o tráfico calmado que permitan unir barrios aislados con polos educativos (ej. Campus UTAL en Curicó) o de transporte (Estación Curicó).
+### Fase 6: Rutas Sugeridas (Algoritmo A* Determinista — Implementado en Fase 2)
+- Reemplazo completo de rutas DEMO por rutas algorítmicas calculadas sobre la red vial real de OpenStreetMap.
+- Costo ponderado por infraestructura ciclista ($\text{costo} = \text{distancia} \times \text{penalización}$).
+- Heurística admisible $h(u, v) = \text{haversine}(u, v) \times 0.70$.
+- Comparación automática contra la ruta física más corta en distancia.
+- Salida: `suggested-routes.geojson` con `is_demo: false` y métricas de comparación.
 
 ### Fase 7: Exportación a Contratos de Visualización
-- Los resultados se exportan como GeoJSON FeatureCollections estáticos directamente consumibles por el visualizador MapLibre, garantizando que el usuario final jamás deba esperar el cómputo de la red.
+- Los resultados se exportan como GeoJSON FeatureCollections estáticos directamente consumibles por el visualizador MapLibre, y como grafo serializado `nav_graph.json` consumible por la API REST de FastAPI para consultas interactivas instantáneas.
 
 ---
 
 ## 4. Ejecución del Pipeline para Curicó
 
-Para regenerar los datos de Curicó desde la fuente abierta:
+### 4.1. Extracción de Infraestructura Ciclista Existente (Fase 1)
 ```bash
 python pipeline/osm_extractor.py
 ```
 Salida generada:
-- `data/cities/curico/cycling-infrastructure.geojson` (120+ tramos reales, 43+ km)
+- `data/cities/curico/cycling-infrastructure.geojson` (121 tramos reales, 43.2 km)
 - `data/cities/curico/city.json`
-- `data/cities/curico/missing-connections.geojson` (DEMO conceptual para fase 1)
-- `data/cities/curico/suggested-routes.geojson` (DEMO conceptual para fase 1)
+
+### 4.2. Construcción del Grafo Vial y Routing Algorítmico (Fase 2)
+```bash
+python pipeline/build_curico_routing.py
+```
+Salida generada:
+- `data/cities/curico/nav_graph.json` (Grafo conectado: 16,252 nodos, 33,545 aristas)
+- `data/cities/curico/suggested-routes.geojson` (5 rutas representativas reales calculadas algorítmicamente)
+- Sincronización automática de `suggested-routes.geojson` a `frontend/public/data/cities/curico/`
+
