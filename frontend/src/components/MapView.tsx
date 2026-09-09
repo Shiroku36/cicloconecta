@@ -3,12 +3,17 @@ import {
   Map as MapLibreMap,
   NavigationControl,
   Popup,
+  setWorkerUrl,
   type MapLayerMouseEvent,
   type StyleSpecification,
   type GeoJSONSource,
 } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
+import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import type { City, FeatureProperties, LayerConfig, LayerId } from '../types/map'
+
+// Explicitly register MapLibre Web Worker URL to prevent Vite 404 in .vite/deps
+setWorkerUrl(maplibreWorkerUrl)
 import type { FeatureCollection } from 'geojson'
 
 interface Props {
@@ -140,9 +145,11 @@ export const MapView: React.FC<Props> = ({
   const isCicloConectaVisibleRef = useRef(isCicloConectaVisible)
   isCicloConectaVisibleRef.current = isCicloConectaVisible
 
+  const isLayersInitializedRef = useRef(false)
+
   // Synchronizes GeoJSON data and layer visibility into the map safely
   const syncMapLayers = (map: MapLibreMap) => {
-    if (!map || !map.isStyleLoaded()) return
+    if (!map || !isLayersInitializedRef.current) return
 
     const currentData = layersDataRef.current
     const currentLayers = layersRef.current
@@ -177,29 +184,27 @@ export const MapView: React.FC<Props> = ({
   useEffect(() => {
     if (!mapContainerRef.current) return
 
-    // Clean base map style using CARTO Voyager
+    // Clean base map style using OpenStreetMap standard tiles (100% open, zero API keys or watermarks)
     const style: StyleSpecification = {
       version: 8,
       sources: {
-        'carto-voyager': {
+        'osm-tiles': {
           type: 'raster',
           tiles: [
-            'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
-            'https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
-            'https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
+            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
           ],
           tileSize: 256,
           attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         },
       },
       layers: [
         {
-          id: 'carto-voyager-layer',
+          id: 'osm-tiles-layer',
           type: 'raster',
-          source: 'carto-voyager',
+          source: 'osm-tiles',
           minzoom: 0,
-          maxzoom: 20,
+          maxzoom: 19,
         },
       ],
     }
@@ -217,6 +222,7 @@ export const MapView: React.FC<Props> = ({
 
     map.on('load', () => {
       mapRef.current = map
+      ;(window as unknown as { cicloMap: MapLibreMap }).cicloMap = map
       if (mapInstanceRef) {
         mapInstanceRef.current = map
       }
@@ -311,11 +317,14 @@ export const MapView: React.FC<Props> = ({
         }
       })
 
+      isLayersInitializedRef.current = true
+
       // Immediate sync to ensure any data loaded before or during style load is set
       syncMapLayers(map)
     })
 
     return () => {
+      isLayersInitializedRef.current = false
       map.remove()
       mapRef.current = null
       if (mapInstanceRef) {
@@ -323,12 +332,12 @@ export const MapView: React.FC<Props> = ({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [city.center, city.initial_zoom])
+  }, [city.id])
 
   // Reactively sync data or layer visibility changes whenever layersData, layers or master toggle changes
   useEffect(() => {
     const map = mapRef.current
-    if (map && map.isStyleLoaded()) {
+    if (map && isLayersInitializedRef.current) {
       syncMapLayers(map)
     }
   }, [layersData, layers, isCicloConectaVisible])
