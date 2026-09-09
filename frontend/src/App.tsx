@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import type { Map as MapLibreMap } from 'maplibre-gl'
 import type { FeatureCollection } from 'geojson'
-import type { City, LayerConfig, LayerId } from './types/map'
+import type { City, LayerConfig, LayerId, RouteResponse, RouteSelectionMode } from './types/map'
 import { fetchCities, fetchLayerGeoJSON } from './services/api'
 import { MapView } from './components/MapView'
 import { CityHeader } from './components/CityHeader'
 import { LayerControl } from './components/LayerControl'
+import { RoutePlanner } from './components/RoutePlanner'
 import { InfoModal } from './components/InfoModal'
 import './styles/index.css'
 
@@ -39,11 +40,11 @@ const DEFAULT_LAYERS: LayerConfig[] = [
     id: 'suggested-routes',
     name: 'Rutas sugeridas',
     shortName: 'Sugeridas',
-    description: 'Corredores de bajo estrés vehicular para ciclistas.',
+    description: 'Rutas calculadas algorítmicamente priorizando ciclovías y vías de bajo estrés.',
     color: '#3b82f6',
     lineWidth: 3,
-    isDemo: true,
-    source: 'DEMO / Conceptual',
+    isDemo: false,
+    source: 'Algoritmo determinista A* sobre OSM',
     visible: true,
     count: 0,
   },
@@ -86,6 +87,13 @@ export function App() {
   })
   const [isInfoOpen, setIsInfoOpen] = useState(false)
   const mapInstanceRef = useRef<MapLibreMap | null>(null)
+
+  // Route Planning State
+  const [selectionMode, setSelectionMode] = useState<RouteSelectionMode>('none')
+  const [origin, setOrigin] = useState<[number, number] | null>(null)
+  const [destination, setDestination] = useState<[number, number] | null>(null)
+  const [activeRoute, setActiveRoute] = useState<RouteResponse | null>(null)
+  const [showShortestComparison, setShowShortestComparison] = useState(false)
 
   // Load initial city and layer data
   useEffect(() => {
@@ -167,9 +175,35 @@ export function App() {
     }
   }
 
+  const handleSelectCoordinate = (coord: [number, number]) => {
+    if (selectionMode === 'origin') {
+      setOrigin(coord)
+      setSelectionMode('destination')
+      if (activeRoute) setActiveRoute(null)
+    } else if (selectionMode === 'destination') {
+      setDestination(coord)
+      setSelectionMode('none')
+      if (activeRoute) setActiveRoute(null)
+    }
+  }
+
   return (
     <main className="app-container">
       <CityHeader city={city} onOpenInfo={() => setIsInfoOpen(true)} />
+
+      <RoutePlanner
+        cityId={city.id}
+        selectionMode={selectionMode}
+        onSetSelectionMode={setSelectionMode}
+        origin={origin}
+        destination={destination}
+        onSetOrigin={setOrigin}
+        onSetDestination={setDestination}
+        activeRoute={activeRoute}
+        onRouteCalculated={setActiveRoute}
+        showShortestComparison={showShortestComparison}
+        onToggleShortestComparison={setShowShortestComparison}
+      />
 
       <LayerControl
         isCicloConectaVisible={isCicloConectaVisible}
@@ -185,6 +219,12 @@ export function App() {
         layers={layers}
         layersData={layersData}
         mapInstanceRef={mapInstanceRef}
+        selectionMode={selectionMode}
+        onSelectCoordinate={handleSelectCoordinate}
+        origin={origin}
+        destination={destination}
+        activeRoute={activeRoute}
+        showShortestComparison={showShortestComparison}
       />
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />

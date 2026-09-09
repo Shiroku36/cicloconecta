@@ -1,4 +1,4 @@
-import type { City, LayerId } from '../types/map'
+import type { City, LayerId, RouteResponse } from '../types/map'
 import type { FeatureCollection } from 'geojson'
 
 const API_BASE = import.meta.env.VITE_API_URL || '/api'
@@ -84,3 +84,28 @@ export async function fetchLayerGeoJSON(
   }
   return await staticRes.json()
 }
+
+export async function calculateRoute(
+  cityId: string,
+  origin: [number, number],
+  destination: [number, number],
+  maxSnapDistM = 600
+): Promise<RouteResponse> {
+  const res = await fetch(`${API_BASE}/cities/${cityId}/route`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      origin,
+      destination,
+      max_snap_dist_m: maxSnapDistM,
+    }),
+  })
+
+  if (!res.ok) {
+    const errorData = (await res.json().catch(() => ({}))) as { detail?: string }
+    throw new Error(errorData.detail || `Error al calcular ruta (${res.status})`)
+  }
+
+  return (await res.json()) as RouteResponse
+}
+

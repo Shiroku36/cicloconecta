@@ -57,5 +57,51 @@ export interface FeatureProperties {
   segregated_display?: string
   oneway?: string | null
   raw_osm_tags?: Record<string, string>
+  cycling_infra_pct?: number
+  cycling_infra_km?: number
+  cost_score?: number
+  shortest_distance_km?: number
+  shortest_cycling_infra_pct?: number
+  distance_diff_km?: number
+  length_diff_pct?: number
+  cycling_gain_pct?: number
+  is_same_path?: boolean
+  streets?: string[]
   [key: string]: unknown
 }
+
+export interface SnappedPoint {
+  requested: [number, number]
+  snapped_node: number
+  snap_distance_m: number
+}
+
+export interface RoutePathDetail {
+  distance_km: number
+  distance_m: number
+  cycling_infra_km: number
+  cycling_infra_pct: number
+  cost_score: number
+  streets: string[]
+  coordinates: [number, number][]
+}
+
+export interface RouteComparison {
+  distance_diff_km: number
+  length_diff_pct: number
+  cycling_gain_pct: number
+  is_same_path: boolean
+}
+
+export interface RouteResponse {
+  city_id: string
+  origin: SnappedPoint
+  destination: SnappedPoint
+  cycling_route: RoutePathDetail
+  shortest_route: RoutePathDetail
+  comparison: RouteComparison
+  cached?: boolean
+}
+
+export type RouteSelectionMode = 'none' | 'origin' | 'destination'
+
