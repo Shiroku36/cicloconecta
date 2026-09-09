@@ -294,8 +294,8 @@ export const MapView: React.FC<Props> = ({
       const source = map.getSource(sourceId) as GeoJSONSource | undefined
       const data = currentData[layer.id]
 
-      if (source && data) {
-        source.setData(data)
+      if (source) {
+        source.setData(data || EMPTY_FEATURE_COLLECTION)
       }
 
       const casingLayerId = `casing-${layer.id}`

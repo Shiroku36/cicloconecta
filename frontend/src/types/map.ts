@@ -7,17 +7,39 @@ export interface CityStats {
   last_updated?: string
 }
 
+export interface PresetLocation {
+  id?: string
+  name: string
+  coord: [number, number]
+  description?: string
+}
+
+export interface CityConnectivity {
+  total_cycling_km: number
+  total_components: number
+  main_component_km: number
+  main_component_pct: number
+  isolated_components_count: number
+  selected_opportunities_count: number
+  median_gap_m: number
+  max_score: number
+  last_analyzed?: string
+}
+
 export interface City {
   id: string
   name: string
   province?: string
   region: string
   country: string
+  enabled?: boolean
   center: [number, number] // [lon, lat]
   initial_zoom: number
   bounds?: [[number, number], [number, number]] // [[west, south], [east, north]]
   description?: string
+  presets?: PresetLocation[]
   stats?: CityStats
+  connectivity?: CityConnectivity
 }
 
 export interface LayerConfig {

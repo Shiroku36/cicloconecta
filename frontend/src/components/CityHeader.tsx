@@ -4,10 +4,17 @@ import { Bike, Info, MapPin } from 'lucide-react'
 
 interface Props {
   city: City
+  cities?: City[]
+  onSelectCity?: (cityId: string) => void
   onOpenInfo: () => void
 }
 
-export const CityHeader: React.FC<Props> = ({ city, onOpenInfo }) => {
+export const CityHeader: React.FC<Props> = ({
+  city,
+  cities = [],
+  onSelectCity,
+  onOpenInfo,
+}) => {
   return (
     <header className="top-header glass-panel">
       <div className="brand-row">
@@ -17,9 +24,30 @@ export const CityHeader: React.FC<Props> = ({ city, onOpenInfo }) => {
           </div>
           <div>
             <h1 className="brand-title">CicloConecta</h1>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
-              <span className="city-badge">
-                <MapPin size={11} /> {city.name}, {city.region}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '3px' }}>
+              {cities.length > 1 && onSelectCity ? (
+                <div className="city-selector-container">
+                  <MapPin size={13} className="city-selector-icon" />
+                  <select
+                    className="city-selector-dropdown"
+                    value={city.id}
+                    onChange={(e) => onSelectCity(e.target.value)}
+                    aria-label="Seleccionar ciudad"
+                  >
+                    {cities.map((c) => (
+                      <option key={c.id} value={c.id} disabled={c.enabled === false}>
+                        {c.name} {c.enabled === false ? '• Próximamente' : ''}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ) : (
+                <span className="city-badge">
+                  <MapPin size={11} /> {city.name}
+                </span>
+              )}
+              <span style={{ fontSize: '0.72rem', color: '#64748b' }}>
+                {city.region}
               </span>
             </div>
           </div>

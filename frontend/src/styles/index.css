@@ -168,12 +168,28 @@ html, body, #root {
   top: 16px;
   right: 16px;
   bottom: 20px;
-  width: 320px;
+  width: 325px;
   z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 10px;
   pointer-events: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+
+.right-sidebar > * {
+  pointer-events: auto;
+}
+
+.right-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.right-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 4px;
 }
 
 /* Layer Control Card */
@@ -354,10 +370,17 @@ html, body, #root {
   border-radius: 4px;
 }
 
-.layer-badge.real {
+.layer-badge.real,
+.layer-badge.osm {
   background: #dcfce7;
   color: #15803d;
   border: 1px solid #bbf7d0;
+}
+
+.layer-badge.algo {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
 }
 
 .layer-badge.demo {
@@ -1452,5 +1475,134 @@ html, body, #root {
   .opportunities-panel {
     display: none; /* Collapsed or hidden on small mobile screens to prevent overlap */
   }
+}
+
+/* City Selector Dropdown */
+.city-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 2px 8px;
+  transition: all 0.2s ease;
+}
+
+.city-selector-container:hover {
+  border-color: #94a3b8;
+  background: #ffffff;
+}
+
+.city-selector-icon {
+  color: #0284c7;
+  flex-shrink: 0;
+}
+
+.city-selector-dropdown {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  outline: none;
+  padding: 4px 2px;
+}
+
+.city-selector-dropdown option {
+  color: #0f172a;
+  background: #ffffff;
+}
+
+/* Network Status Panel */
+.network-status-panel {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.network-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.network-status-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.network-status-title h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.network-status-city {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.network-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.network-stat-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.network-stat-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #64748b;
+}
+
+.network-stat-val {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  color: #0f172a;
+  font-size: 0.92rem;
+}
+
+.network-stat-val.highlight {
+  color: #b45309;
+}
+
+.network-stat-val strong {
+  font-weight: 700;
+}
+
+.network-stat-unit {
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+.network-stat-sub {
+  font-size: 0.62rem;
+  color: #94a3b8;
 }
 

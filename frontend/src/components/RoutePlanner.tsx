@@ -19,6 +19,8 @@ const CURICO_PRESETS: PresetLocation[] = [
 
 interface Props {
   cityId: string
+  cityName?: string
+  presets?: PresetLocation[]
   selectionMode: RouteSelectionMode
   onSetSelectionMode: (mode: RouteSelectionMode) => void
   origin: [number, number] | null
@@ -33,6 +35,8 @@ interface Props {
 
 export const RoutePlanner: React.FC<Props> = ({
   cityId,
+  cityName = 'la ciudad',
+  presets,
   selectionMode,
   onSetSelectionMode,
   origin,
@@ -44,6 +48,7 @@ export const RoutePlanner: React.FC<Props> = ({
   showShortestComparison,
   onToggleShortestComparison,
 }) => {
+  const activePresets = presets && presets.length > 0 ? presets : CURICO_PRESETS
   const [isOpen, setIsOpen] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -90,7 +95,7 @@ export const RoutePlanner: React.FC<Props> = ({
         ? '📍 Haz clic en el mapa...'
         : 'Sin seleccionar'
     }
-    const matchingPreset = CURICO_PRESETS.find(
+    const matchingPreset = activePresets.find(
       (p) => Math.abs(p.coord[0] - coord[0]) < 0.0005 && Math.abs(p.coord[1] - coord[1]) < 0.0005
     )
     if (matchingPreset) return matchingPreset.name
@@ -126,9 +131,9 @@ export const RoutePlanner: React.FC<Props> = ({
         <div className="planner-body">
           {/* Preset quick shortcuts */}
           <div className="planner-presets">
-            <span className="presets-label">Puntos frecuentes en Curicó:</span>
+            <span className="presets-label">Puntos frecuentes en {cityName}:</span>
             <div className="presets-chips">
-              {CURICO_PRESETS.slice(0, 4).map((p) => (
+              {activePresets.slice(0, 4).map((p) => (
                 <button
                   key={p.name}
                   type="button"

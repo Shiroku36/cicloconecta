@@ -13,7 +13,20 @@ export async function fetchCities(): Promise<City[]> {
     // Backend API unavailable, fallback to static Curicó metadata
   }
 
-  // Static fallback
+  // Static registry fallback
+  try {
+    const regRes = await fetch('/data/cities/registry.json')
+    if (regRes.ok) {
+      const regData = await regRes.json()
+      if (Array.isArray(regData.cities)) {
+        return regData.cities
+      }
+    }
+  } catch (err) {
+    console.warn('Error fetching static registry:', err)
+  }
+
+  // Static single city fallback
   try {
     const fallbackRes = await fetch('/data/cities/curico/city.json')
     if (fallbackRes.ok) {
