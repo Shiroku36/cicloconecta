@@ -68,3 +68,6 @@ lerna-debug.log*
 
 # Scratch diagnostic files
 scratch/
+
+# Runtime route caches
+*routes_cache.json
