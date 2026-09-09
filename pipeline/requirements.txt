@@ -1,3 +1,4 @@
 # Pipeline dependencies (uses standard library by default; extended analysis for future iterations)
 requests>=2.31.0
 pydantic>=2.7.0
+networkx>=3.0
