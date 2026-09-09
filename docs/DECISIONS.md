@@ -110,3 +110,18 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Cumple al 100% con la separación conceptual entre "mapa base (contexto)" y "capa CicloConecta (datos propios)", permitiendo comparaciones instantáneas sin costo de cómputo.
   - Negativas: Ninguna.
 
+---
+
+## D-008 — Fuente Única de Verdad (`data/cities/`) y Sincronización Automática
+
+- **Fecha:** 2026-09-09
+- **Estado:** Aceptada
+- **Contexto:**
+  Para permitir que el frontend funcione tanto acoplado a la API FastAPI como en despliegue 100% estático (GitHub Pages, Vercel, S3), los archivos GeoJSON y de metadatos se consumen opcionalmente desde `frontend/public/data/cities/`. Sin embargo, mantener dos copias independientes creaba el riesgo de divergencia si se editaban manualmente.
+- **Decisión:**
+  Definir `data/cities/` como la **única fuente de verdad** canónica. Todo script de generación (`pipeline/osm_extractor.py`) o comando npm (`npm run sync:data`) sincroniza automáticamente los archivos procesados hacia `frontend/public/data/cities/` en la misma ejecución. Nunca se editan manualmente los archivos en `frontend/public/`.
+- **Consecuencias:**
+  - Positivas: Se preserva la portabilidad para despliegues estáticos sin servidor mientras se elimina el riesgo de divergencia entre backend y frontend.
+  - Negativas: Requiere que cualquier regeneración de datos ejecute la sincronización (ya automatizada en el script).
+
+

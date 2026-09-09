@@ -4,6 +4,52 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-09] — Iteración 1.1: Endurecimiento, Corrección de Renderizado y CI Verde
+
+### 1. ¿Qué se hizo?
+- **Corrección de Condición de Carrera en MapView:**
+  - Se eliminó el riesgo de que las fuentes de MapLibre se inicialicen vacías o no se actualicen si los datos GeoJSON se resuelven antes o después de `map.on('load')`.
+  - Se implementó `layersDataRef` y `syncMapLayers`, garantizando que al dispararse `map.on('load')` se carguen inmediatamente los datos más recientes sin importar el orden asíncrono, y que actualizaciones posteriores ejecuten `source.setData()` de manera segura y sin timeouts.
+- **Resolución de CI en GitHub Actions:**
+  - Diagnóstico del error real en CI: `pytest backend/tests/` fallaba con `ModuleNotFoundError: No module named 'backend'` porque `pytest` no agregaba el directorio raíz a `sys.path` en el runner de Linux.
+  - Se creó `pytest.ini` configurando `pythonpath = .` y `testpaths = backend/tests`.
+  - Se configuró `PYTHONPATH: .` en `.github/workflows/ci.yml` y se actualizó Node.js a la versión 22 para evitar deprecaciones en GitHub Actions.
+- **Corrección Semántica de Datos OpenStreetMap:**
+  - Se eliminó la etiqueta errónea `"OSM Verificado"` en la UI (`CityHeader`) reemplazándola por `"Datos OpenStreetMap"`.
+  - Se ajustó el extractor `pipeline/osm_extractor.py` para **no inventar datos inexistentes**: si falta `surface` o `segregated` se guarda `None` (`"Sin información"` en display), sin asumir `"asfalto / pavimento"` ni `"yes"`.
+  - Se preservan los tags originales en `properties.raw_osm_tags`.
+- **Clasificación Transparente de Vías Ciclistas:**
+  - Se diseñó la función `classify_osm_cycling_way()` clasificando con honestidad las vías en:
+    * `Vía ciclista dedicada (segregada / cycleway)`
+    * `Infraestructura ciclista sobre calle (segregada / track)`
+    * `Infraestructura ciclista sobre calle (ciclobanda / lane)`
+    * `Vía designada / preferente para bicicleta`
+    * `Infraestructura ciclista compatible`
+- **Seguridad en Popups Cartográficos:**
+  - Se reemplazó la interpolación de strings HTML por manipulación segura del DOM (`document.createElement` + `textContent`) vía `popup.setDOMContent()`, protegiendo la aplicación contra vectores XSS provenientes de etiquetas libres de OSM.
+- **Fuente de Verdad Única y Sincronización Automática (ADR D-008):**
+  - Se estableció `data/cities/` como la única fuente de verdad. `pipeline/osm_extractor.py` copia y sincroniza automáticamente los datasets a `frontend/public/data/cities/` en cada ejecución.
+  - Se añadió el comando `npm run sync:data` en el frontend.
+- **Nuevos Tests Automatizados:**
+  - Se creó `backend/tests/test_osm_classification.py` con 5 tests específicos validando la clasificación transparente, la ausencia de atributos inventados y la validez estructural de los GeoJSON (13 tests en total en la suite).
+
+### 2. ¿Qué se verificó?
+- `pytest`: **13/13 tests aprobados** (endpoints API + clasificación OSM).
+- `npm --prefix frontend run lint`: **0 errores, 0 advertencias** con Oxlint.
+- `npm --prefix frontend run build`: **Compilación exitosa** sin advertencias críticas.
+- Visual: Verificado que las líneas verdes (OSM), ámbar (gaps) y azules (rutas) se renderizan correctamente sin importar el orden de carga, los popups son seguros y reflejan los datos fidedignos sin suposiciones.
+
+### 3. ¿Qué problemas aparecieron y cómo se resolvieron?
+- *CI fallaba en runner Linux:* Solucionado con `pytest.ini` (`pythonpath = .`) y variable de entorno en workflow.
+- *Datos de superficie asumidos:* Solucionado normalizando a `None` / `Sin información`.
+- *Vulnerabilidad potencial en popup HTML:* Solucionado con `setDOMContent` y nodos DOM seguros.
+
+### 4. ¿Qué quedó pendiente para Fase 2?
+- Algoritmo de detección automática de gaps mediante grafos en NetworkX.
+- Expansión a la ciudad de Talca.
+
+---
+
 ## [2026-09-08] — Iteración 1: Fundación y Vertical Slice de Curicó
 
 ### 1. ¿Qué se hizo?
