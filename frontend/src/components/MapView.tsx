@@ -15,6 +15,8 @@ import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import type {
   City,
   FeatureProperties,
+  GapCandidateFeature,
+  GapProperties,
   LayerConfig,
   LayerId,
   RouteResponse,
@@ -37,6 +39,8 @@ interface Props {
   destination?: [number, number] | null
   activeRoute?: RouteResponse | null
   showShortestComparison?: boolean
+  selectedGap?: GapCandidateFeature | null
+  onSelectGap?: (gap: GapCandidateFeature | null) => void
 }
 
 const EMPTY_FEATURE_COLLECTION: FeatureCollection = {
@@ -80,6 +84,9 @@ function createSafePopupContent(
   const isAlgorithmicRoute =
     props.cycling_infra_pct !== undefined ||
     props.status === 'Ruta algorítmica calculada con red vial real'
+  const isAlgorithmicGap =
+    props.status === 'ALGORITHMIC_CANDIDATE' ||
+    props.priority_score !== undefined
 
   // Title
   const titleEl = document.createElement('div')
@@ -92,6 +99,9 @@ function createSafePopupContent(
   if (isAlgorithmicRoute) {
     badgeEl.className = 'popup-badge route'
     badgeEl.textContent = 'RUTA RECOMENDADA ALGORÍTMICA'
+  } else if (isAlgorithmicGap) {
+    badgeEl.className = 'popup-badge gap'
+    badgeEl.textContent = 'OPORTUNIDAD ALGORÍTMICA'
   } else {
     badgeEl.className = `popup-badge ${isDemo ? 'demo' : 'real'}`
     badgeEl.textContent = isDemo ? 'ESTIMACIÓN DEMO' : 'DATOS OPENSTREETMAP'
@@ -140,6 +150,26 @@ function createSafePopupContent(
     if (props.streets && Array.isArray(props.streets) && props.streets.length > 0) {
       addRow('Calles del trayecto:', props.streets.slice(0, 5).join(', '))
     }
+  } else if (isAlgorithmicGap) {
+    if (props.gap_length_m !== undefined) {
+      addRow('Brecha a conectar:', `${props.gap_length_m} m`)
+    }
+    if (props.connected_network_km !== undefined) {
+      const parts =
+        props.component_a_km !== undefined && props.component_b_km !== undefined
+          ? ` (${props.component_a_km} km + ${props.component_b_km} km)`
+          : ''
+      addRow('Red ciclista unida:', `${props.connected_network_km} km${parts}`)
+    }
+    if (props.priority_score !== undefined) {
+      const gainText = props.gain_ratio ? ` (ganancia ${props.gain_ratio}x)` : ''
+      addRow('Prioridad calculada:', `${props.priority_score} / 100${gainText}`)
+    }
+    const streetsVal = props.streets_display || (Array.isArray(props.streets) ? props.streets.join(', ') : null)
+    if (streetsVal) {
+      addRow('Calles a intervenir:', String(streetsVal))
+    }
+    addRow('Fuente:', 'Detector algorítmico CicloConecta sobre OSM')
   } else {
     // Tipología
     const typeStr = props.type || 'Infraestructura ciclista'
@@ -191,6 +221,14 @@ function createSafePopupContent(
     container.appendChild(benefitEl)
   }
 
+  // Disclaimer prudente para brechas algorítmicas
+  if (props.disclaimer) {
+    const discEl = document.createElement('div')
+    discEl.className = 'popup-disclaimer'
+    discEl.textContent = String(props.disclaimer)
+    container.appendChild(discEl)
+  }
+
   return container
 }
 
@@ -206,6 +244,8 @@ export const MapView: React.FC<Props> = ({
   destination,
   activeRoute,
   showShortestComparison = false,
+  selectedGap = null,
+  onSelectGap,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
@@ -228,6 +268,12 @@ export const MapView: React.FC<Props> = ({
 
   const onSelectCoordinateRef = useRef(onSelectCoordinate)
   onSelectCoordinateRef.current = onSelectCoordinate
+
+  const selectedGapRef = useRef(selectedGap)
+  selectedGapRef.current = selectedGap
+
+  const onSelectGapRef = useRef(onSelectGap)
+  onSelectGapRef.current = onSelectGap
 
   const isLayersInitializedRef = useRef(false)
 
@@ -308,6 +354,23 @@ export const MapView: React.FC<Props> = ({
         })
       } else {
         shortestSource.setData(EMPTY_FEATURE_COLLECTION)
+      }
+    }
+  }
+
+  // Update selected gap highlight layer
+  const syncSelectedGapLayer = (map: MapLibreMap) => {
+    if (!map || !isLayersInitializedRef.current) return
+
+    const gapSource = map.getSource('source-selected-gap') as GeoJSONSource | undefined
+    if (gapSource) {
+      if (selectedGapRef.current && selectedGapRef.current.geometry?.coordinates?.length > 1) {
+        gapSource.setData({
+          type: 'FeatureCollection',
+          features: [selectedGapRef.current],
+        })
+      } else {
+        gapSource.setData(EMPTY_FEATURE_COLLECTION)
       }
     }
   }
@@ -461,6 +524,19 @@ export const MapView: React.FC<Props> = ({
               .setLngLat(e.lngLat)
               .setDOMContent(popupContent)
               .addTo(map)
+
+            if (
+              layer.id === 'missing-connections' &&
+              props.status === 'ALGORITHMIC_CANDIDATE' &&
+              onSelectGapRef.current
+            ) {
+              onSelectGapRef.current({
+                type: 'Feature',
+                id: String(props.id || feature.id || ''),
+                geometry: feature.geometry as { type: 'LineString'; coordinates: [number, number][] },
+                properties: props as unknown as GapProperties,
+              })
+            }
           })
         }
       })
@@ -523,6 +599,43 @@ export const MapView: React.FC<Props> = ({
         })
       }
 
+      // Initialize sources and layers for highlighted selected gap
+      if (!map.getSource('source-selected-gap')) {
+        map.addSource('source-selected-gap', {
+          type: 'geojson',
+          data: EMPTY_FEATURE_COLLECTION,
+        })
+        map.addLayer({
+          id: 'casing-selected-gap',
+          type: 'line',
+          source: 'source-selected-gap',
+          layout: {
+            'line-cap': 'round',
+            'line-join': 'round',
+          },
+          paint: {
+            'line-color': '#f59e0b',
+            'line-opacity': 0.5,
+            'line-width': 12,
+          },
+        })
+        map.addLayer({
+          id: 'line-selected-gap',
+          type: 'line',
+          source: 'source-selected-gap',
+          layout: {
+            'line-cap': 'round',
+            'line-join': 'round',
+          },
+          paint: {
+            'line-color': '#b45309',
+            'line-opacity': 1.0,
+            'line-width': 6.0,
+            'line-dasharray': [3, 1.5],
+          },
+        })
+      }
+
       // Map canvas click for picking coordinates
       map.on('click', (e: MapLayerMouseEvent) => {
         if (selectionModeRef.current !== 'none' && onSelectCoordinateRef.current) {
@@ -533,6 +646,7 @@ export const MapView: React.FC<Props> = ({
       isLayersInitializedRef.current = true
       syncMapLayers(map)
       syncActiveRouteLayers(map)
+      syncSelectedGapLayer(map)
     })
 
     return () => {
@@ -569,6 +683,30 @@ export const MapView: React.FC<Props> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeRoute, showShortestComparison])
+
+  // Sync selected gap highlight and focus
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !isLayersInitializedRef.current) return
+
+    syncSelectedGapLayer(map)
+
+    if (selectedGap && selectedGap.geometry?.coordinates?.length > 1) {
+      const coords = selectedGap.geometry.coordinates
+      const bounds = new LngLatBounds()
+      coords.forEach((c) => bounds.extend(c))
+      map.fitBounds(bounds, { padding: 120, maxZoom: 16.5 })
+
+      const midCoord = coords[Math.floor(coords.length / 2)]
+      if (popupRef.current) popupRef.current.remove()
+      const popupContent = createSafePopupContent(selectedGap.properties, false)
+      popupRef.current = new Popup({ offset: 12 })
+        .setLngLat(midCoord)
+        .setDOMContent(popupContent)
+        .addTo(map)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedGap])
 
   // Sync cursor when in selection mode
   useEffect(() => {

@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import type { Map as MapLibreMap } from 'maplibre-gl'
 import type { FeatureCollection } from 'geojson'
-import type { City, LayerConfig, LayerId, RouteResponse, RouteSelectionMode } from './types/map'
+import type { City, GapCandidateFeature, LayerConfig, LayerId, RouteResponse, RouteSelectionMode } from './types/map'
 import { fetchCities, fetchLayerGeoJSON } from './services/api'
 import { MapView } from './components/MapView'
 import { CityHeader } from './components/CityHeader'
 import { LayerControl } from './components/LayerControl'
 import { RoutePlanner } from './components/RoutePlanner'
+import { OpportunitiesList } from './components/OpportunitiesList'
 import { InfoModal } from './components/InfoModal'
 import './styles/index.css'
 
@@ -25,14 +26,14 @@ const DEFAULT_LAYERS: LayerConfig[] = [
   },
   {
     id: 'missing-connections',
-    name: 'Conexiones faltantes',
-    shortName: 'Gaps',
-    description: 'Tramos desconectados prioritarios para unir la red.',
+    name: 'Conexiones potenciales',
+    shortName: 'Brechas',
+    description: 'Brechas de continuidad prioritarias detectadas algorítmicamente en la red vial.',
     color: '#f59e0b',
-    lineWidth: 3,
-    lineDash: [3, 2],
-    isDemo: true,
-    source: 'DEMO / Conceptual',
+    lineWidth: 3.5,
+    lineDash: [4, 2],
+    isDemo: false,
+    source: 'Detector algorítmico sobre OSM',
     visible: true,
     count: 0,
   },
@@ -128,14 +129,16 @@ export function App() {
           'suggested-routes': null,
         }
 
+        results.forEach((r) => {
+          if (r.data) {
+            newLayersData[r.id as LayerId] = r.data
+          }
+        })
+
         setLayers((prev) =>
           prev.map((l) => {
             const match = results.find((r) => r.id === l.id)
-            if (match && match.data) {
-              newLayersData[l.id] = match.data
-              return { ...l, count: match.count }
-            }
-            return l
+            return match && match.data ? { ...l, count: match.count } : l
           })
         )
 
@@ -187,6 +190,22 @@ export function App() {
     }
   }
 
+  // Gap Opportunities State
+  const [selectedGap, setSelectedGap] = useState<GapCandidateFeature | null>(null)
+
+  const gapOpportunities: GapCandidateFeature[] = (
+    (layersData['missing-connections']?.features as unknown as GapCandidateFeature[]) || []
+  ).filter(
+    (f) => f.geometry?.type === 'LineString' && f.properties?.priority_score !== undefined
+  )
+
+  const handleEnsureGapsLayerVisible = () => {
+    if (!isCicloConectaVisible) setIsCicloConectaVisible(true)
+    setLayers((prev) =>
+      prev.map((l) => (l.id === 'missing-connections' ? { ...l, visible: true } : l))
+    )
+  }
+
   return (
     <main className="app-container">
       <CityHeader city={city} onOpenInfo={() => setIsInfoOpen(true)} />
@@ -205,13 +224,26 @@ export function App() {
         onToggleShortestComparison={setShowShortestComparison}
       />
 
-      <LayerControl
-        isCicloConectaVisible={isCicloConectaVisible}
-        onToggleMaster={handleToggleMaster}
-        layers={layers}
-        onToggleLayer={handleToggleLayer}
-        onResetView={handleResetView}
-      />
+      <div className="right-sidebar">
+        <LayerControl
+          isCicloConectaVisible={isCicloConectaVisible}
+          onToggleMaster={handleToggleMaster}
+          layers={layers}
+          onToggleLayer={handleToggleLayer}
+          onResetView={handleResetView}
+        />
+
+        <OpportunitiesList
+          opportunities={gapOpportunities}
+          selectedGap={selectedGap}
+          onSelectGap={setSelectedGap}
+          isLayerVisible={
+            isCicloConectaVisible &&
+            (layers.find((l) => l.id === 'missing-connections')?.visible ?? false)
+          }
+          onEnsureLayerVisible={handleEnsureGapsLayerVisible}
+        />
+      </div>
 
       <MapView
         city={city}
@@ -225,6 +257,8 @@ export function App() {
         destination={destination}
         activeRoute={activeRoute}
         showShortestComparison={showShortestComparison}
+        selectedGap={selectedGap}
+        onSelectGap={setSelectedGap}
       />
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />

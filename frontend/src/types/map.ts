@@ -105,3 +105,27 @@ export interface RouteResponse {
 
 export type RouteSelectionMode = 'none' | 'origin' | 'destination'
 
+export interface GapProperties extends FeatureProperties {
+  rank?: number
+  priority_score: number
+  gap_length_m: number
+  component_a_km: number
+  component_b_km: number
+  connected_network_km: number
+  network_gain_km: number
+  gain_ratio: number
+  streets: string[]
+  streets_display?: string
+  disclaimer?: string
+}
+
+export interface GapCandidateFeature {
+  type: 'Feature'
+  id: string
+  geometry: {
+    type: 'LineString'
+    coordinates: [number, number][]
+  }
+  properties: GapProperties
+}
+

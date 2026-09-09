@@ -1,5 +1,5 @@
 import React from 'react'
-import { X, CheckCircle, AlertTriangle, GitBranch } from 'lucide-react'
+import { X, CheckCircle, GitBranch } from 'lucide-react'
 
 interface Props {
   isOpen: boolean
@@ -43,19 +43,18 @@ export const InfoModal: React.FC<Props> = ({ isOpen, onClose }) => {
             <p>
               Los datos provienen directamente de <strong>OpenStreetMap (OSM)</strong>,
               extraídos mediante consultas espaciales a la API Overpass según el etiquetado
-              colaborativo de la comunidad. No constituyen un catastro municipal verificado físicamente en terreno.
+              colaborativo de la comunidad ciclista.
             </p>
           </div>
 
-          <div className="modal-callout amber">
+          <div className="modal-callout" style={{ background: '#eff6ff', borderLeftColor: '#3b82f6', color: '#1e40af' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700, marginBottom: '4px' }}>
-              <AlertTriangle size={16} /> Capas Conceptuales: Conexiones y Rutas (DEMO)
+              <CheckCircle size={16} /> Análisis Algorítmico Determinista (Fase 2 y 3)
             </div>
             <p>
-              Las capas de <em>Conexiones faltantes</em> y <em>Rutas sugeridas</em> corresponden
-              a estimaciones preliminares para validar la experiencia de usuario y arquitectura.
-              En la Fase 2 serán calculadas de forma 100% determinista mediante algoritmos
-              de grafos sobre la red vial completa.
+              Tanto el <strong>Planificador de Rutas Ciclistas</strong> (A* sobre la red vial real ponderada por estrés vehicular)
+              como el <strong>Detector de Brechas de Red</strong> (continuidad topológica entre componentes ciclistas desconectadas)
+              son calculados determinísticamente sin datos sintéticos ni líneas rectas inventadas.
             </p>
           </div>
         </div>
