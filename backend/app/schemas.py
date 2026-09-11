@@ -29,6 +29,7 @@ class CitySummary(BaseModel):
     presets: list[dict[str, Any]] = []
     stats: Optional[CityStats] = None
     connectivity: Optional[dict[str, Any]] = None
+    expansion: Optional[dict[str, Any]] = None
 
 
 class LayerInfo(BaseModel):

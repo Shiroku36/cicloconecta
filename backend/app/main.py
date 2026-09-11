@@ -52,6 +52,13 @@ LAYER_DEFINITIONS = {
         "is_demo": False,
         "source": "Algoritmo de routing A* sobre red vial OpenStreetMap",
     },
+    "network-expansion": {
+        "name": "Expansión de red",
+        "description": "Corredores potenciales para extender la cobertura de la red ciclista hacia sectores actualmente desconectados.",
+        "color": "#8b5cf6",  # Violet/Purple
+        "is_demo": False,
+        "source": "Planificador algorítmico de expansión CicloConecta sobre OpenStreetMap",
+    },
 }
 
 
