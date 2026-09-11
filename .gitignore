@@ -75,3 +75,7 @@ scratch/
 # Raw OSM data downloads (regenerable caches)
 data/cities/*/raw_network.json
 data/cities/*/raw_cycleways.json
+data/cities/*/raw_pois.json
+
+# Local personal docs
+Boletas*/

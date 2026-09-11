@@ -28,6 +28,7 @@ from .gap_detector import (
     find_candidate_gaps,
     generate_missing_connections_geojson,
 )
+from .expansion_planner import plan_city_expansion
 from .graph_builder import (
     build_navigable_graph,
     deserialize_graph_from_json,
@@ -241,8 +242,21 @@ def process_city(
     atomic_json_dump(gaps_geojson, gaps_path)
     print(f"  -> {len(ranked_candidates)} oportunidades prioritarias guardadas en {gaps_path.name}.")
 
-    # 5. Generación de estadísticas de red y actualización de city.json
-    print("\n[5/6] Generando estadísticas objetivas de la red y metadatos...")
+    # 5. Planificación territorial de expansión de red
+    print("\n[5/7] Planificando algorítmicamente la expansión de red territorial...")
+    expansion_geojson = None
+    try:
+        expansion_geojson = plan_city_expansion(
+            city_def,
+            city_data_dir,
+            city_frontend_dir,
+            force_refresh=force_refresh,
+        )
+    except Exception as e_err:
+        print(f"  [Aviso] Omitiendo expansión de red para {city_id}: {e_err}")
+
+    # 6. Generación de estadísticas de red y actualización de city.json
+    print("\n[6/7] Generando estadísticas objetivas de la red y metadatos...")
     median_gap_m = 0
     max_score = 0.0
     if ranked_candidates:
@@ -253,6 +267,14 @@ def process_city(
     main_pct = round((main_comp_km / max(total_cycleway_km, 0.01)) * 100.0, 1)
     if main_pct > 100.0:
         main_pct = 100.0
+
+    layers_avail = [
+        "cycling-infrastructure",
+        "missing-connections",
+        "suggested-routes",
+    ]
+    if (city_data_dir / "network-expansion.geojson").exists():
+        layers_avail.append("network-expansion")
 
     now_iso = datetime.now(timezone.utc).isoformat()
     city_metadata = {
@@ -273,11 +295,7 @@ def process_city(
         "stats": {
             "cycleways_count": cycleways_count,
             "total_km": total_cycleway_km,
-            "layers_available": [
-                "cycling-infrastructure",
-                "missing-connections",
-                "suggested-routes",
-            ],
+            "layers_available": layers_avail,
             "last_updated": now_iso,
         },
         "connectivity": {
@@ -292,16 +310,30 @@ def process_city(
             "last_analyzed": now_iso,
         },
     }
+
+    if expansion_geojson and "metadata" in expansion_geojson:
+        meta = expansion_geojson["metadata"]
+        city_metadata["expansion"] = {
+            "total_phases": meta.get("total_phases", 0),
+            "total_expansion_km": meta.get("total_expansion_km", 0.0),
+            "total_new_nodes": meta.get("total_new_nodes", 0),
+            "total_coverage_gain_pct": meta.get("total_coverage_gain_pct", 0.0),
+            "total_new_pois": meta.get("total_new_pois", 0),
+            "baseline_coverage": meta.get("baseline_coverage", {}),
+            "last_analyzed": now_iso,
+        }
+
     city_json_path = city_data_dir / "city.json"
     atomic_json_dump(city_metadata, city_json_path)
 
-    # 6. Sincronización a frontend/public/
-    print("\n[6/6] Sincronizando capas públicas hacia frontend/public/data/cities/...")
+    # 7. Sincronización a frontend/public/
+    print("\n[7/7] Sincronizando capas públicas hacia frontend/public/data/cities/...")
     for filename in [
         "city.json",
         "cycling-infrastructure.geojson",
         "missing-connections.geojson",
         "suggested-routes.geojson",
+        "network-expansion.geojson",
     ]:
         src = city_data_dir / filename
         dst = city_frontend_dir / filename
