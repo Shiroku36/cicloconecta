@@ -1,4 +1,4 @@
-export type LayerId = 'cycling-infrastructure' | 'missing-connections' | 'suggested-routes'
+export type LayerId = 'cycling-infrastructure' | 'missing-connections' | 'suggested-routes' | 'network-expansion'
 
 export interface CityStats {
   cycleways_count: number
@@ -26,6 +26,20 @@ export interface CityConnectivity {
   last_analyzed?: string
 }
 
+export interface CityExpansion {
+  total_phases: number
+  total_expansion_km: number
+  total_new_nodes: number
+  total_coverage_gain_pct: number
+  total_new_pois: number
+  baseline_coverage?: {
+    covered_nodes_pct: number
+    covered_pois_pct: number
+    distance_bands: Record<string, number>
+  }
+  last_analyzed?: string
+}
+
 export interface City {
   id: string
   name: string
@@ -40,6 +54,7 @@ export interface City {
   presets?: PresetLocation[]
   stats?: CityStats
   connectivity?: CityConnectivity
+  expansion?: CityExpansion
 }
 
 export interface LayerConfig {
@@ -149,5 +164,40 @@ export interface GapCandidateFeature {
     coordinates: [number, number][]
   }
   properties: GapProperties
+}
+
+export interface ExpansionProperties extends FeatureProperties {
+  id: string
+  phase: number
+  name: string
+  sector: string
+  axis: string
+  status: string
+  badge: string
+  expansion_score: number
+  length_m: number
+  length_km: number
+  crow_m: number
+  zigzag_ratio: number
+  coverage_gain_nodes: number
+  coverage_gain_pct: number
+  new_pois_count: number
+  efficiency_ratio: number
+  streets: string[]
+  origin_anchor: string
+  target_sector: string
+  description: string
+  poi_summary: Record<string, string[]>
+  disclaimer: string
+}
+
+export interface ExpansionFeature {
+  type: 'Feature'
+  id: string
+  geometry: {
+    type: 'LineString'
+    coordinates: [number, number][]
+  }
+  properties: ExpansionProperties
 }
 

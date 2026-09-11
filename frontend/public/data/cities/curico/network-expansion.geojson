@@ -1,0 +1,941 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "city_id": "curico",
+    "city_name": "Curicó",
+    "layer_id": "network-expansion",
+    "layer_name": "Expansión de red",
+    "badge": "ANÁLISIS",
+    "status": "ALGORITHMIC_EXPANSION",
+    "total_phases": 6,
+    "total_expansion_km": 5.59,
+    "total_new_nodes": 813,
+    "total_coverage_gain_pct": 5.0,
+    "total_new_pois": 56,
+    "baseline_coverage": {
+      "covered_nodes_pct": 69.5,
+      "covered_pois_pct": 78.7,
+      "distance_bands": {
+        "0-250m": 8900,
+        "250-500m": 3301,
+        "500-1000m": 1757,
+        ">1000m": 2294
+      }
+    },
+    "generated_at": "2026-09-11T12:32:28.474073+00:00",
+    "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "expansion-curico-01",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.192048,
+            -34.945377
+          ],
+          [
+            -71.192391,
+            -34.945336
+          ],
+          [
+            -71.192686,
+            -34.945301
+          ],
+          [
+            -71.193088,
+            -34.945253
+          ],
+          [
+            -71.193163,
+            -34.945245
+          ],
+          [
+            -71.194211,
+            -34.94512
+          ],
+          [
+            -71.194284,
+            -34.945112
+          ],
+          [
+            -71.194644,
+            -34.945069
+          ],
+          [
+            -71.194877,
+            -34.945042
+          ],
+          [
+            -71.194963,
+            -34.945031
+          ],
+          [
+            -71.195392,
+            -34.94498
+          ],
+          [
+            -71.195476,
+            -34.944971
+          ],
+          [
+            -71.196692,
+            -34.944827
+          ],
+          [
+            -71.196806,
+            -34.944812
+          ],
+          [
+            -71.197747,
+            -34.944689
+          ],
+          [
+            -71.198124,
+            -34.94464
+          ],
+          [
+            -71.198691,
+            -34.944566
+          ],
+          [
+            -71.198847,
+            -34.944545
+          ],
+          [
+            -71.199,
+            -34.944525
+          ],
+          [
+            -71.200027,
+            -34.944389
+          ],
+          [
+            -71.201075,
+            -34.944248
+          ],
+          [
+            -71.201223,
+            -34.944229
+          ],
+          [
+            -71.201572,
+            -34.944184
+          ],
+          [
+            -71.20213,
+            -34.944117
+          ],
+          [
+            -71.203266,
+            -34.943988
+          ],
+          [
+            -71.203354,
+            -34.943978
+          ],
+          [
+            -71.203722,
+            -34.943903
+          ],
+          [
+            -71.20377,
+            -34.943866
+          ],
+          [
+            -71.203812,
+            -34.943824
+          ],
+          [
+            -71.203846,
+            -34.943777
+          ],
+          [
+            -71.203871,
+            -34.943727
+          ],
+          [
+            -71.203885,
+            -34.943683
+          ],
+          [
+            -71.203892,
+            -34.943637
+          ],
+          [
+            -71.203892,
+            -34.943591
+          ],
+          [
+            -71.203746,
+            -34.943408
+          ],
+          [
+            -71.203752,
+            -34.943332
+          ],
+          [
+            -71.203755,
+            -34.943279
+          ],
+          [
+            -71.203782,
+            -34.942892
+          ],
+          [
+            -71.203797,
+            -34.942809
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-01",
+        "phase": 1,
+        "name": "Eje Norte: Av. Rauquén Norte → Don Sebastián / Los Héroes",
+        "sector": "Rauquén Norte / Don Sebastián",
+        "axis": "Av. Rauquén Norte / Don Sebastián",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 91.7,
+        "length_m": 1207.3,
+        "length_km": 1.21,
+        "crow_m": 1108.7,
+        "zigzag_ratio": 1.09,
+        "coverage_gain_nodes": 229,
+        "coverage_gain_pct": 1.41,
+        "new_pois_count": 12,
+        "efficiency_ratio": 189.3,
+        "streets": [
+          "Avenida Rauquén",
+          "Avenida Arturo Prat",
+          "Mateo de Toro y Zambrano"
+        ],
+        "origin_anchor": "Ciclovía Av. Rauquén (Componente Dorsal)",
+        "target_sector": "Rauquén Norte / Don Sebastián",
+        "description": "Continuación de la red hacia los macro-conjuntos habitacionales de Rauquén Norte y el polo educativo Los Héroes.",
+        "poi_summary": {
+          "education": [
+            "Escuela de Admninistración y Comercio",
+            "Escuela Administración y Comercio",
+            "Colegio Los Héroes"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-curico-02",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248641,
+            -34.999043
+          ],
+          [
+            -71.248924,
+            -34.998951
+          ],
+          [
+            -71.248906,
+            -34.998913
+          ],
+          [
+            -71.249028,
+            -34.998874
+          ],
+          [
+            -71.249577,
+            -34.998698
+          ],
+          [
+            -71.250254,
+            -34.998482
+          ],
+          [
+            -71.250528,
+            -34.998395
+          ],
+          [
+            -71.250969,
+            -34.998253
+          ],
+          [
+            -71.252035,
+            -34.997913
+          ],
+          [
+            -71.252568,
+            -34.997743
+          ],
+          [
+            -71.25367,
+            -34.997391
+          ],
+          [
+            -71.254093,
+            -34.997255
+          ],
+          [
+            -71.254483,
+            -34.997131
+          ],
+          [
+            -71.254896,
+            -34.996999
+          ],
+          [
+            -71.255309,
+            -34.996867
+          ],
+          [
+            -71.255707,
+            -34.99674
+          ],
+          [
+            -71.256119,
+            -34.996608
+          ],
+          [
+            -71.256537,
+            -34.996475
+          ],
+          [
+            -71.256713,
+            -34.996855
+          ],
+          [
+            -71.257397,
+            -34.996644
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-02",
+        "phase": 2,
+        "name": "Eje Surponiente: Mataquito → Villa Mejillones / Santos Martínez",
+        "sector": "Mataquito / Licantén",
+        "axis": "Av. Licantén / Mataquito",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 89.0,
+        "length_m": 890.1,
+        "length_km": 0.89,
+        "crow_m": 841.8,
+        "zigzag_ratio": 1.06,
+        "coverage_gain_nodes": 206,
+        "coverage_gain_pct": 1.27,
+        "new_pois_count": 23,
+        "efficiency_ratio": 231.5,
+        "streets": [
+          "Balmaceda",
+          "Mataquito",
+          "Azapa",
+          "Camina"
+        ],
+        "origin_anchor": "Ciclovía Av. Circunvalación / Los Niches",
+        "target_sector": "Mataquito / Licantén",
+        "description": "Corredor surponiente conectando villas Mejillones y Santos Martínez con equipamientos educativos y comunitarios.",
+        "poi_summary": {
+          "parks_leisure": [
+            "Gimnacio al aire libre Mejillones",
+            "Plaza José Santos Martínez",
+            "Plaza Fundacion la Familia"
+          ],
+          "education": [
+            "Escuela de Lenguaje El Castillo Infantil"
+          ],
+          "public_services": [
+            "Sede"
+          ],
+          "commercial": [
+            "Feria de las Pulgas",
+            "Carnicería y Supermercado"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-curico-03",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248893,
+            -34.987915
+          ],
+          [
+            -71.248901,
+            -34.987842
+          ],
+          [
+            -71.248954,
+            -34.98784
+          ],
+          [
+            -71.249042,
+            -34.987837
+          ],
+          [
+            -71.249136,
+            -34.987831
+          ],
+          [
+            -71.249259,
+            -34.987817
+          ],
+          [
+            -71.249518,
+            -34.987778
+          ],
+          [
+            -71.249833,
+            -34.987763
+          ],
+          [
+            -71.250517,
+            -34.987722
+          ],
+          [
+            -71.250789,
+            -34.987703
+          ],
+          [
+            -71.250991,
+            -34.98769
+          ],
+          [
+            -71.251274,
+            -34.987669
+          ],
+          [
+            -71.251393,
+            -34.987658
+          ],
+          [
+            -71.251666,
+            -34.987634
+          ],
+          [
+            -71.251749,
+            -34.987629
+          ],
+          [
+            -71.251831,
+            -34.987628
+          ],
+          [
+            -71.251899,
+            -34.987631
+          ],
+          [
+            -71.251966,
+            -34.987637
+          ],
+          [
+            -71.252008,
+            -34.98761
+          ],
+          [
+            -71.252053,
+            -34.987586
+          ],
+          [
+            -71.252124,
+            -34.987555
+          ],
+          [
+            -71.2522,
+            -34.98753
+          ],
+          [
+            -71.252346,
+            -34.987494
+          ],
+          [
+            -71.252955,
+            -34.987349
+          ],
+          [
+            -71.253665,
+            -34.98718
+          ],
+          [
+            -71.254356,
+            -34.987016
+          ],
+          [
+            -71.254455,
+            -34.986993
+          ],
+          [
+            -71.254548,
+            -34.98697
+          ],
+          [
+            -71.255178,
+            -34.986821
+          ],
+          [
+            -71.255359,
+            -34.986827
+          ],
+          [
+            -71.255491,
+            -34.98685
+          ],
+          [
+            -71.255989,
+            -34.98696
+          ],
+          [
+            -71.257436,
+            -34.988565
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-03",
+        "phase": 3,
+        "name": "Eje Poniente: Av. Lautaro → Población Santa Fe",
+        "sector": "Santa Fe Poniente",
+        "axis": "Av. Lautaro / Santa Fe",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 82.1,
+        "length_m": 893.3,
+        "length_km": 0.89,
+        "crow_m": 782.2,
+        "zigzag_ratio": 1.14,
+        "coverage_gain_nodes": 173,
+        "coverage_gain_pct": 1.06,
+        "new_pois_count": 7,
+        "efficiency_ratio": 194.4,
+        "streets": [
+          "Avenida Lautaro",
+          "Lautaro"
+        ],
+        "origin_anchor": "Eje Lautaro / Red Central",
+        "target_sector": "Santa Fe Poniente",
+        "description": "Extensión estratégica hacia el sector habitacional Santa Fe poniente a través del eje estructurante Lautaro.",
+        "poi_summary": {
+          "parks_leisure": [
+            "Plaza Villa Pontificia",
+            "Plaza Vaticano",
+            "Plaza Villa Roma"
+          ],
+          "public_services": [
+            "Sede Social"
+          ],
+          "education": [
+            "Colegio San Marcos"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-curico-04",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248002,
+            -34.970664
+          ],
+          [
+            -71.2481,
+            -34.970672
+          ],
+          [
+            -71.248088,
+            -34.970914
+          ],
+          [
+            -71.249049,
+            -34.970922
+          ],
+          [
+            -71.249154,
+            -34.970922
+          ],
+          [
+            -71.249767,
+            -34.970943
+          ],
+          [
+            -71.250392,
+            -34.970972
+          ],
+          [
+            -71.250643,
+            -34.970978
+          ],
+          [
+            -71.250899,
+            -34.970984
+          ],
+          [
+            -71.251002,
+            -34.970985
+          ],
+          [
+            -71.251301,
+            -34.970976
+          ],
+          [
+            -71.251705,
+            -34.970958
+          ],
+          [
+            -71.252215,
+            -34.97094
+          ],
+          [
+            -71.252269,
+            -34.970956
+          ],
+          [
+            -71.252313,
+            -34.970992
+          ],
+          [
+            -71.252353,
+            -34.971103
+          ],
+          [
+            -71.253107,
+            -34.971142
+          ],
+          [
+            -71.253596,
+            -34.971154
+          ],
+          [
+            -71.254142,
+            -34.971126
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-04",
+        "phase": 4,
+        "name": "Eje Norponiente: Av. Dr. Osorio → Sol de Septiembre / ANFA",
+        "sector": "Sol de Septiembre",
+        "axis": "Av. Doctor Osorio / Apolonia",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 67.6,
+        "length_m": 599.3,
+        "length_km": 0.6,
+        "crow_m": 562.1,
+        "zigzag_ratio": 1.07,
+        "coverage_gain_nodes": 60,
+        "coverage_gain_pct": 0.37,
+        "new_pois_count": 9,
+        "efficiency_ratio": 100.0,
+        "streets": [
+          "Isla Picton",
+          "Avenida Balmaceda",
+          "Avenida Apolonia"
+        ],
+        "origin_anchor": "Ciclovía Balmaceda / Circunvalación",
+        "target_sector": "Sol de Septiembre",
+        "description": "Extensión hacia el sector histórico Sol de Septiembre, Estadio ANFA y establecimientos escolares circundantes.",
+        "poi_summary": {
+          "education": [
+            "Colegio Altas Cumbres",
+            "Escuela Machu Pichu"
+          ],
+          "parks_leisure": [
+            "Estadio Anfa",
+            "Estadio Anfa",
+            "Estadio Anfa"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-curico-05",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.210313,
+            -34.989844
+          ],
+          [
+            -71.210228,
+            -34.989825
+          ],
+          [
+            -71.20978,
+            -34.99031
+          ],
+          [
+            -71.209696,
+            -34.990404
+          ],
+          [
+            -71.20961,
+            -34.990348
+          ],
+          [
+            -71.209538,
+            -34.990301
+          ],
+          [
+            -71.209272,
+            -34.990099
+          ],
+          [
+            -71.208292,
+            -34.98918
+          ],
+          [
+            -71.208065,
+            -34.988945
+          ],
+          [
+            -71.207795,
+            -34.988605
+          ],
+          [
+            -71.207709,
+            -34.988492
+          ],
+          [
+            -71.207618,
+            -34.988383
+          ],
+          [
+            -71.20749,
+            -34.988242
+          ],
+          [
+            -71.207354,
+            -34.988107
+          ],
+          [
+            -71.207209,
+            -34.987978
+          ],
+          [
+            -71.207038,
+            -34.987858
+          ],
+          [
+            -71.20687,
+            -34.987734
+          ],
+          [
+            -71.20669,
+            -34.987594
+          ],
+          [
+            -71.206513,
+            -34.987451
+          ],
+          [
+            -71.206342,
+            -34.987303
+          ],
+          [
+            -71.205635,
+            -34.986577
+          ],
+          [
+            -71.205261,
+            -34.98624
+          ],
+          [
+            -71.205081,
+            -34.986111
+          ],
+          [
+            -71.204499,
+            -34.985697
+          ],
+          [
+            -71.204116,
+            -34.985424
+          ],
+          [
+            -71.203453,
+            -34.984967
+          ],
+          [
+            -71.202237,
+            -34.984127
+          ],
+          [
+            -71.201062,
+            -34.983283
+          ],
+          [
+            -71.199842,
+            -34.982408
+          ],
+          [
+            -71.199797,
+            -34.982375
+          ],
+          [
+            -71.199544,
+            -34.982174
+          ],
+          [
+            -71.199283,
+            -34.98198
+          ],
+          [
+            -71.199014,
+            -34.981793
+          ],
+          [
+            -71.198739,
+            -34.981612
+          ],
+          [
+            -71.198457,
+            -34.981439
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-05",
+        "phase": 5,
+        "name": "Eje Oriente: Camino Zapallar → El Boldo Oriente / Los Cristales",
+        "sector": "Zapallar / Los Cristales",
+        "axis": "Camino Zapallar",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 65.2,
+        "length_m": 1523.4,
+        "length_km": 1.52,
+        "crow_m": 1429.6,
+        "zigzag_ratio": 1.07,
+        "coverage_gain_nodes": 128,
+        "coverage_gain_pct": 0.79,
+        "new_pois_count": 5,
+        "efficiency_ratio": 84.2,
+        "streets": [
+          "Camino Zapallar",
+          "Camino Los Cristales"
+        ],
+        "origin_anchor": "Ciclovía El Boldo / O'Higgins",
+        "target_sector": "Zapallar / Los Cristales",
+        "description": "Proyección hacia la zona de expansión residencial oriente conectando Zapallar y colegios del sector.",
+        "poi_summary": {
+          "education": [
+            "Escuela Los Cristales"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-curico-06",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.266856,
+            -34.974047
+          ],
+          [
+            -71.267316,
+            -34.973867
+          ],
+          [
+            -71.267802,
+            -34.973668
+          ],
+          [
+            -71.267907,
+            -34.973629
+          ],
+          [
+            -71.268013,
+            -34.973593
+          ],
+          [
+            -71.268122,
+            -34.973564
+          ],
+          [
+            -71.268214,
+            -34.973546
+          ],
+          [
+            -71.268308,
+            -34.973533
+          ],
+          [
+            -71.268402,
+            -34.973526
+          ],
+          [
+            -71.269151,
+            -34.973402
+          ],
+          [
+            -71.269896,
+            -34.973332
+          ],
+          [
+            -71.27019,
+            -34.973336
+          ],
+          [
+            -71.270489,
+            -34.973328
+          ],
+          [
+            -71.271051,
+            -34.973219
+          ],
+          [
+            -71.271986,
+            -34.973192
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-06",
+        "phase": 6,
+        "name": "Eje Periurbano: Ruta J-60 → Sector Tutuquén",
+        "sector": "Tutuquén Norponiente",
+        "axis": "Ruta J-60 / Tutuquén",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 34.0,
+        "length_m": 483.1,
+        "length_km": 0.48,
+        "crow_m": 477.3,
+        "zigzag_ratio": 1.01,
+        "coverage_gain_nodes": 17,
+        "coverage_gain_pct": 0.1,
+        "new_pois_count": 0,
+        "efficiency_ratio": 35.4,
+        "streets": [
+          "Camino a Tutuquén"
+        ],
+        "origin_anchor": "Ciclovía Av. Colón Poniente",
+        "target_sector": "Tutuquén Norponiente",
+        "description": "Conexión periurbana de alta demanda ciclista hacia el sector Tutuquén y enlace costero de Curicó.",
+        "poi_summary": {},
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+      }
+    }
+  ]
+}

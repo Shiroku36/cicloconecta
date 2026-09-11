@@ -14,6 +14,8 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import type {
   City,
+  ExpansionFeature,
+  ExpansionProperties,
   FeatureProperties,
   GapCandidateFeature,
   GapProperties,
@@ -41,6 +43,8 @@ interface Props {
   showShortestComparison?: boolean
   selectedGap?: GapCandidateFeature | null
   onSelectGap?: (gap: GapCandidateFeature | null) => void
+  selectedExpansion?: ExpansionFeature | null
+  onSelectExpansion?: (expansion: ExpansionFeature | null) => void
 }
 
 const EMPTY_FEATURE_COLLECTION: FeatureCollection = {
@@ -70,7 +74,7 @@ function createPinElement(label: string, bgColor: string): HTMLElement {
 
 /**
  * Creates safe DOM content for MapLibre popups without HTML string interpolation.
- * Prevents XSS and safely renders attributes from OSM or demo layers.
+ * Prevents XSS and safely renders attributes from OSM, gap detector, routing, or expansion planner.
  */
 function createSafePopupContent(
   props: FeatureProperties,
@@ -79,14 +83,17 @@ function createSafePopupContent(
   const container = document.createElement('div')
   container.className = 'cicloconecta-popup-content'
 
-  const isDemo =
-    Boolean(props.is_demo) || props.status === 'DEMO' || isDemoLayer
+  const isDemo = Boolean(props.is_demo) || props.status === 'DEMO' || isDemoLayer
   const isAlgorithmicRoute =
     props.cycling_infra_pct !== undefined ||
     props.status === 'Ruta algorítmica calculada con red vial real'
   const isAlgorithmicGap =
     props.status === 'ALGORITHMIC_CANDIDATE' ||
     props.priority_score !== undefined
+  const isAlgorithmicExpansion =
+    props.status === 'ALGORITHMIC_EXPANSION' ||
+    props.badge === 'ANÁLISIS' ||
+    props.expansion_score !== undefined
 
   // Title
   const titleEl = document.createElement('div')
@@ -96,7 +103,10 @@ function createSafePopupContent(
 
   // Badge
   const badgeEl = document.createElement('span')
-  if (isAlgorithmicRoute) {
+  if (isAlgorithmicExpansion) {
+    badgeEl.className = 'popup-badge expansion'
+    badgeEl.textContent = 'PROPUESTA DE EXPANSIÓN (ANÁLISIS)'
+  } else if (isAlgorithmicRoute) {
     badgeEl.className = 'popup-badge route'
     badgeEl.textContent = 'RUTA RECOMENDADA ALGORÍTMICA'
   } else if (isAlgorithmicGap) {
@@ -125,108 +135,122 @@ function createSafePopupContent(
     container.appendChild(row)
   }
 
-  if (isAlgorithmicRoute) {
-    if (props.origin_name && props.dest_name) {
-      addRow('Trayecto:', `${props.origin_name} → ${props.dest_name}`)
+  // Expansion-specific properties
+  if (isAlgorithmicExpansion) {
+    if (props.phase !== undefined) {
+      addRow('Fase del Plan', `Fase ${props.phase}`)
     }
-    if (props.distance_km !== undefined) {
-      addRow('Distancia total:', `${props.distance_km} km`)
+    if (props.expansion_score !== undefined) {
+      addRow('Puntaje de Expansión', `${Number(props.expansion_score).toFixed(1)} / 100 pts`)
     }
-    if (props.cycling_infra_pct !== undefined) {
-      addRow('Infraestructura ciclista:', `${props.cycling_infra_pct}% (${props.cycling_infra_km} km)`)
+    if (props.length_km !== undefined) {
+      const lenM = props.length_m ? ` (${Math.round(Number(props.length_m))} m)` : ''
+      addRow('Longitud Proyectada', `${Number(props.length_km).toFixed(2)} km${lenM}`)
     }
-    if (props.shortest_distance_km !== undefined) {
-      addRow(
-        'Ruta más corta vehicular:',
-        `${props.shortest_distance_km} km (${props.shortest_cycling_infra_pct}% ciclovía)`
-      )
+    if (props.sector) {
+      addRow('Sector Beneficiado', String(props.sector))
     }
-    if (props.cycling_gain_pct !== undefined && Number(props.cycling_gain_pct) > 0) {
-      addRow(
-        'Ganancia ciclista:',
-        `+${props.cycling_gain_pct}% más ciclovía (+${props.distance_diff_km} km)`
-      )
+    if (props.coverage_gain_nodes !== undefined) {
+      const pctStr = props.coverage_gain_pct ? ` (+${props.coverage_gain_pct}%)` : ''
+      addRow('Ganancia Cobertura', `+${props.coverage_gain_nodes} nodos viales${pctStr}`)
+    }
+    if (props.new_pois_count !== undefined) {
+      addRow('Destinos Clave (POIs)', `+${props.new_pois_count} equipamientos`)
+    }
+    if (props.efficiency_ratio !== undefined) {
+      addRow('Eficiencia Territorial', `${props.efficiency_ratio} nodos/km`)
     }
     if (props.streets && Array.isArray(props.streets) && props.streets.length > 0) {
-      addRow('Calles del trayecto:', props.streets.slice(0, 5).join(', '))
+      addRow('Ejes Viales', props.streets.join(', '))
     }
-  } else if (isAlgorithmicGap) {
-    if (props.gap_length_m !== undefined) {
-      addRow('Brecha a conectar:', `${props.gap_length_m} m`)
+    if (props.origin_anchor) {
+      addRow('Conexión Red Base', String(props.origin_anchor))
     }
-    if (props.connected_network_km !== undefined) {
-      const parts =
-        props.component_a_km !== undefined && props.component_b_km !== undefined
-          ? ` (${props.component_a_km} km + ${props.component_b_km} km)`
-          : ''
-      addRow('Red ciclista unida:', `${props.connected_network_km} km${parts}`)
+    if (props.description) {
+      addRow('Descripción', String(props.description))
     }
+    if (props.disclaimer) {
+      const discEl = document.createElement('div')
+      discEl.className = 'popup-disclaimer'
+      discEl.textContent = String(props.disclaimer)
+      container.appendChild(discEl)
+    }
+    return container
+  }
+
+  // Gap-specific properties
+  if (isAlgorithmicGap) {
     if (props.priority_score !== undefined) {
-      const gainText = props.gain_ratio ? ` (ganancia ${props.gain_ratio}x)` : ''
-      addRow('Prioridad calculada:', `${props.priority_score} / 100${gainText}`)
+      addRow('Puntaje de Prioridad', `${Number(props.priority_score).toFixed(1)} / 100 pts`)
     }
-    const streetsVal = props.streets_display || (Array.isArray(props.streets) ? props.streets.join(', ') : null)
-    if (streetsVal) {
-      addRow('Calles a intervenir:', String(streetsVal))
+    if (props.gap_length_m !== undefined) {
+      addRow('Longitud del Gap', `${Math.round(Number(props.gap_length_m))} m`)
     }
-    addRow('Fuente:', 'Detector algorítmico CicloConecta sobre OSM')
-  } else {
-    // Tipología
-    const typeStr = props.type || 'Infraestructura ciclista'
-    addRow('Tipología:', typeStr)
-
-    // Superficie
-    const surfaceStr = props.surface_display || props.surface || 'Sin información'
-    addRow('Superficie:', surfaceStr)
-
-    // Segregación
-    if (props.segregated_display && props.segregated_display !== 'Sin información') {
-      addRow('Segregación:', props.segregated_display)
+    if (props.network_gain_km !== undefined) {
+      addRow('Ganancia de Red', `+${Number(props.network_gain_km).toFixed(2)} km conectados`)
     }
-
-    // Extensión
-    const lengthDisplay = props.length_km
-      ? `${props.length_km} km (${props.length_m || Math.round(Number(props.length_km) * 1000)} m)`
-      : props.gap_length_m
-      ? `${props.gap_length_m} m`
-      : 'Longitud en cálculo'
-    addRow('Extensión:', lengthDisplay)
-
-    // Fuente
-    const sourceText = props.source || 'OpenStreetMap Contributors'
-    addRow('Fuente:', sourceText)
+    if (props.gain_ratio !== undefined) {
+      addRow('Multiplicador de Eficiencia', `${Number(props.gain_ratio).toFixed(1)}x`)
+    }
+    if (props.streets && Array.isArray(props.streets) && props.streets.length > 0) {
+      addRow('Calles del Trazado', props.streets.join(', '))
+    }
+    if (props.component_a_km !== undefined && props.component_b_km !== undefined) {
+      addRow('Componentes Unidos', `${Number(props.component_a_km).toFixed(1)} km ↔ ${Number(props.component_b_km).toFixed(1)} km`)
+    }
+    if (props.description) {
+      addRow('Descripción', String(props.description))
+    }
+    if (props.disclaimer) {
+      const discEl = document.createElement('div')
+      discEl.className = 'popup-disclaimer'
+      discEl.textContent = String(props.disclaimer)
+      container.appendChild(discEl)
+    }
+    return container
   }
 
-  // Descripción opcional
-  if (props.description) {
-    const descEl = document.createElement('div')
-    descEl.className = 'popup-desc'
-    descEl.textContent = props.description
-    container.appendChild(descEl)
+  // Route-specific properties
+  if (isAlgorithmicRoute) {
+    if (props.cycling_infra_pct !== undefined) {
+      addRow('Infraestructura Ciclista', `${Number(props.cycling_infra_pct).toFixed(1)}% del trayecto`)
+    }
+    if (props.length_km !== undefined) {
+      addRow('Distancia Total', `${Number(props.length_km).toFixed(2)} km`)
+    }
+    if (props.cycling_infra_km !== undefined) {
+      addRow('Por Ciclovías', `${Number(props.cycling_infra_km).toFixed(2)} km`)
+    }
+    if (props.streets && Array.isArray(props.streets) && props.streets.length > 0) {
+      addRow('Vías Principales', props.streets.join(', '))
+    }
+    if (props.cycling_gain_pct !== undefined) {
+      addRow('Ventaja vs Ruta Vehicular', `+${Number(props.cycling_gain_pct).toFixed(1)}% más ciclovía`)
+    }
+    if (props.description) {
+      addRow('Descripción', String(props.description))
+    }
+    return container
   }
 
-  // Beneficio estimado opcional
-  if (props.estimated_benefit) {
-    const benefitEl = document.createElement('div')
-    benefitEl.className = 'popup-desc'
-    benefitEl.style.marginTop = '4px'
-
-    const strong = document.createElement('strong')
-    strong.textContent = 'Impacto estimado: '
-    benefitEl.appendChild(strong)
-
-    const benefitText = document.createTextNode(props.estimated_benefit)
-    benefitEl.appendChild(benefitText)
-
-    container.appendChild(benefitEl)
+  // Standard cycling infrastructure attributes
+  if (props.surface_display || props.surface) {
+    addRow('Superficie', String(props.surface_display || props.surface))
   }
-
-  // Disclaimer prudente para brechas algorítmicas
-  if (props.disclaimer) {
-    const discEl = document.createElement('div')
-    discEl.className = 'popup-disclaimer'
-    discEl.textContent = String(props.disclaimer)
-    container.appendChild(discEl)
+  if (props.category) {
+    addRow('Categoría', String(props.category))
+  }
+  if (props.highway) {
+    addRow('Vía OSM', String(props.highway))
+  }
+  if (props.segregated_display || props.segregated) {
+    addRow('Segregación', String(props.segregated_display || props.segregated))
+  }
+  if (props.length_m !== undefined) {
+    addRow('Longitud', `${Math.round(Number(props.length_m))} m`)
+  }
+  if (props.oneway) {
+    addRow('Sentido', props.oneway === 'yes' ? 'Unidireccional' : 'Bidireccional')
   }
 
   return container
@@ -244,8 +268,10 @@ export const MapView: React.FC<Props> = ({
   destination,
   activeRoute,
   showShortestComparison = false,
-  selectedGap = null,
+  selectedGap,
   onSelectGap,
+  selectedExpansion,
+  onSelectExpansion,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
@@ -274,6 +300,12 @@ export const MapView: React.FC<Props> = ({
 
   const onSelectGapRef = useRef(onSelectGap)
   onSelectGapRef.current = onSelectGap
+
+  const selectedExpansionRef = useRef(selectedExpansion)
+  selectedExpansionRef.current = selectedExpansion
+
+  const onSelectExpansionRef = useRef(onSelectExpansion)
+  onSelectExpansionRef.current = onSelectExpansion
 
   const isLayersInitializedRef = useRef(false)
 
@@ -371,6 +403,23 @@ export const MapView: React.FC<Props> = ({
         })
       } else {
         gapSource.setData(EMPTY_FEATURE_COLLECTION)
+      }
+    }
+  }
+
+  // Update selected expansion highlight layer
+  const syncSelectedExpansionLayer = (map: MapLibreMap) => {
+    if (!map || !isLayersInitializedRef.current) return
+
+    const expSource = map.getSource('source-selected-expansion') as GeoJSONSource | undefined
+    if (expSource) {
+      if (selectedExpansionRef.current && selectedExpansionRef.current.geometry?.coordinates?.length > 1) {
+        expSource.setData({
+          type: 'FeatureCollection',
+          features: [selectedExpansionRef.current],
+        })
+      } else {
+        expSource.setData(EMPTY_FEATURE_COLLECTION)
       }
     }
   }
@@ -508,7 +557,6 @@ export const MapView: React.FC<Props> = ({
           })
 
           map.on('click', lineLayerId, (e: MapLayerMouseEvent) => {
-            // Ignore layer popups if user is selecting origin/destination
             if (selectionModeRef.current !== 'none') return
             if (!e.features || e.features.length === 0) return
 
@@ -536,12 +584,23 @@ export const MapView: React.FC<Props> = ({
                 geometry: feature.geometry as { type: 'LineString'; coordinates: [number, number][] },
                 properties: props as unknown as GapProperties,
               })
+            } else if (
+              layer.id === 'network-expansion' &&
+              props.status === 'ALGORITHMIC_EXPANSION' &&
+              onSelectExpansionRef.current
+            ) {
+              onSelectExpansionRef.current({
+                type: 'Feature',
+                id: String(props.id || feature.id || ''),
+                geometry: feature.geometry as { type: 'LineString'; coordinates: [number, number][] },
+                properties: props as unknown as ExpansionProperties,
+              })
             }
           })
         }
       })
 
-      // Initialize sources and layers for calculated active routes
+      // Active routes
       if (!map.getSource('source-active-route')) {
         map.addSource('source-active-route', {
           type: 'geojson',
@@ -599,7 +658,7 @@ export const MapView: React.FC<Props> = ({
         })
       }
 
-      // Initialize sources and layers for highlighted selected gap
+      // Highlighted selected gap
       if (!map.getSource('source-selected-gap')) {
         map.addSource('source-selected-gap', {
           type: 'geojson',
@@ -636,6 +695,42 @@ export const MapView: React.FC<Props> = ({
         })
       }
 
+      // Highlighted selected expansion
+      if (!map.getSource('source-selected-expansion')) {
+        map.addSource('source-selected-expansion', {
+          type: 'geojson',
+          data: EMPTY_FEATURE_COLLECTION,
+        })
+        map.addLayer({
+          id: 'casing-selected-expansion',
+          type: 'line',
+          source: 'source-selected-expansion',
+          layout: {
+            'line-cap': 'round',
+            'line-join': 'round',
+          },
+          paint: {
+            'line-color': '#7c3aed',
+            'line-opacity': 0.5,
+            'line-width': 12,
+          },
+        })
+        map.addLayer({
+          id: 'line-selected-expansion',
+          type: 'line',
+          source: 'source-selected-expansion',
+          layout: {
+            'line-cap': 'round',
+            'line-join': 'round',
+          },
+          paint: {
+            'line-color': '#8b5cf6',
+            'line-opacity': 1.0,
+            'line-width': 6.0,
+          },
+        })
+      }
+
       // Map canvas click for picking coordinates
       map.on('click', (e: MapLayerMouseEvent) => {
         if (selectionModeRef.current !== 'none' && onSelectCoordinateRef.current) {
@@ -647,6 +742,7 @@ export const MapView: React.FC<Props> = ({
       syncMapLayers(map)
       syncActiveRouteLayers(map)
       syncSelectedGapLayer(map)
+      syncSelectedExpansionLayer(map)
     })
 
     return () => {
@@ -707,6 +803,30 @@ export const MapView: React.FC<Props> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGap])
+
+  // Sync selected expansion highlight and focus
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !isLayersInitializedRef.current) return
+
+    syncSelectedExpansionLayer(map)
+
+    if (selectedExpansion && selectedExpansion.geometry?.coordinates?.length > 1) {
+      const coords = selectedExpansion.geometry.coordinates
+      const bounds = new LngLatBounds()
+      coords.forEach((c) => bounds.extend(c))
+      map.fitBounds(bounds, { padding: 120, maxZoom: 16.5 })
+
+      const midCoord = coords[Math.floor(coords.length / 2)]
+      if (popupRef.current) popupRef.current.remove()
+      const popupContent = createSafePopupContent(selectedExpansion.properties, false)
+      popupRef.current = new Popup({ offset: 12 })
+        .setLngLat(midCoord)
+        .setDOMContent(popupContent)
+        .addTo(map)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedExpansion])
 
   // Sync cursor when in selection mode
   useEffect(() => {

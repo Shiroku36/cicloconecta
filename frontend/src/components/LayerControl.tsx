@@ -139,6 +139,9 @@ export const LayerControl: React.FC<Props> = ({
                     } else if (layer.id === 'cycling-infrastructure') {
                       badgeLabel = 'OSM'
                       badgeClass = 'osm'
+                    } else if (layer.id === 'network-expansion') {
+                      badgeLabel = 'ANÁLISIS'
+                      badgeClass = 'analysis'
                     } else if (layer.id === 'missing-connections' || layer.id === 'suggested-routes') {
                       badgeLabel = 'ALGORÍTMICO'
                       badgeClass = 'algo'
@@ -163,7 +166,8 @@ export const LayerControl: React.FC<Props> = ({
                 <span>Fuente: {layer.source}</span>
                 {typeof layer.count === 'number' && (
                   <span>
-                    <strong>{layer.count}</strong> tramos
+                    <strong>{layer.count}</strong>{' '}
+                    {layer.id === 'network-expansion' ? 'fases' : 'tramos'}
                   </span>
                 )}
               </div>

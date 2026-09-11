@@ -1,13 +1,22 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import type { Map as MapLibreMap } from 'maplibre-gl'
 import type { FeatureCollection } from 'geojson'
-import type { City, GapCandidateFeature, LayerConfig, LayerId, RouteResponse, RouteSelectionMode } from './types/map'
+import type {
+  City,
+  ExpansionFeature,
+  GapCandidateFeature,
+  LayerConfig,
+  LayerId,
+  RouteResponse,
+  RouteSelectionMode,
+} from './types/map'
 import { fetchCities, fetchLayerGeoJSON } from './services/api'
 import { MapView } from './components/MapView'
 import { CityHeader } from './components/CityHeader'
 import { LayerControl } from './components/LayerControl'
 import { RoutePlanner } from './components/RoutePlanner'
 import { OpportunitiesList } from './components/OpportunitiesList'
+import { ExpansionPlanCard } from './components/ExpansionPlanCard'
 import { NetworkStatusCard } from './components/NetworkStatusCard'
 import { InfoModal } from './components/InfoModal'
 import './styles/index.css'
@@ -50,6 +59,18 @@ const DEFAULT_LAYERS: LayerConfig[] = [
     visible: true,
     count: 0,
   },
+  {
+    id: 'network-expansion',
+    name: 'Expansión de red',
+    shortName: 'Expansión',
+    description: 'Corredores potenciales para extender la cobertura hacia sectores actualmente desconectados.',
+    color: '#8b5cf6',
+    lineWidth: 3.5,
+    isDemo: false,
+    source: 'Planificador algorítmico sobre OSM',
+    visible: true,
+    count: 0,
+  },
 ]
 
 const FALLBACK_CURICO: City = {
@@ -72,6 +93,7 @@ const FALLBACK_CURICO: City = {
       'cycling-infrastructure',
       'missing-connections',
       'suggested-routes',
+      'network-expansion',
     ],
   },
 }
@@ -89,6 +111,7 @@ export function App() {
     'cycling-infrastructure': null,
     'missing-connections': null,
     'suggested-routes': null,
+    'network-expansion': null,
   })
   const [isInfoOpen, setIsInfoOpen] = useState(false)
   const mapInstanceRef = useRef<MapLibreMap | null>(null)
@@ -102,6 +125,9 @@ export function App() {
 
   // Gap Opportunities State
   const [selectedGap, setSelectedGap] = useState<GapCandidateFeature | null>(null)
+
+  // Network Expansion State
+  const [selectedExpansion, setSelectedExpansion] = useState<ExpansionFeature | null>(null)
 
   const loadLayersForCity = useCallback(async (cityId: string) => {
     const layerPromises = DEFAULT_LAYERS.map(async (layer) => {
@@ -119,6 +145,7 @@ export function App() {
       'cycling-infrastructure': null,
       'missing-connections': null,
       'suggested-routes': null,
+      'network-expansion': null,
     }
 
     results.forEach((r) => {
@@ -185,11 +212,12 @@ export function App() {
       const target = availableCities.find((c) => c.id === newCityId)
       if (!target || target.enabled === false) return
 
-      // Clean up previous route and gap state
+      // Clean up previous route, gap, and expansion state
       setOrigin(null)
       setDestination(null)
       setActiveRoute(null)
       setSelectedGap(null)
+      setSelectedExpansion(null)
       setSelectionMode('none')
       setShowShortestComparison(false)
 
@@ -277,10 +305,23 @@ export function App() {
     (f) => f.geometry?.type === 'LineString' && f.properties?.priority_score !== undefined
   )
 
+  const expansionPhases: ExpansionFeature[] = (
+    (layersData['network-expansion']?.features as unknown as ExpansionFeature[]) || []
+  ).filter(
+    (f) => f.geometry?.type === 'LineString' && f.properties?.expansion_score !== undefined
+  )
+
   const handleEnsureGapsLayerVisible = () => {
     if (!isCicloConectaVisible) setIsCicloConectaVisible(true)
     setLayers((prev) =>
       prev.map((l) => (l.id === 'missing-connections' ? { ...l, visible: true } : l))
+    )
+  }
+
+  const handleEnsureExpansionLayerVisible = () => {
+    if (!isCicloConectaVisible) setIsCicloConectaVisible(true)
+    setLayers((prev) =>
+      prev.map((l) => (l.id === 'network-expansion' ? { ...l, visible: true } : l))
     )
   }
 
@@ -331,6 +372,17 @@ export function App() {
           }
           onEnsureLayerVisible={handleEnsureGapsLayerVisible}
         />
+
+        <ExpansionPlanCard
+          phases={expansionPhases}
+          selectedExpansion={selectedExpansion}
+          onSelectExpansion={setSelectedExpansion}
+          isLayerVisible={
+            isCicloConectaVisible &&
+            (layers.find((l) => l.id === 'network-expansion')?.visible ?? false)
+          }
+          onEnsureLayerVisible={handleEnsureExpansionLayerVisible}
+        />
       </div>
 
       <MapView
@@ -347,6 +399,8 @@ export function App() {
         showShortestComparison={showShortestComparison}
         selectedGap={selectedGap}
         onSelectGap={setSelectedGap}
+        selectedExpansion={selectedExpansion}
+        onSelectExpansion={setSelectedExpansion}
       />
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
