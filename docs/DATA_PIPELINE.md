@@ -144,6 +144,16 @@ Salida generada:
 - `frontend/public/data/cities/curico/missing-connections.geojson` (sincronización estática para visualizador)
 - Actualización de métricas de red y componentes conexas en `data/cities/curico/city.json` y `frontend/public/data/cities/curico/city.json`
 
+### 4.4. Planificación Algorítmica de Expansión de Red Territorial (Fase 3.5)
+```bash
+python -m pipeline.expansion_planner --city curico
+```
+Salida generada:
+- `data/cities/curico/network-expansion.geojson` (6 fases estructurantes voraces, +5.59 km, +813 nodos residenciales ganados a $\le 400\text{ m}$, +56 equipamientos POI)
+- `frontend/public/data/cities/curico/network-expansion.geojson` (sincronización hacia distribución web)
+- Actualización de bloque `expansion` en `data/cities/curico/city.json` y `frontend/public/data/cities/curico/city.json`
+- Ver detalles metodológicos en [`docs/NETWORK_EXPANSION.md`](file:///c:/Users/Danich/Documents/Shiroku/ciclovia/docs/NETWORK_EXPANSION.md)
+
 ---
 
 ## 5. Pipeline Unificado Multi-Ciudad (`pipeline.build_city` — Fase 4)

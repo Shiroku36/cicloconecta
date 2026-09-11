@@ -70,14 +70,16 @@ El principio fundamental del sistema es la **separación estricta entre cómputo
   - `network_extractor.py` & `graph_builder.py`: Descarga y construcción del grafo navegable multimodal ($G_{\text{nav}}$).
   - `router.py`: Motor de búsqueda de rutas ciclistas óptimas con A* heurístico.
   - `gap_detector.py`: Extracción del subgrafo ciclista segregado ($G_{\text{cycling}}$), identificación de componentes conexas, búsqueda de caminos de enlace en la red secundaria y función de puntuación multicriterio (`priority_score`).
+  - `expansion_planner.py`: Planificador algorítmico territorial de corredores continuos desde ciclovías hacia sectores periféricos desatendidos mediante Reverse Dijkstra y crecimiento voraz por fases (Fase 3.5).
 - **Salida:** Archivos en `data/cities/{city_id}/` que cumplen la especificación GeoJSON (RFC 7946).
 
 ### 2.2. Repositorio de Datos de Ciudades (`data/cities/`)
 Cada ciudad es una unidad autocontenida:
-- `city.json`: Metadatos espaciales (centroide, bounding box, zoom inicial), métricas de red y componentes conexas (km totales, número de componentes, componente principal).
+- `city.json`: Metadatos espaciales (centroide, bounding box, zoom inicial), métricas de red, componentes conexas y resumen del plan de expansión territorial.
 - `cycling-infrastructure.geojson`: Red de ciclovías existentes (reales).
 - `missing-connections.geojson`: Oportunidades de conexión y brechas estructurales prioritarias calculadas algorítmicamente (`is_demo: false`).
 - `suggested-routes.geojson`: Rutas amigables para bicicletas calculadas algorítmicamente por vías de bajo tránsito (`is_demo: false`).
+- `network-expansion.geojson`: Corredores estructurantes proyectados en fases secuenciales para ampliar la cobertura territorial (`status: ALGORITHMIC_EXPANSION`).
 
 ### 2.3. Backend (`backend/`)
 - **Framework:** FastAPI en Python 3.12+.
@@ -97,6 +99,7 @@ Cada ciudad es una unidad autocontenida:
   - `MapView`: Renderizado WebGL de capas cartográficas, halos de resalto ámbar para brechas seleccionadas, pines interactivos A y B, y trazado dinámico de rutas y popups enriquecidos.
   - `RoutePlanner`: Tarjeta flotante interactiva para fijar puntos de origen/destino, seleccionar presets urbanos, ejecutar el cálculo y contrastar métricas comparativas.
   - `OpportunitiesList`: Panel lateral interactivo con el ranking de oportunidades de conexión calculadas algorítmicamente, métricas de brecha (`gap_length_m`, `gain_ratio`, `priority_score`), enfoque interactivo (`fitBounds`) y minimización colapsable.
+  - `ExpansionPlanCard`: Panel lateral interactivo con el plan maestro de crecimiento territorial secuenciado en fases, métricas agregadas (+km proyectados, +nodos viales, +destinos clave), selección de fases y enfoque en mapa.
   - `LayerControl`: Toggles individuales y control maestro de la capa CicloConecta.
 - **Estilo:** Interfaz moderna centrada en el mapa, barra lateral derecha flexible (`.right-sidebar`) que previene solapamientos visuales, controles semitransparentes (glassmorphism), tipografía legible y paleta de colores con alto contraste para accesibilidad.
 - **Rendimiento:** Las fuentes de datos se agregan al mapa como `GeoJSONSource` con `LineLayer` optimizadas por hardware (WebGL).
@@ -110,6 +113,7 @@ Cada ciudad es una unidad autocontenida:
 | **Ciclovías Existentes** | `cycling-infrastructure` | `OSM` | `#10b981` (Verde Esmeralda) | Línea continua sólida (3.5px) | Infraestructura física mapeada en OpenStreetMap |
 | **Conexiones Potenciales** | `missing-connections` | `ALGORÍTMICO` | `#f59e0b` (Ámbar) | Línea discontinua `[4, 2]` (3.5px) | Brechas prioritarias calculadas algorítmicamente sobre red vial OSM |
 | **Rutas Sugeridas** | `suggested-routes` | `ALGORÍTMICO` | `#3b82f6` (Azul Ciclista) | Línea continua con halo (3px) | Rutas calculadas algorítmicamente (A*) sobre red vial OSM |
+| **Expansión Territorial** | `network-expansion` | `ANÁLISIS` | `#8b5cf6` (Violeta/Morado) | Línea continua con halo morado (3.5px) | Corredores estructurantes proyectados en fases voraces para sectores desatendidos |
 
 ---
 

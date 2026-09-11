@@ -211,6 +211,35 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Escalabilidad inmediata a cualquier ciudad chilena sin tocar código frontend ni backend; experiencia de usuario rica, fluida y transparente en el origen de datos; cobertura simultánea de Curicó y Talca con 100% de tests unitarios y de integración pasando.
   - Negativas: Requiere mantener sincronizado `registry.json` entre la carpeta `data/` y `frontend/public/` (manejado automáticamente por el pipeline `build_city`).
 
+---
+
+## D-013 — Planificador Algorítmico de Expansión de Red Territorial (Fase 3.5)
+
+- **Fecha:** 2026-09-11
+- **Estado:** Aceptada
+- **Contexto:**
+  CicloConecta contaba con un detector de "Conexiones potenciales" (`missing-connections`) enfocado exclusivamente en rellenar brechas cortas ($\le 1.200\text{ m}$) entre ciclovías existentes. Sin embargo, este análisis no respondía hacia dónde expandir estructuralmente la red ciclista hacia sectores habitacionales y de equipamiento consolidados que hoy carecen totalmente de infraestructura (ej. Rauquén Norte, Santa Fe, Tutuquén, Mataquito).
+  Se requería una nueva capa analítica con formulación matemática propia, sin inventar habitantes, sin mezclar propósitos ni degradar la capa existente de brechas.
+- **Decisión:**
+  1. **Distinción Conceptual y Semántica:**
+     - Mantener `missing-connections` intacta (badge `ALGORÍTMICO`, color `#b45309`, relleno de brechas entre componentes).
+     - Crear la capa `network-expansion` (badge `ANÁLISIS`, color `#8b5cf6`, corredores estructurantes continuos de $0.5 - 3.5\text{ km}$ que nacen en la red base y penetran en sectores desatendidos).
+  2. **Proxy de Cobertura Urbana sin Inventar Población:**
+     - Prohibición estricta de afirmar "habitantes beneficiados" no auditables.
+     - Emplear como proxy objetivo la red de nodos residenciales ($V_{\text{res}}$) y equipamientos de interés público verificados ($P_{\text{poi}}$) de OpenStreetMap bajo un radio caminable/pedaleable local de $R_{\text{cov}} = 400\text{ m}$.
+  3. **Trazado Determinista por Reverse Dijkstra:**
+     - En lugar de árboles divergentes, trazar corredores óptimos mediante Dijkstra inverso desde el núcleo habitacional/educativo hacia las ciclovías existentes, penalizando vías rápidas y favoreciendo avenidas colectoras.
+     - Exigir ratio de sinuosidad $\le 1.30$ para garantizar trazados estructurantes directos.
+  4. **Puntuación Multicriterio ($0 - 100\text{ pts}$):**
+     - Evaluar candidatos considerando: Ganancia de nodos residenciales (35 pts), POIs nuevos (25 pts), Continuidad física con la red base (20 pts), Jerarquía vial adecuada (10 pts) y Eficiencia territorial $\Delta N/km$ (10 pts).
+  5. **Crecimiento Voraz Iterativo por Fases:**
+     - Seleccionar candidatos secuencialmente, recalculando en cada iteración el buffer de cobertura acumulada para no duplicar beneficios territoriales en fases subsiguientes.
+  6. **Visualización Interactiva Integrada:**
+     - Incorporar la tarjeta `ExpansionPlanCard` con métricas globales (+5.6 km, +813 nodos, +56 POIs), selección interactiva de fases con `fitBounds`, resaltado con halo morado y popup seguro con disclaimer de planificación.
+- **Consecuencias:**
+  - Positivas: Modelo de planificación territorial fundamentado, reproducible y auditable; visualización clara de 6 fases secuenciales en Curicó; separación nítida entre brechas de unión y expansión de red.
+  - Negativas: Requiere descargar POIs de OSM (`raw_pois.json`) durante la construcción inicial de una ciudad.
+
 
 
 

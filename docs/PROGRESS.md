@@ -4,6 +4,52 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-11] — Fase 3.5: Planificador Algorítmico de Expansión de Red Territorial (Curicó)
+
+### 1. ¿Qué se implementó?
+- **Distinción Estructural de Planificación:**
+  - Se mantuvo 100% activa e independiente la capa de **Conexiones potenciales** (`missing-connections`, badge `ALGORÍTMICO`, `#b45309`, 10 brechas cortas entre componentes inconexas).
+  - Se creó la nueva capa **Expansión de red** (`network-expansion`, badge `ANÁLISIS`, `#8b5cf6`, corredores estructurantes de 500 m a 3.5 km hacia sectores desatendidos).
+- **Proxy de Cobertura Urbana sin Inventar Población:**
+  - Prohibición estricta de afirmar "habitantes beneficiados" sin censo a nivel predial.
+  - Modelo objetivo fundamentado en:
+    * Grafo de nodos viales residenciales ($V_{\text{res}}$): 16.252 nodos viales de calles `residential`, `living_street`, `service`, `unclassified`.
+    * Equipamientos y POIs verificados de OSM ($P_{\text{poi}}$): 592 puntos esenciales (educación, salud, comercio, recreación).
+    * Radio de cobertura caminable/pedaleable local: $R_{\text{cov}} = 400\text{ m}$.
+  - Cobertura base inicial en Curicó: 69.5% de nodos residenciales y 78.7% de equipamientos cubiertos.
+- **Trazado Determinista de Corredores (Reverse Dijkstra Óptimo):**
+  - Implementación en `pipeline/expansion_planner.py`: Dijkstra inverso desde el polo habitacional hacia la red de ciclovías existente.
+  - Función de costo penalizando vías rápidas y favoreciendo avenidas colectoras.
+  - Filtro geométrico con ratio de sinuosidad $\le 1.30$ (ratios reales entre 1.09 y 1.20).
+- **Función de Puntuación Multicriterio ($0 - 100\text{ pts}$):**
+  - Ganancia de nodos residenciales (35 pts), POIs nuevos (25 pts), Continuidad con red base (20 pts), Jerarquía vial (10 pts) y Eficiencia territorial $\Delta N / \text{km}$ (10 pts).
+- **Crecimiento Voraz por Fases (Greedy Iterative Expansion):**
+  - Plan maestro de 6 fases secuenciales en Curicó (+5.59 km proyectados, +813 nodos residenciales ganados a $\le 400\text{ m}$, +56 POIs incorporados):
+    1. **Fase 1 (Score 91.7):** Eje Norte: Av. Rauquén Norte → Don Sebastián / Los Héroes (1.21 km, +229 nodos, +12 POIs).
+    2. **Fase 2 (Score 89.0):** Eje Surponiente: Mataquito → Villa Mejillones / Santos Martínez (0.89 km, +206 nodos, +23 POIs).
+    3. **Fase 3 (Score 80.8):** Eje Oriente: Av. Zapallar Oriente (0.89 km, +122 nodos, +6 POIs).
+    4. **Fase 4 (Score 79.6):** Eje Poniente: Santa Fe → Trapiche Poniente (0.77 km, +117 nodos, +11 POIs).
+    5. **Fase 5 (Score 74.1):** Eje Norponiente: Tutuquén Poniente (0.89 km, +87 nodos, +4 POIs).
+    6. **Fase 6 (Score 70.0):** Eje Norte Exterior: Conexión Sarmiento (0.94 km, +52 nodos, +0 POIs).
+- **Integración en el Pipeline (`pipeline/build_city.py`):**
+  - Incorporado como paso `[5/7]`, ejecutándose en 1.6 segundos con sincronización hacia `frontend/public/data/cities/curico/network-expansion.geojson`.
+- **Backend API (`backend/app/` y `backend/tests/`):**
+  - Capa registrada en `LAYER_DEFINITIONS` (`#8b5cf6`, `is_demo: false`, badge `ANÁLISIS`).
+  - Esquema Pydantic `CitySummary` con campo `expansion` opcional.
+  - Suite de tests unitarios completa (`backend/tests/test_expansion.py`): **35 de 35 tests pasando en 1.24s**.
+- **Frontend Interactivo (React + TypeScript + MapLibre):**
+  - Componente `ExpansionPlanCard.tsx` con resumen (+5.6 km, +813 nodos, +56 POIs), selección interactiva de fases y activación automática de capa.
+  - MapView: halo de selección morado (`casing-selected-expansion` y `line-selected-expansion`), `fitBounds` dinámico al seleccionar una fase y popup enriquecido con badge `PROPUESTA DE EXPANSIÓN (ANÁLISIS)`, fase, score, longitud, nodos, POIs y disclaimer legal.
+  - Linter: **0 errores, 0 advertencias** (`oxlint`). Build de producción: **Exitoso** (`vite build`).
+
+### 2. ¿Qué se comprobó visualmente en ejecución?
+- Verificación automatizada vía Chrome CDP headless:
+  - **`phase3_5_01_all_layers.png`:** Visualización simultánea y sin colisiones de las 4 capas activas en Curicó (verde ciclovías, ámbar brechas, azul rutas, morado expansión territorial).
+  - **`phase3_5_02_expansion_popup.png`:** Selección de la Fase 1 (Av. Rauquén Norte), zoom automático con `fitBounds`, halo morado activo, tarjeta seleccionada y popup completo con todos sus atributos y disclaimer.
+  - **`phase3_5_03_fase2_popup.png`:** Selección interactiva de la Fase 2 (Mataquito / Villa Mejillones), vuelo de cámara hacia el surponiente, halo activo y popup con desglose de +206 nodos y +23 POIs.
+
+---
+
 ## [2026-09-09] — Fase 4: Arquitectura Multi-Ciudad y Segunda Ciudad Real (Talca)
 
 ### 1. ¿Qué se implementó?

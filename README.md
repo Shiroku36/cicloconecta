@@ -35,6 +35,8 @@ Para garantizar total transparencia comunitaria, distinguimos estrictamente la i
    - Brechas prioritarias de continuidad calculadas algorítmicamente mediante descomposición de componentes conexas y caminos mínimos sobre la red vial real ($G_{\text{nav}}$).
 3. **Rutas Sugeridas (Badge `ALGORÍTMICO`):**
    - Rutas calculadas con algoritmo A* determinista minimizando el estrés vehicular y priorizando ciclovías con respecto a la ruta vehicular directa.
+4. **Expansión Territorial de Red (Badge `ANÁLISIS`):**
+   - Plan maestro de crecimiento voraz por fases (Fase 3.5) que proyecta nuevos corredores estructurantes continuos hacia macro-sectores residenciales desatendidos, evaluados mediante proxies de cobertura urbana (nodos residenciales OSM y equipamientos esenciales a $\le 400\text{ m}$) sin inventar censos ni población. Ver [`docs/NETWORK_EXPANSION.md`](docs/NETWORK_EXPANSION.md).
 
 ---
 
@@ -60,6 +62,7 @@ cicloconecta/
 │       │   ├── cycling-infrastructure.geojson   # Ciclovías existentes (OSM)
 │       │   ├── missing-connections.geojson      # Brechas prioritarias algorítmicas (Top 10)
 │       │   ├── suggested-routes.geojson         # Rutas sugeridas representativas
+│       │   ├── network-expansion.geojson        # Plan maestro de expansión territorial (6 fases)
 │       │   └── nav_graph.json                   # Grafo vial navegable (16.252 nodos)
 │       └── talca/                               # Artefactos procesados de Talca
 │           ├── city.json                        # Metadatos, centroide, métricas y conectividad
@@ -69,6 +72,7 @@ cicloconecta/
 │           └── nav_graph.json                   # Grafo vial navegable (31.529 nodos)
 ├── pipeline/
 │   ├── build_city.py                            # CLI unificado para construir cualquier ciudad
+│   ├── expansion_planner.py                     # Planificador territorial de expansión de red
 │   ├── osm_extractor.py                         # Extractor de ciclovías desde Overpass
 │   ├── network_extractor.py                     # Extractor de red vial navegable
 │   ├── gap_detector.py                          # Detector multicriterio de brechas de red
