@@ -4,6 +4,44 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-14] — Fase 3.5 (Corrección Metodológica): Descubrimiento Territorial Inductivo, Clustering DBSCAN y Validación en Curicó y Talca
+
+### 1. ¿Qué se implementó y corrigió?
+- **Saneamiento del Repositorio:**
+  - Eliminado documento ajeno `docs/VALIDACION-PC-CORPORATIVO.md` mediante commit estándar `088bfcd` sin alterar el historial.
+- **Eliminación Total de Anclas Manuales:**
+  - Suprimida la función `get_city_anchors()` y cualquier condicional hardcodeado por ciudad en `pipeline/expansion_planner.py`.
+  - El algoritmo de expansión opera ahora de forma 100% inductiva a partir de datos cartográficos de OpenStreetMap.
+- **Deduplicación Espacial de POIs:**
+  - Implementada regla de proximidad estricta ($< 15\text{ m}$ absoluto) y similitud de categoría/nombre ($< 150\text{ m}$).
+  - *Curicó:* 592 POIs brutos $\to$ 551 POIs únicos consolidados.
+  - *Talca:* 982 POIs brutos $\to$ 905 POIs únicos consolidados.
+- **Bandas de Distancia y Métricas de Acceso Urbano:**
+  - Categorización explícita de nodos de acceso urbano en bandas: $0–250\text{ m}$, $250–500\text{ m}$, $500–1000\text{ m}$, $>1000\text{ m}$.
+  - Nodos a $> 400\text{ m}$ considerados desatendidos (4.001 en Curicó, 6.262 en Talca). Prohibición estricta de afirmar "población/habitantes beneficiados".
+- **Descubrimiento Algorítmico de Clusters (DBSCAN Determinista):**
+  - DBSCAN con $\varepsilon = 300\text{ m}$ y $\text{min\_samples} = 20$.
+  - Descubrimiento de 28 clusters en Curicó y 21 clusters en Talca.
+  - Selección automatizada del ancla óptima por densidad local, cercanía a POIs y centralidad.
+- **Generación Multi-Alternativa de Corredores y Jerarquía Estructurante:**
+  - Generación de alternativas Directa y Eje Estructurante por cluster, filtrando trazados de $500\text{ m}$ a $3.500\text{ m}$ con sinuosidad $\le 1.35$.
+  - Reemplazo de aptitud vial por `structural_axis_score` ($5.0 - 10.0$ pts) basado en jerarquía arterial (`secondary`, `tertiary`) sin emitir juicios no verificados sobre perfil o ancho de vía.
+- **Plan Maestro Curicó:**
+  - 6 fases (+7.84 km de red proyectada, +1.181 nodos de acceso urbano ganados, +50 POIs únicos).
+  - Sectores priorizados: Mataquito (0.90 km, 95.0 pts), Callejón San José / Rauquén Norte (1.53 km, 94.0 pts), Nazareth / Salcobrand (0.92 km, 80.8 pts), Nueva América (0.73 km, 75.4 pts).
+- **Generalización Exitosa en Talca:**
+  - 6 fases (+5.72 km de red proyectada, +2.126 nodos de acceso urbano ganados, +78 POIs únicos).
+  - Sectores priorizados: 14 Sur (0.83 km, 99.6 pts), 26 Sur / La Florida (1.86 km, 98.8 pts), Calle 27 Oriente (0.78 km, 97.4 pts), Calle 34 Oriente (0.89 km, 95.9 pts).
+- **Suite de Pruebas Unitarias y de Integración:**
+  - 11 nuevos tests en `backend/tests/test_expansion.py` validando ausencia de anclas hardcodeadas, consistencia de deduplicación de POIs, detección de clusters $>400\text{ m}$, endpoints GeoJSON de ambas ciudades, ordenamiento monótono de fases y ausencia de claims no verificados.
+  - **42 de 42 tests pasando en 1.40s**.
+- **Frontend y Linter:**
+  - Oxlint: **0 errores, 0 advertencias** en 13 archivos.
+  - Build de Vite: **Exitoso**.
+  - Verificación visual CDP headless: Capturas generadas confirmando visualización de las 4 capas (`OSM`, `ALGORÍTMICO`, `ALGORÍTMICO`, `ANÁLISIS`) y selección interactiva de fases en Curicó y Talca.
+
+---
+
 ## [2026-09-11] — Fase 3.5: Planificador Algorítmico de Expansión de Red Territorial (Curicó)
 
 ### 1. ¿Qué se implementó?

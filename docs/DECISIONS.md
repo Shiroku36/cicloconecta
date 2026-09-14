@@ -240,7 +240,28 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   - Positivas: Modelo de planificación territorial fundamentado, reproducible y auditable; visualización clara de 6 fases secuenciales en Curicó; separación nítida entre brechas de unión y expansión de red.
   - Negativas: Requiere descargar POIs de OSM (`raw_pois.json`) durante la construcción inicial de una ciudad.
 
+---
 
+## D-014 — Descubrimiento Territorial Inductivo mediante Clustering Espacial (DBSCAN) y Desacoplamiento de Anclas Manuales (Fase 3.5 Corregida)
 
-
-
+- **Fecha:** 2026-09-14
+- **Estado:** Aceptada
+- **Contexto:**
+  La primera implementación de la Fase 3.5 utilizaba una función `get_city_anchors()` con nombres y coordenadas hardcodeadas para Curicó. Si bien permitía demostrar el concepto de expansión, vulneraba el principio de generalización algorítmica de CicloConecta y requería intervención humana para cada ciudad nueva.
+  Asimismo, se identificó la necesidad de desduplicar espacialmente los puntos de interés (POIs) para no sobreponderar equipamientos repetidos (ej. canchas múltiples de un mismo polideportivo) y reemplazar la métrica subjetiva de "aptitud vial" por `structural_axis_score`, absteniéndose de emitir juicios constructivos sobre ancho vial sin tags explícitos en OSM.
+- **Decisión:**
+  1. **Eliminación Total de Anclas Manuales:**
+     - Remover cualquier listado manual o condicional por ciudad (`if city_id == "curico"`) del código de producción en `pipeline/expansion_planner.py`.
+  2. **Clustering Espacial Determinista (DBSCAN):**
+     - Descubrir concentraciones desatendidas mediante DBSCAN espacial ($arepsilon = 300	ext{ m}$, $	ext{min\_samples} = 20$) aplicado sobre los nodos de acceso urbano a $> 400	ext{ m}$ de la red ciclista.
+  3. **Deduplicación Espacial de POIs:**
+     - Consolidar POIs a $< 15	ext{ m}$ sin importar el nombre y a $< 150	ext{ m}$ cuando comparten categoría y nombre normalizado coincidente.
+  4. **Generación Multi-Alternativa de Corredores:**
+     - Generar tanto la alternativa directa de mínimo esfuerzo como la alternativa de eje estructurante por cada ancla descubierta.
+  5. **Evaluación Objetiva de Ejes:**
+     - Reemplazar "aptitud vial" por `structural_axis_score` ($5.0 - 10.0$ pts) enfocado en la jerarquía conectiva arterial (`secondary`, `tertiary`), sin afirmar factibilidad constructiva física no respaldada por OSM.
+  6. **Validación Cruzada en Curicó y Talca:**
+     - Comprobación de que el pipeline procesa de forma idéntica e inductiva ambas ciudades, generando 6 fases en Curicó (+7.84 km, +1.181 nodos) y 6 fases en Talca (+5.72 km, +2.126 nodos).
+- **Consecuencias:**
+  - Positivas: Algoritmo 100% agnóstico a la ciudad, reproducible, auditable y escalable a cualquier comuna de Chile con datos de OSM.
+  - Negativas: Ninguna.
