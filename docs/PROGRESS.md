@@ -4,6 +4,38 @@ Este documento actúa como la **fuente de verdad del desarrollo** entre agentes 
 
 ---
 
+## [2026-09-14] — Fase 3.6: Crecimiento Topológico Real de la Red (Red Activa Dinámica, Tipología y Dependencias)
+
+### 1. ¿Qué se implementó y corrigió?
+- **Crecimiento Topológico Real con `ActiveCyclingNetwork`:**
+  - Se implementó la clase `ActiveCyclingNetwork` en `pipeline/expansion_planner.py`, modelando la acumulación progresiva de la red ciclista (base OSM + fases aprobadas precedentes).
+  - Se corrigió el déficit conceptual de la Fase 3.5 donde los candidatos se generaban una sola vez desde la red base; ahora, en cada iteración $k$, los corredores se trazan dinámicamente conectando hacia toda la red activa disponible en ese momento.
+- **Detección Dinámica de Nodos Desatendidos y Clusters Activos:**
+  - En cada fase, se recalculan los nodos de acceso desatendidos ($> 400\text{ m}$ de la red activa) y se actualizan los clusters territoriales vigentes, asegurando que las nuevas fases atiendan la demanda residual real.
+- **Tipología de Expansión y Dependencias Topológicas Explícitas:**
+  - Clasificación determinista de cada propuesta en `trunk_extension`, `continuation`, `branch` o `cross_connector`.
+  - Detección precisa de los nodos de contacto con la red activa y almacenamiento de identificadores de fases previas requeridas en `depends_on` (garantizando $j < k$).
+- **Puntuación de Continuidad Dinámica ($S_{\text{cont}} \in [8.0, 20.0]$):**
+  - Eliminada la constante fija de $20.0$ pts. Se bonifican extensiones troncales directas (+4.0), conexiones a la red dorsal principal (> 5 km, +3.0) y cierres de bucles (+3.0), penalizando trazados predominantemente rurales sin servicios (-3.0).
+- **Clasificación de Contexto Territorial (Urbano vs. Periurbano):**
+  - Incorporados campos `urban_context` (`urban`, `periurban`, `uncertain`) y `environment_label` ("Expansión Urbana", "Conector Periurbano", "Mixto / Transición") basados en proporción de vías no urbanizadas (`track`, `unclassified`), densidad de POIs a 400 m y trama residencial consolidada.
+- **Eliminación Total de Código de Depuración:**
+  - `get_debug_manual_anchors()` completamente suprimido del código de producción.
+- **Validación Comparativa A/B en Curicó:**
+  - Modelo A (Estático): 7.84 km, 1.142 nodos, 50 POIs, 145.7 nodos/km, 6 ramas aisladas (efecto estrella), Fase 6 en Ruta J-624 (2.61 km rural).
+  - Modelo B (Crecimiento Topológico): 6.83 km (-13% asfalto), 1.097 nodos, 55 POIs (+10% servicios), 160.6 nodos/km (+10.2% eficiencia). Fase 6 es una `continuation` que prolonga la Fase 2 (Callejón San José) en 1.52 km hasta la Escuela María Olga Figueroa Leyton, formando un eje estructurante continuo de 3.05 km.
+- **Validación en Talca:**
+  - 6 fases (+5.81 km, +2.091 nodos, +76 POIs). Fase 4 es un `trunk_extension` que prolonga la Fase 3 sobre Calle 27/34 Oriente (`depends_on: ['expansion-talca-03']`).
+- **Frontend y Visualización:**
+  - Actualizado `ExpansionPlanCard.tsx` con badges de tipología, entorno y dependencias (`🔗 Requiere Fase X`).
+  - Actualizado `MapView.tsx` con popup detallado que incluye tipo de expansión, contexto territorial, eje estructurante y dependencias.
+- **Suite de Pruebas:**
+  - 7 nuevos tests unitarios en `backend/tests/test_expansion.py` validando crecimiento de la red activa, dependencias estrictas, tipologías válidas y variación de $S_{\text{cont}}$.
+  - **47 de 47 tests pasando en 1.95s**.
+  - Oxlint: **0 errores, 0 advertencias**. Vite build: **Exitoso**.
+
+---
+
 ## [2026-09-14] — Fase 3.5 (Corrección Metodológica): Descubrimiento Territorial Inductivo, Clustering DBSCAN y Validación en Curicó y Talca
 
 ### 1. ¿Qué se implementó y corrigió?

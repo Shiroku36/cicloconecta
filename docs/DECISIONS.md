@@ -255,7 +255,7 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
   2. **Clustering Espacial Determinista (DBSCAN):**
      - Descubrir concentraciones desatendidas mediante DBSCAN espacial ($arepsilon = 300	ext{ m}$, $	ext{min\_samples} = 20$) aplicado sobre los nodos de acceso urbano a $> 400	ext{ m}$ de la red ciclista.
   3. **Deduplicación Espacial de POIs:**
-     - Consolidar POIs a $< 15	ext{ m}$ sin importar el nombre y a $< 150	ext{ m}$ cuando comparten categoría y nombre normalizado coincidente.
+     - Consolidar POIs a $< 15\text{ m}$ sin importar el nombre y a $< 150\text{ m}$ cuando comparten categoría y nombre normalizado coincidente.
   4. **Generación Multi-Alternativa de Corredores:**
      - Generar tanto la alternativa directa de mínimo esfuerzo como la alternativa de eje estructurante por cada ancla descubierta.
   5. **Evaluación Objetiva de Ejes:**
@@ -265,3 +265,30 @@ Este documento registra las decisiones arquitectónicas clave tomadas durante el
 - **Consecuencias:**
   - Positivas: Algoritmo 100% agnóstico a la ciudad, reproducible, auditable y escalable a cualquier comuna de Chile con datos de OSM.
   - Negativas: Ninguna.
+
+---
+
+## D-015 — Crecimiento Topológico Iterativo, Red Activa Dinámica y Dependencias de Fase en Planificador de Expansión (Fase 3.6)
+
+- **Fecha:** 2026-09-14
+- **Estado:** Aceptada
+- **Contexto:**
+  En la Fase 3.5 corregida, las fases se seleccionaban iterativamente según su cobertura marginal acumulada, pero todos los corredores candidatos se trazaban una sola vez desde la red ciclista base de OpenStreetMap. Esto impedía que las fases subsiguientes pudieran germinar o extenderse a partir de corredores proyectados en fases previas, generando un "efecto estrella" con ramas radiales desconectadas entre sí y priorizando a veces vías rurales periféricas largas y desarticuladas (ej. Ruta J-624 en Curicó) en lugar de continuar ejes densos recién proyectados.
+  Adicionalmente, el puntaje de continuidad era una constante fija ($S_{\text{cont}} = 20.0$), sin evaluar la sinergia topológica del contacto, y no se categorizaba el contexto territorial (urbano vs. periurbano) ni las dependencias formales entre etapas.
+- **Decisión:**
+  1. **Red Ciclista Activa (`ActiveCyclingNetwork`):**
+     - Modelar explícitamente el crecimiento dinámico de la red en cada iteración $k$, incorporando los nodos, aristas, fuentes y el índice espacial de las fases seleccionadas previamente.
+  2. **Regeneración Per-Fase de Candidatos y Cobertura:**
+     - En cada fase, recalcular los nodos desatendidos ($> 400\text{ m}$ de la red activa), identificar los clusters prioritarios vigentes y trazar nuevos corredores candidatos conectando hacia la red activa total (base OSM + fases anteriores).
+  3. **Tipología Topológica y Dependencias Explícitas:**
+     - Clasificar cada corredor seleccionado en `trunk_extension`, `continuation`, `branch` o `cross_connector`.
+     - Identificar los nodos de contacto con la red activa y registrar en `depends_on` los identificadores de fases previas requeridas (restringido a índices $j < k$).
+  4. **Puntuación de Continuidad Dinámica ($S_{\text{cont}} \in [8.0, 20.0]$):**
+     - Reemplazar la constante $20.0$ por un puntaje dinámico que bonifica extensiones troncales directas (+4.0 pts), conexiones con la componente mayoritaria (+3.0 pts) y cierres de bucles (+3.0 pts), penalizando trazados rurales desarticulados (-3.0 pts).
+  5. **Contexto Territorial (Urbano vs. Periurbano):**
+     - Clasificar en `urban`, `periurban` o `uncertain` según la proporción de pistas rurales (`track`/`unclassified`), densidad de POIs a 400 m y presencia de vías residenciales consolidadas, sin inventar habitantes.
+  6. **Eliminación Total de `get_debug_manual_anchors`:**
+     - Suprimir definitivamente del código de producción la función de depuración de anclas fijas.
+- **Consecuencias:**
+  - Positivas: Redes planificadas mucho más coherentes y estructuradas. En Curicó, se reduce la inversión en asfalto en -13% (-1.01 km) mientras se incrementan los POIs alcanzados en +10% (+5 POIs) con +10.2% de eficiencia; la Fase 6 extiende la Fase 2 formando una espina continua de 3.05 km que llega a la Escuela María Olga Figueroa Leyton. En Talca, la Fase 4 extiende la Fase 3 sobre Calle 27/34 Oriente con dependencias formales.
+  - Negativas: Mayor tiempo de procesamiento por fase durante el build (recomputación de Dijkstra y clustering por fase, ~2.5s por ciudad, perfectamente manejable en offline build).
