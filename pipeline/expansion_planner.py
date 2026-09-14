@@ -1,62 +1,93 @@
 """
-CicloConecta — Algorithmic Cycling Network Expansion Planner.
+CicloConecta — Algorithmic Cycling Network Expansion Planner (Fase 3.5).
 
-Identifies territorial expansion corridors from existing cycling infrastructure
-into underserved residential sectors and urban anchors without existing cycleways.
-Evaluates before/after coverage gains (using road nodes as a proxy for urban coverage
-and verified OSM POIs), scores candidates multi-critically (0-100), and grows the
-network iteratively through sequential investment phases (Phase 1, 2, 3...).
+Automated, purely data-driven territorial expansion planner.
+Discovers underserved urban clusters automatically without hardcoded human anchors.
+Evaluates urban access nodes (proxy for accessible urban fabric) and deduplicated OSM POIs,
+generates multiple corridor alternatives per cluster, scores candidates multi-critically (0-100),
+and constructs sequential investment phases through greedy iterative growth.
 """
 
 import argparse
+import heapq
 import json
 import math
+import re
 import shutil
 import sys
 import time
+import unicodedata
 import urllib.parse
 import urllib.request
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
-COS_LAT = 0.819  # Local cos(latitude) projection factor for Curicó (~ -35°)
 DEG_TO_M = 111320.0
-CELL_DEG = 0.004  # ~400m cell grid for spatial acceleration
+CELL_DEG = 0.003  # ~300m spatial grid cell
+
+ACCESS_HIGHWAYS = {
+    "residential",
+    "living_street",
+    "service",
+    "unclassified",
+    "pedestrian",
+    "footway",
+    "track",
+}
 
 
-def fast_dist_m(lon1: float, lat1: float, lon2: float, lat2: float) -> float:
+def get_cos_lat(lat_deg: float) -> float:
+    """Computes planar latitude scaling factor."""
+    return math.cos(math.radians(lat_deg))
+
+
+def fast_dist_m(lon1: float, lat1: float, lon2: float, lat2: float, cos_lat: float) -> float:
     """Calculates planar approximation distance in meters for local urban scale."""
-    dx = (lon2 - lon1) * COS_LAT
+    dx = (lon2 - lon1) * cos_lat
     dy = lat2 - lat1
     return math.hypot(dx, dy) * DEG_TO_M
+
+
+def normalize_text(text: str) -> str:
+    """Normalizes text for robust matching (lowercase, no accents, alphanumeric)."""
+    if not text:
+        return ""
+    text = text.lower()
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    text = re.sub(r"[^\w\s]", " ", text)
+    return " ".join(text.split())
 
 
 class FastSpatialGrid:
     """Spatial 2D hash grid to accelerate radial distance checks in O(1)."""
 
-    def __init__(self, cell_size: float = CELL_DEG):
+    def __init__(self, cell_size: float = CELL_DEG, cos_lat: float = 0.819):
         self.cell_size = cell_size
+        self.cos_lat = cos_lat
         self.grid: dict[tuple[int, int], list[tuple[Any, float, float]]] = defaultdict(list)
+        self.all_coords: list[tuple[float, float]] = []
 
     def add(self, item_id: Any, lon: float, lat: float) -> None:
         gx = int(lon / self.cell_size)
         gy = int(lat / self.cell_size)
         self.grid[(gx, gy)].append((item_id, lon, lat))
+        self.all_coords.append((lon, lat))
 
     def is_within_dist(self, lon: float, lat: float, max_dist: float = 400.0) -> bool:
         gx = int(lon / self.cell_size)
         gy = int(lat / self.cell_size)
-        rad = 2
+        rad = int(math.ceil(max_dist / (self.cell_size * DEG_TO_M))) + 1
         for dx in range(-rad, rad + 1):
             for dy in range(-rad, rad + 1):
                 for _, clon, clat in self.grid.get((gx + dx, gy + dy), []):
-                    if fast_dist_m(lon, lat, clon, clat) <= max_dist:
+                    if fast_dist_m(lon, lat, clon, clat, self.cos_lat) <= max_dist:
                         return True
         return False
 
-    def min_distance_m(self, lon: float, lat: float, max_search_m: float = 1200.0) -> float:
+    def min_distance_m(self, lon: float, lat: float, max_search_m: float = 1500.0) -> float:
         gx = int(lon / self.cell_size)
         gy = int(lat / self.cell_size)
         rad = int(math.ceil(max_search_m / (self.cell_size * DEG_TO_M))) + 1
@@ -64,9 +95,11 @@ class FastSpatialGrid:
         for dx in range(-rad, rad + 1):
             for dy in range(-rad, rad + 1):
                 for _, clon, clat in self.grid.get((gx + dx, gy + dy), []):
-                    d = fast_dist_m(lon, lat, clon, clat)
+                    d = fast_dist_m(lon, lat, clon, clat, self.cos_lat)
                     if d < min_d:
                         min_d = d
+        if min_d == float("inf") and self.all_coords:
+            min_d = min(fast_dist_m(lon, lat, clon, clat, self.cos_lat) for clon, clat in self.all_coords)
         return min_d
 
 
@@ -178,76 +211,224 @@ def parse_and_categorize_pois(elements: list[dict[str, Any]]) -> list[dict[str, 
     return standard_pois
 
 
-def get_city_anchors(city_id: str) -> list[dict[str, Any]]:
+def deduplicate_pois(pois: list[dict[str, Any]], cos_lat: float) -> list[dict[str, Any]]:
     """
-    Returns prioritized macro-sector urban anchors for expansion.
-    Defined per city based on territorial master plans and underserved sectors.
+    Deduplicates POIs based on spatial proximity and normalized names.
+    Prevents multiple nodes/ways representing the same facility (e.g. courts in a club)
+    from inflating coverage scores.
+    """
+    sorted_pois = sorted(pois, key=lambda p: (p.get("id") or 0, p["lon"], p["lat"]))
+    deduped = []
+    grid: dict[tuple[int, int], list[dict[str, Any]]] = defaultdict(list)
+    cell_size = 0.003
+
+    for p in sorted_pois:
+        gx = int(p["lon"] / cell_size)
+        gy = int(p["lat"] / cell_size)
+        is_dup = False
+        nname = normalize_text(p["name"])
+        cat = p["category"]
+
+        for dx in range(-2, 3):
+            for dy in range(-2, 3):
+                for prev in grid.get((gx + dx, gy + dy), []):
+                    d = fast_dist_m(p["lon"], p["lat"], prev["lon"], prev["lat"], cos_lat)
+                    # 1. Exact or near duplicate location (< 15m)
+                    if d <= 15.0:
+                        is_dup = True
+                        break
+                    # 2. Same category and same normalized name within 150m
+                    if d <= 150.0 and cat == prev["category"]:
+                        pname = normalize_text(prev["name"])
+                        if nname and pname and nname not in ("sin nombre", "") and pname not in ("sin nombre", ""):
+                            if nname == pname or (len(nname) > 5 and (nname in pname or pname in nname)):
+                                is_dup = True
+                                break
+                        # 3. Nameless facilities of same subcategory within 40m (e.g. adjacent pitches)
+                        elif d <= 40.0 and p["subcategory"] == prev["subcategory"]:
+                            is_dup = True
+                            break
+                if is_dup:
+                    break
+
+        if not is_dup:
+            deduped.append(p)
+            grid[(gx, gy)].append(p)
+
+    return deduped
+
+
+def cluster_uncovered_nodes(
+    uncovered_nodes: list[dict[str, Any]],
+    cos_lat: float,
+    eps_m: float = 300.0,
+    min_samples: int = 20,
+) -> list[list[dict[str, Any]]]:
+    """
+    Deterministic DBSCAN spatial clustering over uncovered urban access nodes.
+    Groups nodes into spatial clusters of underserved urban fabric without random seeds.
+    """
+    scell = 0.003
+    sgrid: dict[tuple[int, int], list[dict[str, Any]]] = defaultdict(list)
+    for p in uncovered_nodes:
+        gx = int(p["lon"] / scell)
+        gy = int(p["lat"] / scell)
+        sgrid[(gx, gy)].append(p)
+
+    def get_neighbors(p: dict[str, Any]) -> list[dict[str, Any]]:
+        gx = int(p["lon"] / scell)
+        gy = int(p["lat"] / scell)
+        res = []
+        for dx in range(-2, 3):
+            for dy in range(-2, 3):
+                for q in sgrid.get((gx + dx, gy + dy), []):
+                    if fast_dist_m(p["lon"], p["lat"], q["lon"], q["lat"], cos_lat) <= eps_m:
+                        res.append(q)
+        return res
+
+    visited = set()
+    clusters = []
+
+    # Sort deterministically by node id
+    for p in sorted(uncovered_nodes, key=lambda x: x["id"]):
+        if p["id"] in visited:
+            continue
+        visited.add(p["id"])
+        nbrs = get_neighbors(p)
+        if len(nbrs) < min_samples:
+            continue
+
+        cluster = [p]
+        queue = list(sorted(nbrs, key=lambda x: x["id"]))
+        q_set = set(n["id"] for n in nbrs)
+
+        while queue:
+            q = queue.pop(0)
+            if q["id"] not in visited:
+                visited.add(q["id"])
+                q_nbrs = get_neighbors(q)
+                if len(q_nbrs) >= min_samples:
+                    for n_pt in sorted(q_nbrs, key=lambda x: x["id"]):
+                        if n_pt["id"] not in q_set:
+                            q_set.add(n_pt["id"])
+                            queue.append(n_pt)
+            if q not in cluster:
+                cluster.append(q)
+
+        clusters.append(cluster)
+
+    clusters.sort(key=lambda c: len(c), reverse=True)
+    return clusters
+
+
+def select_cluster_anchors(
+    cluster: list[dict[str, Any]],
+    dedup_pois: list[dict[str, Any]],
+    node_streets: dict[Any, set[str]],
+    cos_lat: float,
+    city_id: str,
+    cluster_idx: int,
+) -> list[dict[str, Any]]:
+    """
+    Selects 1 or 2 representative anchor nodes for a cluster based on local density,
+    proximity to POIs, and geometric centrality. Derives sector names automatically.
+    """
+    c_lons = [p["lon"] for p in cluster]
+    c_lats = [p["lat"] for p in cluster]
+    mean_lon, mean_lat = sum(c_lons) / len(cluster), sum(c_lats) / len(cluster)
+
+    # Primary anchor
+    best_node = None
+    best_n_score = -1e9
+    for p in cluster:
+        n_250 = sum(1 for q in cluster if fast_dist_m(p["lon"], p["lat"], q["lon"], q["lat"], cos_lat) <= 250.0)
+        pois_350 = sum(1 for poi in dedup_pois if fast_dist_m(p["lon"], p["lat"], poi["lon"], poi["lat"], cos_lat) <= 350.0)
+        d_cent = fast_dist_m(p["lon"], p["lat"], mean_lon, mean_lat, cos_lat)
+        n_score = n_250 + 12.0 * pois_350 - 0.05 * d_cent
+        if n_score > best_n_score:
+            best_n_score = n_score
+            best_node = p
+
+    # Representative street names
+    st_counter: Counter[str] = Counter()
+    for p in cluster:
+        for st in node_streets.get(p["id"], []):
+            if st != "Calle sin nombre":
+                st_counter[st] += 1
+    top_st = st_counter.most_common(1)[0][0] if st_counter else "Vía Local"
+
+    # Nearest landmark POI
+    near_poi = min(
+        dedup_pois,
+        key=lambda poi: fast_dist_m(best_node["lon"], best_node["lat"], poi["lon"], poi["lat"], cos_lat),
+    ) if dedup_pois else None
+    poi_dist = fast_dist_m(best_node["lon"], best_node["lat"], near_poi["lon"], near_poi["lat"], cos_lat) if near_poi else float("inf")
+    poi_label = near_poi["name"] if (near_poi and near_poi["name"] != "Sin nombre" and poi_dist < 400.0) else None
+
+    sector_name = f"Sector {top_st}" + (f" / {poi_label}" if poi_label else "")
+
+    anchors = [
+        {
+            "anchor_type": "primary",
+            "node_id": best_node["id"],
+            "lon": best_node["lon"],
+            "lat": best_node["lat"],
+            "sector": sector_name,
+            "main_street": top_st,
+            "poi_label": poi_label,
+        }
+    ]
+
+    # Secondary anchor if cluster is large (> 250 nodes)
+    if len(cluster) > 250:
+        sec_node = None
+        sec_score = -1e9
+        for p in cluster:
+            d_from_prim = fast_dist_m(p["lon"], p["lat"], best_node["lon"], best_node["lat"], cos_lat)
+            if d_from_prim < 550.0:
+                continue
+            n_250 = sum(1 for q in cluster if fast_dist_m(p["lon"], p["lat"], q["lon"], q["lat"], cos_lat) <= 250.0)
+            pois_350 = sum(1 for poi in dedup_pois if fast_dist_m(p["lon"], p["lat"], poi["lon"], poi["lat"], cos_lat) <= 350.0)
+            d_cent = fast_dist_m(p["lon"], p["lat"], mean_lon, mean_lat, cos_lat)
+            n_score = n_250 + 12.0 * pois_350 - 0.05 * d_cent
+            if n_score > sec_score:
+                sec_score = n_score
+                sec_node = p
+
+        if sec_node:
+            sec_st_counter: Counter[str] = Counter()
+            for p in cluster:
+                if fast_dist_m(p["lon"], p["lat"], sec_node["lon"], sec_node["lat"], cos_lat) <= 350.0:
+                    for st in node_streets.get(p["id"], []):
+                        if st != "Calle sin nombre":
+                            sec_st_counter[st] += 1
+            sec_top_st = sec_st_counter.most_common(1)[0][0] if sec_st_counter else top_st
+            sec_sector = f"Sector {sec_top_st}"
+            anchors.append({
+                "anchor_type": "secondary",
+                "node_id": sec_node["id"],
+                "lon": sec_node["lon"],
+                "lat": sec_node["lat"],
+                "sector": sec_sector,
+                "main_street": sec_top_st,
+                "poi_label": None,
+            })
+
+    return anchors
+
+
+def get_debug_manual_anchors(city_id: str) -> list[dict[str, Any]]:
+    """
+    OPTIONAL debugging helper retaining legacy manual points for benchmarking comparisons.
+    NOT used in the production algorithm.
     """
     if city_id == "curico":
         return [
-            {
-                "id": "rauquen-extension",
-                "name": "Eje Norte: Av. Rauquén Norte → Don Sebastián / Los Héroes",
-                "sector": "Rauquén Norte / Don Sebastián",
-                "target_coords": (-71.2037, -34.9427),
-                "axis": "Av. Rauquén Norte / Don Sebastián",
-                "description": "Continuación de la red hacia los macro-conjuntos habitacionales de Rauquén Norte y el polo educativo Los Héroes.",
-                "origin_anchor_hint": "Ciclovía Av. Rauquén (Componente Dorsal)",
-            },
-            {
-                "id": "mataquito-licanten",
-                "name": "Eje Surponiente: Mataquito → Villa Mejillones / Santos Martínez",
-                "sector": "Mataquito / Licantén",
-                "target_coords": (-71.2575, -34.9966),
-                "axis": "Av. Licantén / Mataquito",
-                "description": "Corredor surponiente conectando villas Mejillones y Santos Martínez con equipamientos educativos y comunitarios.",
-                "origin_anchor_hint": "Ciclovía Av. Circunvalación / Los Niches",
-            },
-            {
-                "id": "santa-fe",
-                "name": "Eje Poniente: Av. Lautaro → Población Santa Fe",
-                "sector": "Santa Fe Poniente",
-                "target_coords": (-71.2580, -34.9880),
-                "axis": "Av. Lautaro / Santa Fe",
-                "description": "Extensión estratégica hacia el sector habitacional Santa Fe poniente a través del eje estructurante Lautaro.",
-                "origin_anchor_hint": "Eje Lautaro / Red Central",
-            },
-            {
-                "id": "sol-de-septiembre",
-                "name": "Eje Norponiente: Av. Dr. Osorio → Sol de Septiembre / ANFA",
-                "sector": "Sol de Septiembre",
-                "target_coords": (-71.2542, -34.9715),
-                "axis": "Av. Doctor Osorio / Apolonia",
-                "description": "Extensión hacia el sector histórico Sol de Septiembre, Estadio ANFA y establecimientos escolares circundantes.",
-                "origin_anchor_hint": "Ciclovía Balmaceda / Circunvalación",
-            },
-            {
-                "id": "zapallar-oriente",
-                "name": "Eje Oriente: Camino Zapallar → El Boldo Oriente / Los Cristales",
-                "sector": "Zapallar / Los Cristales",
-                "target_coords": (-71.1988, -34.9810),
-                "axis": "Camino Zapallar",
-                "description": "Proyección hacia la zona de expansión residencial oriente conectando Zapallar y colegios del sector.",
-                "origin_anchor_hint": "Ciclovía El Boldo / O'Higgins",
-            },
-            {
-                "id": "tutuquen-poniente",
-                "name": "Eje Periurbano: Ruta J-60 → Sector Tutuquén",
-                "sector": "Tutuquén Norponiente",
-                "target_coords": (-71.2720, -34.9750),
-                "axis": "Ruta J-60 / Tutuquén",
-                "description": "Conexión periurbana de alta demanda ciclista hacia el sector Tutuquén y enlace costero de Curicó.",
-                "origin_anchor_hint": "Ciclovía Av. Colón Poniente",
-            },
-            {
-                "id": "los-niches-utalca",
-                "name": "Eje Suroriente: Av. España Sur → Acceso Campus UTalca",
-                "sector": "Los Niches Sur",
-                "target_coords": (-71.2290, -35.0030),
-                "axis": "Av. España Sur / Los Niches",
-                "description": "Corredor hacia el campus universitario Los Niches y el polo periurbano sur de Curicó.",
-                "origin_anchor_hint": "Ciclovía Av. Manso de Velasco Sur",
-            },
+            {"id": "rauquen-extension", "sector": "Rauquén Norte / Don Sebastián", "coords": (-71.2037, -34.9427)},
+            {"id": "mataquito-licanten", "sector": "Mataquito / Licantén", "coords": (-71.2575, -34.9966)},
+            {"id": "santa-fe", "sector": "Santa Fe Poniente", "coords": (-71.2580, -34.9880)},
+            {"id": "zapallar-oriente", "sector": "Zapallar / Los Cristales", "coords": (-71.1988, -34.9810)},
+            {"id": "tutuquen-poniente", "sector": "Tutuquén Norponiente", "coords": (-71.2720, -34.9750)},
         ]
     return []
 
@@ -257,19 +438,22 @@ def plan_city_expansion(
     data_dir: Path,
     frontend_dir: Path,
     force_refresh: bool = False,
-    max_phases: int = 8,
+    max_phases: int = 6,
 ) -> dict[str, Any]:
     """
-    Computes territorial coverage, identifies urban anchors, generates continuous
-    street corridors, calculates multi-criteria scores, and executes greedy iterative growth.
-    Outputs network-expansion.geojson and updates city metadata.
+    Computes territorial coverage, discovers underserved clusters automatically,
+    derives optimal anchors, generates multiple corridor alternatives, evaluates
+    multi-criteria scores, and produces an iterative greedy expansion master plan.
     """
     city_id = city_def["id"]
     city_name = city_def["name"]
     bbox = tuple(city_def["bbox"])
+    s, w, n, e = bbox
+    center_lat = (s + n) / 2.0
+    cos_lat = get_cos_lat(center_lat)
 
     t0 = time.time()
-    print(f"\n[Fase 3.5] Iniciando Planificador de Expansión de Red para {city_name} ({city_id})...")
+    print(f"[Fase 3.5] Iniciando Planificador de Expansión Inductivo para {city_name} ({city_id})...")
 
     # 1. Load navigable graph
     nav_graph_path = data_dir / "nav_graph.json"
@@ -279,42 +463,58 @@ def plan_city_expansion(
     with open(nav_graph_path, "r", encoding="utf-8") as f:
         graph_data = json.load(f)
 
-    nodes = {n["id"]: n for n in graph_data["nodes"]}
+    nodes = {nd["id"]: nd for nd in graph_data["nodes"]}
     edges = graph_data["edges"]
 
-    # 2. Extract cycling network nodes & build spatial grid
+    # 2. Extract cycling network nodes & sample origins
     cycle_nodes = set()
-    for e in edges:
-        if e.get("is_cycling_infra"):
-            cycle_nodes.add(e["u"])
-            cycle_nodes.add(e["v"])
+    for ed in edges:
+        if ed.get("is_cycling_infra"):
+            cycle_nodes.add(ed["u"])
+            cycle_nodes.add(ed["v"])
 
     if not cycle_nodes:
         print(f"  [Aviso] No se detectó infraestructura ciclista en {city_name} para proyectar expansiones.")
         return {"features": [], "metadata": {}}
 
-    # Sample cycle origins spaced by at least 120m to ensure diverse candidate origins
     sampled_origins = []
-    for cid in cycle_nodes:
+    for cid in sorted(cycle_nodes):
         cn = nodes[cid]
-        if not any(fast_dist_m(cn["lon"], cn["lat"], nodes[s]["lon"], nodes[s]["lat"]) < 120 for s in sampled_origins):
+        if not any(fast_dist_m(cn["lon"], cn["lat"], nodes[s]["lon"], nodes[s]["lat"], cos_lat) < 140.0 for s in sampled_origins):
             sampled_origins.append(cid)
 
-    # 3. Load & categorize POIs
+    # 3. Extract urban access nodes (proxy de tejido urbano accesible)
+    urban_access_nodes = set()
+    node_streets = defaultdict(set)
+    for ed in edges:
+        st = ed.get("name")
+        if st:
+            node_streets[ed["u"]].add(st)
+            node_streets[ed["v"]].add(st)
+        if ed.get("highway") in ACCESS_HIGHWAYS:
+            urban_access_nodes.add(ed["u"])
+            urban_access_nodes.add(ed["v"])
+
+    # 4. Fetch, categorize, and deduplicate POIs
     raw_pois_cache = data_dir / "raw_pois.json"
     raw_poi_elements = fetch_osm_pois(bbox, cache_path=raw_pois_cache, force_refresh=force_refresh)
-    pois = parse_and_categorize_pois(raw_poi_elements)
+    cat_pois = parse_and_categorize_pois(raw_poi_elements)
+    dedup_pois = deduplicate_pois(cat_pois, cos_lat)
+    print(f"  POIs urbanos: {len(cat_pois)} brutos -> {len(dedup_pois)} únicos tras deduplicación espacial.")
 
-    # 4. Measure initial baseline coverage (threshold: 400m)
-    base_grid = FastSpatialGrid()
+    # 5. Baseline coverage and distance bands
+    cgrid = FastSpatialGrid(cell_size=CELL_DEG, cos_lat=cos_lat)
     for cid in cycle_nodes:
         cn = nodes[cid]
-        base_grid.add(cid, cn["lon"], cn["lat"])
+        cgrid.add(cid, cn["lon"], cn["lat"])
 
-    base_covered_nodes = set()
     dist_bands = {"0-250m": 0, "250-500m": 0, "500-1000m": 0, ">1000m": 0}
-    for nid, n in nodes.items():
-        d = base_grid.min_distance_m(n["lon"], n["lat"], max_search_m=1500.0)
+    base_covered_nodes = set()
+    uncovered_nodes = []
+
+    for nid in sorted(urban_access_nodes):
+        n_pt = nodes[nid]
+        d = cgrid.min_distance_m(n_pt["lon"], n_pt["lat"], max_search_m=1600.0)
         if d <= 250.0:
             dist_bands["0-250m"] += 1
         elif d <= 500.0:
@@ -326,257 +526,272 @@ def plan_city_expansion(
 
         if d <= 400.0:
             base_covered_nodes.add(nid)
+        else:
+            uncovered_nodes.append({"id": nid, "lon": n_pt["lon"], "lat": n_pt["lat"], "dist": d})
 
     base_covered_pois = set()
-    for p in pois:
-        if base_grid.is_within_dist(p["lon"], p["lat"], 400.0):
+    for p in dedup_pois:
+        if cgrid.is_within_dist(p["lon"], p["lat"], 400.0):
             base_covered_pois.add(p["id"])
 
-    base_cov_pct = round((len(base_covered_nodes) / max(len(nodes), 1)) * 100.0, 1)
-    base_poi_pct = round((len(base_covered_pois) / max(len(pois), 1)) * 100.0, 1)
+    base_cov_pct = round((len(base_covered_nodes) / max(len(urban_access_nodes), 1)) * 100.0, 1)
+    base_poi_pct = round((len(base_covered_pois) / max(len(dedup_pois), 1)) * 100.0, 1)
 
-    print(f"  Cobertura base ({base_cov_pct}% nodos, {base_poi_pct}% POIs):")
-    print(f"    0–250 m: {dist_bands['0-250m']} nodos | 250–500 m: {dist_bands['250-500m']} | 500–1000 m: {dist_bands['500-1000m']} | >1000 m: {dist_bands['>1000m']}")
+    print(f"  Cobertura base ({base_cov_pct}% nodos de acceso urbano, {base_poi_pct}% POIs a <= 400m):")
+    print(f"    0–250 m: {dist_bands['0-250m']} | 250–500 m: {dist_bands['250-500m']} | 500–1000 m: {dist_bands['500-1000m']} | >1000 m: {dist_bands['>1000m']}")
+    print(f"  Nodos de acceso desatendidos (> 400 m): {len(uncovered_nodes)}")
 
-    # 5. Build graph adjacency with street-hierarchy cycling weights
-    adj = defaultdict(list)
-    for e in edges:
-        u, v = e["u"], e["v"]
-        length = e.get("length_m", 10.0)
-        hw = e.get("highway", "residential")
-        name = e.get("name") or "Calle sin nombre"
-        is_infra = e.get("is_cycling_infra", False)
+    # 6. Automated spatial clustering of uncovered nodes (DBSCAN)
+    clusters = cluster_uncovered_nodes(uncovered_nodes, cos_lat=cos_lat, eps_m=300.0, min_samples=20)
+    print(f"  -> {len(clusters)} clusters territoriales desatendidos descubiertos algorítmicamente.")
+
+    discovered_clusters_meta = []
+    for c_idx, cl in enumerate(clusters[:10], 1):
+        c_lons = [p["lon"] for p in cl]
+        c_lats = [p["lat"] for p in cl]
+        mean_lon, mean_lat = sum(c_lons) / len(cl), sum(c_lats) / len(cl)
+        mean_d = sum(p["dist"] for p in cl) / len(cl)
+        max_d = max(p["dist"] for p in cl)
+        bbox_cl = [min(c_lats), min(c_lons), max(c_lats), max(c_lons)]
+
+        # Nearby POIs within 400m of any node in cluster
+        nearby_p_ids = set()
+        for p in dedup_pois:
+            if any(fast_dist_m(p["lon"], p["lat"], q["lon"], q["lat"], cos_lat) <= 400.0 for q in cl[::4]):
+                nearby_p_ids.add(p["id"])
+
+        need_score = round(len(cl) * (1.0 + mean_d / 500.0) + 12.0 * len(nearby_p_ids), 1)
+        discovered_clusters_meta.append({
+            "id": f"cluster-{city_id}-{c_idx:02d}",
+            "centroid": [round(mean_lon, 6), round(mean_lat, 6)],
+            "node_count": len(cl),
+            "mean_distance_to_cycle_network": round(mean_d, 1),
+            "max_distance_to_cycle_network": round(max_d, 1),
+            "bbox": [round(b, 6) for b in bbox_cl],
+            "nearby_pois_count": len(nearby_p_ids),
+            "coverage_need_score": need_score,
+        })
+
+    # 7. Build routing graph adjacencies (Direct & Structural Axis)
+    adj_direct = defaultdict(list)
+    adj_structural = defaultdict(list)
+
+    for ed in edges:
+        u, v = ed["u"], ed["v"]
+        length = ed.get("length_m", 10.0)
+        hw = ed.get("highway", "residential")
+        name = ed.get("name") or "Calle sin nombre"
+        is_infra = ed.get("is_cycling_infra", False)
 
         if hw in ("motorway", "motorway_link"):
             continue
 
+        c_dir = length * (0.50 if is_infra else 1.00)
+
         if is_infra:
-            cost_mult = 0.50
-        elif hw in ("primary", "primary_link"):
-            cost_mult = 1.25
+            c_str = length * 0.50
         elif hw in ("secondary", "secondary_link"):
-            cost_mult = 0.85
+            c_str = length * 0.60
         elif hw in ("tertiary", "tertiary_link"):
-            cost_mult = 0.80
+            c_str = length * 0.70
         elif hw in ("residential", "living_street"):
-            cost_mult = 1.00
-        elif hw in ("service", "track"):
-            cost_mult = 1.80
+            c_str = length * 1.25
         else:
-            cost_mult = 1.20
+            c_str = length * 1.50
 
-        edge_fwd = {"v": v, "length_m": length, "cost": length * cost_mult, "name": name, "highway": hw, "is_cycling_infra": is_infra}
-        edge_rev = {"v": u, "length_m": length, "cost": length * cost_mult, "name": name, "highway": hw, "is_cycling_infra": is_infra}
-        adj[u].append(edge_fwd)
-        adj[v].append(edge_rev)
+        adj_direct[u].append({"v": v, "length_m": length, "cost": c_dir, "name": name, "highway": hw, "is_infra": is_infra})
+        adj_direct[v].append({"v": u, "length_m": length, "cost": c_dir, "name": name, "highway": hw, "is_infra": is_infra})
+        adj_structural[u].append({"v": v, "length_m": length, "cost": c_str, "name": name, "highway": hw, "is_infra": is_infra})
+        adj_structural[v].append({"v": u, "length_m": length, "cost": c_str, "name": name, "highway": hw, "is_infra": is_infra})
 
-    # 6. Retrieve urban anchors and generate candidate corridors
-    anchors = get_city_anchors(city_id)
-    if not anchors:
-        print(f"  [Aviso] Sin anclas predefinidas para {city_id}.")
-        return {"features": [], "metadata": {}}
+    # 8. Generate multi-alternative candidate corridors from discovered cluster anchors
+    all_candidates = []
 
-    import heapq
+    for c_idx, cl in enumerate(clusters[:8], 1):
+        anchors = select_cluster_anchors(cl, dedup_pois, node_streets, cos_lat, city_id, c_idx)
 
-    def generate_corridor_from_anchor(anc: dict[str, Any]) -> Optional[dict[str, Any]]:
-        t_lon, t_lat = anc["target_coords"]
-        target_id = min(nodes.keys(), key=lambda k: fast_dist_m(nodes[k]["lon"], nodes[k]["lat"], t_lon, t_lat))
+        for anc in anchors:
+            target_id = anc["node_id"]
+            t_lon, t_lat = anc["lon"], anc["lat"]
 
-        # Reverse Dijkstra from target to find best origin in 1 pass
-        dist = {target_id: 0.0}
-        prev = {}
-        heap = [(0.0, target_id)]
+            for alt_name, adj_graph in [("Directo", adj_direct), ("Eje Estructurante", adj_structural)]:
+                dist = {target_id: 0.0}
+                prev = {}
+                heap = [(0.0, target_id)]
 
-        while heap:
-            cur, u = heapq.heappop(heap)
-            if cur > 3600.0:
-                continue
-            if cur > dist.get(u, float("inf")):
-                continue
-            for edge in adj[u]:
-                v = edge["v"]
-                nc = cur + edge["cost"]
-                if nc < dist.get(v, float("inf")) and nc <= 3600.0:
-                    dist[v] = nc
-                    prev[v] = (u, edge)
-                    heapq.heappush(heap, (nc, v))
+                while heap:
+                    cur, u = heapq.heappop(heap)
+                    if cur > 3800.0 or cur > dist.get(u, float("inf")):
+                        continue
+                    for edge in adj_graph[u]:
+                        v = edge["v"]
+                        nc = cur + edge["cost"]
+                        if nc < dist.get(v, float("inf")) and nc <= 3800.0:
+                            dist[v] = nc
+                            prev[v] = (u, edge)
+                            heapq.heappush(heap, (nc, v))
 
-        best_cand = None
-        best_cost = float("inf")
+                origins_reached = [(dist[orig], orig) for orig in sampled_origins if orig in dist]
+                origins_reached.sort()
 
-        for orig_id in sampled_origins:
-            if orig_id in dist:
-                path_nodes = []
-                path_edges = []
-                curr = orig_id
-                tot_len = 0.0
-                while curr != target_id:
-                    nxt, edge = prev[curr]
-                    path_nodes.append(curr)
-                    path_edges.append(edge)
-                    tot_len += edge["length_m"]
-                    curr = nxt
-                path_nodes.append(target_id)
+                for _, best_orig in origins_reached[:2]:
+                    curr = best_orig
+                    path_nodes = [curr]
+                    path_edges = []
+                    while curr != target_id:
+                        if curr not in prev:
+                            break
+                        parent, e_info = prev[curr]
+                        path_edges.append(e_info)
+                        curr = parent
+                        path_nodes.append(curr)
 
-                if tot_len < 450.0 or tot_len > 3500.0:
-                    continue
+                    if curr != target_id or len(path_nodes) < 2:
+                        continue
 
-                crow = fast_dist_m(
-                    nodes[orig_id]["lon"], nodes[orig_id]["lat"],
-                    nodes[target_id]["lon"], nodes[target_id]["lat"]
-                )
-                ratio = tot_len / max(crow, 1.0)
-                if ratio > 1.70:
-                    continue
+                    total_len_m = sum(e["length_m"] for e in path_edges)
+                    if total_len_m < 500.0 or total_len_m > 3500.0:
+                        continue
 
-                cand_score = tot_len * (ratio ** 1.2)
-                if cand_score < best_cost:
-                    best_cost = cand_score
-                    streets = []
-                    for e in path_edges:
-                        nm = e["name"]
-                        if nm and nm != "Calle sin nombre" and nm not in streets:
-                            streets.append(nm)
+                    crow_m = fast_dist_m(t_lon, t_lat, nodes[best_orig]["lon"], nodes[best_orig]["lat"], cos_lat)
+                    zigzag = total_len_m / max(crow_m, 1.0)
+                    if zigzag > 1.35:
+                        continue
 
-                    best_cand = {
-                        "anchor_id": anc["id"],
-                        "name": anc["name"],
+                    # Overlap with existing cycleway
+                    cycle_len = sum(e["length_m"] for e in path_edges if e["is_infra"])
+                    if (cycle_len / total_len_m) > 0.30:
+                        continue
+
+                    # Structural axis calculation
+                    struct_len = sum(e["length_m"] for e in path_edges if e["highway"] in ("secondary", "tertiary", "primary"))
+                    struct_ratio = round(struct_len / total_len_m, 2)
+                    axis_score = round(5.0 + 5.0 * struct_ratio, 1)
+
+                    st_names = [e["name"] for e in path_edges if e["name"] != "Calle sin nombre"]
+                    st_unique = list(dict.fromkeys(st_names))[:4]
+                    main_st = st_unique[0] if st_unique else anc["main_street"]
+
+                    cand = {
+                        "cluster_id": f"cluster-{city_id}-{c_idx:02d}",
+                        "cluster_size": len(cl),
+                        "anchor_type": anc["anchor_type"],
+                        "alt_type": alt_name,
                         "sector": anc["sector"],
-                        "axis": anc["axis"],
-                        "description": anc["description"],
-                        "origin_hint": anc.get("origin_anchor_hint", "Ciclovía existente"),
-                        "origin_id": orig_id,
                         "target_id": target_id,
+                        "origin_id": best_orig,
                         "nodes": path_nodes,
                         "edges": path_edges,
-                        "length_m": round(tot_len, 1),
-                        "length_km": round(tot_len / 1000.0, 2),
-                        "crow_m": round(crow, 1),
-                        "zigzag_ratio": round(ratio, 2),
-                        "streets": streets,
+                        "length_m": round(total_len_m, 1),
+                        "length_km": round(total_len_m / 1000.0, 2),
+                        "crow_m": round(crow_m, 1),
+                        "zigzag_ratio": round(zigzag, 2),
+                        "structural_ratio": struct_ratio,
+                        "structural_axis_score": axis_score,
+                        "streets": st_unique,
+                        "main_street": main_st,
                     }
 
-        return best_cand
+                    node_key = tuple(path_nodes)
+                    if not any(tuple(c["nodes"]) == node_key for c in all_candidates):
+                        all_candidates.append(cand)
 
-    candidate_corridors = []
-    for anc in anchors:
-        c = generate_corridor_from_anchor(anc)
-        if c:
-            candidate_corridors.append(c)
+    print(f"  -> {len(all_candidates)} alternativas de corredores generadas.")
 
-    print(f"  -> {len(candidate_corridors)} corredores candidatos generados.")
-
-    # 7. Iterative Greedy Multi-Phase Execution
-    active_grid = FastSpatialGrid()
-    for cid in cycle_nodes:
-        cn = nodes[cid]
-        active_grid.add(cid, cn["lon"], cn["lat"])
-
+    # 9. Greedy iterative selection across phases
     active_covered_nodes = set(base_covered_nodes)
     active_covered_pois = set(base_covered_pois)
+    selected_phases = []
+    remaining_candidates = list(all_candidates)
 
-    remaining_candidates = list(candidate_corridors)
-    selected_phases: list[dict[str, Any]] = []
-
-    for phase_idx in range(1, min(max_phases, len(candidate_corridors)) + 1):
-        best_candidate = None
-        best_score = -1.0
+    for phase_idx in range(1, max_phases + 1):
+        best_cand = None
+        best_score = -1e9
         best_eval = None
 
         for c in remaining_candidates:
-            c_grid = FastSpatialGrid()
-            for nid in c["nodes"]:
-                cn = nodes[nid]
-                c_grid.add(nid, cn["lon"], cn["lat"])
-
+            c_nodes = c["nodes"]
+            # Newly covered urban access nodes
             new_nodes = 0
-            for nid, n in nodes.items():
-                if nid not in active_covered_nodes and c_grid.is_within_dist(n["lon"], n["lat"], 400.0):
-                    new_nodes += 1
+            for nid in urban_access_nodes:
+                if nid not in active_covered_nodes:
+                    un = nodes[nid]
+                    if any(fast_dist_m(un["lon"], un["lat"], nodes[cnid]["lon"], nodes[cnid]["lat"], cos_lat) <= 400.0 for cnid in c_nodes[::3]):
+                        new_nodes += 1
 
+            # Newly covered POIs
             new_pois = 0
-            poi_summary = defaultdict(list)
-            for p in pois:
-                if p["id"] not in active_covered_pois and c_grid.is_within_dist(p["lon"], p["lat"], 400.0):
-                    new_pois += 1
-                    if p["name"] != "Sin nombre":
-                        poi_summary[p["category"]].append(p["name"])
+            for p in dedup_pois:
+                if p["id"] not in active_covered_pois:
+                    if any(fast_dist_m(p["lon"], p["lat"], nodes[cnid]["lon"], nodes[cnid]["lat"], cos_lat) <= 400.0 for cnid in c_nodes[::3]):
+                        new_pois += 1
 
-            if new_nodes < 15:
-                continue
-
-            cov_gain_pct = round((new_nodes / len(nodes)) * 100.0, 2)
             eff_ratio = round(new_nodes / max(c["length_km"], 0.1), 1)
-
-            # Scoring formula
-            s_cov = min(35.0, (new_nodes / 300.0) * 35.0)
+            s_cov = min(35.0, (new_nodes / 250.0) * 35.0)
             s_poi = min(25.0, (new_pois / 8.0) * 25.0)
             s_cont = 20.0
-            s_qual = 10.0 if any(e["highway"] in ("secondary", "tertiary") for e in c["edges"]) else 7.5
+            s_axis = c["structural_axis_score"]
             s_eff = min(10.0, (eff_ratio / 180.0) * 10.0)
-            score = round(s_cov + s_poi + s_cont + s_qual + s_eff, 1)
+            total_score = round(s_cov + s_poi + s_cont + s_axis + s_eff, 1)
 
-            if score > best_score:
-                best_score = score
-                best_candidate = c
+            if total_score > best_score:
+                best_score = total_score
+                best_cand = c
                 best_eval = {
-                    "score": score,
+                    "score": total_score,
                     "new_nodes": new_nodes,
                     "new_pois": new_pois,
-                    "cov_gain_pct": cov_gain_pct,
                     "eff_ratio": eff_ratio,
-                    "poi_summary": {k: v[:3] for k, v in poi_summary.items()},
                 }
 
-        if not best_candidate or best_eval is None:
+        if not best_cand or best_eval["new_nodes"] < 20:
+            print(f"  Deteniendo selección en fase {phase_idx}: sin más candidatos con impacto significativo.")
             break
 
-        best_candidate["phase"] = phase_idx
-        best_candidate["id"] = f"expansion-{city_id}-{phase_idx:02d}"
-        best_candidate["expansion_score"] = best_eval["score"]
-        best_candidate["coverage_gain_nodes"] = best_eval["new_nodes"]
-        best_candidate["coverage_gain_pct"] = best_eval["cov_gain_pct"]
-        best_candidate["new_pois_count"] = best_eval["new_pois"]
-        best_candidate["efficiency_ratio"] = best_eval["eff_ratio"]
-        best_candidate["poi_summary"] = best_eval["poi_summary"]
+        best_cand["phase"] = phase_idx
+        best_cand["id"] = f"expansion-{city_id}-{phase_idx:02d}"
+        best_cand["expansion_score"] = best_eval["score"]
+        best_cand["new_nodes"] = best_eval["new_nodes"]
+        best_cand["new_pois"] = best_eval["new_pois"]
+        best_cand["eff_ratio"] = best_eval["eff_ratio"]
+        selected_phases.append(best_cand)
+        remaining_candidates.remove(best_cand)
 
-        selected_phases.append(best_candidate)
-        remaining_candidates.remove(best_candidate)
+        # Update covered sets
+        for nid in urban_access_nodes:
+            if nid not in active_covered_nodes:
+                un = nodes[nid]
+                if any(fast_dist_m(un["lon"], un["lat"], nodes[cnid]["lon"], nodes[cnid]["lat"], cos_lat) <= 400.0 for cnid in best_cand["nodes"]):
+                    active_covered_nodes.add(nid)
+        for p in dedup_pois:
+            if p["id"] not in active_covered_pois:
+                if any(fast_dist_m(p["lon"], p["lat"], nodes[cnid]["lon"], nodes[cnid]["lat"], cos_lat) <= 400.0 for cnid in best_cand["nodes"]):
+                    active_covered_pois.add(p["id"])
 
-        for nid in best_candidate["nodes"]:
-            cn = nodes[nid]
-            active_grid.add(nid, cn["lon"], cn["lat"])
+        print(f"  [Fase {phase_idx}] {best_cand['sector']} | {best_cand['length_km']} km | +{best_eval['new_nodes']} nodos | +{best_eval['new_pois']} POIs | Score: {best_eval['score']} pts")
 
-        c_grid = FastSpatialGrid()
-        for nid in best_candidate["nodes"]:
-            cn = nodes[nid]
-            c_grid.add(nid, cn["lon"], cn["lat"])
-
-        for nid, n in nodes.items():
-            if nid not in active_covered_nodes and c_grid.is_within_dist(n["lon"], n["lat"], 400.0):
-                active_covered_nodes.add(nid)
-
-        for p in pois:
-            if p["id"] not in active_covered_pois and c_grid.is_within_dist(p["lon"], p["lat"], 400.0):
-                active_covered_pois.add(p["id"])
-
-    # 8. Assemble GeoJSON FeatureCollection
+    # 10. Assemble RFC 7946 GeoJSON
     features = []
     total_expansion_km = 0.0
-    total_new_nodes = 0
-    total_new_pois = 0
+    total_new_nodes = len(active_covered_nodes) - len(base_covered_nodes)
+    total_new_pois = len(active_covered_pois) - len(base_covered_pois)
 
     disclaimer_text = (
-        "Propuesta algorítmica de planificación territorial generada por CicloConecta "
-        "utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes "
-        "ni proyectos con financiamiento asegurado."
+        "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta "
+        "utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente "
+        "ni garantiza factibilidad constructiva o financiamiento."
     )
 
     for p in selected_phases:
         coords = [[round(nodes[nid]["lon"], 6), round(nodes[nid]["lat"], 6)] for nid in p["nodes"]]
         total_expansion_km += p["length_km"]
-        total_new_nodes += p["coverage_gain_nodes"]
-        total_new_pois += p["new_pois_count"]
+
+        # Collect POI summary
+        poi_summary = defaultdict(list)
+        for poi in dedup_pois:
+            if any(fast_dist_m(poi["lon"], poi["lat"], nodes[cnid]["lon"], nodes[cnid]["lat"], cos_lat) <= 400.0 for cnid in p["nodes"]):
+                if poi["name"] != "Sin nombre":
+                    poi_summary[poi["category"]].append(poi["name"])
 
         feat = {
             "type": "Feature",
@@ -588,9 +803,11 @@ def plan_city_expansion(
             "properties": {
                 "id": p["id"],
                 "phase": p["phase"],
-                "name": p["name"],
+                "name": f"Fase {p['phase']}: {p['sector']}",
                 "sector": p["sector"],
-                "axis": p["axis"],
+                "axis": p["main_street"],
+                "cluster_id": p["cluster_id"],
+                "alternative_type": p["alt_type"],
                 "status": "ALGORITHMIC_EXPANSION",
                 "badge": "ANÁLISIS",
                 "expansion_score": p["expansion_score"],
@@ -598,22 +815,29 @@ def plan_city_expansion(
                 "length_km": p["length_km"],
                 "crow_m": p["crow_m"],
                 "zigzag_ratio": p["zigzag_ratio"],
-                "coverage_gain_nodes": p["coverage_gain_nodes"],
-                "coverage_gain_pct": p["coverage_gain_pct"],
-                "new_pois_count": p["new_pois_count"],
-                "efficiency_ratio": p["efficiency_ratio"],
+                "structural_axis_score": p["structural_axis_score"],
+                "structural_ratio": p["structural_ratio"],
+                "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+                "coverage_gain_urban_access_nodes": p["new_nodes"],
+                "coverage_gain_nodes": p["new_nodes"],  # Compatibility with UI chips
+                "coverage_gain_pct": round((p["new_nodes"] / max(len(urban_access_nodes), 1)) * 100.0, 2),
+                "new_pois_count": p["new_pois"],
+                "efficiency_ratio": p["eff_ratio"],
                 "streets": p["streets"],
-                "origin_anchor": p["origin_hint"],
+                "origin_anchor": f"Red Ciclista Existente ({nodes[p['origin_id']]['lon']:.4f}, {nodes[p['origin_id']]['lat']:.4f})",
                 "target_sector": p["sector"],
-                "description": p["description"],
-                "poi_summary": p["poi_summary"],
+                "description": (
+                    f"Corredor propuesto hacia el {p['sector']} ({p['alt_type']}). "
+                    f"Incorpora +{p['new_nodes']} nodos de acceso urbano y +{p['new_pois']} equipamientos desatendidos."
+                ),
+                "poi_summary": {k: list(dict.fromkeys(v))[:3] for k, v in poi_summary.items()},
                 "disclaimer": disclaimer_text,
             },
         }
         features.append(feat)
 
     now_iso = datetime.now(timezone.utc).isoformat()
-    total_cov_gain_pct = round((total_new_nodes / max(len(nodes), 1)) * 100.0, 2)
+    total_cov_gain_pct = round((total_new_nodes / max(len(urban_access_nodes), 1)) * 100.0, 2)
 
     expansion_geojson = {
         "type": "FeatureCollection",
@@ -626,10 +850,17 @@ def plan_city_expansion(
             "status": "ALGORITHMIC_EXPANSION",
             "total_phases": len(features),
             "total_expansion_km": round(total_expansion_km, 2),
+            "total_new_urban_access_nodes": total_new_nodes,
             "total_new_nodes": total_new_nodes,
             "total_coverage_gain_pct": total_cov_gain_pct,
             "total_new_pois": total_new_pois,
+            "poi_deduplication": {
+                "raw_pois_count": len(cat_pois),
+                "deduplicated_pois_count": len(dedup_pois),
+            },
+            "discovered_clusters": discovered_clusters_meta,
             "baseline_coverage": {
+                "total_urban_access_nodes": len(urban_access_nodes),
                 "covered_nodes_pct": base_cov_pct,
                 "covered_pois_pct": base_poi_pct,
                 "distance_bands": dist_bands,
@@ -640,7 +871,7 @@ def plan_city_expansion(
         "features": features,
     }
 
-    # 9. Save to data/cities/{city_id}/network-expansion.geojson and sync
+    # 11. Save and sync
     output_path = data_dir / "network-expansion.geojson"
     tmp_path = output_path.with_suffix(".tmp")
     with open(tmp_path, "w", encoding="utf-8") as f:
@@ -648,7 +879,6 @@ def plan_city_expansion(
     tmp_path.replace(output_path)
     print(f"  -> {len(features)} fases de expansión guardadas en {output_path.name}.")
 
-    # Sync to frontend/public/data/cities/{city_id}/
     frontend_dir.mkdir(parents=True, exist_ok=True)
     dst_public = frontend_dir / "network-expansion.geojson"
     shutil.copy2(output_path, dst_public)

@@ -8,27 +8,370 @@
     "badge": "ANÁLISIS",
     "status": "ALGORITHMIC_EXPANSION",
     "total_phases": 6,
-    "total_expansion_km": 5.59,
-    "total_new_nodes": 813,
-    "total_coverage_gain_pct": 5.0,
-    "total_new_pois": 56,
+    "total_expansion_km": 7.84,
+    "total_new_urban_access_nodes": 1181,
+    "total_new_nodes": 1181,
+    "total_coverage_gain_pct": 9.52,
+    "total_new_pois": 50,
+    "poi_deduplication": {
+      "raw_pois_count": 592,
+      "deduplicated_pois_count": 551
+    },
+    "discovered_clusters": [
+      {
+        "id": "cluster-curico-01",
+        "centroid": [
+          -71.256044,
+          -34.99379
+        ],
+        "node_count": 533,
+        "mean_distance_to_cycle_network": 693.7,
+        "max_distance_to_cycle_network": 1296.7,
+        "bbox": [
+          -35.003772,
+          -71.263519,
+          -34.980104,
+          -71.246132
+        ],
+        "nearby_pois_count": 58,
+        "coverage_need_score": 1968.5
+      },
+      {
+        "id": "cluster-curico-02",
+        "centroid": [
+          -71.201649,
+          -34.937134
+        ],
+        "node_count": 518,
+        "mean_distance_to_cycle_network": 1387.0,
+        "max_distance_to_cycle_network": 2869.2,
+        "bbox": [
+          -34.948569,
+          -71.211465,
+          -34.923989,
+          -71.191491
+        ],
+        "nearby_pois_count": 20,
+        "coverage_need_score": 2194.9
+      },
+      {
+        "id": "cluster-curico-03",
+        "centroid": [
+          -71.257625,
+          -34.962801
+        ],
+        "node_count": 487,
+        "mean_distance_to_cycle_network": 650.6,
+        "max_distance_to_cycle_network": 1400.0,
+        "bbox": [
+          -34.973175,
+          -71.273168,
+          -34.95747,
+          -71.245924
+        ],
+        "nearby_pois_count": 10,
+        "coverage_need_score": 1240.7
+      },
+      {
+        "id": "cluster-curico-04",
+        "centroid": [
+          -71.226533,
+          -34.965317
+        ],
+        "node_count": 308,
+        "mean_distance_to_cycle_network": 473.1,
+        "max_distance_to_cycle_network": 611.8,
+        "bbox": [
+          -34.967957,
+          -71.23563,
+          -34.960174,
+          -71.218134
+        ],
+        "nearby_pois_count": 54,
+        "coverage_need_score": 1247.4
+      },
+      {
+        "id": "cluster-curico-05",
+        "centroid": [
+          -71.288509,
+          -34.975863
+        ],
+        "node_count": 302,
+        "mean_distance_to_cycle_network": 1874.4,
+        "max_distance_to_cycle_network": 3205.6,
+        "bbox": [
+          -34.984929,
+          -71.303309,
+          -34.971078,
+          -71.274012
+        ],
+        "nearby_pois_count": 3,
+        "coverage_need_score": 1470.2
+      },
+      {
+        "id": "cluster-curico-06",
+        "centroid": [
+          -71.286808,
+          -34.959975
+        ],
+        "node_count": 229,
+        "mean_distance_to_cycle_network": 2259.5,
+        "max_distance_to_cycle_network": 3079.3,
+        "bbox": [
+          -34.968098,
+          -71.29709,
+          -34.954031,
+          -71.273773
+        ],
+        "nearby_pois_count": 1,
+        "coverage_need_score": 1275.9
+      },
+      {
+        "id": "cluster-curico-07",
+        "centroid": [
+          -71.226396,
+          -34.982832
+        ],
+        "node_count": 206,
+        "mean_distance_to_cycle_network": 466.1,
+        "max_distance_to_cycle_network": 663.5,
+        "bbox": [
+          -34.98764,
+          -71.229744,
+          -34.979323,
+          -71.218211
+        ],
+        "nearby_pois_count": 38,
+        "coverage_need_score": 854.0
+      },
+      {
+        "id": "cluster-curico-08",
+        "centroid": [
+          -71.26905,
+          -34.948534
+        ],
+        "node_count": 118,
+        "mean_distance_to_cycle_network": 930.1,
+        "max_distance_to_cycle_network": 1233.9,
+        "bbox": [
+          -34.954113,
+          -71.272933,
+          -34.942513,
+          -71.264076
+        ],
+        "nearby_pois_count": 0,
+        "coverage_need_score": 337.5
+      },
+      {
+        "id": "cluster-curico-09",
+        "centroid": [
+          -71.204998,
+          -34.995545
+        ],
+        "node_count": 105,
+        "mean_distance_to_cycle_network": 737.7,
+        "max_distance_to_cycle_network": 1250.1,
+        "bbox": [
+          -35.001205,
+          -71.210556,
+          -34.989589,
+          -71.197532
+        ],
+        "nearby_pois_count": 3,
+        "coverage_need_score": 295.9
+      },
+      {
+        "id": "cluster-curico-10",
+        "centroid": [
+          -71.267334,
+          -34.939528
+        ],
+        "node_count": 100,
+        "mean_distance_to_cycle_network": 985.9,
+        "max_distance_to_cycle_network": 1161.7,
+        "bbox": [
+          -34.94376,
+          -71.272423,
+          -34.936785,
+          -71.25985
+        ],
+        "nearby_pois_count": 1,
+        "coverage_need_score": 309.2
+      }
+    ],
     "baseline_coverage": {
-      "covered_nodes_pct": 69.5,
-      "covered_pois_pct": 78.7,
+      "total_urban_access_nodes": 12405,
+      "covered_nodes_pct": 67.7,
+      "covered_pois_pct": 78.4,
       "distance_bands": {
-        "0-250m": 8900,
-        "250-500m": 3301,
-        "500-1000m": 1757,
-        ">1000m": 2294
+        "0-250m": 6344,
+        "250-500m": 2896,
+        "500-1000m": 1566,
+        ">1000m": 1599
       }
     },
-    "generated_at": "2026-09-11T12:32:28.474073+00:00",
-    "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+    "generated_at": "2026-09-14T16:45:56.768380+00:00",
+    "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
   },
   "features": [
     {
       "type": "Feature",
       "id": "expansion-curico-01",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.248124,
+            -34.994405
+          ],
+          [
+            -71.248705,
+            -34.994474
+          ],
+          [
+            -71.249916,
+            -34.994125
+          ],
+          [
+            -71.250453,
+            -34.993969
+          ],
+          [
+            -71.251309,
+            -34.993722
+          ],
+          [
+            -71.251863,
+            -34.993562
+          ],
+          [
+            -71.251963,
+            -34.993525
+          ],
+          [
+            -71.252243,
+            -34.993435
+          ],
+          [
+            -71.252333,
+            -34.993406
+          ],
+          [
+            -71.252659,
+            -34.9933
+          ],
+          [
+            -71.253085,
+            -34.993162
+          ],
+          [
+            -71.253478,
+            -34.993035
+          ],
+          [
+            -71.253889,
+            -34.992902
+          ],
+          [
+            -71.254292,
+            -34.992771
+          ],
+          [
+            -71.254651,
+            -34.992655
+          ],
+          [
+            -71.254706,
+            -34.992633
+          ],
+          [
+            -71.254758,
+            -34.992601
+          ],
+          [
+            -71.254994,
+            -34.992928
+          ],
+          [
+            -71.255455,
+            -34.993565
+          ],
+          [
+            -71.255664,
+            -34.993853
+          ],
+          [
+            -71.255782,
+            -34.994017
+          ],
+          [
+            -71.256181,
+            -34.993842
+          ],
+          [
+            -71.256517,
+            -34.993671
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-curico-01",
+        "phase": 1,
+        "name": "Fase 1: Sector Mataquito",
+        "sector": "Sector Mataquito",
+        "axis": "Avenida Circunvalación Doctor Osorio",
+        "cluster_id": "cluster-curico-01",
+        "alternative_type": "Eje Estructurante",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 95.0,
+        "length_m": 903.5,
+        "length_km": 0.9,
+        "crow_m": 769.8,
+        "zigzag_ratio": 1.17,
+        "structural_axis_score": 9.6,
+        "structural_ratio": 0.91,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 217,
+        "coverage_gain_nodes": 217,
+        "coverage_gain_pct": 1.75,
+        "new_pois_count": 21,
+        "efficiency_ratio": 241.1,
+        "streets": [
+          "Avenida Circunvalación Doctor Osorio",
+          "Avenida Trapiche",
+          "Pasaje Las Zinnia"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.2481, -34.9944)",
+        "target_sector": "Sector Mataquito",
+        "description": "Corredor propuesto hacia el Sector Mataquito (Eje Estructurante). Incorpora +217 nodos de acceso urbano y +21 equipamientos desatendidos.",
+        "poi_summary": {
+          "parks_leisure": [
+            "Plaza Aguas Negras",
+            "Plazoleta Dragones",
+            "Plazoleta Juana Concha"
+          ],
+          "education": [
+            "Centro Educativo Integral de Curicó (CEIC)",
+            "Liceo Politécnico Curico",
+            "Colegio Polivalente Japón"
+          ],
+          "public_services": [
+            "Sede",
+            "Sede Social"
+          ],
+          "commercial": [
+            "Feria de las Pulgas",
+            "LyJ",
+            "Jumbo"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-curico-02",
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -173,48 +516,94 @@
             -34.943408
           ],
           [
-            -71.203752,
-            -34.943332
+            -71.203071,
+            -34.942567
           ],
           [
-            -71.203755,
-            -34.943279
+            -71.202839,
+            -34.942268
           ],
           [
-            -71.203782,
-            -34.942892
+            -71.202788,
+            -34.942203
           ],
           [
-            -71.203797,
-            -34.942809
+            -71.202831,
+            -34.94217
+          ],
+          [
+            -71.202888,
+            -34.942131
+          ],
+          [
+            -71.203048,
+            -34.942014
+          ],
+          [
+            -71.203127,
+            -34.941957
+          ],
+          [
+            -71.203328,
+            -34.941812
+          ],
+          [
+            -71.203407,
+            -34.941755
+          ],
+          [
+            -71.203644,
+            -34.941583
+          ],
+          [
+            -71.203988,
+            -34.941334
+          ],
+          [
+            -71.204314,
+            -34.941097
+          ],
+          [
+            -71.204369,
+            -34.941057
+          ],
+          [
+            -71.204638,
+            -34.940863
           ]
         ]
       },
       "properties": {
-        "id": "expansion-curico-01",
-        "phase": 1,
-        "name": "Eje Norte: Av. Rauquén Norte → Don Sebastián / Los Héroes",
-        "sector": "Rauquén Norte / Don Sebastián",
-        "axis": "Av. Rauquén Norte / Don Sebastián",
+        "id": "expansion-curico-02",
+        "phase": 2,
+        "name": "Fase 2: Sector Callejón San José",
+        "sector": "Sector Callejón San José",
+        "axis": "Avenida Rauquén",
+        "cluster_id": "cluster-curico-02",
+        "alternative_type": "Eje Estructurante",
         "status": "ALGORITHMIC_EXPANSION",
         "badge": "ANÁLISIS",
-        "expansion_score": 91.7,
-        "length_m": 1207.3,
-        "length_km": 1.21,
-        "crow_m": 1108.7,
-        "zigzag_ratio": 1.09,
-        "coverage_gain_nodes": 229,
-        "coverage_gain_pct": 1.41,
+        "expansion_score": 94.0,
+        "length_m": 1525.5,
+        "length_km": 1.53,
+        "crow_m": 1253.3,
+        "zigzag_ratio": 1.22,
+        "structural_axis_score": 9.2,
+        "structural_ratio": 0.85,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 226,
+        "coverage_gain_nodes": 226,
+        "coverage_gain_pct": 1.82,
         "new_pois_count": 12,
-        "efficiency_ratio": 189.3,
+        "efficiency_ratio": 147.7,
         "streets": [
           "Avenida Rauquén",
           "Avenida Arturo Prat",
-          "Mateo de Toro y Zambrano"
+          "Calle Las Perdices"
         ],
-        "origin_anchor": "Ciclovía Av. Rauquén (Componente Dorsal)",
-        "target_sector": "Rauquén Norte / Don Sebastián",
-        "description": "Continuación de la red hacia los macro-conjuntos habitacionales de Rauquén Norte y el polo educativo Los Héroes.",
+        "origin_anchor": "Red Ciclista Existente (-71.1920, -34.9454)",
+        "target_sector": "Sector Callejón San José",
+        "description": "Corredor propuesto hacia el Sector Callejón San José (Eje Estructurante). Incorpora +226 nodos de acceso urbano y +12 equipamientos desatendidos.",
         "poi_summary": {
           "education": [
             "Escuela de Admninistración y Comercio",
@@ -222,141 +611,7 @@
             "Colegio Los Héroes"
           ]
         },
-        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "expansion-curico-02",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            -71.248641,
-            -34.999043
-          ],
-          [
-            -71.248924,
-            -34.998951
-          ],
-          [
-            -71.248906,
-            -34.998913
-          ],
-          [
-            -71.249028,
-            -34.998874
-          ],
-          [
-            -71.249577,
-            -34.998698
-          ],
-          [
-            -71.250254,
-            -34.998482
-          ],
-          [
-            -71.250528,
-            -34.998395
-          ],
-          [
-            -71.250969,
-            -34.998253
-          ],
-          [
-            -71.252035,
-            -34.997913
-          ],
-          [
-            -71.252568,
-            -34.997743
-          ],
-          [
-            -71.25367,
-            -34.997391
-          ],
-          [
-            -71.254093,
-            -34.997255
-          ],
-          [
-            -71.254483,
-            -34.997131
-          ],
-          [
-            -71.254896,
-            -34.996999
-          ],
-          [
-            -71.255309,
-            -34.996867
-          ],
-          [
-            -71.255707,
-            -34.99674
-          ],
-          [
-            -71.256119,
-            -34.996608
-          ],
-          [
-            -71.256537,
-            -34.996475
-          ],
-          [
-            -71.256713,
-            -34.996855
-          ],
-          [
-            -71.257397,
-            -34.996644
-          ]
-        ]
-      },
-      "properties": {
-        "id": "expansion-curico-02",
-        "phase": 2,
-        "name": "Eje Surponiente: Mataquito → Villa Mejillones / Santos Martínez",
-        "sector": "Mataquito / Licantén",
-        "axis": "Av. Licantén / Mataquito",
-        "status": "ALGORITHMIC_EXPANSION",
-        "badge": "ANÁLISIS",
-        "expansion_score": 89.0,
-        "length_m": 890.1,
-        "length_km": 0.89,
-        "crow_m": 841.8,
-        "zigzag_ratio": 1.06,
-        "coverage_gain_nodes": 206,
-        "coverage_gain_pct": 1.27,
-        "new_pois_count": 23,
-        "efficiency_ratio": 231.5,
-        "streets": [
-          "Balmaceda",
-          "Mataquito",
-          "Azapa",
-          "Camina"
-        ],
-        "origin_anchor": "Ciclovía Av. Circunvalación / Los Niches",
-        "target_sector": "Mataquito / Licantén",
-        "description": "Corredor surponiente conectando villas Mejillones y Santos Martínez con equipamientos educativos y comunitarios.",
-        "poi_summary": {
-          "parks_leisure": [
-            "Gimnacio al aire libre Mejillones",
-            "Plaza José Santos Martínez",
-            "Plaza Fundacion la Familia"
-          ],
-          "education": [
-            "Escuela de Lenguaje El Castillo Infantil"
-          ],
-          "public_services": [
-            "Sede"
-          ],
-          "commercial": [
-            "Feria de las Pulgas",
-            "Carnicería y Supermercado"
-          ]
-        },
-        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
       }
     },
     {
@@ -366,177 +621,184 @@
         "type": "LineString",
         "coordinates": [
           [
-            -71.248893,
-            -34.987915
+            -71.216494,
+            -34.983407
           ],
           [
-            -71.248901,
-            -34.987842
+            -71.216454,
+            -34.983382
           ],
           [
-            -71.248954,
-            -34.98784
+            -71.216539,
+            -34.98339
           ],
           [
-            -71.249042,
-            -34.987837
+            -71.217775,
+            -34.983485
           ],
           [
-            -71.249136,
-            -34.987831
+            -71.217821,
+            -34.983488
           ],
           [
-            -71.249259,
-            -34.987817
+            -71.217837,
+            -34.983489
           ],
           [
-            -71.249518,
-            -34.987778
+            -71.217901,
+            -34.983494
           ],
           [
-            -71.249833,
-            -34.987763
+            -71.218021,
+            -34.983508
           ],
           [
-            -71.250517,
-            -34.987722
+            -71.218308,
+            -34.98354
           ],
           [
-            -71.250789,
-            -34.987703
+            -71.218639,
+            -34.983573
           ],
           [
-            -71.250991,
-            -34.98769
+            -71.218806,
+            -34.983589
           ],
           [
-            -71.251274,
-            -34.987669
+            -71.219184,
+            -34.983626
           ],
           [
-            -71.251393,
-            -34.987658
+            -71.219236,
+            -34.983632
           ],
           [
-            -71.251666,
-            -34.987634
+            -71.219322,
+            -34.98364
           ],
           [
-            -71.251749,
-            -34.987629
+            -71.219333,
+            -34.983641
           ],
           [
-            -71.251831,
-            -34.987628
+            -71.219875,
+            -34.983696
           ],
           [
-            -71.251899,
-            -34.987631
+            -71.219947,
+            -34.983703
           ],
           [
-            -71.251966,
-            -34.987637
+            -71.220261,
+            -34.983743
           ],
           [
-            -71.252008,
-            -34.98761
+            -71.220754,
+            -34.983839
           ],
           [
-            -71.252053,
-            -34.987586
+            -71.221165,
+            -34.983947
           ],
           [
-            -71.252124,
-            -34.987555
+            -71.221478,
+            -34.984038
           ],
           [
-            -71.2522,
-            -34.98753
+            -71.222201,
+            -34.984289
           ],
           [
-            -71.252346,
-            -34.987494
+            -71.222806,
+            -34.984499
           ],
           [
-            -71.252955,
-            -34.987349
+            -71.222951,
+            -34.984549
           ],
           [
-            -71.253665,
-            -34.98718
+            -71.22354,
+            -34.984754
           ],
           [
-            -71.254356,
-            -34.987016
+            -71.224064,
+            -34.984936
           ],
           [
-            -71.254455,
-            -34.986993
+            -71.224349,
+            -34.985035
           ],
           [
-            -71.254548,
-            -34.98697
+            -71.22476,
+            -34.985178
           ],
           [
-            -71.255178,
-            -34.986821
+            -71.224806,
+            -34.985193
           ],
           [
-            -71.255359,
-            -34.986827
+            -71.225426,
+            -34.985399
           ],
           [
-            -71.255491,
-            -34.98685
+            -71.225745,
+            -34.985505
           ],
           [
-            -71.255989,
-            -34.98696
-          ],
-          [
-            -71.257436,
-            -34.988565
+            -71.22604,
+            -34.985603
           ]
         ]
       },
       "properties": {
         "id": "expansion-curico-03",
         "phase": 3,
-        "name": "Eje Poniente: Av. Lautaro → Población Santa Fe",
-        "sector": "Santa Fe Poniente",
-        "axis": "Av. Lautaro / Santa Fe",
+        "name": "Fase 3: Sector Nazareth / SalcoBrand",
+        "sector": "Sector Nazareth / SalcoBrand",
+        "axis": "Avenida España",
+        "cluster_id": "cluster-curico-07",
+        "alternative_type": "Eje Estructurante",
         "status": "ALGORITHMIC_EXPANSION",
         "badge": "ANÁLISIS",
-        "expansion_score": 82.1,
-        "length_m": 893.3,
-        "length_km": 0.89,
-        "crow_m": 782.2,
-        "zigzag_ratio": 1.14,
-        "coverage_gain_nodes": 173,
-        "coverage_gain_pct": 1.06,
-        "new_pois_count": 7,
-        "efficiency_ratio": 194.4,
+        "expansion_score": 80.8,
+        "length_m": 920.1,
+        "length_km": 0.92,
+        "crow_m": 904.3,
+        "zigzag_ratio": 1.02,
+        "structural_axis_score": 10.0,
+        "structural_ratio": 1.0,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 129,
+        "coverage_gain_nodes": 129,
+        "coverage_gain_pct": 1.04,
+        "new_pois_count": 8,
+        "efficiency_ratio": 140.2,
         "streets": [
-          "Avenida Lautaro",
-          "Lautaro"
+          "Avenida España"
         ],
-        "origin_anchor": "Eje Lautaro / Red Central",
-        "target_sector": "Santa Fe Poniente",
-        "description": "Extensión estratégica hacia el sector habitacional Santa Fe poniente a través del eje estructurante Lautaro.",
+        "origin_anchor": "Red Ciclista Existente (-71.2165, -34.9834)",
+        "target_sector": "Sector Nazareth / SalcoBrand",
+        "description": "Corredor propuesto hacia el Sector Nazareth / SalcoBrand (Eje Estructurante). Incorpora +129 nodos de acceso urbano y +8 equipamientos desatendidos.",
         "poi_summary": {
           "parks_leisure": [
-            "Plaza Villa Pontificia",
-            "Plaza Vaticano",
-            "Plaza Villa Roma"
-          ],
-          "public_services": [
-            "Sede Social"
+            "Plaza Villa San Francisco",
+            "Plaza Tomás Vallejos",
+            "Colegio Vichuquén"
           ],
           "education": [
-            "Colegio San Marcos"
+            "Colegio Vichuquén",
+            "Alianza Francesa",
+            "Colegio Rauquén"
+          ],
+          "healthcare": [
+            "SalcoBrand",
+            "Farmacias Ahumada"
+          ],
+          "commercial": [
+            "Unimarc"
           ]
         },
-        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
       }
     },
     {
@@ -546,120 +808,184 @@
         "type": "LineString",
         "coordinates": [
           [
-            -71.248002,
-            -34.970664
+            -71.227928,
+            -34.96054
           ],
           [
-            -71.2481,
-            -34.970672
+            -71.227996,
+            -34.960673
           ],
           [
-            -71.248088,
-            -34.970914
+            -71.228106,
+            -34.960774
           ],
           [
-            -71.249049,
-            -34.970922
+            -71.228209,
+            -34.960983
           ],
           [
-            -71.249154,
-            -34.970922
+            -71.228251,
+            -34.961068
           ],
           [
-            -71.249767,
-            -34.970943
+            -71.228299,
+            -34.961166
           ],
           [
-            -71.250392,
-            -34.970972
+            -71.22836,
+            -34.961315
           ],
           [
-            -71.250643,
-            -34.970978
+            -71.228405,
+            -34.961432
           ],
           [
-            -71.250899,
-            -34.970984
+            -71.228678,
+            -34.96223
           ],
           [
-            -71.251002,
-            -34.970985
+            -71.228833,
+            -34.962668
           ],
           [
-            -71.251301,
-            -34.970976
+            -71.228843,
+            -34.962695
           ],
           [
-            -71.251705,
-            -34.970958
+            -71.228857,
+            -34.962735
           ],
           [
-            -71.252215,
-            -34.97094
+            -71.228898,
+            -34.962856
           ],
           [
-            -71.252269,
-            -34.970956
+            -71.22891,
+            -34.962896
           ],
           [
-            -71.252313,
-            -34.970992
+            -71.228931,
+            -34.962961
           ],
           [
-            -71.252353,
-            -34.971103
+            -71.228939,
+            -34.962986
           ],
           [
-            -71.253107,
-            -34.971142
+            -71.229129,
+            -34.963584
           ],
           [
-            -71.253596,
-            -34.971154
+            -71.229308,
+            -34.964199
           ],
           [
-            -71.254142,
-            -34.971126
+            -71.229328,
+            -34.964278
+          ],
+          [
+            -71.229372,
+            -34.964432
+          ],
+          [
+            -71.22939,
+            -34.964508
+          ],
+          [
+            -71.229506,
+            -34.964992
+          ],
+          [
+            -71.22953,
+            -34.96509
+          ],
+          [
+            -71.229747,
+            -34.965045
+          ],
+          [
+            -71.229813,
+            -34.965038
+          ],
+          [
+            -71.229863,
+            -34.965037
+          ],
+          [
+            -71.229926,
+            -34.965053
+          ],
+          [
+            -71.229987,
+            -34.965067
+          ],
+          [
+            -71.230071,
+            -34.965067
+          ],
+          [
+            -71.23078,
+            -34.964963
+          ],
+          [
+            -71.231094,
+            -34.964915
+          ],
+          [
+            -71.231372,
+            -34.964862
+          ],
+          [
+            -71.231674,
+            -34.964803
           ]
         ]
       },
       "properties": {
         "id": "expansion-curico-04",
         "phase": 4,
-        "name": "Eje Norponiente: Av. Dr. Osorio → Sol de Septiembre / ANFA",
-        "sector": "Sol de Septiembre",
-        "axis": "Av. Doctor Osorio / Apolonia",
+        "name": "Fase 4: Sector Nueva América / Colegio Cristiano de Curicó",
+        "sector": "Sector Nueva América / Colegio Cristiano de Curicó",
+        "axis": "Camino a Sarmiento",
+        "cluster_id": "cluster-curico-04",
+        "alternative_type": "Directo",
         "status": "ALGORITHMIC_EXPANSION",
         "badge": "ANÁLISIS",
-        "expansion_score": 67.6,
-        "length_m": 599.3,
-        "length_km": 0.6,
-        "crow_m": 562.1,
-        "zigzag_ratio": 1.07,
-        "coverage_gain_nodes": 60,
-        "coverage_gain_pct": 0.37,
-        "new_pois_count": 9,
-        "efficiency_ratio": 100.0,
+        "expansion_score": 75.4,
+        "length_m": 728.4,
+        "length_km": 0.73,
+        "crow_m": 584.7,
+        "zigzag_ratio": 1.25,
+        "structural_axis_score": 8.4,
+        "structural_ratio": 0.68,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 153,
+        "coverage_gain_nodes": 153,
+        "coverage_gain_pct": 1.23,
+        "new_pois_count": 5,
+        "efficiency_ratio": 209.6,
         "streets": [
-          "Isla Picton",
-          "Avenida Balmaceda",
-          "Avenida Apolonia"
+          "Camino a Sarmiento",
+          "Avenida Juan Luis Diez",
+          "Glaciar Grey"
         ],
-        "origin_anchor": "Ciclovía Balmaceda / Circunvalación",
-        "target_sector": "Sol de Septiembre",
-        "description": "Extensión hacia el sector histórico Sol de Septiembre, Estadio ANFA y establecimientos escolares circundantes.",
+        "origin_anchor": "Red Ciclista Existente (-71.2279, -34.9605)",
+        "target_sector": "Sector Nueva América / Colegio Cristiano de Curicó",
+        "description": "Corredor propuesto hacia el Sector Nueva América / Colegio Cristiano de Curicó (Directo). Incorpora +153 nodos de acceso urbano y +5 equipamientos desatendidos.",
         "poi_summary": {
-          "education": [
-            "Colegio Altas Cumbres",
-            "Escuela Machu Pichu"
-          ],
           "parks_leisure": [
-            "Estadio Anfa",
-            "Estadio Anfa",
-            "Estadio Anfa"
+            "Baby Futbol"
+          ],
+          "education": [
+            "Colegio San Alfonso de El Boldo",
+            "Colegio Los Boldos",
+            "Colegio Cristiano de Curicó"
+          ],
+          "commercial": [
+            "La Super Feria"
           ]
         },
-        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
       }
     },
     {
@@ -669,177 +995,176 @@
         "type": "LineString",
         "coordinates": [
           [
-            -71.210313,
-            -34.989844
+            -71.254508,
+            -34.954677
           ],
           [
-            -71.210228,
-            -34.989825
+            -71.254555,
+            -34.954691
           ],
           [
-            -71.20978,
-            -34.99031
+            -71.254193,
+            -34.955289
           ],
           [
-            -71.209696,
-            -34.990404
+            -71.254144,
+            -34.955376
           ],
           [
-            -71.20961,
-            -34.990348
+            -71.253988,
+            -34.955635
           ],
           [
-            -71.209538,
-            -34.990301
+            -71.252897,
+            -34.957472
           ],
           [
-            -71.209272,
-            -34.990099
+            -71.252833,
+            -34.957581
           ],
           [
-            -71.208292,
-            -34.98918
+            -71.251897,
+            -34.959148
           ],
           [
-            -71.208065,
-            -34.988945
+            -71.251777,
+            -34.959347
           ],
           [
-            -71.207795,
-            -34.988605
+            -71.251497,
+            -34.959811
           ],
           [
-            -71.207709,
-            -34.988492
+            -71.251188,
+            -34.960311
           ],
           [
-            -71.207618,
-            -34.988383
+            -71.2511,
+            -34.960457
           ],
           [
-            -71.20749,
-            -34.988242
+            -71.251039,
+            -34.960534
           ],
           [
-            -71.207354,
-            -34.988107
+            -71.250982,
+            -34.960612
           ],
           [
-            -71.207209,
-            -34.987978
+            -71.250918,
+            -34.96071
           ],
           [
-            -71.207038,
-            -34.987858
+            -71.250859,
+            -34.960809
           ],
           [
-            -71.20687,
-            -34.987734
+            -71.250777,
+            -34.960947
           ],
           [
-            -71.20669,
-            -34.987594
+            -71.250589,
+            -34.961257
           ],
           [
-            -71.206513,
-            -34.987451
+            -71.250552,
+            -34.961323
           ],
           [
-            -71.206342,
-            -34.987303
+            -71.250533,
+            -34.961315
           ],
           [
-            -71.205635,
-            -34.986577
+            -71.249278,
+            -34.960796
           ],
           [
-            -71.205261,
-            -34.98624
+            -71.249241,
+            -34.960783
           ],
           [
-            -71.205081,
-            -34.986111
+            -71.249204,
+            -34.960774
           ],
           [
-            -71.204499,
-            -34.985697
+            -71.249159,
+            -34.960766
           ],
           [
-            -71.204116,
-            -34.985424
+            -71.249113,
+            -34.960763
           ],
           [
-            -71.203453,
-            -34.984967
+            -71.248915,
+            -34.960756
           ],
           [
-            -71.202237,
-            -34.984127
+            -71.248909,
+            -34.960826
           ],
           [
-            -71.201062,
-            -34.983283
+            -71.248881,
+            -34.961135
           ],
           [
-            -71.199842,
-            -34.982408
+            -71.248877,
+            -34.961184
           ],
           [
-            -71.199797,
-            -34.982375
+            -71.248848,
+            -34.961511
           ],
           [
-            -71.199544,
-            -34.982174
+            -71.248843,
+            -34.961559
           ],
           [
-            -71.199283,
-            -34.98198
+            -71.248816,
+            -34.961867
           ],
           [
-            -71.199014,
-            -34.981793
+            -71.24881,
+            -34.961926
           ],
           [
-            -71.198739,
-            -34.981612
-          ],
-          [
-            -71.198457,
-            -34.981439
+            -71.248787,
+            -34.962189
           ]
         ]
       },
       "properties": {
         "id": "expansion-curico-05",
         "phase": 5,
-        "name": "Eje Oriente: Camino Zapallar → El Boldo Oriente / Los Cristales",
-        "sector": "Zapallar / Los Cristales",
-        "axis": "Camino Zapallar",
+        "name": "Fase 5: Sector Ruta J-630",
+        "sector": "Sector Ruta J-630",
+        "axis": "Ruta J-60",
+        "cluster_id": "cluster-curico-03",
+        "alternative_type": "Directo",
         "status": "ALGORITHMIC_EXPANSION",
         "badge": "ANÁLISIS",
-        "expansion_score": 65.2,
-        "length_m": 1523.4,
-        "length_km": 1.52,
-        "crow_m": 1429.6,
-        "zigzag_ratio": 1.07,
-        "coverage_gain_nodes": 128,
-        "coverage_gain_pct": 0.79,
-        "new_pois_count": 5,
-        "efficiency_ratio": 84.2,
+        "expansion_score": 73.4,
+        "length_m": 1150.9,
+        "length_km": 1.15,
+        "crow_m": 985.7,
+        "zigzag_ratio": 1.17,
+        "structural_axis_score": 8.6,
+        "structural_ratio": 0.71,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 226,
+        "coverage_gain_nodes": 226,
+        "coverage_gain_pct": 1.82,
+        "new_pois_count": 1,
+        "efficiency_ratio": 196.5,
         "streets": [
-          "Camino Zapallar",
-          "Camino Los Cristales"
+          "Ruta J-60",
+          "Las Vertientes",
+          "Los Lagos"
         ],
-        "origin_anchor": "Ciclovía El Boldo / O'Higgins",
-        "target_sector": "Zapallar / Los Cristales",
-        "description": "Proyección hacia la zona de expansión residencial oriente conectando Zapallar y colegios del sector.",
-        "poi_summary": {
-          "education": [
-            "Escuela Los Cristales"
-          ]
-        },
-        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+        "origin_anchor": "Red Ciclista Existente (-71.2545, -34.9547)",
+        "target_sector": "Sector Ruta J-630",
+        "description": "Corredor propuesto hacia el Sector Ruta J-630 (Directo). Incorpora +226 nodos de acceso urbano y +1 equipamientos desatendidos.",
+        "poi_summary": {},
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
       }
     },
     {
@@ -849,24 +1174,8 @@
         "type": "LineString",
         "coordinates": [
           [
-            -71.266856,
-            -34.974047
-          ],
-          [
-            -71.267316,
-            -34.973867
-          ],
-          [
-            -71.267802,
-            -34.973668
-          ],
-          [
-            -71.267907,
-            -34.973629
-          ],
-          [
-            -71.268013,
-            -34.973593
+            -71.268121,
+            -34.973535
           ],
           [
             -71.268122,
@@ -907,34 +1216,421 @@
           [
             -71.271986,
             -34.973192
+          ],
+          [
+            -71.272638,
+            -34.973171
+          ],
+          [
+            -71.272834,
+            -34.973175
+          ],
+          [
+            -71.274173,
+            -34.973131
+          ],
+          [
+            -71.275507,
+            -34.97308
+          ],
+          [
+            -71.277009,
+            -34.973013
+          ],
+          [
+            -71.277082,
+            -34.97338
+          ],
+          [
+            -71.277172,
+            -34.9737
+          ],
+          [
+            -71.277296,
+            -34.973813
+          ],
+          [
+            -71.277635,
+            -34.973787
+          ],
+          [
+            -71.277878,
+            -34.97375
+          ],
+          [
+            -71.278033,
+            -34.973746
+          ],
+          [
+            -71.278284,
+            -34.973764
+          ],
+          [
+            -71.279225,
+            -34.973862
+          ],
+          [
+            -71.279412,
+            -34.97389
+          ],
+          [
+            -71.279875,
+            -34.973966
+          ],
+          [
+            -71.280207,
+            -34.973966
+          ],
+          [
+            -71.280409,
+            -34.973961
+          ],
+          [
+            -71.280666,
+            -34.973897
+          ],
+          [
+            -71.281301,
+            -34.973601
+          ],
+          [
+            -71.281734,
+            -34.973338
+          ],
+          [
+            -71.28196,
+            -34.973266
+          ],
+          [
+            -71.28218,
+            -34.973268
+          ],
+          [
+            -71.282592,
+            -34.973318
+          ],
+          [
+            -71.284301,
+            -34.973441
+          ],
+          [
+            -71.284376,
+            -34.973446
+          ],
+          [
+            -71.284452,
+            -34.973445
+          ],
+          [
+            -71.284525,
+            -34.973439
+          ],
+          [
+            -71.284597,
+            -34.973428
+          ],
+          [
+            -71.284813,
+            -34.973393
+          ],
+          [
+            -71.284877,
+            -34.973387
+          ],
+          [
+            -71.284942,
+            -34.973386
+          ],
+          [
+            -71.285006,
+            -34.973391
+          ],
+          [
+            -71.285065,
+            -34.973399
+          ],
+          [
+            -71.285124,
+            -34.973412
+          ],
+          [
+            -71.28518,
+            -34.973429
+          ],
+          [
+            -71.285727,
+            -34.973585
+          ],
+          [
+            -71.285949,
+            -34.973636
+          ],
+          [
+            -71.286138,
+            -34.973682
+          ],
+          [
+            -71.286318,
+            -34.973718
+          ],
+          [
+            -71.286434,
+            -34.973742
+          ],
+          [
+            -71.286546,
+            -34.973772
+          ],
+          [
+            -71.286664,
+            -34.973813
+          ],
+          [
+            -71.286859,
+            -34.97388
+          ],
+          [
+            -71.286983,
+            -34.973921
+          ],
+          [
+            -71.287153,
+            -34.973978
+          ],
+          [
+            -71.287527,
+            -34.974084
+          ],
+          [
+            -71.288347,
+            -34.974353
+          ],
+          [
+            -71.288471,
+            -34.974387
+          ],
+          [
+            -71.288531,
+            -34.9744
+          ],
+          [
+            -71.288591,
+            -34.974407
+          ],
+          [
+            -71.288652,
+            -34.974408
+          ],
+          [
+            -71.28873,
+            -34.974402
+          ],
+          [
+            -71.288805,
+            -34.974387
+          ],
+          [
+            -71.288894,
+            -34.974365
+          ],
+          [
+            -71.288964,
+            -34.974347
+          ],
+          [
+            -71.289035,
+            -34.974331
+          ],
+          [
+            -71.289103,
+            -34.97432
+          ],
+          [
+            -71.289171,
+            -34.974311
+          ],
+          [
+            -71.289594,
+            -34.974287
+          ],
+          [
+            -71.289647,
+            -34.974289
+          ],
+          [
+            -71.2897,
+            -34.974295
+          ],
+          [
+            -71.289752,
+            -34.974305
+          ],
+          [
+            -71.289799,
+            -34.974318
+          ],
+          [
+            -71.289844,
+            -34.974335
+          ],
+          [
+            -71.289902,
+            -34.974362
+          ],
+          [
+            -71.289953,
+            -34.974395
+          ],
+          [
+            -71.289992,
+            -34.974428
+          ],
+          [
+            -71.290025,
+            -34.974464
+          ],
+          [
+            -71.290053,
+            -34.974504
+          ],
+          [
+            -71.290074,
+            -34.974547
+          ],
+          [
+            -71.290305,
+            -34.974969
+          ],
+          [
+            -71.290423,
+            -34.975176
+          ],
+          [
+            -71.290533,
+            -34.975352
+          ],
+          [
+            -71.290567,
+            -34.975403
+          ],
+          [
+            -71.29061,
+            -34.97545
+          ],
+          [
+            -71.290661,
+            -34.975492
+          ],
+          [
+            -71.290706,
+            -34.97552
+          ],
+          [
+            -71.290755,
+            -34.975544
+          ],
+          [
+            -71.290806,
+            -34.975563
+          ],
+          [
+            -71.29086,
+            -34.975577
+          ],
+          [
+            -71.291359,
+            -34.975698
+          ],
+          [
+            -71.291611,
+            -34.975755
+          ],
+          [
+            -71.291832,
+            -34.9758
+          ],
+          [
+            -71.292055,
+            -34.975837
+          ],
+          [
+            -71.292252,
+            -34.975862
+          ],
+          [
+            -71.29245,
+            -34.975882
+          ],
+          [
+            -71.292884,
+            -34.975917
+          ],
+          [
+            -71.29331,
+            -34.975961
+          ],
+          [
+            -71.293521,
+            -34.975995
+          ],
+          [
+            -71.293733,
+            -34.976034
+          ],
+          [
+            -71.294066,
+            -34.976087
+          ],
+          [
+            -71.294056,
+            -34.975877
+          ],
+          [
+            -71.294044,
+            -34.975771
           ]
         ]
       },
       "properties": {
         "id": "expansion-curico-06",
         "phase": 6,
-        "name": "Eje Periurbano: Ruta J-60 → Sector Tutuquén",
-        "sector": "Tutuquén Norponiente",
-        "axis": "Ruta J-60 / Tutuquén",
+        "name": "Fase 6: Sector Ruta J-624 / Cancha Club Deportivo Convento Viejo",
+        "sector": "Sector Ruta J-624 / Cancha Club Deportivo Convento Viejo",
+        "axis": "Lago Calafquén",
+        "cluster_id": "cluster-curico-05",
+        "alternative_type": "Directo",
         "status": "ALGORITHMIC_EXPANSION",
         "badge": "ANÁLISIS",
-        "expansion_score": 34.0,
-        "length_m": 483.1,
-        "length_km": 0.48,
-        "crow_m": 477.3,
-        "zigzag_ratio": 1.01,
-        "coverage_gain_nodes": 17,
-        "coverage_gain_pct": 0.1,
-        "new_pois_count": 0,
-        "efficiency_ratio": 35.4,
+        "expansion_score": 68.5,
+        "length_m": 2606.8,
+        "length_km": 2.61,
+        "crow_m": 2377.2,
+        "zigzag_ratio": 1.1,
+        "structural_axis_score": 6.5,
+        "structural_ratio": 0.31,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 202,
+        "coverage_gain_nodes": 202,
+        "coverage_gain_pct": 1.63,
+        "new_pois_count": 3,
+        "efficiency_ratio": 77.4,
         "streets": [
-          "Camino a Tutuquén"
+          "Lago Calafquén",
+          "Camino a Tutuquén",
+          "Ruta J-624"
         ],
-        "origin_anchor": "Ciclovía Av. Colón Poniente",
-        "target_sector": "Tutuquén Norponiente",
-        "description": "Conexión periurbana de alta demanda ciclista hacia el sector Tutuquén y enlace costero de Curicó.",
-        "poi_summary": {},
-        "disclaimer": "Propuesta algorítmica de planificación territorial generada por CicloConecta utilizando proxies de cobertura urbana sobre OpenStreetMap. No representa ciclovías existentes ni proyectos con financiamiento asegurado."
+        "origin_anchor": "Red Ciclista Existente (-71.2681, -34.9735)",
+        "target_sector": "Sector Ruta J-624 / Cancha Club Deportivo Convento Viejo",
+        "description": "Corredor propuesto hacia el Sector Ruta J-624 / Cancha Club Deportivo Convento Viejo (Directo). Incorpora +202 nodos de acceso urbano y +3 equipamientos desatendidos.",
+        "poi_summary": {
+          "education": [
+            "Granja Educativa Agroecológica Municipal (GEAM)"
+          ],
+          "parks_leisure": [
+            "Cancha Club Deportivo Convento Viejo"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
       }
     }
   ]

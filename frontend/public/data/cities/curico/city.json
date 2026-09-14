@@ -93,7 +93,7 @@
       "suggested-routes",
       "network-expansion"
     ],
-    "last_updated": "2026-09-11T12:32:28.491494+00:00"
+    "last_updated": "2026-09-14T16:45:56.802062+00:00"
   },
   "connectivity": {
     "total_cycling_km": 43.2,
@@ -104,24 +104,25 @@
     "selected_opportunities_count": 10,
     "median_gap_m": 308,
     "max_score": 75.9,
-    "last_analyzed": "2026-09-11T12:32:28.491494+00:00"
+    "last_analyzed": "2026-09-14T16:45:56.802062+00:00"
   },
   "expansion": {
     "total_phases": 6,
-    "total_expansion_km": 5.59,
-    "total_new_nodes": 813,
-    "total_coverage_gain_pct": 5.0,
-    "total_new_pois": 56,
+    "total_expansion_km": 7.84,
+    "total_new_nodes": 1181,
+    "total_coverage_gain_pct": 9.52,
+    "total_new_pois": 50,
     "baseline_coverage": {
-      "covered_nodes_pct": 69.5,
-      "covered_pois_pct": 78.7,
+      "total_urban_access_nodes": 12405,
+      "covered_nodes_pct": 67.7,
+      "covered_pois_pct": 78.4,
       "distance_bands": {
-        "0-250m": 8900,
-        "250-500m": 3301,
-        "500-1000m": 1757,
-        ">1000m": 2294
+        "0-250m": 6344,
+        "250-500m": 2896,
+        "500-1000m": 1566,
+        ">1000m": 1599
       }
     },
-    "last_analyzed": "2026-09-11T12:32:28.491494+00:00"
+    "last_analyzed": "2026-09-14T16:45:56.802062+00:00"
   }
 }
