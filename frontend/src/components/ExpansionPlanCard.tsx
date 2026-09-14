@@ -24,8 +24,21 @@ export const ExpansionPlanCard: React.FC<Props> = ({
   }
 
   const totalKm = phases.reduce((acc, p) => acc + (p.properties.length_km || 0), 0)
-  const totalNodes = phases.reduce((acc, p) => acc + (p.properties.coverage_gain_nodes || 0), 0)
-  const totalPois = phases.reduce((acc, p) => acc + (p.properties.new_pois_count || 0), 0)
+  const totalNodes = phases.reduce(
+    (acc, p) => acc + (p.properties.marginal_gain?.urban_access_nodes || p.properties.coverage_gain_nodes || 0),
+    0
+  )
+  const totalPois = phases.reduce(
+    (acc, p) => acc + (p.properties.marginal_gain?.pois || p.properties.new_pois_count || 0),
+    0
+  )
+
+  const typeLabelMap: Record<string, string> = {
+    trunk_extension: 'Troncal',
+    continuation: 'Continuación',
+    cross_connector: 'Conector',
+    branch: 'Rama',
+  }
 
   return (
     <aside
@@ -117,7 +130,18 @@ export const ExpansionPlanCard: React.FC<Props> = ({
               const featureId = feat.id || props.id || `phase-${props.phase}`
               const isSelected =
                 (selectedExpansion?.id || selectedExpansion?.properties?.id) === featureId
-              const mainStreet = props.streets?.[0] || 'Eje estructurante'
+              const mainStreet = props.main_street || props.streets?.[0] || 'Eje estructurante'
+              const title = props.sector || props.name || `Fase ${props.phase}`
+              const score = props.score ?? props.expansion_score ?? 0
+              const nodesGained = props.marginal_gain?.urban_access_nodes ?? props.coverage_gain_nodes ?? 0
+              const poisGained = props.marginal_gain?.pois ?? props.new_pois_count ?? 0
+              const expType = props.expansion_type || 'branch'
+              const typeBadge = typeLabelMap[expType] || expType
+              const envLabel = props.environment_label || (props.urban_context === 'periurban' ? 'Periurbano' : 'Urbano')
+              const dependsOn = props.depends_on || []
+              const depFormatted = dependsOn.length > 0
+                ? dependsOn.map((d) => d.replace(/^expansion-[a-z]+-0?/, 'Fase ')).join(', ')
+                : null
 
               return (
                 <div
@@ -147,13 +171,27 @@ export const ExpansionPlanCard: React.FC<Props> = ({
                       <span>Fase {props.phase}</span>
                     </div>
 
+                    <span className="expansion-type-pill" title={`Tipo de expansión: ${expType}`}>
+                      {typeBadge}
+                    </span>
+
+                    <span className="expansion-env-pill" title={`Contexto territorial: ${envLabel}`}>
+                      {envLabel === 'Conector Periurbano' ? 'Periurbano' : 'Urbano'}
+                    </span>
+
                     <div className="expansion-score-pill" title="Puntaje multicriterio (0-100)">
                       <Award size={12} color="#7c3aed" />
-                      <span>{props.expansion_score.toFixed(1)} pts</span>
+                      <span>{score.toFixed(1)} pts</span>
                     </div>
                   </div>
 
-                  <div className="expansion-item-name">{props.name}</div>
+                  <div className="expansion-item-name">{title}</div>
+
+                  {depFormatted && (
+                    <div className="expansion-dep-indicator" title={`Dependencia topológica: requiere ${depFormatted}`}>
+                      🔗 Requiere {depFormatted}
+                    </div>
+                  )}
 
                   <div className="expansion-item-meta">
                     <span className="expansion-sector-tag" title="Sector urbano beneficiado">
@@ -170,11 +208,11 @@ export const ExpansionPlanCard: React.FC<Props> = ({
                     </span>
                     <span className="metric-dot">•</span>
                     <span className="expansion-metric" title="Proxy de cobertura: nodos residenciales ganados">
-                      +<strong>{props.coverage_gain_nodes}</strong> nodos (+{props.coverage_gain_pct}%)
+                      +<strong>{nodesGained}</strong> nodos
                     </span>
                     <span className="metric-dot">•</span>
                     <span className="expansion-metric" title="POIs y equipamientos incorporados">
-                      +<strong>{props.new_pois_count}</strong> POIs
+                      +<strong>{poisGained}</strong> POIs
                     </span>
                   </div>
                 </div>

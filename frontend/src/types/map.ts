@@ -169,26 +169,50 @@ export interface GapCandidateFeature {
 export interface ExpansionProperties extends FeatureProperties {
   id: string
   phase: number
-  name: string
+  name?: string
   sector: string
-  axis: string
-  status: string
-  badge: string
-  expansion_score: number
+  axis?: string
+  status?: string
+  badge?: string
+  expansion_score?: number
+  score?: number
   length_m: number
   length_km: number
-  crow_m: number
-  zigzag_ratio: number
-  coverage_gain_nodes: number
-  coverage_gain_pct: number
-  new_pois_count: number
-  efficiency_ratio: number
-  streets: string[]
-  origin_anchor: string
-  target_sector: string
-  description: string
-  poi_summary: Record<string, string[]>
+  crow_m?: number
+  zigzag_ratio?: number
+  coverage_gain_nodes?: number
+  coverage_gain_pct?: number
+  new_pois_count?: number
+  efficiency_ratio?: number
+  streets?: string[]
+  main_street?: string
+  origin_anchor?: string
+  target_sector?: string
+  description?: string
+  poi_summary?: Record<string, string[]>
   disclaimer: string
+  expansion_type?: 'branch' | 'continuation' | 'trunk_extension' | 'cross_connector' | string
+  depends_on?: string[]
+  urban_context?: 'urban' | 'periurban' | 'uncertain' | string
+  environment_label?: string
+  structural_axis_score?: number
+  structural_ratio?: number
+  marginal_gain?: {
+    urban_access_nodes: number
+    pois: number
+  }
+  cumulative_totals?: {
+    length_km: number
+    urban_access_nodes: number
+    pois: number
+  }
+  score_breakdown?: {
+    coverage: number
+    pois: number
+    continuity: number
+    structural_axis: number
+    efficiency: number
+  }
 }
 
 export interface ExpansionFeature {

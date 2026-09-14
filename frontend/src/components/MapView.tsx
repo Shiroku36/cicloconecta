@@ -140,8 +140,36 @@ function createSafePopupContent(
     if (props.phase !== undefined) {
       addRow('Fase del Plan', `Fase ${props.phase}`)
     }
-    if (props.expansion_score !== undefined) {
-      addRow('Puntaje de Expansión', `${Number(props.expansion_score).toFixed(1)} / 100 pts`)
+
+    const typeLabelMap: Record<string, string> = {
+      trunk_extension: 'Extensión Troncal',
+      continuation: 'Continuación de Fase Previa',
+      cross_connector: 'Conector Transversal',
+      branch: 'Nueva Rama desde Red Base',
+    }
+    const expType = props.expansion_type as string | undefined
+    if (expType) {
+      addRow('Tipo de Expansión', typeLabelMap[expType] || expType)
+    }
+
+    if (props.environment_label) {
+      addRow('Contexto Territorial', String(props.environment_label))
+    }
+
+    const dependsOn = props.depends_on as string[] | undefined
+    if (dependsOn && dependsOn.length > 0) {
+      const depLabels = dependsOn.map((d) => d.replace(/^expansion-[a-z]+-0?/, 'Fase ')).join(', ')
+      addRow('Dependencia Topológica', `Requiere ${depLabels} previamente`)
+    } else if (expType) {
+      addRow('Dependencia Topológica', 'Nace directamente de la red base OSM')
+    }
+
+    const score = props.score !== undefined ? props.score : props.expansion_score
+    if (score !== undefined) {
+      addRow('Puntaje de Expansión', `${Number(score).toFixed(1)} / 100 pts`)
+    }
+    if (props.structural_axis_score !== undefined) {
+      addRow('Eje Estructurante', `${Number(props.structural_axis_score).toFixed(1)} / 10 pts`)
     }
     if (props.length_km !== undefined) {
       const lenM = props.length_m ? ` (${Math.round(Number(props.length_m))} m)` : ''
@@ -150,13 +178,18 @@ function createSafePopupContent(
     if (props.sector) {
       addRow('Sector Beneficiado', String(props.sector))
     }
-    if (props.coverage_gain_nodes !== undefined) {
-      const pctStr = props.coverage_gain_pct ? ` (+${props.coverage_gain_pct}%)` : ''
-      addRow('Ganancia Cobertura', `+${props.coverage_gain_nodes} nodos viales${pctStr}`)
+
+    const marginGain = props.marginal_gain as { urban_access_nodes?: number; pois?: number } | undefined
+    const nodesGained = marginGain?.urban_access_nodes !== undefined ? marginGain.urban_access_nodes : props.coverage_gain_nodes
+    if (nodesGained !== undefined) {
+      addRow('Ganancia Cobertura', `+${nodesGained} nodos de acceso`)
     }
-    if (props.new_pois_count !== undefined) {
-      addRow('Destinos Clave (POIs)', `+${props.new_pois_count} equipamientos`)
+
+    const poisGained = marginGain?.pois !== undefined ? marginGain.pois : props.new_pois_count
+    if (poisGained !== undefined) {
+      addRow('Destinos Clave (POIs)', `+${poisGained} equipamientos`)
     }
+
     if (props.efficiency_ratio !== undefined) {
       addRow('Eficiencia Territorial', `${props.efficiency_ratio} nodos/km`)
     }
