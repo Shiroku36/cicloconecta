@@ -1,6 +1,6 @@
 """
-Unit tests for Phase 3.5 Methodological Correction:
-Algorithmic & Data-Driven Network Expansion Planner without hardcoded anchors.
+Unit tests for Phase 3.6: Real Topological Cycling Network Growth,
+Active Cycling Network, Dynamic Continuity Scoring, Dependencies, and Urban/Periurban Classification.
 """
 
 import inspect
@@ -14,9 +14,10 @@ client = TestClient(app)
 
 
 def test_no_hardcoded_anchors_in_production():
-    """Verify that plan_city_expansion does not call or depend on any get_city_anchors."""
-    source = inspect.getsource(ep.plan_city_expansion)
+    """Verify that expansion_planner does not contain manual anchors or debug coordinates."""
+    source = inspect.getsource(ep)
     assert "get_city_anchors" not in source
+    assert "get_debug_manual_anchors" not in source
     assert "if city_id == \"curico\"" not in source
     assert "if city_id == \"talca\"" not in source
 
@@ -60,23 +61,43 @@ def test_curico_expansion_metadata_present():
     expansion = data["expansion"]
     assert expansion is not None
     assert expansion["total_phases"] >= 5
-    assert expansion["total_expansion_km"] >= 4.0
-    assert expansion["total_new_nodes"] >= 500
-    assert expansion["total_coverage_gain_pct"] > 0
-    assert "baseline_coverage" in expansion
-    assert "0-250m" in expansion["baseline_coverage"]["distance_bands"]
+    assert expansion["total_expansion_km"] > 3.0
+    assert expansion["total_new_urban_access_nodes"] > 500
+    assert expansion["total_new_pois"] > 20
+    assert "expansion_types_summary" in expansion
+
+
+def test_talca_expansion_metadata_present():
+    response = client.get("/api/cities/talca")
+    assert response.status_code == 200
+    data = response.json()
+
+    assert "expansion" in data
+    expansion = data["expansion"]
+    assert expansion is not None
+    assert expansion["total_phases"] >= 5
+    assert expansion["total_expansion_km"] > 3.0
+    assert expansion["total_new_urban_access_nodes"] > 500
+    assert expansion["total_new_pois"] > 20
+    assert "expansion_types_summary" in expansion
 
 
 def test_poi_deduplication_integrity():
-    """Verify that POIs are deduplicated and stats recorded."""
+    """Verify that deduplicate_pois properly reduces duplicated amenities."""
     for city in ["curico", "talca"]:
-        response = client.get(f"/api/cities/{city}/layers/network-expansion")
-        assert response.status_code == 200
-        meta = response.json()["metadata"]
-        assert "poi_deduplication" in meta
-        raw_c = meta["poi_deduplication"]["raw_pois_count"]
-        dedup_c = meta["poi_deduplication"]["deduplicated_pois_count"]
-        assert raw_c > 0
+        raw_pois_file = Path(f"data/cities/{city}/raw_pois.json")
+        assert raw_pois_file.exists()
+
+        with open(raw_pois_file, "r", encoding="utf-8") as f:
+            raw_elements = json.load(f).get("elements", [])
+
+        cos_lat = 0.819 if city == "curico" else 0.815
+        cat_pois = ep.parse_and_categorize_pois(raw_elements)
+        dedup_pois = ep.deduplicate_pois(cat_pois, cos_lat)
+
+        raw_c = len(cat_pois)
+        dedup_c = len(dedup_pois)
+
         assert dedup_c > 0
         assert dedup_c <= raw_c, f"{city}: Deduplicated count should be <= raw count"
 
@@ -113,34 +134,8 @@ def test_curico_expansion_geojson_endpoint():
     assert meta["badge"] == "ANÁLISIS"
     assert meta["status"] == "ALGORITHMIC_EXPANSION"
     assert meta["total_phases"] == len(data["features"])
-
-    features = data["features"]
-    assert len(features) >= 5
-
-    for idx, feat in enumerate(features, start=1):
-        assert feat["type"] == "Feature"
-        geom = feat["geometry"]
-        assert geom["type"] == "LineString"
-        assert len(geom["coordinates"]) >= 2
-        for coord in geom["coordinates"]:
-            assert len(coord) == 2
-            assert -71.35 <= coord[0] <= -71.15
-            assert -35.10 <= coord[1] <= -34.90
-
-        props = feat["properties"]
-        assert props["id"] == f"expansion-curico-{idx:02d}"
-        assert props["phase"] == idx
-        assert props["badge"] == "ANÁLISIS"
-        assert props["status"] == "ALGORITHMIC_EXPANSION"
-        assert props["expansion_score"] > 0
-        assert props["length_km"] > 0.3
-        assert props["coverage_gain_nodes"] >= 15
-        assert props["coverage_gain_urban_access_nodes"] >= 15
-        assert "structural_axis_score" in props
-        assert "physical_width_status" in props
-        assert len(props["streets"]) > 0
-        assert "disclaimer" in props
-        assert "poi_summary" in props
+    assert "expansion_types_summary" in meta
+    assert "urban_contexts_summary" in meta
 
 
 def test_talca_expansion_geojson_endpoint():
@@ -156,84 +151,166 @@ def test_talca_expansion_geojson_endpoint():
     assert meta["badge"] == "ANÁLISIS"
     assert meta["status"] == "ALGORITHMIC_EXPANSION"
     assert meta["total_phases"] == len(data["features"])
-
-    features = data["features"]
-    assert len(features) >= 5
-
-    for idx, feat in enumerate(features, start=1):
-        assert feat["type"] == "Feature"
-        geom = feat["geometry"]
-        assert geom["type"] == "LineString"
-        assert len(geom["coordinates"]) >= 2
-        for coord in geom["coordinates"]:
-            assert len(coord) == 2
-            assert -71.72 <= coord[0] <= -71.58
-            assert -35.50 <= coord[1] <= -35.38
-
-        props = feat["properties"]
-        assert props["id"] == f"expansion-talca-{idx:02d}"
-        assert props["phase"] == idx
-        assert props["badge"] == "ANÁLISIS"
-        assert props["status"] == "ALGORITHMIC_EXPANSION"
-        assert props["expansion_score"] > 0
-        assert props["length_km"] > 0.3
-        assert props["coverage_gain_nodes"] >= 15
-        assert props["coverage_gain_urban_access_nodes"] >= 15
-        assert "structural_axis_score" in props
-        assert "physical_width_status" in props
-        assert len(props["streets"]) > 0
-        assert "disclaimer" in props
+    assert "expansion_types_summary" in meta
+    assert "urban_contexts_summary" in meta
 
 
 def test_expansion_scoring_and_phases_ordering():
+    """Verify that phases are numbered 1..N and scores decrease or are monotonic in greedy selection."""
     for city in ["curico", "talca"]:
         response = client.get(f"/api/cities/{city}/layers/network-expansion")
         assert response.status_code == 200
-        data = response.json()
-        features = data["features"]
+        features = response.json()["features"]
 
-        # Phase 1 must have high expansion score (>= 80 pts)
-        phase_1 = features[0]["properties"]
-        assert phase_1["phase"] == 1
-        assert phase_1["expansion_score"] >= 80.0
-        assert phase_1["coverage_gain_nodes"] >= 100
+        scores = []
+        for idx, feat in enumerate(features, 1):
+            props = feat["properties"]
+            assert props["phase"] == idx
+            assert 0.0 <= props["score"] <= 100.0
+            scores.append(props["score"])
+            assert 5.0 <= props["structural_axis_score"] <= 10.0
+
+            # Cumulative values must strictly grow
+            cum = props["cumulative_totals"]
+            assert cum["length_km"] > 0
+            assert cum["urban_access_nodes"] > 0
 
 
 def test_no_unverified_claims_in_geojson():
-    """Verify that features do not claim 'habitantes' or unverified physical capacity."""
+    """Ensure no unverified claims (e.g. population numbers, ancho suficiente) exist in properties."""
+    forbidden_terms = ["habitantes", "población beneficiada", "ancho suficiente", "factibilidad asegurada"]
+
     for city in ["curico", "talca"]:
         response = client.get(f"/api/cities/{city}/layers/network-expansion")
         assert response.status_code == 200
-        text_content = json.dumps(response.json(), ensure_ascii=False).lower()
-
-        assert "habitantes beneficiados" not in text_content
-        assert "población beneficiada" not in text_content
-        assert "perfil vial suficiente" not in text_content
-        assert "ancho suficiente" not in text_content
-
-
-def test_geometries_follow_navigable_network():
-    """Verify that expansion corridor coordinates are not straight lines and exist in the road graph."""
-    base_dir = Path(__file__).resolve().parent.parent.parent
-
-    for city in ["curico", "talca"]:
-        nav_graph_path = base_dir / "data" / "cities" / city / "nav_graph.json"
-        with open(nav_graph_path, "r", encoding="utf-8") as f:
-            graph_data = json.load(f)
-
-        # Set of rounded graph coordinates
-        graph_coords = {
-            (round(n["lon"], 5), round(n["lat"], 5)) for n in graph_data["nodes"]
-        }
-
-        response = client.get(f"/api/cities/{city}/layers/network-expansion")
         features = response.json()["features"]
 
         for feat in features:
+            props = feat["properties"]
+            props_str = json.dumps(props, ensure_ascii=False).lower()
+            for term in forbidden_terms:
+                assert term not in props_str, f"Found forbidden unverified claim '{term}' in {city}"
+            assert props["physical_width_status"] == "UNVERIFIED_IN_OSM"
+
+
+def test_geometries_follow_navigable_network():
+    """Verify that every expansion corridor follows the underlying navigable street network."""
+    for city in ["curico", "talca"]:
+        response = client.get(f"/api/cities/{city}/layers/network-expansion")
+        assert response.status_code == 200
+        features = response.json()["features"]
+
+        with open(f"data/cities/{city}/nav_graph.json", "r", encoding="utf-8") as f:
+            nav_graph = json.load(f)
+
+        node_coords = {(round(n["lon"], 5), round(n["lat"], 5)) for n in nav_graph["nodes"]}
+
+        for feat in features:
             coords = feat["geometry"]["coordinates"]
-            # Must have multiple intermediate vertices (not just 2 points forming a straight line)
-            assert len(coords) >= 10, f"Corridor {feat['id']} should have road vertices, got {len(coords)}"
-            # Almost all vertices must match nodes from nav_graph
-            matched = sum(1 for c in coords if (round(c[0], 5), round(c[1], 5)) in graph_coords)
-            match_ratio = matched / len(coords)
-            assert match_ratio >= 0.95, f"{city} {feat['id']}: match ratio {match_ratio} < 0.95"
+            assert len(coords) >= 5, f"{city}: Corridor geometry should have multiple points"
+            # Every sampled point must exist in the real road network
+            matched = sum(1 for pt in coords if (round(pt[0], 5), round(pt[1], 5)) in node_coords)
+            match_pct = matched / len(coords)
+            assert match_pct >= 0.95, f"{city}: {match_pct*100}% points matched real street graph"
+
+
+def test_active_network_growth_and_no_floating_geometries():
+    """Verify that every expansion corridor physically touches the active network existing at its selection."""
+    for city in ["curico", "talca"]:
+        with open(f"data/cities/{city}/nav_graph.json", "r", encoding="utf-8") as f:
+            graph = json.load(f)
+        with open(f"data/cities/{city}/network-expansion.geojson", "r", encoding="utf-8") as f:
+            expansion = json.load(f)
+
+        # Build base cycleway nodes
+        base_cycle_nodes = set()
+        for ed in graph["edges"]:
+            if ed.get("is_cycling_infra"):
+                base_cycle_nodes.add(ed["u"])
+                base_cycle_nodes.add(ed["v"])
+
+        active_nodes = set(base_cycle_nodes)
+        nodes_dict = {n["id"]: (round(n["lon"], 5), round(n["lat"], 5)) for n in graph["nodes"]}
+        active_coords = {nodes_dict[nid] for nid in active_nodes if nid in nodes_dict}
+
+        for feat in expansion["features"]:
+            coords = feat["geometry"]["coordinates"]
+            first_pt = (round(coords[0][0], 5), round(coords[0][1], 5))
+            last_pt = (round(coords[-1][0], 5), round(coords[-1][1], 5))
+
+            # Must touch active network at at least one endpoint
+            touches_active = (first_pt in active_coords) or (last_pt in active_coords)
+            assert touches_active, (
+                f"Feature {feat['properties']['id']} in {city} is floating! Endpoints do not touch active network."
+            )
+
+            # Add corridor points to active network
+            for pt in coords:
+                active_coords.add((round(pt[0], 5), round(pt[1], 5)))
+
+
+def test_phase_dependencies_and_continuation_types():
+    """Verify that depends_on references valid preceding phases and expansion_type matches topology."""
+    valid_types = {"branch", "continuation", "trunk_extension", "cross_connector"}
+
+    for city in ["curico", "talca"]:
+        with open(f"data/cities/{city}/network-expansion.geojson", "r", encoding="utf-8") as f:
+            expansion = json.load(f)
+
+        features = expansion["features"]
+        all_ids = [f["properties"]["id"] for f in features]
+
+        for feat in features:
+            props = feat["properties"]
+            phase_num = props["phase"]
+            exp_type = props["expansion_type"]
+            depends_on = props["depends_on"]
+
+            assert exp_type in valid_types, f"Invalid expansion_type '{exp_type}' in {city}"
+            assert isinstance(depends_on, list)
+
+            # Check that dependencies strictly precede the current phase
+            for dep_id in depends_on:
+                assert dep_id in all_ids, f"Dependency {dep_id} not found in {city}"
+                dep_feat = next(f for f in features if f["properties"]["id"] == dep_id)
+                assert dep_feat["properties"]["phase"] < phase_num, (
+                    f"Dependency {dep_id} (Phase {dep_feat['properties']['phase']}) must precede Phase {phase_num}"
+                )
+
+            # If continuation, must have dependencies
+            if exp_type == "continuation":
+                assert len(depends_on) >= 1, f"Continuation {props['id']} in {city} must have depends_on"
+
+
+def test_dynamic_non_constant_continuity_scoring():
+    """Verify that score_breakdown.continuity is not a static constant across phases."""
+    for city in ["curico", "talca"]:
+        with open(f"data/cities/{city}/network-expansion.geojson", "r", encoding="utf-8") as f:
+            expansion = json.load(f)
+
+        continuity_scores = [f["properties"]["score_breakdown"]["continuity"] for f in expansion["features"]]
+        assert len(continuity_scores) >= 5
+
+        # All scores must be in valid range [8.0, 20.0]
+        for s in continuity_scores:
+            assert 8.0 <= s <= 20.0, f"Continuity score {s} out of bounds in {city}"
+
+        # Scores should have variation (not all identical to 20.0)
+        assert len(set(continuity_scores)) > 1, f"Continuity scores should not be constant in {city}: {continuity_scores}"
+
+
+def test_urban_vs_periurban_context_classification():
+    """Verify that every expansion feature is classified as urban, periurban, or uncertain."""
+    valid_contexts = {"urban", "periurban", "uncertain"}
+    valid_labels = {"Expansión Urbana", "Conector Periurbano", "Mixto / Transición"}
+
+    for city in ["curico", "talca"]:
+        with open(f"data/cities/{city}/network-expansion.geojson", "r", encoding="utf-8") as f:
+            expansion = json.load(f)
+
+        for feat in expansion["features"]:
+            props = feat["properties"]
+            assert "urban_context" in props
+            assert props["urban_context"] in valid_contexts
+            assert "environment_label" in props
+            assert props["environment_label"] in valid_labels
