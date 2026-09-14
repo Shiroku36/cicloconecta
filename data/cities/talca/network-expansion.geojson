@@ -1,0 +1,1518 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "city_id": "talca",
+    "city_name": "Talca",
+    "layer_id": "network-expansion",
+    "layer_name": "Expansión de red",
+    "badge": "ANÁLISIS",
+    "status": "ALGORITHMIC_EXPANSION",
+    "total_phases": 6,
+    "total_expansion_km": 5.72,
+    "total_new_urban_access_nodes": 2126,
+    "total_new_nodes": 2126,
+    "total_coverage_gain_pct": 8.67,
+    "total_new_pois": 78,
+    "poi_deduplication": {
+      "raw_pois_count": 982,
+      "deduplicated_pois_count": 905
+    },
+    "discovered_clusters": [
+      {
+        "id": "cluster-talca-01",
+        "centroid": [
+          -71.665388,
+          -35.449635
+        ],
+        "node_count": 1747,
+        "mean_distance_to_cycle_network": 727.4,
+        "max_distance_to_cycle_network": 1675.5,
+        "bbox": [
+          -35.468585,
+          -71.680255,
+          -35.425594,
+          -71.644568
+        ],
+        "nearby_pois_count": 205,
+        "coverage_need_score": 6748.6
+      },
+      {
+        "id": "cluster-talca-02",
+        "centroid": [
+          -71.617034,
+          -35.427509
+        ],
+        "node_count": 931,
+        "mean_distance_to_cycle_network": 596.4,
+        "max_distance_to_cycle_network": 880.1,
+        "bbox": [
+          -35.433356,
+          -71.623273,
+          -35.419947,
+          -71.60838
+        ],
+        "nearby_pois_count": 33,
+        "coverage_need_score": 2437.5
+      },
+      {
+        "id": "cluster-talca-03",
+        "centroid": [
+          -71.690911,
+          -35.438701
+        ],
+        "node_count": 640,
+        "mean_distance_to_cycle_network": 643.1,
+        "max_distance_to_cycle_network": 1144.7,
+        "bbox": [
+          -35.453474,
+          -71.699815,
+          -35.427506,
+          -71.680313
+        ],
+        "nearby_pois_count": 37,
+        "coverage_need_score": 1907.2
+      },
+      {
+        "id": "cluster-talca-04",
+        "centroid": [
+          -71.612799,
+          -35.40846
+        ],
+        "node_count": 593,
+        "mean_distance_to_cycle_network": 633.9,
+        "max_distance_to_cycle_network": 1198.0,
+        "bbox": [
+          -35.414189,
+          -71.619914,
+          -35.401069,
+          -71.605271
+        ],
+        "nearby_pois_count": 47,
+        "coverage_need_score": 1908.8
+      },
+      {
+        "id": "cluster-talca-05",
+        "centroid": [
+          -71.638335,
+          -35.411685
+        ],
+        "node_count": 385,
+        "mean_distance_to_cycle_network": 494.0,
+        "max_distance_to_cycle_network": 727.2,
+        "bbox": [
+          -35.422523,
+          -71.644613,
+          -35.403198,
+          -71.627469
+        ],
+        "nearby_pois_count": 34,
+        "coverage_need_score": 1173.3
+      },
+      {
+        "id": "cluster-talca-06",
+        "centroid": [
+          -71.690186,
+          -35.421738
+        ],
+        "node_count": 304,
+        "mean_distance_to_cycle_network": 931.6,
+        "max_distance_to_cycle_network": 1614.1,
+        "bbox": [
+          -35.428924,
+          -71.695759,
+          -35.412909,
+          -71.684845
+        ],
+        "nearby_pois_count": 1,
+        "coverage_need_score": 882.4
+      },
+      {
+        "id": "cluster-talca-07",
+        "centroid": [
+          -71.651821,
+          -35.432262
+        ],
+        "node_count": 239,
+        "mean_distance_to_cycle_network": 488.3,
+        "max_distance_to_cycle_network": 657.6,
+        "bbox": [
+          -35.437115,
+          -71.654339,
+          -35.4268,
+          -71.646778
+        ],
+        "nearby_pois_count": 59,
+        "coverage_need_score": 1180.4
+      },
+      {
+        "id": "cluster-talca-08",
+        "centroid": [
+          -71.681421,
+          -35.454762
+        ],
+        "node_count": 230,
+        "mean_distance_to_cycle_network": 489.0,
+        "max_distance_to_cycle_network": 641.2,
+        "bbox": [
+          -35.460395,
+          -71.685858,
+          -35.449538,
+          -71.677657
+        ],
+        "nearby_pois_count": 47,
+        "coverage_need_score": 1018.9
+      },
+      {
+        "id": "cluster-talca-09",
+        "centroid": [
+          -71.647516,
+          -35.447935
+        ],
+        "node_count": 188,
+        "mean_distance_to_cycle_network": 538.7,
+        "max_distance_to_cycle_network": 706.1,
+        "bbox": [
+          -35.450249,
+          -71.651343,
+          -35.445171,
+          -71.643804
+        ],
+        "nearby_pois_count": 10,
+        "coverage_need_score": 510.5
+      },
+      {
+        "id": "cluster-talca-10",
+        "centroid": [
+          -71.63219,
+          -35.395507
+        ],
+        "node_count": 148,
+        "mean_distance_to_cycle_network": 539.6,
+        "max_distance_to_cycle_network": 799.5,
+        "bbox": [
+          -35.399483,
+          -71.644723,
+          -35.392468,
+          -71.624687
+        ],
+        "nearby_pois_count": 9,
+        "coverage_need_score": 415.7
+      }
+    ],
+    "baseline_coverage": {
+      "total_urban_access_nodes": 24531,
+      "covered_nodes_pct": 74.5,
+      "covered_pois_pct": 81.3,
+      "distance_bands": {
+        "0-250m": 13465,
+        "250-500m": 6903,
+        "500-1000m": 3253,
+        ">1000m": 910
+      }
+    },
+    "generated_at": "2026-09-14T16:46:41.181598+00:00",
+    "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "expansion-talca-01",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.668909,
+            -35.446132
+          ],
+          [
+            -71.66879,
+            -35.445952
+          ],
+          [
+            -71.668704,
+            -35.44587
+          ],
+          [
+            -71.668608,
+            -35.445733
+          ],
+          [
+            -71.668362,
+            -35.445382
+          ],
+          [
+            -71.668205,
+            -35.445098
+          ],
+          [
+            -71.66813,
+            -35.444969
+          ],
+          [
+            -71.668047,
+            -35.444844
+          ],
+          [
+            -71.667957,
+            -35.444722
+          ],
+          [
+            -71.667859,
+            -35.444605
+          ],
+          [
+            -71.667524,
+            -35.444183
+          ],
+          [
+            -71.667406,
+            -35.444045
+          ],
+          [
+            -71.667242,
+            -35.443866
+          ],
+          [
+            -71.667131,
+            -35.443702
+          ],
+          [
+            -71.66693,
+            -35.443406
+          ],
+          [
+            -71.666856,
+            -35.443297
+          ],
+          [
+            -71.667023,
+            -35.44322
+          ],
+          [
+            -71.667669,
+            -35.442924
+          ],
+          [
+            -71.668281,
+            -35.442651
+          ],
+          [
+            -71.668382,
+            -35.442609
+          ],
+          [
+            -71.668663,
+            -35.442492
+          ],
+          [
+            -71.66873,
+            -35.44246
+          ],
+          [
+            -71.668795,
+            -35.442426
+          ],
+          [
+            -71.668842,
+            -35.442397
+          ],
+          [
+            -71.668892,
+            -35.442356
+          ],
+          [
+            -71.668931,
+            -35.442313
+          ],
+          [
+            -71.66897,
+            -35.442265
+          ],
+          [
+            -71.669029,
+            -35.442174
+          ],
+          [
+            -71.669184,
+            -35.44195
+          ],
+          [
+            -71.669387,
+            -35.441649
+          ],
+          [
+            -71.669456,
+            -35.441549
+          ],
+          [
+            -71.669562,
+            -35.441384
+          ],
+          [
+            -71.669695,
+            -35.441183
+          ],
+          [
+            -71.669769,
+            -35.441072
+          ],
+          [
+            -71.669852,
+            -35.440933
+          ],
+          [
+            -71.669886,
+            -35.440856
+          ],
+          [
+            -71.66992,
+            -35.440757
+          ],
+          [
+            -71.669961,
+            -35.440606
+          ],
+          [
+            -71.67003,
+            -35.440298
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-talca-01",
+        "phase": 1,
+        "name": "Fase 1: Sector 14 Sur",
+        "sector": "Sector 14 Sur",
+        "axis": "Calle 1 Oriente",
+        "cluster_id": "cluster-talca-01",
+        "alternative_type": "Eje Estructurante",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 99.6,
+        "length_m": 832.4,
+        "length_km": 0.83,
+        "crow_m": 657.4,
+        "zigzag_ratio": 1.27,
+        "structural_axis_score": 10.0,
+        "structural_ratio": 1.0,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 247,
+        "coverage_gain_nodes": 247,
+        "coverage_gain_pct": 1.01,
+        "new_pois_count": 21,
+        "efficiency_ratio": 297.6,
+        "streets": [
+          "Calle 1 Oriente",
+          "Calle 16 Sur",
+          "Circunvalación Sur"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.6689, -35.4461)",
+        "target_sector": "Sector 14 Sur",
+        "description": "Corredor propuesto hacia el Sector 14 Sur (Eje Estructurante). Incorpora +247 nodos de acceso urbano y +21 equipamientos desatendidos.",
+        "poi_summary": {
+          "education": [
+            "Colegio Lyons School",
+            "Colegio Juan Piamarta",
+            "Colegio Aurora de Chile"
+          ],
+          "parks_leisure": [
+            "Estadio Sur",
+            "Gimnasio CENDYR Sur",
+            "Plaza Aurora de Chile"
+          ],
+          "public_services": [
+            "Iglesia Adventista del Septimo Dia"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-talca-02",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.675898,
+            -35.462498
+          ],
+          [
+            -71.675687,
+            -35.4626
+          ],
+          [
+            -71.675595,
+            -35.462643
+          ],
+          [
+            -71.674932,
+            -35.46295
+          ],
+          [
+            -71.674714,
+            -35.463052
+          ],
+          [
+            -71.674613,
+            -35.463125
+          ],
+          [
+            -71.674558,
+            -35.463223
+          ],
+          [
+            -71.674511,
+            -35.463373
+          ],
+          [
+            -71.674478,
+            -35.463478
+          ],
+          [
+            -71.674452,
+            -35.463543
+          ],
+          [
+            -71.674375,
+            -35.463622
+          ],
+          [
+            -71.674273,
+            -35.463664
+          ],
+          [
+            -71.673882,
+            -35.463825
+          ],
+          [
+            -71.673442,
+            -35.464005
+          ],
+          [
+            -71.673083,
+            -35.464152
+          ],
+          [
+            -71.673017,
+            -35.464179
+          ],
+          [
+            -71.672584,
+            -35.464357
+          ],
+          [
+            -71.672173,
+            -35.464526
+          ],
+          [
+            -71.671764,
+            -35.464694
+          ],
+          [
+            -71.671336,
+            -35.464869
+          ],
+          [
+            -71.671278,
+            -35.464787
+          ],
+          [
+            -71.670743,
+            -35.46392
+          ],
+          [
+            -71.670537,
+            -35.463594
+          ],
+          [
+            -71.670492,
+            -35.463561
+          ],
+          [
+            -71.670443,
+            -35.463557
+          ],
+          [
+            -71.670387,
+            -35.463454
+          ],
+          [
+            -71.670357,
+            -35.463408
+          ],
+          [
+            -71.670343,
+            -35.463388
+          ],
+          [
+            -71.670202,
+            -35.463364
+          ],
+          [
+            -71.666385,
+            -35.459939
+          ],
+          [
+            -71.666341,
+            -35.4599
+          ],
+          [
+            -71.666293,
+            -35.459867
+          ],
+          [
+            -71.666221,
+            -35.459842
+          ],
+          [
+            -71.666146,
+            -35.459824
+          ],
+          [
+            -71.666104,
+            -35.459816
+          ],
+          [
+            -71.666071,
+            -35.459809
+          ],
+          [
+            -71.666014,
+            -35.459829
+          ],
+          [
+            -71.665539,
+            -35.45973
+          ],
+          [
+            -71.665019,
+            -35.459612
+          ],
+          [
+            -71.664738,
+            -35.459537
+          ],
+          [
+            -71.664607,
+            -35.459483
+          ],
+          [
+            -71.664536,
+            -35.459441
+          ],
+          [
+            -71.663251,
+            -35.459935
+          ],
+          [
+            -71.663009,
+            -35.460028
+          ],
+          [
+            -71.661517,
+            -35.460601
+          ],
+          [
+            -71.661398,
+            -35.460646
+          ],
+          [
+            -71.661017,
+            -35.460792
+          ],
+          [
+            -71.660681,
+            -35.460922
+          ],
+          [
+            -71.660342,
+            -35.461052
+          ],
+          [
+            -71.660532,
+            -35.461379
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-talca-02",
+        "phase": 2,
+        "name": "Fase 2: Sector 26 Sur",
+        "sector": "Sector 26 Sur",
+        "axis": "Camino Los Patos",
+        "cluster_id": "cluster-talca-01",
+        "alternative_type": "Eje Estructurante",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 98.8,
+        "length_m": 1861.5,
+        "length_km": 1.86,
+        "crow_m": 1399.3,
+        "zigzag_ratio": 1.33,
+        "structural_axis_score": 8.8,
+        "structural_ratio": 0.75,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 508,
+        "coverage_gain_nodes": 508,
+        "coverage_gain_pct": 2.07,
+        "new_pois_count": 20,
+        "efficiency_ratio": 273.1,
+        "streets": [
+          "Camino Los Patos",
+          "Calle 9 Oriente",
+          "Calle Vicente Pérez Rosales",
+          "9 Oriente"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.6759, -35.4625)",
+        "target_sector": "Sector 26 Sur",
+        "description": "Corredor propuesto hacia el Sector 26 Sur (Eje Estructurante). Incorpora +508 nodos de acceso urbano y +20 equipamientos desatendidos.",
+        "poi_summary": {
+          "parks_leisure": [
+            "Plaza La Luna"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-talca-03",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.62114,
+            -35.412345
+          ],
+          [
+            -71.621055,
+            -35.412405
+          ],
+          [
+            -71.620979,
+            -35.412331
+          ],
+          [
+            -71.620924,
+            -35.412265
+          ],
+          [
+            -71.620646,
+            -35.411936
+          ],
+          [
+            -71.620393,
+            -35.411635
+          ],
+          [
+            -71.620211,
+            -35.411419
+          ],
+          [
+            -71.620121,
+            -35.411311
+          ],
+          [
+            -71.620053,
+            -35.41123
+          ],
+          [
+            -71.619597,
+            -35.410687
+          ],
+          [
+            -71.61956,
+            -35.410642
+          ],
+          [
+            -71.619433,
+            -35.410493
+          ],
+          [
+            -71.619345,
+            -35.410387
+          ],
+          [
+            -71.618988,
+            -35.409893
+          ],
+          [
+            -71.618804,
+            -35.40961
+          ],
+          [
+            -71.618638,
+            -35.40935
+          ],
+          [
+            -71.618464,
+            -35.409087
+          ],
+          [
+            -71.618292,
+            -35.408827
+          ],
+          [
+            -71.618107,
+            -35.408549
+          ],
+          [
+            -71.617909,
+            -35.408255
+          ],
+          [
+            -71.617811,
+            -35.408107
+          ],
+          [
+            -71.617722,
+            -35.407971
+          ],
+          [
+            -71.617536,
+            -35.407688
+          ],
+          [
+            -71.617302,
+            -35.407333
+          ],
+          [
+            -71.617111,
+            -35.407043
+          ],
+          [
+            -71.61703,
+            -35.406918
+          ],
+          [
+            -71.616962,
+            -35.406948
+          ],
+          [
+            -71.616945,
+            -35.406956
+          ],
+          [
+            -71.616614,
+            -35.407094
+          ],
+          [
+            -71.616546,
+            -35.407113
+          ],
+          [
+            -71.616464,
+            -35.407141
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-talca-03",
+        "phase": 3,
+        "name": "Fase 3: Sector Calle 27 Oriente",
+        "sector": "Sector Calle 27 Oriente",
+        "axis": "Calle 25 Oriente",
+        "cluster_id": "cluster-talca-04",
+        "alternative_type": "Eje Estructurante",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 97.4,
+        "length_m": 779.1,
+        "length_km": 0.78,
+        "crow_m": 718.0,
+        "zigzag_ratio": 1.09,
+        "structural_axis_score": 9.6,
+        "structural_ratio": 0.91,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 234,
+        "coverage_gain_nodes": 234,
+        "coverage_gain_pct": 0.95,
+        "new_pois_count": 12,
+        "efficiency_ratio": 300.0,
+        "streets": [
+          "Calle 25 Oriente",
+          "Calle 25 Norte"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.6211, -35.4123)",
+        "target_sector": "Sector Calle 27 Oriente",
+        "description": "Corredor propuesto hacia el Sector Calle 27 Oriente (Eje Estructurante). Incorpora +234 nodos de acceso urbano y +12 equipamientos desatendidos.",
+        "poi_summary": {
+          "parks_leisure": [
+            "Plaza de juegos"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-talca-04",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.625891,
+            -35.427321
+          ],
+          [
+            -71.625923,
+            -35.427356
+          ],
+          [
+            -71.625958,
+            -35.42743
+          ],
+          [
+            -71.625978,
+            -35.427474
+          ],
+          [
+            -71.62599,
+            -35.427501
+          ],
+          [
+            -71.625879,
+            -35.427533
+          ],
+          [
+            -71.625779,
+            -35.42756
+          ],
+          [
+            -71.62529,
+            -35.427692
+          ],
+          [
+            -71.625214,
+            -35.427717
+          ],
+          [
+            -71.62514,
+            -35.427745
+          ],
+          [
+            -71.625062,
+            -35.42778
+          ],
+          [
+            -71.624987,
+            -35.427819
+          ],
+          [
+            -71.624809,
+            -35.427933
+          ],
+          [
+            -71.624763,
+            -35.427962
+          ],
+          [
+            -71.624714,
+            -35.427989
+          ],
+          [
+            -71.624662,
+            -35.428013
+          ],
+          [
+            -71.624607,
+            -35.428034
+          ],
+          [
+            -71.624019,
+            -35.428224
+          ],
+          [
+            -71.623478,
+            -35.428401
+          ],
+          [
+            -71.622931,
+            -35.42858
+          ],
+          [
+            -71.622554,
+            -35.42871
+          ],
+          [
+            -71.622465,
+            -35.428738
+          ],
+          [
+            -71.622341,
+            -35.42878
+          ],
+          [
+            -71.622304,
+            -35.428795
+          ],
+          [
+            -71.622007,
+            -35.428889
+          ],
+          [
+            -71.621193,
+            -35.429151
+          ],
+          [
+            -71.620923,
+            -35.429244
+          ],
+          [
+            -71.620787,
+            -35.429288
+          ],
+          [
+            -71.620408,
+            -35.429404
+          ],
+          [
+            -71.620299,
+            -35.429438
+          ],
+          [
+            -71.61876,
+            -35.429955
+          ],
+          [
+            -71.61872,
+            -35.429887
+          ],
+          [
+            -71.618706,
+            -35.429852
+          ],
+          [
+            -71.618683,
+            -35.429797
+          ],
+          [
+            -71.61865,
+            -35.429734
+          ],
+          [
+            -71.618613,
+            -35.429671
+          ],
+          [
+            -71.618595,
+            -35.429644
+          ],
+          [
+            -71.618572,
+            -35.429609
+          ],
+          [
+            -71.618521,
+            -35.42954
+          ],
+          [
+            -71.618464,
+            -35.429474
+          ],
+          [
+            -71.618392,
+            -35.429389
+          ],
+          [
+            -71.618328,
+            -35.4293
+          ],
+          [
+            -71.618288,
+            -35.429234
+          ],
+          [
+            -71.618252,
+            -35.429167
+          ],
+          [
+            -71.618218,
+            -35.429078
+          ],
+          [
+            -71.618195,
+            -35.428988
+          ],
+          [
+            -71.618183,
+            -35.428896
+          ],
+          [
+            -71.618171,
+            -35.428783
+          ],
+          [
+            -71.618152,
+            -35.428671
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-talca-04",
+        "phase": 4,
+        "name": "Fase 4: Sector Calle 34 Oriente",
+        "sector": "Sector Calle 34 Oriente",
+        "axis": "Calle 5 Norte",
+        "cluster_id": "cluster-talca-02",
+        "alternative_type": "Directo",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 95.9,
+        "length_m": 888.6,
+        "length_km": 0.89,
+        "crow_m": 717.9,
+        "zigzag_ratio": 1.24,
+        "structural_axis_score": 9.0,
+        "structural_ratio": 0.8,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 548,
+        "coverage_gain_nodes": 548,
+        "coverage_gain_pct": 2.23,
+        "new_pois_count": 7,
+        "efficiency_ratio": 615.7,
+        "streets": [
+          "Calle 5 Norte",
+          "Calle 34 Oriente"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.6259, -35.4273)",
+        "target_sector": "Sector Calle 34 Oriente",
+        "description": "Corredor propuesto hacia el Sector Calle 34 Oriente (Directo). Incorpora +548 nodos de acceso urbano y +7 equipamientos desatendidos.",
+        "poi_summary": {
+          "parks_leisure": [
+            "Paseo Circunvalación Oriente",
+            "Parque Universitario",
+            "Balance Muro De Escalada"
+          ],
+          "commercial": [
+            "Tu Espacio VIVO",
+            "Holy Market"
+          ],
+          "education": [
+            "Escuela de Lenguaje Agua Sol Las Rastras"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-talca-05",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.605249,
+            -35.413699
+          ],
+          [
+            -71.605214,
+            -35.413653
+          ],
+          [
+            -71.605096,
+            -35.413423
+          ],
+          [
+            -71.605206,
+            -35.413419
+          ],
+          [
+            -71.605103,
+            -35.413217
+          ],
+          [
+            -71.605194,
+            -35.413174
+          ],
+          [
+            -71.605214,
+            -35.413165
+          ],
+          [
+            -71.605474,
+            -35.413042
+          ],
+          [
+            -71.605591,
+            -35.412987
+          ],
+          [
+            -71.606013,
+            -35.412788
+          ],
+          [
+            -71.606076,
+            -35.412758
+          ],
+          [
+            -71.606419,
+            -35.412597
+          ],
+          [
+            -71.606739,
+            -35.412446
+          ],
+          [
+            -71.606792,
+            -35.412421
+          ],
+          [
+            -71.606849,
+            -35.412394
+          ],
+          [
+            -71.607303,
+            -35.412181
+          ],
+          [
+            -71.608258,
+            -35.411731
+          ],
+          [
+            -71.608368,
+            -35.411674
+          ],
+          [
+            -71.608472,
+            -35.411616
+          ],
+          [
+            -71.608626,
+            -35.411524
+          ],
+          [
+            -71.608787,
+            -35.411429
+          ],
+          [
+            -71.608922,
+            -35.411348
+          ],
+          [
+            -71.608952,
+            -35.411335
+          ],
+          [
+            -71.608987,
+            -35.411324
+          ],
+          [
+            -71.609022,
+            -35.411316
+          ],
+          [
+            -71.6091,
+            -35.411297
+          ],
+          [
+            -71.609264,
+            -35.411255
+          ],
+          [
+            -71.609521,
+            -35.41119
+          ],
+          [
+            -71.609682,
+            -35.41115
+          ],
+          [
+            -71.6101,
+            -35.411044
+          ],
+          [
+            -71.610522,
+            -35.410937
+          ],
+          [
+            -71.610183,
+            -35.409982
+          ],
+          [
+            -71.610457,
+            -35.409914
+          ],
+          [
+            -71.610551,
+            -35.409891
+          ],
+          [
+            -71.610614,
+            -35.409876
+          ],
+          [
+            -71.610507,
+            -35.409587
+          ],
+          [
+            -71.610462,
+            -35.409466
+          ],
+          [
+            -71.610513,
+            -35.409453
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-talca-05",
+        "phase": 5,
+        "name": "Fase 5: Sector Calle 31 Oriente",
+        "sector": "Sector Calle 31 Oriente",
+        "axis": "Calle 24½ Norte F",
+        "cluster_id": "cluster-talca-04",
+        "alternative_type": "Directo",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 95.0,
+        "length_m": 827.9,
+        "length_km": 0.83,
+        "crow_m": 671.9,
+        "zigzag_ratio": 1.23,
+        "structural_axis_score": 5.0,
+        "structural_ratio": 0.0,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 318,
+        "coverage_gain_nodes": 318,
+        "coverage_gain_pct": 1.3,
+        "new_pois_count": 11,
+        "efficiency_ratio": 383.1,
+        "streets": [
+          "Calle 24½ Norte F",
+          "Ramadillas de Lircay",
+          "Calle 24½ Norte",
+          "30 Oriente"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.6052, -35.4137)",
+        "target_sector": "Sector Calle 31 Oriente",
+        "description": "Corredor propuesto hacia el Sector Calle 31 Oriente (Directo). Incorpora +318 nodos de acceso urbano y +11 equipamientos desatendidos.",
+        "poi_summary": {
+          "education": [
+            "Escuela de Lenguaje Aliwen"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "expansion-talca-06",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.686128,
+            -35.443079
+          ],
+          [
+            -71.686181,
+            -35.443148
+          ],
+          [
+            -71.686312,
+            -35.44309
+          ],
+          [
+            -71.686406,
+            -35.443101
+          ],
+          [
+            -71.686516,
+            -35.443113
+          ],
+          [
+            -71.686709,
+            -35.443145
+          ],
+          [
+            -71.686862,
+            -35.443184
+          ],
+          [
+            -71.686922,
+            -35.443095
+          ],
+          [
+            -71.687008,
+            -35.443
+          ],
+          [
+            -71.687089,
+            -35.442928
+          ],
+          [
+            -71.687221,
+            -35.442821
+          ],
+          [
+            -71.687345,
+            -35.442735
+          ],
+          [
+            -71.687413,
+            -35.442735
+          ],
+          [
+            -71.687457,
+            -35.44274
+          ],
+          [
+            -71.68748,
+            -35.442761
+          ],
+          [
+            -71.687636,
+            -35.442704
+          ],
+          [
+            -71.688165,
+            -35.442569
+          ],
+          [
+            -71.689345,
+            -35.442261
+          ],
+          [
+            -71.690306,
+            -35.441958
+          ],
+          [
+            -71.69035,
+            -35.441946
+          ],
+          [
+            -71.69039,
+            -35.441936
+          ],
+          [
+            -71.690449,
+            -35.441925
+          ],
+          [
+            -71.690493,
+            -35.441914
+          ],
+          [
+            -71.690554,
+            -35.441922
+          ],
+          [
+            -71.690568,
+            -35.441928
+          ],
+          [
+            -71.690581,
+            -35.441931
+          ],
+          [
+            -71.690605,
+            -35.441934
+          ],
+          [
+            -71.690628,
+            -35.441931
+          ],
+          [
+            -71.690649,
+            -35.441924
+          ],
+          [
+            -71.690668,
+            -35.441913
+          ],
+          [
+            -71.690684,
+            -35.441899
+          ],
+          [
+            -71.690694,
+            -35.441882
+          ],
+          [
+            -71.690774,
+            -35.44185
+          ],
+          [
+            -71.690812,
+            -35.44184
+          ],
+          [
+            -71.690834,
+            -35.441831
+          ],
+          [
+            -71.690855,
+            -35.441819
+          ],
+          [
+            -71.690972,
+            -35.441736
+          ],
+          [
+            -71.691217,
+            -35.441496
+          ]
+        ]
+      },
+      "properties": {
+        "id": "expansion-talca-06",
+        "phase": 6,
+        "name": "Fase 6: Sector 26 Sur",
+        "sector": "Sector 26 Sur",
+        "axis": "26 Sur",
+        "cluster_id": "cluster-talca-03",
+        "alternative_type": "Directo",
+        "status": "ALGORITHMIC_EXPANSION",
+        "badge": "ANÁLISIS",
+        "expansion_score": 86.6,
+        "length_m": 528.7,
+        "length_km": 0.53,
+        "crow_m": 494.1,
+        "zigzag_ratio": 1.07,
+        "structural_axis_score": 9.2,
+        "structural_ratio": 0.84,
+        "physical_width_status": "Desconocido en OSM (ancho y factibilidad constructiva no verificados en terreno)",
+        "coverage_gain_urban_access_nodes": 227,
+        "coverage_gain_nodes": 227,
+        "coverage_gain_pct": 0.93,
+        "new_pois_count": 5,
+        "efficiency_ratio": 428.3,
+        "streets": [
+          "26 Sur",
+          "14 poniente",
+          "26 Sur B"
+        ],
+        "origin_anchor": "Red Ciclista Existente (-71.6861, -35.4431)",
+        "target_sector": "Sector 26 Sur",
+        "description": "Corredor propuesto hacia el Sector 26 Sur (Directo). Incorpora +227 nodos de acceso urbano y +5 equipamientos desatendidos.",
+        "poi_summary": {
+          "education": [
+            "Colegio Montessori Talca",
+            "Liceo Pablo Neruda de Talca",
+            "Colegio Las Araucarias"
+          ],
+          "commercial": [
+            "Hipermercado Lider",
+            "Santa Isabel",
+            "Tottus"
+          ],
+          "parks_leisure": [
+            "Canchas Atlético Comercio",
+            "Plaza Villa Los Acacios"
+          ],
+          "public_services": [
+            "Chilexpress"
+          ],
+          "healthcare": [
+            "Farmacia Olimpar",
+            "Farmacia Junto a Tí",
+            "SalcoBrand"
+          ]
+        },
+        "disclaimer": "Propuesta algorítmica de planificación territorial generada inductivamente por CicloConecta utilizando proxies de tejido urbano accesible sobre OpenStreetMap. No representa infraestructura física existente ni garantiza factibilidad constructiva o financiamiento."
+      }
+    }
+  ]
+}

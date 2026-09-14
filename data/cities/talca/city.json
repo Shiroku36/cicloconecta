@@ -82,9 +82,10 @@
     "layers_available": [
       "cycling-infrastructure",
       "missing-connections",
-      "suggested-routes"
+      "suggested-routes",
+      "network-expansion"
     ],
-    "last_updated": "2026-09-09T20:02:24.025483+00:00"
+    "last_updated": "2026-09-14T16:46:41.256043+00:00"
   },
   "connectivity": {
     "total_cycling_km": 73.33,
@@ -95,6 +96,25 @@
     "selected_opportunities_count": 10,
     "median_gap_m": 508,
     "max_score": 89.9,
-    "last_analyzed": "2026-09-09T20:02:24.025483+00:00"
+    "last_analyzed": "2026-09-14T16:46:41.256043+00:00"
+  },
+  "expansion": {
+    "total_phases": 6,
+    "total_expansion_km": 5.72,
+    "total_new_nodes": 2126,
+    "total_coverage_gain_pct": 8.67,
+    "total_new_pois": 78,
+    "baseline_coverage": {
+      "total_urban_access_nodes": 24531,
+      "covered_nodes_pct": 74.5,
+      "covered_pois_pct": 81.3,
+      "distance_bands": {
+        "0-250m": 13465,
+        "250-500m": 6903,
+        "500-1000m": 3253,
+        ">1000m": 910
+      }
+    },
+    "last_analyzed": "2026-09-14T16:46:41.256043+00:00"
   }
 }
