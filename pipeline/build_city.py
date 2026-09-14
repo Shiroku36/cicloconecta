@@ -316,10 +316,12 @@ def process_city(
         city_metadata["expansion"] = {
             "total_phases": meta.get("total_phases", 0),
             "total_expansion_km": meta.get("total_expansion_km", 0.0),
+            "total_new_urban_access_nodes": meta.get("total_new_urban_access_nodes", meta.get("total_new_nodes", 0)),
             "total_new_nodes": meta.get("total_new_nodes", 0),
             "total_coverage_gain_pct": meta.get("total_coverage_gain_pct", 0.0),
             "total_new_pois": meta.get("total_new_pois", 0),
-            "baseline_coverage": meta.get("baseline_coverage", {}),
+            "expansion_types_summary": meta.get("expansion_types_summary", {}),
+            "urban_contexts_summary": meta.get("urban_contexts_summary", {}),
             "last_analyzed": now_iso,
         }
 
